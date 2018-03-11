@@ -52,22 +52,16 @@ export default class TagsPageRoute extends React.Component {
 }
 
 export const pageQuery = graphql`
-  query TagsQuery {
+  query TagsQuery($skip: Int = 0, $limit: Int = 3) {
     site {
       siteMetadata {
-        title
-        logo
-        siteUrl
-        cover
-        tagCover
-        navigation
+        ...siteFrag
       }
     }
     allMarkdownRemark(
-      limit: 2000
       filter: { frontmatter: { draft: { ne: true } } }
     ) {
-      group(field: frontmatter___tags) {
+      group(skip: $skip, limit: $limit, field: frontmatter___tags) {
         fieldValue
         totalCount
       }

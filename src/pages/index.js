@@ -53,13 +53,7 @@ export const pageQuery = graphql`
   query IndexQuery($skip: Int = 0, $limit: Int = 10) {
     site {
       siteMetadata {
-        title
-        description
-        logo
-        siteUrl
-        cover,
-        tagCover,
-        navigation,
+        ...siteFrag
       }
     }
     allMarkdownRemark(skip: $skip, limit: $limit, filter: {frontmatter: {draft: {ne: true}}}, sort: { order: DESC, fields: [frontmatter___date] }) {

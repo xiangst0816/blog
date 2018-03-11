@@ -38,12 +38,7 @@ export const pageQuery = graphql`
   query TagPage($tag: String) {
     site {
       siteMetadata {
-        title
-        logo
-        siteUrl
-        cover
-        tagCover
-        navigation
+        ...siteFrag
       }
     }
     master: authorJson(master: {eq: true}) {

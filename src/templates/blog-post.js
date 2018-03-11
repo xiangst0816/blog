@@ -140,12 +140,7 @@ export const pageQuery = graphql`
   query BlogPostBySlug($curr: String!, $prev: String!, $next: String!) {
     site {
       siteMetadata {
-        title
-        logo
-        siteUrl
-        cover,
-        tagCover,
-        navigation,
+        ...siteFrag
       }
     }
     master: authorJson(master: {eq: true}) {

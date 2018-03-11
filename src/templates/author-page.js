@@ -65,12 +65,7 @@ export const pageQuery = graphql`
     }
     site {
       siteMetadata {
-        title
-        logo
-        siteUrl
-        cover,
-        tagCover,
-        navigation,
+        ...siteFrag
       }
     }
     allMarkdownRemark(limit: 1000, filter: {frontmatter: {draft: {ne: true}, author: {eq: $author}}}, sort: {order: DESC, fields: [frontmatter___date]}) {

@@ -12,8 +12,6 @@ module.exports = {
         logo: '',
         navigation: true, // 是否开启右侧导航
         subscribe: true, // 是否显示订阅按钮
-        pages: 10, // 每页十条
-        subTitle: `Thoughts, stories and ideas.`,
     },
     mapping: {
         'MarkdownRemark.frontmatter.author': `AuthorJson`,

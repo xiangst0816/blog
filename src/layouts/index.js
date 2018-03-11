@@ -54,6 +54,17 @@ export const pageQuery = graphql`
     location
   }
 
+  fragment siteFrag on siteMetadata_2 {
+    title
+    cover
+    description
+    tagCover
+    siteUrl
+    logo
+    navigation
+    subscribe
+  }
+
   query LayoutQuery{
     master: authorJson(master: {eq: true}) {
       ...authorFrag

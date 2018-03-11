@@ -50,7 +50,9 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             createTagPage(postEdges, createPage);
             // Author pages
             createAuthorPage(authorEdges, createPage);
-            createIndexPage(totalCount, authorEdges, createPage);
+
+            // Pagination
+            createIndexPagination(totalCount, authorEdges, createPage);
 
             resolve();
         });
@@ -95,9 +97,9 @@ exports.modifyWebpackConfig = ({ config, stage }) => {
 };
 
 // create Index pages with pagination, 添加额外分页页面
-function createIndexPage(totalCount, edges, createPage) {
+function createIndexPagination(total, edges, createPage) {
     let limit = 10;
-    let count = Math.ceil(totalCount / limit);
+    let count = Math.ceil(total / limit);
     const indexPage = path.resolve('src/pages/index.js');
     for (let i = 1; count + 1 > i; i++) {
         createPage({
