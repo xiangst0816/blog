@@ -57,6 +57,23 @@ export const pageQuery = graphql`
     website
     location
   }
+  fragment markdownRemarkEdgeFrag on MarkdownRemarkEdge {
+    node {
+      excerpt(pruneLength: 250)
+      fields {
+        slug
+      }
+      frontmatter {
+        title
+        tags
+        star
+        date(formatString: "DD MMM YYYY")
+        author {
+          ...authorFrag
+        }
+      }
+    }
+  }
 
   fragment siteFrag on siteMetadata_2 {
     title

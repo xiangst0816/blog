@@ -4,6 +4,7 @@ tags:
   - open source
 date: "2017-01-31"
 readNext: /gatsby-open-source-work/
+star: true
 ---
 
 Once upon a time, I thought self-hosting web fonts was intimidating. It

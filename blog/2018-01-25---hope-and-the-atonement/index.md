@@ -1,6 +1,7 @@
 ---
 title: "Hope and the Atonement"
 date: "2018-01-25"
+star: true
 ---
 
 *I gave the following at the local [LDS church](https://www.mormon.org/) church I attend. Our church doesn't have paid ministry meaning everyone who attends occasionally takes their turn preaching and exhorting.*

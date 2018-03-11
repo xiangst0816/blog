@@ -61,20 +61,7 @@ export const pageQuery = graphql`
     allMarkdownRemark(skip: $skip, limit: $limit, filter: {frontmatter: {draft: {ne: true}}}, sort: { order: DESC, fields: [frontmatter___date] }) {
       totalCount
       edges {
-        node {
-          excerpt(pruneLength: 250)
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            tags
-            date(formatString: "DD MMM YYYY")
-            author {
-              ...authorFrag
-            }
-          }
-        }
+        ...markdownRemarkEdgeFrag
       }
     }
   }

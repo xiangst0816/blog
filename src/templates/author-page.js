@@ -97,20 +97,7 @@ export const pageQuery = graphql`
     ) {
       totalCount
       edges {
-        node {
-          excerpt(pruneLength: 250)
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            tags
-            date(formatString: "DD MMM YYYY")
-            author {
-              ...authorFrag
-            }
-          }
-        }
+        ...markdownRemarkEdgeFrag
       }
     }
   }

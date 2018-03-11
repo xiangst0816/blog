@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import kebabCase from 'lodash.kebabcase';
+import classNames from 'classnames';
 
 export default class ExcerptLoop extends React.Component {
     render() {
@@ -32,7 +33,7 @@ export default class ExcerptLoop extends React.Component {
                         };
 
                         return (
-                            <article className="post" key={post.title}>
+                            <article className={classNames('post', { 'featured': post.star })} key={post.title}>
                                 <div className="inner">
                                     <header className="post-header">
                                         <h2 className="post-title">
