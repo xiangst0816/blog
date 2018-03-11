@@ -4,6 +4,12 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.gatsby-context.js
+.sass-cache/
+public/
+.cache/
+.DS_Store
+.idea
 
 # Runtime data
 pids
