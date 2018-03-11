@@ -3,7 +3,7 @@ const webpackLodashPlugin = require('lodash-webpack-plugin');
 const slash = require('slash');
 const authors = require('./author/author.json');
 const defaultAuthor = authors.filter(author => author.master === true)[0];
-var kebabCase = require('lodash.kebabcase');
+const kebabCase = require('lodash.kebabcase');
 
 // Add synchronized dynamic html pages
 exports.createPages = ({ graphql, boundActionCreators }) => {
@@ -26,11 +26,19 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             }
           }
         }
-        allAuthorJson {
-          authorEdges: edges {
-            node {
-              id
+       allAuthor: allMarkdownRemark(filter: {frontmatter: {draft: {ne: true}}}, sort: {order: DESC, fields: [frontmatter___date]}) {
+            totalCount
+            group(field: frontmatter___author) {
+              fieldValue
+              totalCount
             }
+        }
+       allTags: allMarkdownRemark(
+          filter: { frontmatter: { draft: { ne: true } } }
+        ) {
+          group(field: frontmatter___tags) {
+            fieldValue
+            totalCount
           }
         }
       }
@@ -43,16 +51,28 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             }
 
             const { postEdges, totalCount } = result.data.allMarkdownRemark;
-            const { authorEdges } = result.data.allAuthorJson;
+            const { group: authors } = result.data.allAuthor;
+            const { group: tags } = result.data.allTags;
+            const tagObj = {};
+
+            tags.forEach(tagInfo => {
+                tagObj[tagInfo.fieldValue] = tagInfo.totalCount;
+            });
+
+            const authorObj = {};
+            authors.forEach(authorInfo => {
+                authorObj[authorInfo.fieldValue] = authorInfo.totalCount;
+            });
+
             // Create blog posts pages.
             createBlogPost(postEdges, createPage);
             // Tag pages.
-            createTagPage(postEdges, createPage);
+            createTagPage(tagObj, createPage);
             // Author pages
-            createAuthorPage(authorEdges, createPage);
+            createAuthorPage(authorObj, createPage);
 
             // Pagination
-            createIndexPagination(totalCount, authorEdges, createPage);
+            createIndexPagination(totalCount, createPage);
 
             resolve();
         });
@@ -97,7 +117,7 @@ exports.modifyWebpackConfig = ({ config, stage }) => {
 };
 
 // create Index pages with pagination, 添加额外分页页面
-function createIndexPagination(total, edges, createPage) {
+function createIndexPagination(total, createPage) {
     let limit = 10;
     let count = Math.ceil(total / limit);
     const indexPage = path.resolve('src/pages/index.js');
@@ -113,17 +133,66 @@ function createIndexPagination(total, edges, createPage) {
     }
 }
 
-// Create Author pages.
-function createAuthorPage(edges, createPage) {
-    const authorPage = path.resolve('src/templates/author-page.js');
-    edges.forEach(edge => {
+
+// Tag pages.
+function createTagPage(tagObj, createPage) {
+    const limit = 10;
+    const tagPages = path.resolve('src/templates/tag-page.js');
+    const tagList = Object.keys(tagObj);
+    tagList.forEach(tag => {
+        const postCount = tagObj[tag];
+        const kebabCaseName = kebabCase(tag);
         createPage({
-            path: `/author/${kebabCase(edge.node.id)}`, // required
-            component: authorPage,
+            path: `/tag/${kebabCaseName}/`,
+            component: tagPages,
             context: {
-                author: edge.node.id,
+                tag,
             },
         });
+
+        let count = Math.ceil(postCount / limit);
+        for (let i = 1; count + 1 > i; i++) {
+            createPage({
+                path: `/tag/${kebabCaseName}/${i}`,
+                component: tagPages,
+                context: {
+                    skip: (i - 1) * limit,
+                    limit: limit,
+                    tag,
+                },
+            });
+        }
+    });
+}
+
+// Create Author pages.
+function createAuthorPage(authorObj, createPage) {
+    const limit = 10;
+    const authorPage = path.resolve('src/templates/author-page.js');
+    const authorList = Object.keys(authorObj);
+    authorList.forEach(author => {
+        const postCount = authorObj[author];
+        const kebabCaseName = kebabCase(author);
+        createPage({
+            path: `/author/${kebabCaseName}`, // required
+            component: authorPage,
+            context: {
+                author,
+            },
+        });
+
+        let count = Math.ceil(postCount / limit);
+        for (let i = 1; count + 1 > i; i++) {
+            createPage({
+                path: `/author/${kebabCaseName}/${i}`,
+                component: authorPage,
+                context: {
+                    skip: (i - 1) * limit,
+                    limit: limit,
+                    author,
+                },
+            });
+        }
     });
 }
 
@@ -146,26 +215,6 @@ function createBlogPost(edges, createPage) {
     });
 }
 
-// Tag pages.
-function createTagPage(edges, createPage) {
-    const tagPages = path.resolve('src/templates/tag-page.js');
-    const tagSet = new Set();
-    edges.forEach(edge => {
-        edge.node.frontmatter.tags && edge.node.frontmatter.tags.forEach(tag => {
-            tagSet.add(tag);
-        });
-    });
-    const tagList = Array.from(tagSet);
-    tagList.forEach(tag => {
-        createPage({
-            path: `/tag/${kebabCase(tag)}/`,
-            component: tagPages,
-            context: {
-                tag,
-            },
-        });
-    });
-}
 
 // Articles with no name specified as master
 function setDefaultAuthor(frontmatter) {

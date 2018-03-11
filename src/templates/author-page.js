@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import kebabCase from 'lodash.kebabcase';
 import ExcerptLoop from '../components/ExcerptLoop';
 import Website from '../components/Bio/Website';
 import Twitter from '../components/Bio/Twitter';
@@ -12,6 +13,7 @@ import Bio from '../components/Bio/Bio';
 import Stats from '../components/Bio/Stats';
 import Avatar from '../components/Avatar';
 import Header from '../components/Header';
+import Pagination from '../components/Pagination';
 
 export default class AuthorRoute extends React.Component {
     render() {
@@ -19,6 +21,10 @@ export default class AuthorRoute extends React.Component {
         const { totalCount = 0, edges } = allMarkdownRemark || {};
         const { cover, navigation, logo } = site.siteMetadata;
         const coverImage = author.cover ? author.cover : (cover ? cover : false);
+
+        const { skip = 0, limit = 10 } = this.props.pathContext;
+        const kebabCaseName = kebabCase(author.id);
+
         return (
             <div>
                 <Header
@@ -49,8 +55,22 @@ export default class AuthorRoute extends React.Component {
                     </div>
                 </section>
                 <div id="index" className="container">
-                    <main className="content" role="main">
+                    <main className={classNames('content', { 'paged': skip > 0 })} role="main">
+                        <div className="extra-pagination">
+                            <Pagination
+                                skip={skip}
+                                limit={limit}
+                                total={totalCount}
+                                pathPrefix={`/author/${kebabCaseName}/`}
+                            />
+                        </div>
                         <ExcerptLoop edges={edges} />
+                        <Pagination
+                            skip={skip}
+                            limit={limit}
+                            total={totalCount}
+                            pathPrefix={`/author/${kebabCaseName}/`}
+                        />
                     </main>
                 </div>
             </div>
@@ -59,7 +79,7 @@ export default class AuthorRoute extends React.Component {
 }
 
 export const pageQuery = graphql`
-  query AuthorBlogs($author: String!) {
+  query AuthorBlogs($author: String!, $skip: Int = 0, $limit: Int = 10) {
     authorJson(id: {eq:$author}){
       ...authorFrag
     }
@@ -68,7 +88,10 @@ export const pageQuery = graphql`
         ...siteFrag
       }
     }
-    allMarkdownRemark(limit: 1000, filter: {frontmatter: {draft: {ne: true}, author: {eq: $author}}}, sort: {order: DESC, fields: [frontmatter___date]}) {
+    allMarkdownRemark(
+      skip: $skip, limit: $limit,
+      filter: {frontmatter: {draft: {ne: true}, author: {eq: $author}}}, sort: {order: DESC, fields: [frontmatter___date]}
+    ) {
       totalCount
       edges {
         node {
