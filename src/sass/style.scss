@@ -913,7 +913,6 @@ img {
   padding: 4em 0;
 }
 
-.container .tags:after,
 .container .post:after {
   position: absolute;
   width: 32em;
@@ -923,17 +922,6 @@ img {
   margin-left: -16em;
   content: '';
   background: $color-gray-90;
-}
-
-.container .tags {
-  position: relative;
-  z-index: 10;
-  padding: 1em 0;
-}
-.container .content-tags {
-  position: relative;
-  z-index: 10;
-  padding: 3em 0 0;
 }
 
 .container .post.featured .post-title:after {
@@ -950,6 +938,44 @@ img {
   content: '\e808';
   color: $color-yellow-100;
   text-align: center;
+}
+
+/* ==========================================================================
+   Tags
+   ========================================================================== */
+.container .content-tags {
+  position: relative;
+  z-index: 10;
+  margin: 0 auto;
+  max-width: 32em;
+  padding: 4em 2em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-tags .tags {
+  position: relative;
+  z-index: 10;
+  margin: 0.5em 0.4em;
+  padding: 0.2em 0.4em;
+  font-weight: 500;
+  border: 1px solid #ddd;
+  a {
+    white-space: nowrap;
+  }
+}
+
+.container .content-tags:after {
+  position: absolute;
+  width: 32em;
+  height: 1px;
+  left: 50%;
+  bottom: 0;
+  margin-left: -16em;
+  content: '';
+  background: $color-gray-90;
 }
 
 /* ==========================================================================
