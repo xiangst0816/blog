@@ -131,4 +131,13 @@ lorem
 The blog is the greatest conversational tool ever invented because seconds after I click publish for this post, it can be read across the world by thousands. Granted, this blog, along with most of the other [100 million][0] blogs in existence, won't be read much. But that's all right. Conversation is fun, even it's just with a few of your buds. I'm just happy to join the party.
 
 
+
+## Match
+
+$a^2 + b^2 = c^2$
+
+$$
+a^2 + b^2 = c^2
+$$
+
 [0]: http://www.blogherald.com/2005/10/10/the-blog-herald-blog-count-october-2005/

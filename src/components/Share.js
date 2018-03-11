@@ -16,7 +16,7 @@ export default class Share extends React.Component {
                        window.open(this.href, 'twitter-share', 'width=550,height=235');
                        return false;
                    }}>
-                    <i className="ic ic-twitter"></i><span className="hidden">Twitter</span>
+                    <i className="ic icon-twitter"></i><span className="hidden">Twitter</span>
                 </a>
                 <a className="facebook" href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
                    onClick={() => {
@@ -24,7 +24,7 @@ export default class Share extends React.Component {
                        return false;
                    }
                    }>
-                    <i className="ic ic-facebook"></i><span className="hidden">Facebook</span>
+                    <i className="ic icon-facebook"></i><span className="hidden">Facebook</span>
                 </a>
                 <a className="googleplus" href={`https://plus.google.com/share?url=${url}`}
                    onClick={() => {
@@ -32,7 +32,7 @@ export default class Share extends React.Component {
                        return false;
                    }
                    }>
-                    <i className="ic ic-googleplus"></i><span className="hidden">Google+</span>
+                    <i className="ic icon-googleplus"></i><span className="hidden">Google+</span>
                 </a>
                 <div className="clear"></div>
             </div>

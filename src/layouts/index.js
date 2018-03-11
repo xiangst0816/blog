@@ -4,8 +4,9 @@ import Helmet from 'react-helmet';
 import Footer from '../components/Footer';
 import Navigation from '../components/Navigation';
 import '../sass/style.scss';
+import 'katex/dist/katex.min.css';
 
-const BUILD_TIME = new Date().getTime();
+const BUILD_TIME = new Date();
 
 export default class Template extends React.Component {
     static propTypes = {

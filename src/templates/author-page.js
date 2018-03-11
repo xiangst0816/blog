@@ -7,7 +7,6 @@ import Website from '../components/Bio/Website';
 import Twitter from '../components/Bio/Twitter';
 import Facebook from '../components/Bio/Facebook';
 import Github from '../components/Bio/Github';
-import Zhihu from '../components/Bio/Zhihu';
 import Weibo from '../components/Bio/Weibo';
 import Location from '../components/Bio/Location';
 import Bio from '../components/Bio/Bio';
@@ -49,7 +48,6 @@ export default class AuthorRoute extends React.Component {
                                 <Twitter twitter={author.twitter} />
                                 <Facebook facebook={author.facebook} />
                                 <Github github={author.github} />
-                                <Zhihu zhihu={author.zhihu} />
                                 <Weibo weibo={author.weibo} />
                             </div>
                             <div className="clear"></div>

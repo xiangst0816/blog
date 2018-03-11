@@ -94,13 +94,23 @@ module.exports = {
                         }
                     },
                     'gatsby-remark-autolink-headers',
-                    "gatsby-remark-copy-linked-files",
-                    "gatsby-remark-responsive-iframe"
+                    'gatsby-remark-copy-linked-files',
+                    'gatsby-remark-katex',
+                    'gatsby-remark-responsive-iframe'
                 ]
             }
         },
         'gatsby-plugin-react-helmet',
         'gatsby-plugin-sharp',
+        {
+            resolve: `gatsby-plugin-google-fonts`,
+            options: {
+                fonts: [
+                    `limelight`,
+                    `source sans pro\:300,400,400i,700` // you can also specify font weights and styles
+                ]
+            }
+        },
         {
             resolve: 'gatsby-plugin-feed',
             options: {

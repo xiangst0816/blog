@@ -4,7 +4,7 @@ export default function Location({ location }) {
     if (location) {
         return (
             <span className="post-author-location">
-                <i className="ic ic-location"></i>
+                <i className="ic icon-location"></i>
                 {location}
             </span>
         );

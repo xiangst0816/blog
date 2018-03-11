@@ -11,7 +11,7 @@ export default class Pagination extends React.Component {
             <nav className="pagination" role="pagination">
                 <div className="inner">
                     {prev && (
-                        <a className="pagination-prev" href={prev}><i className="ic ic-arrow-left"></i>
+                        <a className="pagination-prev" href={prev}><i className="ic icon-arrow-left"></i>
                             <span className="pagination-label">Newer Posts</span></a>
                     )}
                     {
@@ -19,7 +19,7 @@ export default class Pagination extends React.Component {
                     }
                     {next && (
                         <a className="pagination-next" href={next}><span className="pagination-label">Older Posts</span>
-                            <i className="ic ic-arrow-right"></i></a>
+                            <i className="ic icon-arrow-right"></i></a>
                     )}
                     <div className="clear"></div>
                 </div>
