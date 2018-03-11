@@ -1065,7 +1065,6 @@ img {
 .post-meta {
   position: relative;
   z-index: 10;
-  display: block;
   margin-bottom: 1.334em;
   font-family: 'Fira Sans', sans-serif;
   font-size: 0.75em;
@@ -1073,6 +1072,9 @@ img {
   line-height: 1.334em;
   //opacity: 0.5;
   //color: #9E9FA2;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .post-meta-inner {
@@ -1095,16 +1097,13 @@ img {
   margin-bottom: 0.16em;
   vertical-align: middle;
   max-width: 100%;
+  flex: 0 0 auto;
   .avatar {
     height: 100%;
     border-radius: 100%;
     display: inline;
     line-height: 1.334em;
   }
-}
-
-.post-meta-avatar {
-
 }
 
 .post-meta a {
