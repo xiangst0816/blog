@@ -27,16 +27,16 @@ export default class Template extends React.Component {
         return (
             <section id="wrapper">
                 <Helmet
-                    title="Gatsby Default (Blog) Starter"
+                    title={site.title}
                     meta={[
-                        { name: 'description', content: 'Sample' },
-                        { name: 'keywords', content: 'sample, something' },
+                        { name: 'description', content: `${site.title}` },
+                        { name: 'keywords', content: `${site.keywords}` },
                     ]}
                 />
                 <Navigation master={master} site={site} {...this.props} />
                 <a className="hidden-close" onClick={this.toggle}></a>
                 {this.props.children()}
-                <div id="body-class" style={{ display: 'none' }} className="tag-template tag-getting-started"></div>
+                <div id="body-class" style={{ display: 'none' }} className="tag-template"></div>
                 <Footer />
             </section>
         );
@@ -61,6 +61,7 @@ export const pageQuery = graphql`
     title
     cover
     description
+    keywords
     tagCover
     siteUrl
     logo

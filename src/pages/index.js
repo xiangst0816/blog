@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import Helmet from 'react-helmet';
 import ExcerptLoop from '../components/ExcerptLoop';
 import Pagination from '../components/Pagination';
 import Header from '../components/Header';
@@ -12,6 +13,7 @@ export default class Index extends React.Component {
 
         return (
             <div className="home-template">
+                <Helmet title={title} />
                 <Header
                     logo={logo}
                     cover={cover}

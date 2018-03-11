@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import kebabCase from 'lodash.kebabcase';
+import Helmet from 'react-helmet';
 import ExcerptLoop from '../components/ExcerptLoop';
 import Website from '../components/Bio/Website';
 import Twitter from '../components/Bio/Twitter';
@@ -19,7 +20,7 @@ export default class AuthorRoute extends React.Component {
     render() {
         const { allMarkdownRemark, site, authorJson: author } = this.props.data;
         const { totalCount = 0, edges } = allMarkdownRemark || {};
-        const { cover, navigation, logo } = site.siteMetadata;
+        const { cover, navigation, logo, title } = site.siteMetadata;
         const coverImage = author.cover ? author.cover : (cover ? cover : false);
 
         const { skip = 0, limit = 10 } = this.props.pathContext;
@@ -27,6 +28,7 @@ export default class AuthorRoute extends React.Component {
 
         return (
             <div>
+                <Helmet title={title} />
                 <Header
                     cover={cover}
                     logo={logo}
@@ -87,6 +89,9 @@ export const pageQuery = graphql`
       siteMetadata {
         ...siteFrag
       }
+    }
+    master: authorJson(master: {eq: true}) {
+      ...authorFrag
     }
     allMarkdownRemark(
       skip: $skip, limit: $limit,

@@ -7,6 +7,7 @@ module.exports = {
         // cover: 'https://casper.ghost.org/v1.0.0/images/design.jpg',
         cover: 'https://blog.amio.cn/content/images/2016/09/DSC_2972_BG.jpg',
         description: `Thoughts, stories and ideas.`, // 网站描述
+        keywords: `Thoughts, stories and ideas.`, // 网站描述
         tagCover: 'https://casper.ghost.org/v1.0.0/images/team.jpg',
         siteUrl: '/', // 页面路径
         logo: '',

@@ -12,7 +12,7 @@ export default class TagsPageRoute extends React.Component {
         const coverImage = tagCover ? tagCover : (cover ? cover : false);
         return (
             <div>
-                <Helmet title={title} />
+                <Helmet title={`${title}-Tags`} />
                 <Header
                     logo={logo}
                     cover={coverImage}
