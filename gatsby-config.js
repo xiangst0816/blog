@@ -104,16 +104,17 @@ module.exports = {
             resolve: 'gatsby-plugin-feed',
             options: {
                 query: `
-          {
-            site {
-              siteMetadata {
-                siteUrl
-                title
-                description
-              }
-            }
-          }
-        `,
+                      {
+                        site {
+                          siteMetadata {
+                            title
+                            cover
+                            description
+                            siteUrl
+                          }
+                        }
+                      }
+                    `,
                 feeds: [
                     {
                         serialize: ({ query: { site, allMarkdownRemark } }) => (
@@ -127,30 +128,35 @@ module.exports = {
                                 }))
                         ),
                         query: `
-              {
-                allMarkdownRemark(
-                  limit: 1000,
-                  sort: { order: DESC, fields: [frontmatter___date] },
-                  filter: { frontmatter: { draft: { ne: true } } }
-                ) {
-                  edges {
-                    node {
-                      html
-                      fields {
-                        slug
-                      }
-                      frontmatter {
-                        title
-                        date
-                        layout
-                        draft
-                        tags
-                      }
-                    }
-                  }
-                }
-              }
-            `,
+                              {
+                                allMarkdownRemark(
+                                  sort: { order: DESC, fields: [frontmatter___date] },
+                                  filter: { frontmatter: { draft: { ne: true } } }
+                                ) {
+                                  edges {
+                                    node {
+                                      html
+                                      excerpt(pruneLength: 60)
+                                      fields {
+                                        slug
+                                      }
+                                      frontmatter {
+                                        title
+                                        date
+                                        tags
+                                        author {
+                                            id
+                                            bio
+                                            location
+                                            avatar
+                                            github
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            `,
                         output: '/rss.xml'
                     }
                 ]

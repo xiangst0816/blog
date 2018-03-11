@@ -9,8 +9,9 @@ export default class Navigation extends React.Component {
     };
 
     render() {
-        const { location, match } = this.props;
-        const author = kebabCase(this.props.data.master.id);
+        const { location } = this.props;
+        const { master, site } = this.props;
+        const author = kebabCase(master.id);
         return (
             <nav id="menu" onClick={this.toggle}>
                 <a className="close-button">Close</a>
@@ -29,20 +30,13 @@ export default class Navigation extends React.Component {
                             role="presentation">
                             <a href={`/author/${author}`}>Author</a>
                         </li>
-
-                        {/*{{#if @blog.twitter}}*/}
-                        {/*<li className="nav-twitter"><a href="{{twitter_url}}" title="{{@blog.twitter}}"><i*/}
-                        {/*className="ic ic-twitter"></i> Twitter</a></li>*/}
-                        {/*{{/if}}*/}
-                        {/*<li className="nav-facebook"><a href="{{facebook_url}}" title="{{@blog.facebook}}"><i*/}
-                        {/*className="ic ic-facebook"></i> Facebook</a></li>*/}
-                        {/*{{#if @labs.subscribers}}*/}
-                        {/*<li className="nav-subscribe"><a href="{{@blog.url}}/subscribe/"><i*/}
-                        {/*className="ic ic-mail"></i> Subscribe</a></li>*/}
-                        {/*{{else}}*/}
-                        <li className="nav-rss"><a href="/rss.xml"><i className="ic ic-rss"></i> Subscribe</a>
-                        </li>
-                        {/*{{/if}}*/}
+                        {
+                            site.subscribe && (
+                                <li className="nav-rss">
+                                    <a href="/rss.xml"><i className="ic ic-rss"></i> Subscribe</a>
+                                </li>
+                            )
+                        }
                     </ul>
                 </div>
             </nav>

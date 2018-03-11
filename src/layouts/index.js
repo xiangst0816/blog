@@ -21,6 +21,9 @@ export default class Template extends React.Component {
     };
 
     render() {
+        const master = this.props.data.master;
+        const site = this.props.data.site.siteMetadata;
+
         return (
             <section id="wrapper">
                 <Helmet
@@ -30,7 +33,7 @@ export default class Template extends React.Component {
                         { name: 'keywords', content: 'sample, something' },
                     ]}
                 />
-                <Navigation {...this.props} />
+                <Navigation master={master} site={site} {...this.props} />
                 <a className="hidden-close" onClick={this.toggle}></a>
                 {this.props.children()}
                 <div id="body-class" style={{ display: 'none' }} className="tag-template tag-getting-started"></div>
@@ -66,6 +69,11 @@ export const pageQuery = graphql`
   }
 
   query LayoutQuery{
+    site {
+      siteMetadata {
+        ...siteFrag
+      }
+    }
     master: authorJson(master: {eq: true}) {
       ...authorFrag
     }
