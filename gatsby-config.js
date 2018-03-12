@@ -9,8 +9,9 @@ module.exports = {
         description: `Thoughts, stories and ideas.`, // 网站描述
         keywords: `Thoughts, stories and ideas.`, // 网站描述
         tagCover: 'https://casper.ghost.org/v1.0.0/images/team.jpg',
-        siteUrl: '/', // 页面路径
+        siteUrl: 'http://10.88.1.158:9000', // 页面路径
         logo: '',
+        language: 'zh-CN',
         navigation: true, // 是否开启右侧导航
         subscribe: true, // 是否显示订阅按钮
     },
@@ -119,23 +120,32 @@ module.exports = {
                         site {
                           siteMetadata {
                             title
-                            cover
+                            image_url: cover
                             description
+                            language
                             siteUrl
+                            site_url: siteUrl
                           }
                         }
                       }
                     `,
+                // Setup an RSS object, merging on various feed-specific options.
+                setup: ({ query: { site: { siteMetadata }, ...rest } }) => {
+                    return {
+                        ...siteMetadata,
+                        ...rest,
+                        feed_url: `${siteMetadata.siteUrl}/rss.xml`,
+                    };
+                },
                 feeds: [
                     {
                         serialize: ({ query: { site, allMarkdownRemark } }) => (
                             allMarkdownRemark.edges.map(edge =>
                                 Object.assign({}, edge.node.frontmatter, {
-                                    tags: edge.node.frontmatter.tags,
-                                    date: edge.node.frontmatter.date,
+                                    description: edge.node.html,
                                     url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                                     guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                                    custom_elements: [{ 'content:encoded': edge.node.html }]
+                                    author: edge.node.frontmatter.author.id,
                                 }))
                         ),
                         query: `
@@ -147,20 +157,16 @@ module.exports = {
                                   edges {
                                     node {
                                       html
-                                      excerpt(pruneLength: 60)
+                                      excerpt(pruneLength: 260)
                                       fields {
                                         slug
                                       }
                                       frontmatter {
                                         title
                                         date
-                                        tags
+                                        categories: tags
                                         author {
                                             id
-                                            bio
-                                            location
-                                            avatar
-                                            github
                                         }
                                       }
                                     }
