@@ -36,7 +36,7 @@ export default class BlogPost extends React.Component {
                     <h1 className="post-title">{post.title}</h1>
                     <div className="post-meta">
                         <div className="post-meta-inner">
-                            <a href={`/author/${kebabCase(author.id)}/`}>{author.id}</a> | <time>{post.date}</time>
+                            <a href={`/author/${kebabCase(author.id)}/`}>{author.id}</a> | <time>{post.date} | {currentPost.timeToRead} min read</time>
                         </div>
                     </div>
                 </Header>
@@ -123,6 +123,12 @@ export default class BlogPost extends React.Component {
 export const pageQuery = graphql`
   fragment postFrag on MarkdownRemark {
     html
+    timeToRead
+    wordCount {
+      paragraphs
+      sentences
+      words
+    }
     excerpt(pruneLength: 60)
     frontmatter {
       title

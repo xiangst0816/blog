@@ -778,6 +778,9 @@ img {
   top: -1px;
   font-size: 0.8em;
   color: inherit;
+  height: 26px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 #menu li.active a {
@@ -1128,6 +1131,13 @@ img {
 
 .post-content a {
   border-bottom: 1px solid $primary-color;
+}
+
+.post-content {
+  h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    text-decoration: none;
+    border: none;
+  }
 }
 
 .post-content a:hover,
