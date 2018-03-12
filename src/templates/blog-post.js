@@ -92,7 +92,7 @@ export default class BlogPost extends React.Component {
                                     prev && (
                                         <Link className="post-nav-prev" to={prev}>
                                             <section className="post-nav-teaser">
-                                                <i className="ic icon-arrow-left"></i>
+                                                <i className="icon icon-arrow-left"></i>
                                                 <h2 className="post-nav-title">{prevPost.frontmatter.title}</h2>
                                                 <p className="post-nav-excerpt">{prevPost.excerpt}&hellip;</p>
                                             </section>
@@ -103,7 +103,7 @@ export default class BlogPost extends React.Component {
                                     next && (
                                         <Link className="post-nav-next" to={next}>
                                             <section className="post-nav-teaser">
-                                                <i className="ic icon-arrow-right"></i>
+                                                <i className="icon icon-arrow-right"></i>
                                                 <h2 className="post-nav-title">{nextPost.frontmatter.title}</h2>
                                                 <p className="post-nav-excerpt">{nextPost.excerpt}&hellip;</p>
                                             </section>

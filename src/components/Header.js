@@ -63,7 +63,7 @@ export default class Header extends React.Component {
             ) : (
                 <span id="home-button" className="nav-button">
 				            <a className="home-button" href="/" title="Home"><i
-                                className="ic icon-arrow-left"></i> Home</a>
+                                className="icon icon-arrow-left"></i> Home</a>
 			            </span>
             );
         };
@@ -80,7 +80,7 @@ export default class Header extends React.Component {
                         {
                             navigation && (
                                 <span id="menu-button" onClick={this.toggle} className="nav-button">
-				            <a className="menu-button"><i className="ic icon-menu"></i> Menu</a>
+				            <a className="menu-button"><i className="icon icon-menu"></i> Menu</a>
 			            </span>
                             )
                         }

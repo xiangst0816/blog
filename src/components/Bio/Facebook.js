@@ -4,7 +4,7 @@ export default function Facebook({ facebook }) {
     if (facebook) {
         return (
             <span className="post-author-facebook">
-                <i className="ic icon-facebook"></i>
+                <i className="icon icon-facebook"></i>
                 <a target="_blank" href={`https://facebook.com/${facebook}`}>Facebook</a>
             </span>
         );
