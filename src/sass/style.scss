@@ -618,13 +618,13 @@ img {
 .nav-button a i {
   display: inline-block;
   color: inherit;
+  font-size: 0.6em;
 }
 
 .nav-button a i:before {
   position: relative;
   width: auto;
   margin: auto;
-  top: 1px;
 }
 
 /* ==========================================================================
@@ -776,10 +776,10 @@ img {
 
 #menu li a i {
   position: relative;
-  top: -1px;
+  //top: -1px;
   font-size: 0.8em;
   color: inherit;
-  height: 26px;
+  //height: 26px;
   display: inline-block;
   vertical-align: middle;
 }
