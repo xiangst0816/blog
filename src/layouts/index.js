@@ -26,7 +26,7 @@ export default class Template extends React.Component {
         const site = this.props.data.site.siteMetadata;
 
         return (
-            <section id="wrapper">
+            <article>
                 <Helmet
                     title={site.title}
                     meta={[
@@ -35,11 +35,13 @@ export default class Template extends React.Component {
                     ]}
                 />
                 <Navigation master={master} site={site} {...this.props} />
-                <a className="hidden-close" onClick={this.toggle}></a>
-                {this.props.children()}
-                <div id="body-class" style={{ display: 'none' }} className="tag-template"></div>
-                <Footer />
-            </section>
+                <section id="wrapper">
+                    <a className="hidden-close" onClick={this.toggle}></a>
+                    {this.props.children()}
+                    <div id="body-class" style={{ display: 'none' }} className="tag-template"></div>
+                    <Footer />
+                </section>
+            </article>
         );
     }
 }
