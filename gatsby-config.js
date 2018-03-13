@@ -59,7 +59,8 @@ module.exports = {
                     {
                         resolve: 'gatsby-remark-images',
                         options: {
-                            linkImagesToOriginal: false
+                            linkImagesToOriginal: false,
+                            maxWidth: 840,
                         }
                     },
                     {
@@ -106,7 +107,14 @@ module.exports = {
                     'gatsby-remark-autolink-headers',
                     'gatsby-remark-copy-linked-files',
                     'gatsby-remark-katex',
-                    'gatsby-remark-responsive-iframe'
+                    'gatsby-remark-responsive-iframe',
+                    {
+                        resolve: 'gatsby-remark-external-links',
+                        options: {
+                            target: '_target',
+                            rel: 'nofollow'
+                        }
+                    }
                 ]
             }
         },

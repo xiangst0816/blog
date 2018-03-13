@@ -74,18 +74,6 @@ export default class BlogPost extends React.Component {
                             {/*<div id="disqus_thread"></div>*/}
                             {/*</section>*/}
 
-                            {/*{*/}
-                            {/*siteMetadata.subscribe && (*/}
-                            {/*<section className="post-subscribe">*/}
-                            {/*<form className="post-subscribe-form">*/}
-                            {/*<input className="post-subscribe-input" placeholder="Your email address" />*/}
-                            {/*<button className="post-subscribe-button">Submit</button>*/}
-                            {/*</form>*/}
-                            {/*<p>Get the latest posts delivered right to your inbox.</p>*/}
-                            {/*</section>*/}
-                            {/*)*/}
-                            {/*}*/}
-
                             <aside className="post-nav">
                                 {
                                     prev && (
@@ -128,7 +116,7 @@ export const pageQuery = graphql`
       sentences
       words
     }
-    excerpt(pruneLength: 120)
+    excerpt(pruneLength: 110)
     frontmatter {
       title
       date(formatString: "DD MMM YYYY")
