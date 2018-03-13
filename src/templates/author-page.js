@@ -29,7 +29,7 @@ export default class AuthorRoute extends React.Component {
             <div>
                 <Helmet title={title} />
                 <Header
-                    cover={cover}
+                    cover={coverImage}
                     logo={logo}
                     hideNavBack={false}
                     navigation={navigation}
