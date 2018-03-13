@@ -284,14 +284,10 @@ div.dispatchEvent(event);
 
 ### 25. fastclick的原理?
 
-项目很久没在维护了.
-
-----
+lorem   
 
 
 [0]: http://www.marginalrevolution.com/marginalrevolution/2006/08/the_dark_ages_w.html
 [1]: http://www.amazon.com/Fall-Rome-End-Civilization/dp/0192807285/sr=8-1/qid=1157041617/ref=sr_1_1/102-2703149-8576135?ie=UTF8
 [2]: http://www.chicagoboyz.net/archives/004376.html
 [3]: http://www.telegraph.co.uk/arts/main.jhtml?xml=/arts/2005/06/19/bohea19.xml&sSheet=/arts/2005/06/19/botop.html
-
-asdf 

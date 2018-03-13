@@ -5,8 +5,11 @@
 @import "colors";
 @import "icons";
 @import "fonts";
+@import "markdown.css";
 @import "prism.css";
 //@import "highlight";
+
+
 
 /* ==========================================================================
    Basics
@@ -25,6 +28,7 @@
 
 html {
   font-size: 62.5%;
+  //font-size: 50%; // 16px
   overflow-x: hidden;
 }
 
@@ -556,7 +560,8 @@ img {
 }
 
 .inner {
-  max-width: 32em;
+  //max-width: 32em;
+  max-width: 42em;
   margin: 0 auto;
   padding: 0 2em;
 }

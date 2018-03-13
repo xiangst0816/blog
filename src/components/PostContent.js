@@ -56,7 +56,7 @@ export default class PostContent extends React.Component {
                 <div className={classNames('progress-container', { 'ready': isReady })}>
                     <span className="progress-bar" style={{ width: `${progress}%` }}></span>
                 </div>
-                <article dangerouslySetInnerHTML={{ __html: html }} />
+                <article className="markdown-body" dangerouslySetInnerHTML={{ __html: html }} />
             </section>
         );
     }
