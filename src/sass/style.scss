@@ -48,6 +48,7 @@ select,
 textarea {
   font-family: 'Fira Sans', sans-serif;
   transition: all ease-out 0.2s;
+  will-change: contents;
 }
 
 a {
@@ -55,6 +56,7 @@ a {
   text-decoration: none;
   font-weight: 400;
   transition: all ease-out 0.2s;
+  will-change: color;
 }
 
 a:hover,
@@ -531,6 +533,7 @@ img {
   position: relative;
   padding-right: 0;
   transition: all ease-out 0.25s;
+  will-change: padding-right, transform;
 }
 
 #wrapper .hidden-close {
@@ -594,6 +597,7 @@ img {
   cursor: pointer;
   background: $color-white;
   transition: color, border-color ease 0.3s;
+  will-change: color, border-color;
   border-radius: 2em;
 }
 
@@ -645,6 +649,7 @@ img {
   box-shadow: inset -2px 0 7px rgba(0, 0, 0, 0.1);
   transform: translate3d(16em, 0, 0);
   transition: all ease-out 0.25s;
+  will-change: coltransformor;
   user-select: none;
 }
 
@@ -664,6 +669,7 @@ img {
   cursor: pointer;
   transition: all ease 0.3s;
   border-radius: 2em;
+  will-change: contents;
   box-sizing: border-box;
   z-index: 500;
 }
@@ -685,6 +691,7 @@ img {
   content: '';
   background: $color-blue-60;
   transition: all ease 0.3s;
+  will-change: background;
 }
 
 #menu .close-button:hover:after,
@@ -802,6 +809,7 @@ img {
   z-index: 1000;
   background: transparent;
   transition: opacity ease-out 1s;
+  will-change: opacity;
 }
 
 .progress-container.ready {
@@ -1181,6 +1189,7 @@ img {
   color: $color-white;
   border-radius: 2px;
   transition: all ease 0.3s;
+  will-change: background-color;
 }
 
 .post-share a:hover,
@@ -1230,6 +1239,7 @@ img {
   color: $primary-color;
   border-radius: 2em;
   transition: all ease 0.3s;
+  will-change: background, color;
   box-sizing: border-box;
 }
 
@@ -1359,6 +1369,7 @@ img {
   text-align: center;
   cursor: pointer;
   transition: all ease 0.3s;
+  will-change: border-color, color;
   border-radius: 2em;
 }
 
@@ -1491,6 +1502,7 @@ img {
   line-height: 2em;
   text-align: center;
   transition: all ease-out 0.3s;
+  will-change: color;
   color: $color-gray-90;
 }
 
@@ -1561,6 +1573,7 @@ img {
   text-decoration: none;
   color: $color-blue-60;
   transition: all ease 0.3s;
+  will-change: color, border-color;
   border-radius: 2em;
 }
 
