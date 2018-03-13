@@ -3,6 +3,7 @@ title: The fall of the civilization of Rome—and the fragility of our own
 tags:
   - history
 date: "2006-09-01T15:52:04.000Z"
+author: Ghost
 ---
 
 Tyler Cowen over at [Marginal Revolution][0] pointed me recently to a fascinating and very well-written book entitled "[The Fall of Rome and the End of Civilization][1]" . I don't intend to review the book per se (but here are two good reviews, [1][2] and [2][3]) but instead comment on some interesting points the author made.

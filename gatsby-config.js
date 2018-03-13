@@ -27,6 +27,14 @@ module.exports = {
             resolve: 'gatsby-source-filesystem',
             options: {
                 path: `${__dirname}/author`,
+                name: `author`,
+            },
+        },
+        {
+            resolve: 'gatsby-source-filesystem',
+            options: {
+                path: `${__dirname}/static`,
+                name: 'static',
             },
         },
         {
@@ -43,6 +51,7 @@ module.exports = {
                 precision: 8,
             },
         },
+        'gatsby-transformer-sharp',
         {
             resolve: 'gatsby-transformer-remark',
             options: {
@@ -169,60 +178,60 @@ module.exports = {
                 ]
             }
         },
-        {
-            resolve: `gatsby-plugin-google-analytics`,
-            options: {
-                trackingId: 'UA-114740261-4',
-            },
-        },
-        {
-            resolve: `gatsby-plugin-manifest`,
-            options: {
-                name: 'Attila',
-                short_name: 'Attila',
-                description: 'Thoughts, stories and ideas.',
-                start_url: '/',
-                background_color: '#333F44',
-                theme_color: '#333F44',
-                orientation: 'portrait',
-                display: 'standalone', // fullscreen, standalone, minimal-ui, browser
-                icons: [
-                    // Everything in /static will be copied to an equivalent
-                    // directory in /public during development and build, so
-                    // assuming your favicons are in /static/favicons,
-                    // you can reference them here
-                    {
-                        "src": "/favicon/ghost-128.png",
-                        "sizes": "128x128",
-                        "type": "image/png"
-                    },
-                    {
-                        "src": "/favicon/ghost-192.png",
-                        "sizes": "192x192",
-                        "type": "image/png"
-                    },
-                    {
-                        "src": "/favicon/ghost-256.png",
-                        "sizes": "256x256",
-                        "type": "image/png"
-                    },
-                    {
-                        "src": "/favicon/ghost-512.png",
-                        "sizes": "512x512",
-                        "type": "image/png"
-                    },
-                    {
-                        "src": "/favicon/favicon.ico",
-                        "sizes": "64x64"
-                    },
-                    {
-                        "src": "/favicon/ghost-icon.svg",
-                        "sizes": "1024x1024"
-                    },
-                ]
-            },
-        },
-        'gatsby-plugin-offline',
+        // {
+        //     resolve: `gatsby-plugin-google-analytics`,
+        //     options: {
+        //         trackingId: 'UA-114740261-4',
+        //     },
+        // },
+        // {
+        //     resolve: `gatsby-plugin-manifest`,
+        //     options: {
+        //         name: 'Attila',
+        //         short_name: 'Attila',
+        //         description: 'Thoughts, stories and ideas.',
+        //         start_url: '/',
+        //         background_color: '#333F44',
+        //         theme_color: '#333F44',
+        //         orientation: 'portrait',
+        //         display: 'standalone', // fullscreen, standalone, minimal-ui, browser
+        //         icons: [
+        //             // Everything in /static will be copied to an equivalent
+        //             // directory in /public during development and build, so
+        //             // assuming your favicons are in /static/favicons,
+        //             // you can reference them here
+        //             {
+        //                 "src": "/favicon/ghost-128.png",
+        //                 "sizes": "128x128",
+        //                 "type": "image/png"
+        //             },
+        //             {
+        //                 "src": "/favicon/ghost-192.png",
+        //                 "sizes": "192x192",
+        //                 "type": "image/png"
+        //             },
+        //             {
+        //                 "src": "/favicon/ghost-256.png",
+        //                 "sizes": "256x256",
+        //                 "type": "image/png"
+        //             },
+        //             {
+        //                 "src": "/favicon/ghost-512.png",
+        //                 "sizes": "512x512",
+        //                 "type": "image/png"
+        //             },
+        //             {
+        //                 "src": "/favicon/favicon.ico",
+        //                 "sizes": "64x64"
+        //             },
+        //             {
+        //                 "src": "/favicon/ghost-icon.svg",
+        //                 "sizes": "1024x1024"
+        //             },
+        //         ]
+        //     },
+        // },
+        // 'gatsby-plugin-offline',
         'gatsby-plugin-react-helmet',
     ],
 };
