@@ -2,13 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import Link from 'gatsby-link';
 import kebabCase from 'lodash.kebabcase';
-import Website from '../components/Bio/Website';
-import Twitter from '../components/Bio/Twitter';
-import Facebook from '../components/Bio/Facebook';
-import Github from '../components/Bio/Github';
-import Weibo from '../components/Bio/Weibo';
-import Location from '../components/Bio/Location';
-import Bio from '../components/Bio/Bio';
+import Bio from '../components/Bio';
 import Avatar from '../components/Avatar';
 import Share from '../components/Share';
 import PostContent from '../components/PostContent';
@@ -60,13 +54,16 @@ export default class BlogPost extends React.Component {
                                     <div className="post-author-bio">
                                         <h4 className="post-author-name"><a
                                             href={`/author/${kebabCase(author.id)}/`}>{author.id}</a></h4>
-                                        <Bio bio={author.bio} />
-                                        <Location location={author.location} />
-                                        <Website website={author.website} />
-                                        <Twitter twitter={author.twitter} />
-                                        <Facebook facebook={author.facebook} />
-                                        <Github github={author.github} />
-                                        <Weibo weibo={author.weibo} />
+                                        <Bio
+                                            bio={author.bio}
+                                            count={totalCount}
+                                            location={author.location}
+                                            website={author.website}
+                                            twitter={author.twitter}
+                                            facebook={author.facebook}
+                                            github={author.github}
+                                            weibo={author.weibo}
+                                        />
                                     </div>
                                     <div className="clear"></div>
                                 </aside>

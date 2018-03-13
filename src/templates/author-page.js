@@ -3,17 +3,10 @@ import classNames from 'classnames';
 import kebabCase from 'lodash.kebabcase';
 import Helmet from 'react-helmet';
 import ExcerptLoop from '../components/ExcerptLoop';
-import Website from '../components/Bio/Website';
-import Twitter from '../components/Bio/Twitter';
-import Facebook from '../components/Bio/Facebook';
-import Github from '../components/Bio/Github';
-import Weibo from '../components/Bio/Weibo';
-import Location from '../components/Bio/Location';
-import Bio from '../components/Bio/Bio';
-import Stats from '../components/Bio/Stats';
 import Avatar from '../components/Avatar';
 import Header from '../components/Header';
 import Pagination from '../components/Pagination';
+import Bio from '../components/Bio';
 
 export default class AuthorRoute extends React.Component {
     render() {
@@ -41,14 +34,16 @@ export default class AuthorRoute extends React.Component {
                             <Avatar avatar={author.avatar} name={author.id} />
                             <div className="post-author-bio">
                                 <h2 className="post-author-name">{author.id}</h2>
-                                <Bio bio={author.bio} />
-                                <Stats count={totalCount} />
-                                <Location location={author.location} />
-                                <Website website={author.website} />
-                                <Twitter twitter={author.twitter} />
-                                <Facebook facebook={author.facebook} />
-                                <Github github={author.github} />
-                                <Weibo weibo={author.weibo} />
+                                <Bio
+                                    bio={author.bio}
+                                    count={totalCount}
+                                    location={author.location}
+                                    website={author.website}
+                                    twitter={author.twitter}
+                                    facebook={author.facebook}
+                                    github={author.github}
+                                    weibo={author.weibo}
+                                />
                             </div>
                             <div className="clear"></div>
                         </aside>
