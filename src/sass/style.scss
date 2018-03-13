@@ -846,6 +846,24 @@ img {
   opacity: 0.5;
 }
 
+.footer-remark {
+  text-align: center;
+  font-size: 0.625em;
+  line-height: 1em;
+  padding: 1.1em 0;
+  overflow: auto;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: #9e9e9e;
+  .love {
+    color: $color-red-95;
+  }
+  a {
+    color: #9e9e9e;
+  }
+}
+
 .credits a {
   color: inherit;
 }
