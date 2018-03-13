@@ -5,10 +5,10 @@ module.exports = {
     siteMetadata: {
         title: `Attila`,
         // cover: 'https://casper.ghost.org/v1.0.0/images/design.jpg',
-        cover: 'https://blog.amio.cn/content/images/2016/09/DSC_2972_BG.jpg',
+        cover: '/background/4.jpg',
         description: `Thoughts, stories and ideas.`, // 网站描述
         keywords: `Thoughts, stories and ideas.`, // 网站描述
-        tagCover: 'https://casper.ghost.org/v1.0.0/images/team.jpg',
+        tagCover: '/background/5.jpg',
         siteUrl: 'http://10.88.1.158:9000', // 页面路径
         logo: '',
         language: 'zh-CN',
@@ -170,6 +170,12 @@ module.exports = {
             }
         },
         {
+            resolve: `gatsby-plugin-google-analytics`,
+            options: {
+                trackingId: 'UA-114740261-4',
+            },
+        },
+        {
             resolve: `gatsby-plugin-manifest`,
             options: {
                 name: 'Attila',
@@ -186,31 +192,31 @@ module.exports = {
                     // assuming your favicons are in /static/favicons,
                     // you can reference them here
                     {
-                        "src": "/ghost-128.png",
+                        "src": "/favicon/ghost-128.png",
                         "sizes": "128x128",
                         "type": "image/png"
                     },
                     {
-                        "src": "/ghost-192.png",
+                        "src": "/favicon/ghost-192.png",
                         "sizes": "192x192",
                         "type": "image/png"
                     },
                     {
-                        "src": "/ghost-256.png",
+                        "src": "/favicon/ghost-256.png",
                         "sizes": "256x256",
                         "type": "image/png"
                     },
                     {
-                        "src": "/ghost-512.png",
+                        "src": "/favicon/ghost-512.png",
                         "sizes": "512x512",
                         "type": "image/png"
                     },
                     {
-                        "src": "/favicon.ico",
+                        "src": "/favicon/favicon.ico",
                         "sizes": "64x64"
                     },
                     {
-                        "src": "/ghost-icon.svg",
+                        "src": "/favicon/ghost-icon.svg",
                         "sizes": "1024x1024"
                     },
                 ]
