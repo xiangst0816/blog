@@ -57,7 +57,7 @@
     "deploy": "gatsby build --prefix-paths",
     "serve": "gatsby serve",
     "postdeploy": "gh-pages -d public",
-    "develop": "gatsby develop",
+    "develop": "gatsby develop --port=8989",
     "preserve": "npm run build",
     "format": "prettier --trailing-comma es5 --single-quote --write \"src/**/*.js\"",
     "test": "echo \"Should probably write some tests!\""

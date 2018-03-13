@@ -86,12 +86,16 @@ function createBlogPost(edges, createPage) {
 lorem   
 
 
-
 <iframe width="100%" height="300" src="//jsfiddle.net/Aflier/pehfos3e/embedded/" allowpaymentrequest allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 `jsFiddle: //jsfiddle.net/Aflier/pehfos3e/embedded/`
 
 ## Video
+
+**youku iframe**
+
+<iframe height=498 width=510 src='http://player.youku.com/embed/XMjkxODkzNzI2NA==' frameborder=0 'allowfullscreen'></iframe>
+
 
 **video: https://www.youtube.com/embed/2Xc9gXyf2G4**
 

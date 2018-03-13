@@ -133,7 +133,6 @@ function createIndexPagination(total, createPage) {
     }
 }
 
-
 // Tag pages.
 function createTagPage(tagObj, createPage) {
     const limit = 10;
