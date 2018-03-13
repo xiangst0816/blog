@@ -1282,6 +1282,30 @@ img {
   user-select: none;
 }
 
+.post-author-others {
+  position: absolute;
+  bottom: 0.4em;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 2em;
+  .other-avatar {
+    height: 2em;
+    width: 2em;
+    border-radius: 100%;
+    border: 0.1em solid #ffffff;
+    overflow: hidden;
+    margin-left: -0.6em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    img {
+      display: inline-block;
+      height: auto;
+      margin: 0;
+    }
+  }
+}
+
 .post-author-avatar {
   position: relative;
   float: left;

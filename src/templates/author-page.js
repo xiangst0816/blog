@@ -9,14 +9,45 @@ import Pagination from '../components/Pagination';
 import Bio from '../components/Bio';
 
 export default class AuthorRoute extends React.Component {
+
+    getOtherAuthorsInfo() {
+        const { otherAuthorsInfo, allAuthor } = this.props.data;
+        const tmpAuthorList = allAuthor.group.map(item => item.fieldValue);
+        const tmpAuthorInfoList = otherAuthorsInfo.edges.map(item => {
+            return { name: item.node.id, avatar: item.node.avatar };
+        });
+        return tmpAuthorList.reduce((all, item) => {
+            let res = tmpAuthorInfoList.filter(a => a.name === item)[0];
+            res && all.push(res);
+            return all;
+        }, []);
+    }
+
     render() {
         const { allMarkdownRemark, site, authorJson: author } = this.props.data;
         const { totalCount = 0, edges } = allMarkdownRemark || {};
         const { cover, navigation, logo, title } = site.siteMetadata;
         const coverImage = author.cover ? author.cover : (cover ? cover : false);
-
         const { skip = 0, limit = 10 } = this.props.pathContext;
         const kebabCaseName = kebabCase(author.id);
+        const othersAuthers = this.getOtherAuthorsInfo();
+
+        const OtherAuthors = () => {
+            return (
+                <div className="post-author-others">
+                    {
+                        othersAuthers.reverse().map(item => (
+                            <a
+                                href={`/author/${kebabCase(item.name)}/`}
+                                className="other-avatar"
+                                key={item.name}>
+                                <img alt={item.name} title={item.name} src={item.avatar} />
+                            </a>
+                        ))
+                    }
+                </div>
+            );
+        };
 
         return (
             <div>
@@ -45,6 +76,7 @@ export default class AuthorRoute extends React.Component {
                                     weibo={author.weibo}
                                 />
                             </div>
+                            <OtherAuthors />
                             <div className="clear"></div>
                         </aside>
                     </div>
@@ -83,9 +115,22 @@ export const pageQuery = graphql`
         ...siteFrag
       }
     }
-    master: authorJson(master: {eq: true}) {
-      ...authorFrag
+    otherAuthorsInfo: allAuthorJson(filter: {id: {ne: $author}}) {
+        edges {
+          node {
+            id
+            avatar
+            master
+          }
+        }
     }
+    allAuthor: allMarkdownRemark(filter: {frontmatter: {draft: {ne: true}}}, sort: {order: DESC, fields: [frontmatter___date]}) {
+        totalCount
+        group(field: frontmatter___author) {
+          fieldValue
+          totalCount
+        }
+      }
     allMarkdownRemark(
       skip: $skip, limit: $limit,
       filter: {frontmatter: {draft: {ne: true}, author: {eq: $author}}}, sort: {order: DESC, fields: [frontmatter___date]}
@@ -96,5 +141,4 @@ export const pageQuery = graphql`
       }
     }
   }
-
 `;

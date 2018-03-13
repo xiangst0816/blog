@@ -56,7 +56,6 @@ export default class BlogPost extends React.Component {
                                             href={`/author/${kebabCase(author.id)}/`}>{author.id}</a></h4>
                                         <Bio
                                             bio={author.bio}
-                                            count={totalCount}
                                             location={author.location}
                                             website={author.website}
                                             twitter={author.twitter}
