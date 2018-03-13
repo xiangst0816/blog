@@ -94,7 +94,7 @@ lorem
 
 **youku iframe**
 
-<iframe height=498 width=510 src='http://player.youku.com/embed/XMjkxODkzNzI2NA==' frameborder=0 'allowfullscreen'></iframe>
+<iframe height=300 width=510 src='http://player.youku.com/embed/XMjkxODkzNzI2NA==' frameborder=0 'allowfullscreen'></iframe>
 
 
 **video: https://www.youtube.com/embed/2Xc9gXyf2G4**
