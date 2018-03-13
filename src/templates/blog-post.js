@@ -20,7 +20,7 @@ export default class BlogPost extends React.Component {
         const { next, prev } = this.props.pathContext; // 上一篇和下一篇文章的slug
         const post = currentPost.frontmatter;
         const { siteMetadata } = site;
-        const { logo, cover: siteCover, navigation, title } = siteMetadata;
+        const { logo, cover: siteCover, navigation } = siteMetadata;
         const author = post.author || master;
         const cover = post.cover ? post.cover : (siteCover ? siteCover : false);
         return (
@@ -36,7 +36,8 @@ export default class BlogPost extends React.Component {
                     <h1 className="post-title">{post.title}</h1>
                     <div className="post-meta">
                         <div className="post-meta-inner">
-                            <a href={`/author/${kebabCase(author.id)}/`}>{author.id}</a> | <time>{post.date} | {currentPost.timeToRead} min read</time>
+                            <a href={`/author/${kebabCase(author.id)}/`}>{author.id}</a> | <time>{post.date} | {currentPost.timeToRead} min
+                            read</time>
                         </div>
                     </div>
                 </Header>
@@ -71,21 +72,23 @@ export default class BlogPost extends React.Component {
                                 </aside>
                             </section>
 
-                            <section className="post-comments">
-                                <a id="show-disqus" className="post-comments-activate">Show Comments</a>
-                                <div id="disqus_thread"></div>
-                            </section>
+                            {/* TODO */}
+                            {/*<section className="post-comments">*/}
+                            {/*<a id="show-disqus" className="post-comments-activate">Show Comments</a>*/}
+                            {/*<div id="disqus_thread"></div>*/}
+                            {/*</section>*/}
 
-                            {
-                                siteMetadata.subscribe && (
-                                    <section className="post-subscribe">
-                                        {/*{{subscribe_form placeholder="Your email address" form_class="post-subscribe-form" input_class="post-subscribe-input" button_class="post-subscribe-button"}}*/}
-                                        <p>Get the latest posts delivered right to your inbox.</p>
-                                        <p>如何订阅</p>
-                                        <p>在github上watch博客</p>
-                                    </section>
-                                )
-                            }
+                            {/*{*/}
+                            {/*siteMetadata.subscribe && (*/}
+                            {/*<section className="post-subscribe">*/}
+                            {/*<form className="post-subscribe-form">*/}
+                            {/*<input className="post-subscribe-input" placeholder="Your email address" />*/}
+                            {/*<button className="post-subscribe-button">Submit</button>*/}
+                            {/*</form>*/}
+                            {/*<p>Get the latest posts delivered right to your inbox.</p>*/}
+                            {/*</section>*/}
+                            {/*)*/}
+                            {/*}*/}
 
                             <aside className="post-nav">
                                 {
@@ -129,7 +132,7 @@ export const pageQuery = graphql`
       sentences
       words
     }
-    excerpt(pruneLength: 60)
+    excerpt(pruneLength: 120)
     frontmatter {
       title
       date(formatString: "DD MMM YYYY")

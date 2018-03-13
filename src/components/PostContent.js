@@ -1,6 +1,7 @@
 import React from 'react';
 import registerListener from 'tp-register-listener';
 import classNames from 'classnames';
+import canScroll from '../utils/can-scroll';
 
 export default class PostContent extends React.Component {
     constructor(props) {
@@ -14,12 +15,14 @@ export default class PostContent extends React.Component {
     }
 
     componentDidMount() {
+        if (!canScroll) return;
+
         let html = document.documentElement;
         let viewportHeight = html.clientHeight;
         let postHeight = this.postContentElement.offsetHeight;
         let postTop = this.postContentElement.offsetTop;
         const readingProgress = () => {
-            let windowScrollTop = html.scrollTop;
+            let windowScrollTop = window.scrollY;
             if (postHeight >= 1) {
                 let postBottom = postTop + postHeight;
                 let windowBottom = windowScrollTop + viewportHeight;

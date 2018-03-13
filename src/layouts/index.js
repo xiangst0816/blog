@@ -8,12 +8,21 @@ import 'katex/dist/katex.min.css';
 
 const BUILD_TIME = new Date();
 
+if (typeof window !== `undefined`) {
+    const AttachFastClick = require("fastclick");
+    new AttachFastClick(document.body);
+}
+
 export default class Template extends React.Component {
     static propTypes = {
         children: PropTypes.func,
     };
 
     componentDidMount() {
+        // import('fastclick').then((AttachFastClick) => {
+        //     console.log(AttachFastClick)
+        //     new AttachFastClick(document.body);
+        // });
         window && window['console'] && window['console'].log(`BUILD_TIME: ${BUILD_TIME}`);
     }
 

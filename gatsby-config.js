@@ -101,17 +101,7 @@ module.exports = {
                 ]
             }
         },
-        'gatsby-plugin-react-helmet',
         'gatsby-plugin-sharp',
-        {
-            resolve: `gatsby-plugin-google-fonts`,
-            options: {
-                fonts: [
-                    `limelight`,
-                    `source sans pro\:300,400,400i,700` // you can also specify font weights and styles
-                ]
-            }
-        },
         {
             resolve: 'gatsby-plugin-feed',
             options: {
@@ -179,5 +169,54 @@ module.exports = {
                 ]
             }
         },
+        {
+            resolve: `gatsby-plugin-manifest`,
+            options: {
+                name: 'Attila',
+                short_name: 'Attila',
+                description: 'Thoughts, stories and ideas.',
+                start_url: '/',
+                background_color: '#333F44',
+                theme_color: '#333F44',
+                orientation: 'portrait',
+                display: 'standalone', // fullscreen, standalone, minimal-ui, browser
+                icons: [
+                    // Everything in /static will be copied to an equivalent
+                    // directory in /public during development and build, so
+                    // assuming your favicons are in /static/favicons,
+                    // you can reference them here
+                    {
+                        "src": "/ghost-128.png",
+                        "sizes": "128x128",
+                        "type": "image/png"
+                    },
+                    {
+                        "src": "/ghost-192.png",
+                        "sizes": "192x192",
+                        "type": "image/png"
+                    },
+                    {
+                        "src": "/ghost-256.png",
+                        "sizes": "256x256",
+                        "type": "image/png"
+                    },
+                    {
+                        "src": "/ghost-512.png",
+                        "sizes": "512x512",
+                        "type": "image/png"
+                    },
+                    {
+                        "src": "/favicon.ico",
+                        "sizes": "64x64"
+                    },
+                    {
+                        "src": "/ghost-icon.svg",
+                        "sizes": "1024x1024"
+                    },
+                ]
+            },
+        },
+        'gatsby-plugin-offline',
+        'gatsby-plugin-react-helmet',
     ],
 };

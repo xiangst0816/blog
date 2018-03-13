@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import registerListener from 'tp-register-listener';
 import throttle from 'lodash.throttle';
+import canScroll from '../utils/can-scroll';
 
 export default class Header extends React.Component {
     constructor(props) {
@@ -15,11 +16,11 @@ export default class Header extends React.Component {
     }
 
     componentDidMount() {
-        let html = document.documentElement;
-        let coverHeight = this.coverElement.offsetHeight;
+        if (!canScroll) return;
 
+        let coverHeight = this.coverElement.offsetHeight;
         const scrollHandler = throttle(() => {
-            let windowPosition = html.scrollTop;
+            let windowPosition = window.scrollY;
             if (windowPosition > 0) {
                 this.setState({
                     coverPosition: Math.floor(windowPosition * 0.25),
@@ -34,7 +35,6 @@ export default class Header extends React.Component {
         }, 16);
 
         scrollHandler();
-
         registerListener(window, 'scroll', scrollHandler, { passive: true }, this.unRegisterListenersCollection);
         registerListener(window, 'resize', scrollHandler, { passive: true }, this.unRegisterListenersCollection);
         registerListener(window, 'orientationchange', scrollHandler, { passive: true }, this.unRegisterListenersCollection);
@@ -44,7 +44,6 @@ export default class Header extends React.Component {
         // remove all listeners.
         this.unRegisterListenersCollection.forEach(fn => fn());
     }
-
 
     toggle = () => {
         document.documentElement.classList.toggle('menu-active');
