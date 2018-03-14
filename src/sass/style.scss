@@ -1812,3 +1812,31 @@ img {
     display: none;
   }
 }
+
+/* ==========================================================================
+   Page 404
+   ========================================================================== */
+
+.page-404 {
+  text-align: center;
+  color: $color-blue-30;
+
+  .page-404-back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    a, .icon {
+      color: $color-blue-30;
+      transition: all ease 200ms;
+    }
+    &:hover {
+      color: $color-red-95;
+      i {
+        color: $color-red-95;
+      }
+      a {
+        color: $color-red-95;
+      }
+    }
+  }
+}

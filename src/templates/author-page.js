@@ -53,7 +53,7 @@ export default class AuthorRoute extends React.Component {
 
         return (
             <div>
-                <Helmet title={title} />
+                <Helmet title={`${title}-${author.id}`} />
                 <Header
                     cover={coverImage}
                     logo={logo}

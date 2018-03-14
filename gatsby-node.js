@@ -1,5 +1,5 @@
 const path = require('path');
-const webpackLodashPlugin = require('lodash-webpack-plugin');
+// const webpackLodashPlugin = require('lodash-webpack-plugin');
 const slash = require('slash');
 const authors = require('./author/author.json');
 const defaultAuthor = authors.filter(author => author.master === true)[0];
@@ -108,13 +108,13 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
 
 
 // Add Lodash plugin
-exports.modifyWebpackConfig = ({ config, stage }) => {
-    if (stage === `build-javascript`) {
-        config.plugin(`Lodash`, webpackLodashPlugin, null);
-    }
-
-    return;
-};
+// exports.modifyWebpackConfig = ({ config, stage }) => {
+//     if (stage === `build-javascript`) {
+//         config.plugin(`Lodash`, webpackLodashPlugin, null);
+//     }
+//
+//     return;
+// };
 
 // create Index pages with pagination, 添加额外分页页面
 function createIndexPagination(total, createPage) {
@@ -173,7 +173,7 @@ function createAuthorPage(authorObj, createPage) {
         const postCount = authorObj[author];
         const kebabCaseName = kebabCase(author);
         createPage({
-            path: `/author/${kebabCaseName}`, // required
+            path: `/author/${kebabCaseName}/`, // required
             component: authorPage,
             context: {
                 author,
@@ -213,7 +213,6 @@ function createBlogPost(edges, createPage) {
         });
     });
 }
-
 
 // Articles with no name specified as master
 function setDefaultAuthor(frontmatter) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import kebabCase from 'lodash.kebabcase';
-import Link from 'gatsby-link';
+import Link, { withPrefix } from 'gatsby-link';
 
 export default class Navigation extends React.Component {
 
@@ -19,11 +19,11 @@ export default class Navigation extends React.Component {
                 <div className="nav-wrapper">
                     <p className="nav-label">Menu</p>
                     <ul>
-                        <li className={classNames('nav-home', { 'active': location.pathname === '/' })}
+                        <li className={classNames('nav-home', { 'active': location.pathname === withPrefix('/') })}
                             role="presentation">
                             <Link to="/"><i className="icon icon-home"></i> Home</Link>
                         </li>
-                        <li className={classNames('nav-tags', { 'active': location.pathname === '/tags/' })}
+                        <li className={classNames('nav-tags', { 'active': location.pathname === withPrefix('/tags/') })}
                             role="presentation">
                             <Link to="/tags/"><i className="icon icon-price-tags"></i> Tags</Link>
                         </li>
