@@ -17,7 +17,7 @@ export default class ExcerptLoop extends React.Component {
 
                         const Tags = () => {
                             return post.tags ? post.tags.map(tag => {
-                                return (<span key={tag}><Link to={`/tag/${kebabCase(tag)}/`}>{tag}</Link>&ensp;</span>);
+                                return (<span key={tag}><Link to={`/tag/${kebabCase(tag)}/`}>{tag}</Link></span>);
                             }) : null;
                         };
 
@@ -55,7 +55,7 @@ export default class ExcerptLoop extends React.Component {
                                             <div className="post-meta-inner">
                                                 <Author />
                                                 <Tags />
-                                                |&ensp;
+                                                &ensp;|&ensp;
                                                 <time>{post.date}</time>
                                             </div>
                                         </div>
