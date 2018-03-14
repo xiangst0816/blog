@@ -16,6 +16,8 @@ export default class ExcerptLoop extends React.Component {
                         const excerpt = edge.node.excerpt;
                         const author = post.author;
 
+                        if (!author) return null;
+
                         const Tags = () => {
                             return post.tags ? post.tags.map(tag => {
                                 return (<span key={tag}><Link to={`/tag/${kebabCase(tag)}/`}>{tag}</Link>&ensp;</span>);
@@ -37,7 +39,7 @@ export default class ExcerptLoop extends React.Component {
                         };
 
                         return (
-                            <article className={classNames('post', { 'featured': post.star })} key={post.title}>
+                            <article className={classNames('post', { 'featured': post.star })} key={`${post.title}-${post.date}`}>
                                 <div className="inner">
                                     <header className="post-header">
                                         <h2 className="post-title">

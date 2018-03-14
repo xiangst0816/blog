@@ -2,18 +2,18 @@ import React from 'react';
 import classNames from 'classnames';
 import kebabCase from 'lodash.kebabcase';
 import Helmet from 'react-helmet';
-import Link from 'gatsby-link';
+import Link, { navigateTo } from 'gatsby-link';
 import ExcerptLoop from '../components/ExcerptLoop';
 import Avatar from '../components/Avatar';
 import Header from '../components/Header';
 import Pagination from '../components/Pagination';
 import Bio from '../components/Bio';
-import { withPrefix } from "gatsby-link";
 
 export default class AuthorRoute extends React.Component {
 
     getOtherAuthorsInfo() {
         const { otherAuthorsInfo, allAuthor } = this.props.data;
+        if (!otherAuthorsInfo) return [];
         const tmpAuthorList = allAuthor.group.map(item => item.fieldValue);
         const tmpAuthorInfoList = otherAuthorsInfo.edges.map(item => {
             return { name: item.node.id, avatar: item.node.avatar };
@@ -25,8 +25,19 @@ export default class AuthorRoute extends React.Component {
         }, []);
     }
 
+    componentDidMount() {
+
+    }
+
     render() {
         const { allMarkdownRemark, site, authorJson: author } = this.props.data;
+        const { authorJson } = this.props.data;
+        if (!authorJson) {
+            navigateTo('/404');
+            return null;
+        }
+        // console.log('author');
+        // console.log(author);
         const { totalCount = 0, edges } = allMarkdownRemark || {};
         const { cover, navigation, logo, title } = site.siteMetadata;
         const coverImage = author.cover ? author.cover : (cover ? cover : false);
@@ -118,21 +129,21 @@ export const pageQuery = graphql`
       }
     }
     otherAuthorsInfo: allAuthorJson(filter: {id: {ne: $author}}) {
-        edges {
-          node {
-            id
-            avatar
-            master
-          }
-        }
-    }
-    allAuthor: allMarkdownRemark(filter: {frontmatter: {draft: {ne: true}}}, sort: {order: DESC, fields: [frontmatter___date]}) {
-        totalCount
-        group(field: frontmatter___author) {
-          fieldValue
-          totalCount
+      edges {
+        node {
+          id
+          avatar
+          master
         }
       }
+    }
+    allAuthor: allMarkdownRemark(filter: {frontmatter: {draft: {ne: true}}}, sort: {order: DESC, fields: [frontmatter___date]}) {
+      totalCount
+      group(field: frontmatter___author) {
+        fieldValue
+        totalCount
+      }
+    }
     allMarkdownRemark(
       skip: $skip, limit: $limit,
       filter: {frontmatter: {draft: {ne: true}, author: {eq: $author}}}, sort: {order: DESC, fields: [frontmatter___date]}

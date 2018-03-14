@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import registerListener from 'tp-register-listener';
 import throttle from 'lodash.throttle';
 import Link, { withPrefix } from 'gatsby-link';
-import canScroll from '../utils/can-scroll';
 
 export default class Header extends React.Component {
     constructor(props) {
@@ -12,7 +11,7 @@ export default class Header extends React.Component {
         this.coverElement = null;
         this.state = {
             coverPosition: 0,
-            coverActive: false,
+            coverActive: !!props.cover,
             coverImage: false,
         };
     }
@@ -27,17 +26,14 @@ export default class Header extends React.Component {
         coverImage.onload = () => {
             this.setState({
                 coverImage: coverUrl
+            }, () => {
+                this.initScroll();
             });
         };
         coverImage.src = coverUrl;
     }
 
-    componentDidMount() {
-        this.loadCoverImage();
-
-        if (!canScroll) return;
-        if (!this.coverElement) return;
-
+    initScroll = () => {
         let coverHeight = this.coverElement.offsetHeight;
         const scrollHandler = throttle(() => {
             let windowPosition = window.scrollY;
@@ -58,6 +54,10 @@ export default class Header extends React.Component {
         registerListener(window, 'scroll', scrollHandler, { passive: true }, this.unRegisterListenersCollection);
         registerListener(window, 'resize', scrollHandler, { passive: true }, this.unRegisterListenersCollection);
         registerListener(window, 'orientationchange', scrollHandler, { passive: true }, this.unRegisterListenersCollection);
+    };
+
+    componentDidMount() {
+        this.loadCoverImage();
     }
 
     componentWillUnmount() {

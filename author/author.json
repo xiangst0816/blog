@@ -1,44 +1,16 @@
 [
   {
-    "id": "Zutrinken",
+    "id": "烈风裘",
     "master": true,
-    "bio": "Founder @ GatsbyJS. Likes tech, reading/writing, founding things. Blogs at bricolage.io.",
-    "avatar": "https://avatars2.githubusercontent.com/u/71047?s=460&v=4",
-    "github": "https://github.com/KyleAMathews",
-    "twitter": "@kylemathews",
-    "website": "https://www.bricolage.io/"
-  },
-  {
-    "id": "Evan You",
-    "bio": "Creator of @vuejs, previously @meteor & @google",
-    "avatar": "/avatar/you.jpeg",
-    "cover": "/background/1.jpg",
-    "github": "https://github.com/yyx990803",
-    "twitter": "https://twitter.com/youyuxi",
-    "zhihu": "https://www.zhihu.com/people/evanyou/",
-    "weibo": "http://weibo.com/arttechdesign",
-    "location": "New Jersey / China",
-    "facebook": "xxx",
-    "website": "http://evanyou.me"
-  },
-  {
-    "id": "XiangSongtao",
-    "bio": "万物沉静, 万物新生.",
-    "avatar": "https://avatars0.githubusercontent.com/u/15180992?s=460&v=4",
-    "cover": "/background/2.jpg",
+    "bio": "万物寂静, 万物新生.",
+    "cover": "/background/4.jpg",
+    "avatar": "/avatar/me.jpeg",
     "github": "https://github.com/xiangsongtao",
-    "facebook": "@xiangsongtao",
-    "location": "HangZhou China",
-    "website": "http://xiangsongtao.com"
-  },
-  {
-    "id": "Ghost",
-    "bio": "Ghost Ghost Ghost",
-    "avatar": "https://avatars1.githubusercontent.com/u/948896?s=460&v=4",
-    "cover": "/background/3.jpg",
-    "github": "https://github.com/xwer",
-    "facebook": "@zxc",
-    "location": "HangZhou China",
-    "website": "http://zxc.com"
+    "twitter": "",
+    "facebook": "",
+    "weibo": "",
+    "zhihu": "",
+    "location": "HangZhou, China",
+    "website": "http://xiangsongtao.com/"
   }
 ]

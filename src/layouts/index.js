@@ -19,10 +19,6 @@ export default class Template extends React.Component {
     };
 
     componentDidMount() {
-        // import('fastclick').then((AttachFastClick) => {
-        //     console.log(AttachFastClick)
-        //     new AttachFastClick(document.body);
-        // });
         window && window['console'] && window['console'].log(`BUILD_TIME: ${BUILD_TIME}`);
     }
 
@@ -68,6 +64,7 @@ export const pageQuery = graphql`
     website
     location
   }
+  
   fragment markdownRemarkEdgeFrag on MarkdownRemarkEdge {
     node {
       excerpt(pruneLength: 250)
