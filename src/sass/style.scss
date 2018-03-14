@@ -1715,6 +1715,16 @@ img {
   #blog-author {
     margin: auto;
   }
+  .post-author-others {
+    .other-avatar {
+      margin-left: 0.1em;
+    }
+    &:hover {
+      .other-avatar {
+        margin-left: 0.1em;
+      }
+    }
+  }
 }
 
 /* ==========================================================================

@@ -27,7 +27,7 @@ export default class Navigation extends React.Component {
                             role="presentation">
                             <Link to="/tags/"><i className="icon icon-price-tags"></i> Tags</Link>
                         </li>
-                        <li className={classNames('nav-author', { 'active': location.pathname.indexOf(author) > -1 })}
+                        <li className={classNames('nav-author', { 'active': location.pathname.indexOf('author') > -1 })}
                             role="presentation">
                             <Link to={`/author/${author}`}><i className="icon icon-user"></i> Author</Link>
                         </li>
