@@ -20,7 +20,9 @@ export default class Header extends React.Component {
     // maybe to big
     loadCoverImage() {
         const { cover } = this.props;
-        const coverUrl = cover && cover.indexOf('http') > -1 ? cover : withPrefix(cover);
+        if (!cover) return;
+
+        const coverUrl = cover.indexOf('http') > -1 ? cover : withPrefix(cover);
         const coverImage = new Image(coverUrl);
         coverImage.onload = () => {
             this.setState({
@@ -110,7 +112,7 @@ export default class Header extends React.Component {
                     </nav>
                     {this.props.children}
                     {
-                        cover && (
+                        coverImage && (
                             <div
                                 ref={(el) => {
                                     this.coverElement = el;
