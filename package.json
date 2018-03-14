@@ -1,5 +1,5 @@
 {
-  "name": "xiansongtao-blog",
+  "name": "blog",
   "description": "Thoughts, stories and ideas.",
   "version": "1.0.0",
   "dependencies": {
@@ -11,6 +11,7 @@
     "react-icons": "~2.2.5"
   },
   "devDependencies": {
+    "chalk": "^2.3.2",
     "classnames": "^2.2.5",
     "fastclick": "^1.0.6",
     "gatsby-link": "~1.6.17",
@@ -46,6 +47,7 @@
     "prettier": "1.10.2",
     "prop-types": "^15.6.1",
     "react-helmet": "^5.2.0",
+    "shelljs": "^0.8.1",
     "slash": "^1.0.0",
     "tp-register-listener": "^1.0.5"
   },
@@ -54,10 +56,14 @@
     "blog"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:xiangsongtao/blog.git"
+  },
   "scripts": {
     "start": "npm run develop",
     "build": "gatsby build",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public",
+    "deploy": "gatsby build --prefix-paths && node script/deploy.js",
     "serve": "gatsby serve",
     "postdeploy": "gh-pages -d public",
     "develop": "gatsby develop --port=8989",
