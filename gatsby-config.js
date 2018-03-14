@@ -1,7 +1,10 @@
 const autoprefixer = require('autoprefixer');
+const pathPrefix = process.env.CI ? `/blog` : `/`;
+const origin = 'https://xiangsongtao.github.io';
+const siteUrl = origin + pathPrefix;
 
 module.exports = {
-    pathPrefix: process.env.CI ? `/blog` : `/`,
+    pathPrefix: pathPrefix,
     siteMetadata: {
         title: `Attila`,
         // cover: 'https://casper.ghost.org/v1.0.0/images/design.jpg',
@@ -11,7 +14,7 @@ module.exports = {
         keywords: `Thoughts, stories and ideas.`, // 网站描述
         tagCover: '/background/5.jpg',
         // siteUrl: 'http://10.88.1.158:9000', // 页面路径
-        siteUrl: 'https://xiangsongtao.github.io/blog/', // 页面路径
+        siteUrl: siteUrl, // 页面路径
         logo: '',
         language: 'zh-CN',
         navigation: true, // 是否开启右侧导航
@@ -200,7 +203,7 @@ module.exports = {
                 name: 'Attila',
                 short_name: 'Attila',
                 description: 'Thoughts, stories and ideas.',
-                start_url: '/',
+                start_url: siteUrl,
                 background_color: '#333F44',
                 theme_color: '#333F44',
                 orientation: 'portrait',
@@ -211,32 +214,32 @@ module.exports = {
                     // assuming your favicons are in /static/favicons,
                     // you can reference them here
                     {
-                        "src": "/favicon/ghost-128.png",
-                        "sizes": "128x128",
-                        "type": "image/png"
+                        'src': `/${pathPrefix}/favicon/ghost-128.png`,
+                        'sizes': '128x128',
+                        'type': 'image/png'
                     },
                     {
-                        "src": "/favicon/ghost-192.png",
-                        "sizes": "192x192",
-                        "type": "image/png"
+                        'src': `/${pathPrefix}/favicon/ghost-192.png`,
+                        'sizes': '192x192',
+                        'type': 'image/png'
                     },
                     {
-                        "src": "/favicon/ghost-256.png",
-                        "sizes": "256x256",
-                        "type": "image/png"
+                        'src': `/${pathPrefix}/favicon/ghost-256.png`,
+                        'sizes': '256x256',
+                        'type': 'image/png'
                     },
                     {
-                        "src": "/favicon/ghost-512.png",
-                        "sizes": "512x512",
-                        "type": "image/png"
+                        'src': `/${pathPrefix}/favicon/ghost-512.png`,
+                        'sizes': '512x512',
+                        'type': 'image/png'
                     },
                     {
-                        "src": "/favicon/favicon.ico",
-                        "sizes": "64x64"
+                        'src': `/${pathPrefix}/favicon/favicon.ico`,
+                        'sizes': '64x64'
                     },
                     {
-                        "src": "/favicon/ghost-icon.svg",
-                        "sizes": "1024x1024"
+                        'src': `/${pathPrefix}/favicon/ghost-icon.svg`,
+                        'sizes': '1024x1024'
                     },
                 ]
             },
