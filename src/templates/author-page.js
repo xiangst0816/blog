@@ -43,7 +43,7 @@ export default class AuthorRoute extends React.Component {
                                 to={`/author/${kebabCase(item.name)}/`}
                                 className="other-avatar"
                                 key={item.name}>
-                                <img alt={item.name} title={item.name} src={withPrefix(item.avatar)} />
+                                <Avatar className="post-other-avatar avatar" name={item.name} avatar={item.avatar} />
                             </Link>
                         ))
                     }
@@ -64,7 +64,7 @@ export default class AuthorRoute extends React.Component {
                 <section id="blog-author" className={classNames({ 'has-cover': coverImage })}>
                     <div className="inner">
                         <aside className="post-author">
-                            <Avatar avatar={author.avatar} name={author.id} />
+                            <Avatar className="post-author-avatar avatar" avatar={author.avatar} name={author.id} />
                             <div className="post-author-bio">
                                 <h2 className="post-author-name">{author.id}</h2>
                                 <Bio

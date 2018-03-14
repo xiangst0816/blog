@@ -2,9 +2,8 @@ import React from 'react';
 import classNames from 'classnames';
 import registerListener from 'tp-register-listener';
 import throttle from 'lodash.throttle';
-import Link from 'gatsby-link';
+import Link, { withPrefix } from 'gatsby-link';
 import canScroll from '../utils/can-scroll';
-import { withPrefix } from "gatsby-link";
 
 export default class Header extends React.Component {
     constructor(props) {
@@ -14,10 +13,26 @@ export default class Header extends React.Component {
         this.state = {
             coverPosition: 0,
             coverActive: false,
+            coverImage: false,
         };
     }
 
+    // maybe to big
+    loadCoverImage() {
+        const { cover } = this.props;
+        const coverUrl = cover && cover.indexOf('http') > -1 ? cover : withPrefix(cover);
+        const coverImage = new Image(coverUrl);
+        coverImage.onload = () => {
+            this.setState({
+                coverImage: coverUrl
+            });
+        };
+        coverImage.src = coverUrl;
+    }
+
     componentDidMount() {
+        this.loadCoverImage();
+
         if (!canScroll) return;
         if (!this.coverElement) return;
 
@@ -44,7 +59,6 @@ export default class Header extends React.Component {
     }
 
     componentWillUnmount() {
-        // remove all listeners.
         this.unRegisterListenersCollection.forEach(fn => fn());
     }
 
@@ -55,13 +69,15 @@ export default class Header extends React.Component {
     render() {
         const { cover, hideNavBack, navigation, isPost, logo } = this.props;
         const coverClassName = isPost ? 'post-cover' : 'blog-cover';
-        const { coverPosition, coverActive } = this.state;
+        const { coverPosition, coverActive, coverImage } = this.state;
+
+        const logoUrl = logo && logo.indexOf('http') > -1 ? logo : withPrefix(logo);
 
         const BackButton = () => {
             if (logo) {
                 return (
                     <div className="blog-logo">
-                        <Link to="/"><img src={withPrefix(logo)} alt="Blog Logo" /></Link>
+                        <Link to="/"><img src={logoUrl} alt="Blog Logo" /></Link>
                     </div>
                 );
             } else {
@@ -101,7 +117,7 @@ export default class Header extends React.Component {
                                 }}
                                 className={classNames('cover', coverClassName)}
                                 style={{
-                                    backgroundImage: `url(${withPrefix(cover)})`,
+                                    backgroundImage: `url(${coverImage})`,
                                     transform: `translate3d(0, ${coverPosition}px, 0)`
                                 }}
                             ></div>

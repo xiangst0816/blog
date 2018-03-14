@@ -1,13 +1,37 @@
 import React from 'react';
-// import Img from "gatsby-image"
-import { withPrefix } from "gatsby-link";
+import { withPrefix } from 'gatsby-link';
 
-export default function Avatar({ avatar, name }) {
-    return (
-        <figure className="post-author-avatar avatar">
-            {
-                avatar && (<img src={withPrefix(avatar)} alt={name} />)
-            }
-        </figure>
-    );
+export default class Avatar extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            opacity: 0
+        };
+    }
+
+    onLoad = () => {
+        this.setState({
+            opacity: 1
+        });
+    };
+
+    render() {
+        const { avatar, name, className } = this.props;
+        const { opacity } = this.state;
+        const avatarUrl = avatar && avatar.indexOf('http') > -1 ? avatar : withPrefix(avatar);
+        return (
+            <figure className={className} title={name}>
+                {
+                    avatar && (
+                        <img
+                            src={avatarUrl}
+                            style={{ opacity: opacity }}
+                            onLoad={this.onLoad}
+                            alt={name}
+                        />
+                    )
+                }
+            </figure>
+        );
+    }
 }
