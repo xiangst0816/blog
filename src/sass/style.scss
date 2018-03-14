@@ -7,9 +7,10 @@
 @import "fonts";
 @import "markdown.css";
 @import "prism.css";
-//@import "highlight";
 
-
+//$content-wide: 32em;
+//$content-wide: 42em;
+$content-wide: 40em;
 
 /* ==========================================================================
    Basics
@@ -27,7 +28,8 @@
 }
 
 html {
-  font-size: 62.5%;
+  //font-size: 62.5%;
+  font-size: 57%;
   //font-size: 50%; // 16px
   overflow-x: hidden;
 }
@@ -39,7 +41,7 @@ html.menu-active,
 
 body {
   font: 400 2em / 1.5em 'Cardo', serif;
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,Hiragino Sans GB,PingFang SC,Microsoft Yahei,sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, Hiragino Sans GB, PingFang SC, Microsoft Yahei, sans-serif;
   color: $color-blue-30;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -422,11 +424,11 @@ img {
 
 #blog-header:after {
   position: absolute;
-  width: 32em;
+  width: $content-wide;
   height: 1px;
   left: 50%;
   bottom: 0;
-  margin-left: -16em;
+  margin-left: (-$content-wide / 2);
   content: '';
   background: $color-gray-90;
 }
@@ -560,8 +562,9 @@ img {
 }
 
 .inner {
-  //max-width: 32em;
-  max-width: 42em;
+  //max-width: $content-wide;
+  //max-width: 42em;
+  max-width: $content-wide;
   margin: 0 auto;
   padding: 0 2em;
 }
@@ -849,7 +852,7 @@ img {
   line-height: 1em;
   padding: 1.1em 0;
   overflow: auto;
-  color: #9E9FA2;
+  color: $color-blue-60;
 }
 
 .credits a {
@@ -881,11 +884,11 @@ img {
 
 #blog-author:after {
   position: absolute;
-  width: 32em;
+  width: $content-wide;
   height: 1px;
   left: 50%;
   bottom: 0;
-  margin-left: -16em;
+  margin-left: (-$content-wide / 2);
   content: '';
   background: $color-gray-90;
 }
@@ -934,11 +937,11 @@ img {
 
 .container .post:after {
   position: absolute;
-  width: 32em;
+  width: $content-wide;
   height: 1px;
   left: 50%;
   bottom: 0;
-  margin-left: -16em;
+  margin-left: (-$content-wide / 2);
   content: '';
   background: $color-gray-90;
 }
@@ -966,7 +969,7 @@ img {
   position: relative;
   z-index: 10;
   margin: 0 auto;
-  max-width: 32em;
+  max-width: $content-wide;
   padding: 4em 2em;
   display: flex;
   flex-wrap: wrap;
@@ -988,11 +991,11 @@ img {
 
 .container .content-tags:after {
   position: absolute;
-  width: 32em;
+  width: $content-wide;
   height: 1px;
   left: 50%;
   bottom: 0;
-  margin-left: -16em;
+  margin-left: (-$content-wide / 2);
   content: '';
   background: $color-gray-90;
 }
@@ -1007,11 +1010,11 @@ img {
 
 .page-template #footer:after {
   position: absolute;
-  width: 32em;
+  width: $content-wide;
   height: 1px;
   left: 50%;
   top: 0;
-  margin-left: -16em;
+  margin-left: (-$content-wide / 2);
   content: '';
   background: $color-gray-90;
 }
@@ -1090,7 +1093,6 @@ img {
   font-weight: 400;
   line-height: 1.334em;
   //opacity: 0.5;
-  //color: #9E9FA2;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -1588,11 +1590,11 @@ img {
 
 .pagination:after {
   position: absolute;
-  width: 32em;
+  width: $content-wide;
   height: 1px;
   left: 50%;
   bottom: 0;
-  margin-left: -16em;
+  margin-left: (-$content-wide / 2);
   content: '';
   background: $color-gray-90;
 }
