@@ -213,31 +213,31 @@ module.exports = {
                     // assuming your favicons are in /static/favicons,
                     // you can reference them here
                     {
-                        'src': `/${pathPrefix}/favicon/ghost-128.png`,
+                        'src': `${pathPrefix}/favicon/ghost-128.png`,
                         'sizes': '128x128',
                         'type': 'image/png'
                     },
                     {
-                        'src': `/${pathPrefix}/favicon/ghost-192.png`,
+                        'src': `${pathPrefix}/favicon/ghost-192.png`,
                         'sizes': '192x192',
                         'type': 'image/png'
                     },
                     {
-                        'src': `/${pathPrefix}/favicon/ghost-256.png`,
+                        'src': `${pathPrefix}/favicon/ghost-256.png`,
                         'sizes': '256x256',
                         'type': 'image/png'
                     },
                     {
-                        'src': `/${pathPrefix}/favicon/ghost-512.png`,
+                        'src': `${pathPrefix}/favicon/ghost-512.png`,
                         'sizes': '512x512',
                         'type': 'image/png'
                     },
                     {
-                        'src': `/${pathPrefix}/favicon/favicon.ico`,
+                        'src': `${pathPrefix}/favicon/favicon.ico`,
                         'sizes': '64x64'
                     },
                     {
-                        'src': `/${pathPrefix}/favicon/ghost-icon.svg`,
+                        'src': `${pathPrefix}/favicon/ghost-icon.svg`,
                         'sizes': '1024x1024'
                     },
                 ]
