@@ -1,4 +1,5 @@
 import React from 'react';
+import { withPrefix } from 'gatsby-link';
 
 export default () =>
     <div className="page-404">
@@ -6,6 +7,6 @@ export default () =>
         <p>The page you visited does not exist... the sadness.</p>
         <p className="page-404-back">
             <i className="icon icon-arrow-left"></i>
-            <a href="/">Back Home</a>
+            <a href={withPrefix('/')}>Back Home</a>
         </p>
     </div>;
