@@ -30,7 +30,8 @@ export default class BlogPost extends React.Component {
                     <h1 className="post-title">{post.title}</h1>
                     <div className="post-meta">
                         <div className="post-meta-inner">
-                            <a href={`/author/${kebabCase(author.id)}/`}>{author.id}</a> | <time>{post.date} | {currentPost.timeToRead} min
+                            <Link
+                                to={`/author/${kebabCase(author.id)}/`}>{author.id}</Link> | <time>{post.date} | {currentPost.timeToRead} min
                             read</time>
                         </div>
                     </div>
@@ -45,15 +46,16 @@ export default class BlogPost extends React.Component {
                                 <aside className="post-tags">
                                     {
                                         post.tags && post.tags.map(tag => (
-                                            <a key={tag} href={`/tag/${kebabCase(tag)}/`}>{tag}</a>))
+                                            <Link key={tag} to={`/tag/${kebabCase(tag)}/`}>{tag}</Link>))
                                     }
                                 </aside>
                                 <div className="clear"></div>
                                 <aside className="post-author">
                                     <Avatar avatar={author.avatar} name={author.id} />
                                     <div className="post-author-bio">
-                                        <h4 className="post-author-name"><a
-                                            href={`/author/${kebabCase(author.id)}/`}>{author.id}</a></h4>
+                                        <h4 className="post-author-name">
+                                            <Link to={`/author/${kebabCase(author.id)}/`}>{author.id}</Link>
+                                        </h4>
                                         <Bio
                                             bio={author.bio}
                                             location={author.location}

@@ -11,15 +11,15 @@ export default class Pagination extends React.Component {
             <nav className="pagination" role="pagination">
                 <div className="inner">
                     {prev && (
-                        <a className="pagination-prev" href={prev}><i className="icon icon-arrow-left"></i>
-                            <span className="pagination-label">Newer Posts</span></a>
+                        <Link className="pagination-prev" to={prev}><i className="icon icon-arrow-left"></i>
+                            <span className="pagination-label">Newer Posts</span></Link>
                     )}
                     {
                         pages && <span className="pagination-info">Page {page} of {pages}</span>
                     }
                     {next && (
-                        <a className="pagination-next" href={next}><span className="pagination-label">Older Posts</span>
-                            <i className="icon icon-arrow-right"></i></a>
+                        <Link className="pagination-next" to={next}><span className="pagination-label">Older Posts</span>
+                            <i className="icon icon-arrow-right"></i></Link>
                     )}
                     <div className="clear"></div>
                 </div>

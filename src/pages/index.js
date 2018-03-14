@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import Helmet from 'react-helmet';
+import Link from 'gatsby-link';
 import ExcerptLoop from '../components/ExcerptLoop';
 import Pagination from '../components/Pagination';
 import Header from '../components/Header';
@@ -21,7 +22,7 @@ export default class Index extends React.Component {
                     navigation={navigation}
                     isPost={false}
                 >
-                    <h1 className="blog-name"><a href="/">{title}</a></h1>
+                    <h1 className="blog-name"><Link to="/">{title}</Link></h1>
                     {
                         description && (
                             <span className="blog-description">{description}</span>)

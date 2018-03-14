@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import kebabCase from 'lodash.kebabcase';
+import Link from 'gatsby-link';
 
 export default class Navigation extends React.Component {
 
@@ -20,20 +21,20 @@ export default class Navigation extends React.Component {
                     <ul>
                         <li className={classNames('nav-home', { 'active': location.pathname === '/' })}
                             role="presentation">
-                            <a href="/"><i className="icon icon-home"></i> Home</a>
+                            <Link to="/"><i className="icon icon-home"></i> Home</Link>
                         </li>
                         <li className={classNames('nav-tags', { 'active': location.pathname === '/tags/' })}
                             role="presentation">
-                            <a href="/tags/"><i className="icon icon-price-tags"></i> Tags</a>
+                            <Link to="/tags/"><i className="icon icon-price-tags"></i> Tags</Link>
                         </li>
                         <li className={classNames('nav-author', { 'active': location.pathname.indexOf(author) > -1 })}
                             role="presentation">
-                            <a href={`/author/${author}`}><i className="icon icon-user"></i> Author</a>
+                            <Link to={`/author/${author}`}><i className="icon icon-user"></i> Author</Link>
                         </li>
                         {
                             site.subscribe && (
                                 <li className="nav-rss">
-                                    <a href="/rss.xml"><i className="icon icon-rss"></i> Subscribe</a>
+                                    <Link to="/rss.xml"><i className="icon icon-rss"></i> Subscribe</Link>
                                 </li>
                             )
                         }

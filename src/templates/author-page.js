@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import kebabCase from 'lodash.kebabcase';
 import Helmet from 'react-helmet';
+import Link from 'gatsby-link';
 import ExcerptLoop from '../components/ExcerptLoop';
 import Avatar from '../components/Avatar';
 import Header from '../components/Header';
@@ -37,12 +38,12 @@ export default class AuthorRoute extends React.Component {
                 <div className="post-author-others">
                     {
                         othersAuthers.reverse().map(item => (
-                            <a
-                                href={`/author/${kebabCase(item.name)}/`}
+                            <Link
+                                to={`/author/${kebabCase(item.name)}/`}
                                 className="other-avatar"
                                 key={item.name}>
                                 <img alt={item.name} title={item.name} src={item.avatar} />
-                            </a>
+                            </Link>
                         ))
                     }
                 </div>

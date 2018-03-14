@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import registerListener from 'tp-register-listener';
 import throttle from 'lodash.throttle';
+import Link from 'gatsby-link';
 import canScroll from '../utils/can-scroll';
 
 export default class Header extends React.Component {
@@ -58,15 +59,15 @@ export default class Header extends React.Component {
             if (logo) {
                 return (
                     <div className="blog-logo">
-                        <a href="/"><img src={logo} alt="Blog Logo" /></a>
+                        <Link to="/"><img src={logo} alt="Blog Logo" /></Link>
                     </div>
                 );
             } else {
                 return (
                     <div id="home-button" className="nav-button">
-                        <a className="home-button" href="/" title="Home">
+                        <Link className="home-button" to="/" title="Home">
                             <i className="icon icon-arrow-left"></i> Home
-                        </a>
+                        </Link>
                     </div>
                 );
             }
