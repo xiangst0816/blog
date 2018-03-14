@@ -51,7 +51,7 @@ export default class BlogPost extends React.Component {
                                 </aside>
                                 <div className="clear"></div>
                                 <aside className="post-author">
-                                    <Avatar avatar={author.avatar} name={author.id} />
+                                    <Avatar className="post-author-avatar avatar" avatar={author.avatar} name={author.id} />
                                     <div className="post-author-bio">
                                         <h4 className="post-author-name">
                                             <Link to={`/author/${kebabCase(author.id)}/`}>{author.id}</Link>
