@@ -9,7 +9,8 @@ module.exports = {
         description: `Thoughts, stories and ideas.`, // 网站描述
         keywords: `Thoughts, stories and ideas.`, // 网站描述
         tagCover: '/background/5.jpg',
-        siteUrl: 'http://10.88.1.158:9000', // 页面路径
+        // siteUrl: 'http://10.88.1.158:9000', // 页面路径
+        siteUrl: 'https://xiangsongtao.github.io/blog/', // 页面路径
         logo: '',
         language: 'zh-CN',
         navigation: true, // 是否开启右侧导航
@@ -186,60 +187,60 @@ module.exports = {
                 ]
             }
         },
-        // {
-        //     resolve: `gatsby-plugin-google-analytics`,
-        //     options: {
-        //         trackingId: 'UA-114740261-4',
-        //     },
-        // },
-        // {
-        //     resolve: `gatsby-plugin-manifest`,
-        //     options: {
-        //         name: 'Attila',
-        //         short_name: 'Attila',
-        //         description: 'Thoughts, stories and ideas.',
-        //         start_url: '/',
-        //         background_color: '#333F44',
-        //         theme_color: '#333F44',
-        //         orientation: 'portrait',
-        //         display: 'standalone', // fullscreen, standalone, minimal-ui, browser
-        //         icons: [
-        //             // Everything in /static will be copied to an equivalent
-        //             // directory in /public during development and build, so
-        //             // assuming your favicons are in /static/favicons,
-        //             // you can reference them here
-        //             {
-        //                 "src": "/favicon/ghost-128.png",
-        //                 "sizes": "128x128",
-        //                 "type": "image/png"
-        //             },
-        //             {
-        //                 "src": "/favicon/ghost-192.png",
-        //                 "sizes": "192x192",
-        //                 "type": "image/png"
-        //             },
-        //             {
-        //                 "src": "/favicon/ghost-256.png",
-        //                 "sizes": "256x256",
-        //                 "type": "image/png"
-        //             },
-        //             {
-        //                 "src": "/favicon/ghost-512.png",
-        //                 "sizes": "512x512",
-        //                 "type": "image/png"
-        //             },
-        //             {
-        //                 "src": "/favicon/favicon.ico",
-        //                 "sizes": "64x64"
-        //             },
-        //             {
-        //                 "src": "/favicon/ghost-icon.svg",
-        //                 "sizes": "1024x1024"
-        //             },
-        //         ]
-        //     },
-        // },
-        // 'gatsby-plugin-offline',
+        {
+            resolve: `gatsby-plugin-google-analytics`,
+            options: {
+                trackingId: 'UA-114740261-4',
+            },
+        },
+        {
+            resolve: `gatsby-plugin-manifest`,
+            options: {
+                name: 'Attila',
+                short_name: 'Attila',
+                description: 'Thoughts, stories and ideas.',
+                start_url: '/',
+                background_color: '#333F44',
+                theme_color: '#333F44',
+                orientation: 'portrait',
+                display: 'standalone', // fullscreen, standalone, minimal-ui, browser
+                icons: [
+                    // Everything in /static will be copied to an equivalent
+                    // directory in /public during development and build, so
+                    // assuming your favicons are in /static/favicons,
+                    // you can reference them here
+                    {
+                        "src": "/favicon/ghost-128.png",
+                        "sizes": "128x128",
+                        "type": "image/png"
+                    },
+                    {
+                        "src": "/favicon/ghost-192.png",
+                        "sizes": "192x192",
+                        "type": "image/png"
+                    },
+                    {
+                        "src": "/favicon/ghost-256.png",
+                        "sizes": "256x256",
+                        "type": "image/png"
+                    },
+                    {
+                        "src": "/favicon/ghost-512.png",
+                        "sizes": "512x512",
+                        "type": "image/png"
+                    },
+                    {
+                        "src": "/favicon/favicon.ico",
+                        "sizes": "64x64"
+                    },
+                    {
+                        "src": "/favicon/ghost-icon.svg",
+                        "sizes": "1024x1024"
+                    },
+                ]
+            },
+        },
+        'gatsby-plugin-offline',
         'gatsby-plugin-react-helmet',
     ],
 };
