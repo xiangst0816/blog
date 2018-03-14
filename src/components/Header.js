@@ -4,6 +4,7 @@ import registerListener from 'tp-register-listener';
 import throttle from 'lodash.throttle';
 import Link from 'gatsby-link';
 import canScroll from '../utils/can-scroll';
+import { withPrefix } from "gatsby-link";
 
 export default class Header extends React.Component {
     constructor(props) {
@@ -12,12 +13,13 @@ export default class Header extends React.Component {
         this.coverElement = null;
         this.state = {
             coverPosition: 0,
-            coverActive: true,
+            coverActive: false,
         };
     }
 
     componentDidMount() {
         if (!canScroll) return;
+        if (!this.coverElement) return;
 
         let coverHeight = this.coverElement.offsetHeight;
         const scrollHandler = throttle(() => {
@@ -59,7 +61,7 @@ export default class Header extends React.Component {
             if (logo) {
                 return (
                     <div className="blog-logo">
-                        <Link to="/"><img src={logo} alt="Blog Logo" /></Link>
+                        <Link to="/"><img src={withPrefix(logo)} alt="Blog Logo" /></Link>
                     </div>
                 );
             } else {
@@ -99,7 +101,7 @@ export default class Header extends React.Component {
                                 }}
                                 className={classNames('cover', coverClassName)}
                                 style={{
-                                    backgroundImage: `url(${cover})`,
+                                    backgroundImage: `url(${withPrefix(cover)})`,
                                     transform: `translate3d(0, ${coverPosition}px, 0)`
                                 }}
                             ></div>

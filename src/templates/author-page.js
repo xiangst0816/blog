@@ -8,6 +8,7 @@ import Avatar from '../components/Avatar';
 import Header from '../components/Header';
 import Pagination from '../components/Pagination';
 import Bio from '../components/Bio';
+import { withPrefix } from "gatsby-link";
 
 export default class AuthorRoute extends React.Component {
 
@@ -42,7 +43,7 @@ export default class AuthorRoute extends React.Component {
                                 to={`/author/${kebabCase(item.name)}/`}
                                 className="other-avatar"
                                 key={item.name}>
-                                <img alt={item.name} title={item.name} src={item.avatar} />
+                                <img alt={item.name} title={item.name} src={withPrefix(item.avatar)} />
                             </Link>
                         ))
                     }

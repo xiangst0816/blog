@@ -5,7 +5,8 @@ module.exports = {
     siteMetadata: {
         title: `Attila`,
         // cover: 'https://casper.ghost.org/v1.0.0/images/design.jpg',
-        cover: '/background/4.jpg',
+        // cover: '/background/4.jpg',
+        cover: '',
         description: `Thoughts, stories and ideas.`, // 网站描述
         keywords: `Thoughts, stories and ideas.`, // 网站描述
         tagCover: '/background/5.jpg',

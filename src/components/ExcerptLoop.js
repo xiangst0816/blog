@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'gatsby-link';
 import kebabCase from 'lodash.kebabcase';
 import classNames from 'classnames';
+import { withPrefix } from "gatsby-link";
 
 export default class ExcerptLoop extends React.Component {
     render() {
@@ -47,7 +48,7 @@ export default class ExcerptLoop extends React.Component {
                                                 author.avatar && (
                                                     <div className="post-meta-avatar">
                                                         <img className="avatar"
-                                                             src={author.avatar}
+                                                             src={withPrefix(author.avatar)}
                                                              alt={author.id} />
                                                     </div>
                                                 )
