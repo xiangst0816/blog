@@ -13,7 +13,6 @@ module.exports = {
         description: `Thoughts, stories and ideas.`, // 网站描述
         keywords: `Thoughts, stories and ideas.`, // 网站描述
         tagCover: '/background/5.jpg',
-        // siteUrl: 'http://10.88.1.158:9000', // 页面路径
         siteUrl: siteUrl, // 页面路径
         logo: '',
         language: 'zh-CN',

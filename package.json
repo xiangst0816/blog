@@ -47,6 +47,7 @@
     "prettier": "1.10.2",
     "prop-types": "^15.6.1",
     "react-helmet": "^5.2.0",
+    "rimraf": "^2.6.2",
     "shelljs": "^0.8.1",
     "slash": "^1.0.0",
     "tp-register-listener": "^1.0.5"
@@ -63,7 +64,7 @@
   "scripts": {
     "start": "npm run develop",
     "build": "gatsby build",
-    "deploy": "gatsby build --prefix-paths && node script/deploy.js",
+    "deploy": "rimraf public && gatsby build --prefix-paths && node script/deploy.js",
     "serve": "gatsby serve",
     "postdeploy": "gh-pages -d public",
     "develop": "gatsby develop --port=8989",
