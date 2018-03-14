@@ -20,7 +20,7 @@ export default class TagRoute extends React.Component {
 
         return (
             <div>
-                <Helmet title={title} />
+                <Helmet title={`${title}-Tag`} />
                 <Header
                     cover={coverImage}
                     logo={logo}

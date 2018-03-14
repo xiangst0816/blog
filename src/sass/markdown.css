@@ -49,7 +49,7 @@
 .markdown-body p, .markdown-body blockquote, .markdown-body ul, .markdown-body ol, .markdown-body dl, .markdown-body table, .markdown-body pre {
     margin-top: 0;
     /*margin-bottom: 16px;*/
-    margin-bottom: 2em;
+    margin-bottom: 1em;
 }
 
 .markdown-body hr {

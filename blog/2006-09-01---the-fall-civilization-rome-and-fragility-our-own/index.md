@@ -7,9 +7,9 @@ author: Ghost
 ---
 
 
-这里所说的事件是指: JavaScript和HTML之间交互的事件. 
-也就是说, 浏览器文档在交互的过程中会以事件的方式通知绑定的**监听器**. 
-这里使用了传统软件工程的**观察者模式**的设计模型, 实现**JavaScript**与**文档(HTML/CSS)**之间的解耦.
+这里所说的事件是指: JavaScript和HTML之间交互的事件.  
+也就是说, 浏览器文档在交互的过程中会以事件的方式通知绑定的**监听器**.   
+这里使用了传统软件工程的**观察者模式**的设计模型, 实现**JavaScript**与**文档(HTML/CSS)**之间的解耦.   
 
 Tyler Cowen over at [Marginal Revolution][0] pointed me recently to a fascinating and very well-written book entitled "[The Fall of Rome and the End of Civilization][1]" . I don't intend to review the book per se (but here are two good reviews, [1][2] and [2][3]) but instead comment on some interesting points the author made.
 

@@ -55,16 +55,21 @@ export default class Header extends React.Component {
         const { coverPosition, coverActive } = this.state;
 
         const BackButton = () => {
-            return logo ? (
-                <span className="blog-logo">
-                            <a href="/"><img src={logo} alt="Blog Logo" /></a>
-                        </span>
-            ) : (
-                <span id="home-button" className="nav-button">
-				            <a className="home-button" href="/" title="Home"><i
-                                className="icon icon-arrow-left"></i> Home</a>
-			            </span>
-            );
+            if (logo) {
+                return (
+                    <div className="blog-logo">
+                        <a href="/"><img src={logo} alt="Blog Logo" /></a>
+                    </div>
+                );
+            } else {
+                return (
+                    <div id="home-button" className="nav-button">
+                        <a className="home-button" href="/" title="Home">
+                            <i className="icon icon-arrow-left"></i> Home
+                        </a>
+                    </div>
+                );
+            }
         };
 
         const id = isPost ? 'post-header' : 'blog-header';
