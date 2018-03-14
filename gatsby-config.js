@@ -1,7 +1,7 @@
 const autoprefixer = require('autoprefixer');
 
 module.exports = {
-    pathPrefix: process.env.CI ? `/${name}` : `/`,
+    pathPrefix: process.env.CI ? `/blog` : `/`,
     siteMetadata: {
         title: `Attila`,
         // cover: 'https://casper.ghost.org/v1.0.0/images/design.jpg',

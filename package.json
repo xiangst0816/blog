@@ -38,7 +38,7 @@
     "gatsby-transformer-json": "^1.0.16",
     "gatsby-transformer-remark": "~1.7.12",
     "gatsby-transformer-yaml": "^1.5.16",
-    "gh-pages": "1.1.0",
+    "gh-pages": "^1.1.0",
     "lodash": "^4.17.5",
     "lodash-webpack-plugin": "^0.11.4",
     "lodash.kebabcase": "^4.1.1",
@@ -57,7 +57,7 @@
   "scripts": {
     "start": "npm run develop",
     "build": "gatsby build",
-    "deploy": "gatsby build --prefix-paths",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "serve": "gatsby serve",
     "postdeploy": "gh-pages -d public",
     "develop": "gatsby develop --port=8989",
