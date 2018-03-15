@@ -12,6 +12,8 @@ export default class Avatar extends React.Component {
     onLoad = () => {
         this.setState({
             opacity: 1
+        }, () => {
+            console.log('loaded');
         });
     };
 
