@@ -10,7 +10,6 @@ tags:
   - RESTful
 ---
 
-
 ## RESTful架构
 
 REST是Representational State Transfer的缩写，表示“表现层状态转移”。这个其实是在讲一个过程。
@@ -32,12 +31,6 @@ DELETE用来删除资源
 ```
 
 因此，操作资源的动作只能由GET、POST、PUT、DELETE等进行，URI代表资源的名称，故设计URI时尽量使用名词！
-
-
-
-
-
-
 
 
 ## 参考

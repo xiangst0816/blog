@@ -10,20 +10,20 @@ tags:
   - JavaScript
 ---
 
+## 先说下基础类型和引用类型
 
 在写代码的时候翻看源码无意中看到了对象的深浅复制的代码，估计以后也会用的上，虽然徒手从零开始写有些困难，但是使用的时候能快速拿出来也是好的。下面是对深浅复制的总结笔记！
 
-## 先说下基础类型和引用类型
 
-下面这张图是对基础类型和引用类型的分类
+![分类](http://xiangsongtao.com/uploads/1474693606000.png)
 
-![](http://xiangsongtao.com/uploads/1474693606000.png "")
 
 在 JS 中有一些基本类型像是```Number```、```String```、```Boolean```，而对象就是像这样的东西```{ name: 'Larry', skill: 'Node.js' }```，对象跟基本类型最大的不同就在于他们的传值方式。
 
+
 基本类型是传 value，像是这样：
 
-```
+```js
 var a = 10;
 var b = a;
 b = 20;
@@ -35,7 +35,7 @@ console.log(b);//20
 
 但对象就不同，对象传的是reference：
 
-```
+```js
 var obj1 = { a: 10, b: 20, c: 30 };
 var obj2 = obj1;
 obj2.b = 100;
@@ -48,7 +48,7 @@ console.log(obj2);
 
 要避免这样的错误发生就要写成这样：
 
-```
+```js
 var obj1 = { a: 10, b: 20, c: 30 };
 var obj2 = { a: obj1.a, b: obj1.b, c: obj1.c };
 obj2.b = 100;
@@ -65,8 +65,8 @@ console.log(obj2);
 ## Object.assign ES6 的新函数
 
 用法如下：
-ta
-```
+
+```js
 var obj1 = { a: 10, b: 20, c: 30 };
 var obj2 = Object.assign({}, obj1);
 obj2.b = 100;
@@ -83,7 +83,7 @@ console.log(obj2);
 用```JSON.stringify```把对象转成字符串，再用```JSON.parse```把字符串转成新的对象。
 
 
-```
+```js
 var obj1 = { body: { a: 10 } };
 var obj2 = JSON.parse(JSON.stringify(obj1));
 obj2.body.a = 20;
@@ -103,7 +103,7 @@ console.log(obj1.body === obj2.body);
 
 jquery中提供的一个函数```$.extend```可以用来做 Deep Copy。
 
-```
+```js
 var $ = require('jquery');
 var obj1 = {
     a: 1,
@@ -118,7 +118,7 @@ console.log(obj1.b.f === obj2.b.f);
 
 lodash提供```_.cloneDeep```用来做 Deep Copy。
 
-```
+```js
 var _ = require('lodash');
 var obj1 = {
     a: 1,
@@ -132,7 +132,7 @@ console.log(obj1.b.f === obj2.b.f);
 
 ## 哥哥给你手写一个
 
-```
+```js
 var obj1 = {
     a: 1,
     b: { f: { g: 1 } },
@@ -168,8 +168,6 @@ function isArray(arr) {
     return Array.isArray(arr);
 }
 ```
-
-
 
 > 以上就是全部了，也不算难，多注意多留心就好。
 
