@@ -26,14 +26,21 @@ export default class Header extends React.Component {
         coverImage.onload = () => {
             this.setState({
                 coverImage: coverUrl
-            }, () => {
-                this.initScroll();
             });
+            this.initScroll();
         };
         coverImage.src = coverUrl;
     }
 
     initScroll = () => {
+        if (!this.coverElement) {
+            return;
+        }
+
+        if (window.navigator.userAgent.toLowerCase().indexOf('mobile') > -1) {
+            return;
+        }
+
         let coverHeight = this.coverElement.offsetHeight;
         const scrollHandler = throttle(() => {
             let windowPosition = window.scrollY;
@@ -112,7 +119,7 @@ export default class Header extends React.Component {
                     </nav>
                     {this.props.children}
                     {
-                        coverImage && (
+                        cover && (
                             <div
                                 ref={(el) => {
                                     this.coverElement = el;

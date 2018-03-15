@@ -15,8 +15,6 @@ export default class PostContent extends React.Component {
     }
 
     componentDidMount() {
-        if (!canScroll) return;
-
         let html = document.documentElement;
         let viewportHeight = html.clientHeight;
         let postHeight = this.postContentElement.offsetHeight;
