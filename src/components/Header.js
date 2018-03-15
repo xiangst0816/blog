@@ -31,6 +31,7 @@ export default class Header extends React.Component {
             this.setState({
                 coverImage: coverUrl
             });
+            console.log('load', coverUrl);
             this.coverScroll();
         };
         coverImage.src = coverUrl;
