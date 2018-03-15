@@ -55,24 +55,6 @@ export default class Header extends React.Component {
                     coverActive: windowPosition < coverHeight,
                 });
             }
-
-            // check direction
-            if (Math.abs(windowPosition - recordPosition) > 20) {
-                if (windowPosition > recordPosition) {
-                    if (!this.state.direction) {
-                        this.setState({ direction: true }, () => {
-                            console.log('up', this.state.direction);
-                        });
-                    }
-                } else {
-                    if (this.state.direction) {
-                        this.setState({ direction: false }, () => {
-                            console.log('down', this.state.direction);
-                        });
-                    }
-                }
-                recordPosition = windowPosition;
-            }
         }, 16);
 
         coverScrollHandler();
