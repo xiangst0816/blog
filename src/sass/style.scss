@@ -299,6 +299,7 @@ pre code, pre tt {
   background: transparent;
   border: none;
   vertical-align: inherit;
+  -webkit-overflow-scrolling: touch;
 }
 
 kbd {
@@ -470,6 +471,7 @@ img {
   z-index: 5;
   background: no-repeat scroll center center / cover $color-black;
   animation: 0.5s ease-in forwards fadein;
+  -webkit-overflow-scrolling: touch;
 }
 
 .blog-cover:after {
@@ -733,6 +735,7 @@ img {
   overflow-x: hidden;
   overflow-y: scroll;
   box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
 }
 
 #menu .nav-label {
@@ -860,6 +863,7 @@ img {
   line-height: 1em;
   padding: 1.1em 0;
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
   color: $color-blue-60;
 }
 
@@ -1059,6 +1063,7 @@ img {
   z-index: 5;
   background: no-repeat scroll center center / cover $color-black;
   animation: 0.5s ease-in forwards fadein;
+  -webkit-overflow-scrolling: touch;
 }
 
 .post-cover:after {

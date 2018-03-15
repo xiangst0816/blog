@@ -157,7 +157,7 @@
 }
 
 .markdown-body li {
-    word-wrap: break-all
+    word-wrap: break-word;
 }
 
 .markdown-body li > p {
@@ -182,13 +182,14 @@
 
 .markdown-body dl dd {
     padding: 0 16px;
-    margin-bottom: 16px
+    margin-bottom: 16px;
 }
 
 .markdown-body table {
     display: block;
     width: 100%;
-    overflow: auto
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .markdown-body table th {
@@ -367,19 +368,21 @@
     font-size: 85%;
     line-height: 1.45;
     background-color: #f6f8fa;
-    border-radius: 3px
+    border-radius: 3px;
+    -webkit-overflow-scrolling: touch;
 }
 
 .markdown-body pre code, .markdown-body pre tt {
     display: inline;
-    max-width: auto;
+    max-width: inherit;
     padding: 0;
     margin: 0;
     overflow: visible;
     line-height: inherit;
     word-wrap: normal;
     background-color: transparent;
-    border: 0
+    border: 0;
+    -webkit-overflow-scrolling: touch;
 }
 
 .markdown-body .csv-data td, .markdown-body .csv-data th {
@@ -388,22 +391,22 @@
     font-size: 12px;
     line-height: 1;
     text-align: left;
-    white-space: nowrap
+    white-space: nowrap;
 }
 
 .markdown-body .csv-data .blob-num {
     padding: 10px 8px 9px;
     text-align: right;
     background: #fff;
-    border: 0
+    border: 0;
 }
 
 .markdown-body .csv-data tr {
-    border-top: 0
+    border-top: 0;
 }
 
 .markdown-body .csv-data th {
     font-weight: 600;
     background: #f6f8fa;
-    border-top: 0
+    border-top: 0;
 }

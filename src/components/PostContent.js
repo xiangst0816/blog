@@ -1,7 +1,6 @@
 import React from 'react';
 import registerListener from 'tp-register-listener';
 import classNames from 'classnames';
-import canScroll from '../utils/can-scroll';
 
 export default class PostContent extends React.Component {
     constructor(props) {

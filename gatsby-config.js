@@ -3,8 +3,7 @@ const pathPrefix = process.env.CI ? `/blog` : ``;
 const origin = 'https://xiangsongtao.github.io';
 const siteUrl = origin + pathPrefix;
 
-module.exports = {
-    pathPrefix: pathPrefix,
+const config = {
     siteMetadata: {
         title: `Attila`,
         // cover: 'https://casper.ghost.org/v1.0.0/images/design.jpg',
@@ -13,7 +12,7 @@ module.exports = {
         description: `Thoughts, stories and ideas.`, // 网站描述
         keywords: `Thoughts, stories and ideas.`, // 网站描述
         tagCover: '/background/5.jpg',
-        siteUrl: siteUrl, // 页面路径
+        siteUrl: origin + pathPrefix, // 页面路径
         logo: '',
         language: 'zh-CN',
         navigation: true, // 是否开启右侧导航
@@ -256,3 +255,9 @@ module.exports = {
         'gatsby-plugin-react-helmet',
     ],
 };
+
+if (pathPrefix) {
+    config.pathPrefix = pathPrefix;
+}
+
+module.exports = config;
