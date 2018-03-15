@@ -5,6 +5,7 @@ const pinyin = require('pinyin');
 const rimraf = require('rimraf');
 const RawPath = resolve('../raw/');
 const BlogPath = resolve('../blog/');
+const BackPath = resolve('../backup/');
 const author = require('../author/author.json');
 const master = author.filter(item => item.master)[0];
 
@@ -43,10 +44,11 @@ fs.readdir(RawPath, function (err, data) {
 
         console.log(`${RawPath}${path}`);
 
-        // rimraf(`${RawPath}${path}`, function (err) {
-        //     if (err) return;
-        //     console.log('done');
-        // });
+        fs.copyFileSync(`${RawPath}${path}`, `${BackPath}${path}`);
+
+        rimraf(`${RawPath}${path}`, function (err) {
+            if (err) return;
+        });
     });
 });
 
