@@ -15,6 +15,9 @@ $content-wide: 40em;
 /* ==========================================================================
    Basics
    ========================================================================== */
+* {
+  box-sizing: border-box;
+}
 
 @supports (flex-wrap: wrap) {
   body {
@@ -29,8 +32,8 @@ $content-wide: 40em;
 
 html {
   //font-size: 62.5%;
-  font-size: 57%;
-  //font-size: 50%; // 16px
+  //font-size: 57%;
+  font-size: 50%; // 16px
   overflow-x: hidden;
 }
 
@@ -212,7 +215,7 @@ dl {
 
 dl dt {
   font-family: 'Fira Sans', sans-serif;
-  font-weight: 500;
+  //font-weight: 500;
   font-size: 0.75em;
   line-height: 1.25em;
   font-weight: 700;
@@ -247,8 +250,8 @@ code, tt {
   font-size: 0.75em;
   white-space: pre;
   background: $color-gray-98;
-  border: 1px solid $color-gray-90;
-  top: -2px;
+  //border: 1px solid $color-gray-90;
+  //top: -2px;
 }
 
 pre {
@@ -316,24 +319,26 @@ table {
   width: 100%;
   max-width: 100%;
   margin: 2em 0;
+  font-size: 95%;
   background-color: transparent;
-  border: 1px solid $color-gray-90;
+  //border: 1px solid $color-gray-90;
 }
 
 table th,
 table td {
   position: relative;
   padding: 0.5em;
-  line-height: 0.95em;
-  text-align: left;
-  border: 1px solid $color-gray-90;
+  //line-height: 0.95em;
+  //font-size: 0.75em;
+  //text-align: left;
+  //border: 1px solid $color-gray-90;
 }
 
 table th {
   font-family: 'Fira Sans', sans-serif;
   font-weight: 500;
-  font-size: 0.75em;
-  line-height: 1.25em;
+  //font-size: 0.75em;
+  //line-height: 1.25em;
   padding: 0.667em;
   color: $color-black;
 }
@@ -595,13 +600,10 @@ img {
 
 .nav-button a {
   display: block;
-  height: 1.5em;
-  margin-bottom: 1em;
-  padding: 0.5em 1.25em;
+  padding: 0.2em 1.25em;
   border: 1px solid $color-blue-80;
   font-family: 'Fira Sans', sans-serif;
   font-size: 0.75em;
-  line-height: 1.667em;
   text-shadow: none;
   color: $color-blue-60;
   cursor: pointer;
@@ -1598,7 +1600,7 @@ img {
 
 .pagination {
   position: relative;
-  height: 2em;
+  //height: 2em;
   margin: 0;
   padding: 2em 0;
   font-family: 'Fira Sans', sans-serif;
@@ -1619,13 +1621,13 @@ img {
 .pagination a {
   position: relative;
   display: block;
-  height: 1.334em;
-  margin: -1px 0;
-  padding: 0.667em 1em;
+  //height: 1.334em;
+  //margin: -1px 0;
+  padding: 0.25em 1em;
   z-index: 100;
   border: 1px solid $color-blue-80;
   font-size: 0.75em;
-  line-height: 1.5em;
+  //line-height: 1.5em;
   text-align: center;
   text-decoration: none;
   color: $color-blue-60;

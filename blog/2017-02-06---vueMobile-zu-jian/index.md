@@ -43,7 +43,7 @@ var MyComponent = Vue.component('my-component')
 
 比如业务页面中的```ion-title```组件自身实现了```setTitle```方法来控制Title的显示，但是这个方法希望在业务页面中能调用，方便用户自定义Title(包括修改document.title的Hack方法)。例如如下的结构：
 
-```
+```jsx
   <ion-page>
     <ion-header>
       <ion-navbar>

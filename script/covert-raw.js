@@ -9,6 +9,10 @@ const BackPath = resolve('../backup/');
 const author = require('../author/author.json');
 const master = author.filter(item => item.master)[0];
 
+checkDirExist(RawPath);
+checkDirExist(BlogPath);
+checkDirExist(BackPath);
+
 fs.readdir(RawPath, function (err, data) {
     if (err) return;
     if (!data || data.length == 0) return;
@@ -18,12 +22,11 @@ fs.readdir(RawPath, function (err, data) {
         let title = path.split('.')[0];
         let stat = fs.statSync(`${RawPath}${path}`);
         let date = new Date(stat.birthtime);
-        let pathName = title.indexOf(' ') > -1 ? title.split(' ').join('') : title;
+        let _pathName = title.indexOf(' ') > -1 ? title.split(' ').join('') : title;
+        let pathName = _pathName.replace(/\(|\)|\[|\]|\{|\}|，|！|。/g, '');
         let dirName = getDirName(date, pathName);
-        let isDirExist = fs.existsSync(`${BlogPath}${dirName}`);
-        if (!isDirExist) {
-            fs.mkdirSync(`${BlogPath}${dirName}`);
-        }
+
+        checkDirExist(`${BlogPath}${dirName}`);
 
         let inputData =
             `---` + '\n' +
@@ -43,6 +46,7 @@ fs.readdir(RawPath, function (err, data) {
         fs.writeFileSync(`${BlogPath}${dirName}/index.md`, inputData + readFileData);
 
         console.log(`${RawPath}${path}`);
+        console.log(`${BlogPath}${dirName}/index.md`);
 
         fs.copyFileSync(`${RawPath}${path}`, `${BackPath}${path}`);
 
@@ -52,6 +56,13 @@ fs.readdir(RawPath, function (err, data) {
     });
 });
 
+function checkDirExist(path) {
+    let isDirExist = fs.existsSync(path);
+    if (!isDirExist) {
+        fs.mkdirSync(path);
+    }
+}
+
 function getDirName(date, pathName) {
     function withZero(num) {
         if (num < 9) return `0${num}`;
@@ -59,14 +70,15 @@ function getDirName(date, pathName) {
     }
 
     let _time = `${date.getFullYear()}-${withZero(date.getMonth() + 1)}-${withZero(date.getDate())}`;
-    let _name = _.flattenDeep(getPinyin(pathName)).join('-');
+    let _tmp = _.flattenDeep(getPinyin(pathName));
+    let _name = _.take(_tmp, 5).join('-').toLowerCase();
     return `${_time}---${_name}`;
 }
 
 function getPinyin(str) {
     return pinyin(str, {
         style: pinyin.STYLE_NORMAL, // 设置拼音风格
-        heteronym: true
+        heteronym: false
     });
 }
 

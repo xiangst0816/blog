@@ -1,7 +1,7 @@
 ---
 title: (转载)前端，我为什么不要你
 author: 烈风裘
-date: 2016-10-20T14:06:06.000Z
+date: 2016-10-20T14:06:49.000Z
 draft: false
 comments: false
 star: false
@@ -9,7 +9,6 @@ cover: ''
 tags: 
   - 随笔
 ---
-
 
 转载这篇文章，文章里面内容就不再展开，感兴趣的可以看下，[地址点击这里](http://www.cnblogs.com/vans/p/4550356.html)。
 
