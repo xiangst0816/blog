@@ -10,10 +10,7 @@ tags:
   - 面试
 ---
 
-
 无意在网上看到的，特此记录。[原文在此](http://www.jb51.net/article/77140.htm)
-
-
 
 #### 1、使用 typeof bar === "object" 判断 bar 是不是一个对象有神马潜在的弊端？如何避免这种弊端？
 
@@ -22,7 +19,7 @@ tags:
 ```
 let obj = {};
 let arr = [];
- 
+
 console.log(typeof obj === 'object'); //true
 console.log(typeof arr === 'object'); //true
 console.log(typeof null === 'object'); //true
@@ -33,7 +30,7 @@ console.log(typeof null === 'object'); //true
 ```
 let obj = {};
 let arr = [];
- 
+
 console.log(Object.prototype.toString.call(obj)); //[object Object]
 console.log(Object.prototype.toString.call(arr)); //[object Array]
 console.log(Object.prototype.toString.call(null)); //[object Null]
@@ -45,25 +42,29 @@ console.log(Object.prototype.toString.call(null)); //[object Null]
 (function(){
  var a = b = 3;
 })();
- 
-console.log("a defined? " + (typeof a !== 'undefined')); 
+
+console.log("a defined? " + (typeof a !== 'undefined'));
 console.log("b defined? " + (typeof b !== 'undefined'));
 ```
+
 这跟变量作用域有关，输出换成下面的：
 
 ```
 console.log(b); //3
 console.log(typeof a); //undefined
 ```
+
 拆解一下自执行函数中的变量赋值：
 
 ```
 b = 3;
 var a = b;
 ```
+
 所以 b 成了全局变量，而 a 是自执行函数的一个局部变量。
 
-#### 3、this相关，下面的代码会在 console 输出神马？为什么？
+#### 3、this 相关，下面的代码会在 console 输出神马？为什么？
+
 ```
 var myObject = {
  foo: "bar",
@@ -79,6 +80,7 @@ var myObject = {
 };
 myObject.func();
 ```
+
 第一个和第二个的输出不难判断，在 ES6 之前，JavaScript 只有函数作用域，所以 func 中的 IIFE 有自己的独立作用域，并且它能访问到外部作用域中的 self，所以第三个输出会报错，因为 this 在可访问到的作用域内是 undefined，第四个输出是 bar。如果你知道闭包，也很容易解决的：
 
 ```
@@ -97,39 +99,43 @@ IIFE 有两个比较经典的使用场景，一是类似于在循环中定时输
 ```
 for(var i = 0; i < 5; i++) {
  setTimeout(function() {
- console.log(i); 
+ console.log(i);
  }, 1000);
 }
 ```
-上面的输出并不是你以为的0，1，2，3，4，而输出的全部是5，这时 IIFE 就能有用了：
+
+上面的输出并不是你以为的 0，1，2，3，4，而输出的全部是 5，这时 IIFE 就能有用了：
 
 ```
 for(var i = 0; i < 5; i++) {
  (function(i) {
  setTimeout(function() {
- console.log(i); 
+ console.log(i);
  }, 1000);
  })(i)
 }
 ```
+
 而在 JQuery/Node 的插件和模块开发中，为避免变量污染，也是一个大大的 IIFE：
+
 ```
-(function($) { 
+(function($) {
  //代码
  })(jQuery);
 ```
 
 #### 5、在严格模式('use strict')下进行 JavaScript 开发有神马好处？
 
-消除Javascript语法的一些不合理、不严谨之处，减少一些怪异行为;
+消除 Javascript 语法的一些不合理、不严谨之处，减少一些怪异行为;
 
 消除代码运行的一些不安全之处，保证代码运行的安全；
 
 提高编译器效率，增加运行速度；
 
-为未来新版本的Javascript做好铺垫。
+为未来新版本的 Javascript 做好铺垫。
 
 #### 6、下面两个函数的返回值是一样的吗？为什么？
+
 ```
 function foo1()
 {
@@ -137,7 +143,7 @@ function foo1()
  bar: "hello"
  };
 }
- 
+
 function foo2()
 {
  return
@@ -147,16 +153,15 @@ function foo2()
 }
 ```
 
-
-在编程语言中，基本都是使用分号（;）将语句分隔开，这可以增加代码的可读性和整洁性。而在JS中，如若语句各占独立一行，通常可以省略语句间的分号（;），JS 解析器会根据能否正常编译来决定是否自动填充分号：
+在编程语言中，基本都是使用分号（;）将语句分隔开，这可以增加代码的可读性和整洁性。而在 JS 中，如若语句各占独立一行，通常可以省略语句间的分号（;），JS 解析器会根据能否正常编译来决定是否自动填充分号：
 
 ```
-var test = 1 + 
+var test = 1 +
 2
 console.log(test); //3
 ```
 
-在上述情况下，为了正确解析代码，就不会自动填充分号了，但是对于```return``` 、```break```、```continue```等语句，如果后面紧跟换行，解析器一定会自动在后面填充分号(;)，所以上面的第二个函数就变成了这样：
+在上述情况下，为了正确解析代码，就不会自动填充分号了，但是对于`return` 、`break`、`continue`等语句，如果后面紧跟换行，解析器一定会自动在后面填充分号(;)，所以上面的第二个函数就变成了这样：
 
 ```
 function foo2()
@@ -167,11 +172,12 @@ function foo2()
  };
 }
 ```
+
 所以第二个函数是返回 undefined。
 
 #### 7、神马是 NaN，它的类型是神马？怎么测试一个值是否等于 NaN?
 
-NaN 是 Not a Number 的缩写，JavaScript 的一种特殊数值，其类型是```Number```，可以通过 ```isNaN(param) ```来判断一个值是否是 NaN：
+NaN 是 Not a Number 的缩写，JavaScript 的一种特殊数值，其类型是`Number`，可以通过 `isNaN(param)`来判断一个值是否是 NaN：
 
 ```
 console.log(isNaN(NaN)); //true
@@ -197,7 +203,7 @@ console.log(0.1 + 0.2); //0.30000000000000004
 console.log(0.1 + 0.2 == 0.3); //false
 ```
 
-JavaScript 中的 number 类型就是浮点型，JavaScript 中的浮点数采用IEEE-754 格式的规定，这是一种二进制表示法，可以精确地表示分数，比如1/2，1/8，1/1024，每个浮点数占64位。但是，二进制浮点数表示法并不能精确的表示类似0.1这样 的简单的数字，会有舍入误差。
+JavaScript 中的 number 类型就是浮点型，JavaScript 中的浮点数采用 IEEE-754 格式的规定，这是一种二进制表示法，可以精确地表示分数，比如 1/2，1/8，1/1024，每个浮点数占 64 位。但是，二进制浮点数表示法并不能精确的表示类似 0.1 这样 的简单的数字，会有舍入误差。
 
 由于采用二进制，JavaScript 也不能有限表示 1/10、1/2 等这样的分数。在二进制中，1/10(0.1)被表示为 0.00110011001100110011…… 注意 0011 是无限重复的，这是舍入误差造成的，所以对于 0.1 + 0.2 这样的运算，操作数会先被转成二进制，然后再计算：
 
@@ -217,7 +223,7 @@ function add(num1, num2){
  let r1, r2, m;
  r1 = (''+num1).split('.')[1].length;
  r2 = (''+num2).split('.')[1].length;//计算小数位数
- 
+
  m = Math.pow(10,Math.max(r1,r2));
  return (num1 * m + num2 * m) / m;
 }
@@ -236,13 +242,14 @@ console.log(add(0.1,0.2)); //"0.10.2"
 
 #### 9、实现函数 isInteger(x) 来判断 x 是否是整数
 
-可以将 x 转换成10进制，判断和本身是不是相等即可：
+可以将 x 转换成 10 进制，判断和本身是不是相等即可：
 
 ```
-function isInteger(x) { 
+function isInteger(x) {
  return parseInt(x, 10) === x; // 默认是10
 }
 ```
+
 ES6 对数值进行了扩展，提供了静态方法 isInteger() 来判断参数是否是整数：
 
 ```
@@ -253,21 +260,21 @@ Number.isInteger("15") // false
 Number.isInteger(true) // false
 ```
 
-JavaScript能够准确表示的整数范围在 -2^53 到 2^53 之间（不含两个端点），超过这个范围，无法精确表示这个值。ES6 引入了```Number.MAX_SAFE_INTEGER``` 和 ```Number.MIN_SAFE_INTEGER```这两个常量，用来表示这个范围的上下限，并提供了 ```Number.isSafeInteger() ```来判断整数是否是安全型整数。
-
-
+JavaScript 能够准确表示的整数范围在 -2^53 到 2^53 之间（不含两个端点），超过这个范围，无法精确表示这个值。ES6 引入了`Number.MAX_SAFE_INTEGER` 和 `Number.MIN_SAFE_INTEGER`这两个常量，用来表示这个范围的上下限，并提供了 `Number.isSafeInteger()`来判断整数是否是安全型整数。
 
 #### 10、在下面的代码中，数字 1-4 会以什么顺序输出？为什么会这样输出？
+
 ```
 (function() {
- console.log(1); 
- setTimeout(function(){console.log(2)}, 1000); 
- setTimeout(function(){console.log(3)}, 0); 
+ console.log(1);
+ setTimeout(function(){console.log(2)}, 1000);
+ setTimeout(function(){console.log(3)}, 0);
  console.log(4);
 })();
 // 1,4,3,2
 ```
-这个就不多解释了，主要是 JavaScript 的定时机制和时间循环，不要忘了，JavaScript 是单线程的。详解可以参考 从setTimeout谈JavaScript运行机制。
+
+这个就不多解释了，主要是 JavaScript 的定时机制和时间循环，不要忘了，JavaScript 是单线程的。详解可以参考 从 setTimeout 谈 JavaScript 运行机制。
 
 #### 11、写一个少于 80 字符的函数，判断一个字符串是不是回文字符串
 
@@ -314,11 +321,11 @@ for (var i = 0; i < 5; i++) {
     document.body.appendChild(btn);
 }
 ```
-1. 点击 Button 4，会在控制台输出什么？
-    - 点击5个按钮中的任意一个，都是输出5
-2. 给出一种符合预期的实现方式
-    - 参考 IIFE。
 
+1.  点击 Button 4，会在控制台输出什么？
+    * 点击 5 个按钮中的任意一个，都是输出 5
+2.  给出一种符合预期的实现方式
+    * 参考 IIFE。
 
 ```
 for (var i = 0; i < 5; i++) {
@@ -342,15 +349,13 @@ console.log("array 1: length=" + arr1.length + " last=" + arr1.slice(-1));
 console.log("array 2: length=" + arr2.length + " last=" + arr2.slice(-1));
 ```
 
-
- ```reverse() ```会改变数组本身，并返回原数组的引用。故arr1和arr2是指向同一个数组的。
+`reverse()`会改变数组本身，并返回原数组的引用。故 arr1 和 arr2 是指向同一个数组的。
 
 **这里总结下哪些方法会对数组本身修改，哪些会返回新数组：**
 
-- 原来arr上处理(会改变原来的数组，而不会创建新的数组)：
+* 原来 arr 上处理(会改变原来的数组，而不会创建新的数组)：
 
 ```
-
 forEach：循环每个元素、
 
 every：全为true时返回true、
@@ -367,10 +372,9 @@ reverse(): 颠倒数组中元素的顺序。
 
 arr.forEach(function(val){})
 arr.reduce(function(sum,ele){})
-
 ```
 
-- 返回新数组：
+* 返回新数组：
 
 ```
 map：遍历后返回新数组（和forEach对立）、
@@ -380,10 +384,9 @@ filter：返回判断结果为true的结果、
 slice：方法可从已有的数组中返回选定的元素，arrayObject.slice(start,end)、var arr1=arr.slice(0)
 
 concat(): 连接两个或更多的数组，并返回结果。arr.concat(arr2,arr3)
-
 ```
 
-#### 15、关于number转化的问题
+#### 15、关于 number 转化的问题
 
 ```
 console.log(1 + "2" + "2");
@@ -393,6 +396,7 @@ console.log(+"1" + "1" + "2");
 console.log( "A" - "B" + "2");
 console.log( "A" - "B" + 2);
 ```
+
 输出什么，自己去运行吧，需要注意三个点：
 
 多个数字和数字字符串混合运算时，跟操作数的位置有关
@@ -427,10 +431,10 @@ console.log('A' - 'B'); // NaN
 
 ```
 var list = readHugeList();
- 
+
 var nextListItem = function() {
  var item = list.pop();
- 
+
  if (item) {
  // process the list item...
  nextListItem();
@@ -442,17 +446,18 @@ var nextListItem = function() {
 
 ```
 var list = readHugeList();
- 
+
 var nextListItem = function() {
  var item = list.pop();
- 
+
  if (item) {
  // process the list item...
  setTimeout( nextListItem, 0);
  }
 };
 ```
-将其放入异步队列中处理，解决方式的原理请参考第10题。
+
+将其放入异步队列中处理，解决方式的原理请参考第 10 题。
 
 #### 17、什么是闭包？举例说明
 
@@ -479,7 +484,7 @@ console.log("1 && 2 = "+(1 && 2)); 2
 
 逻辑与和逻辑或运算符会返回一个值，并且二者都是短路运算符：
 
-逻辑与返回第一个是 false 的操作数 或者 最后一个是 true的操作数
+逻辑与返回第一个是 false 的操作数 或者 最后一个是 true 的操作数
 
 ```
 console.log(1 && 2 && 0); //0
@@ -489,13 +494,14 @@ console.log(1 && 2 && 3); //3
 
 如果某个操作数为 false，则该操作数之后的操作数都不会被计算
 
-逻辑或返回第一个是 true 的操作数 或者 最后一个是 false的操作数
+逻辑或返回第一个是 true 的操作数 或者 最后一个是 false 的操作数
 
 ```
 console.log(1 || 2 || 0); //1
 console.log(0 || 2 || 1); //2
 console.log(0 || 0 || false); //false
 ```
+
 如果某个操作数为 true，则该操作数之后的操作数都不会被计算
 
 如果逻辑与和逻辑或作混合运算，则逻辑与的优先级高：
@@ -505,6 +511,7 @@ console.log(1 && 2 || 0); //2
 console.log(0 || 2 && 1); //1
 console.log(0 && 2 || 1); //1
 ```
+
 在 JavaScript，常见的 false 值：
 
 0, '0', +0, -0, false, '',null,undefined,null,NaN
@@ -520,7 +527,6 @@ console.log(Boolean({})) //true
 
 所以在 if 中，[] 和 {} 都表现为 true，注意两者都是引用类型，只要定义就存在。
 
-
 #### 20、解释下面代码的输出
 
 ```
@@ -528,10 +534,7 @@ console.log(false == '0')//->console.log(toNumber(false) == '0') ->true
 console.log(false === '0')//->console.log(0 === '0')->false
 ```
 
-
-
 参考此图的解释：
-
 
 ![参考此图的解释](http://xiangsongtao.com/uploads/1474859620000.png)
 
@@ -541,24 +544,22 @@ console.log(false === '0')//->console.log(0 === '0')->false
 var a={},
  b={key:'b'},
  c={key:'c'};
- 
+
 a[b]=123;
 a[c]=456;
- 
+
 console.log(a[b]);//456
 ```
 
 #### 22、解释下面代码的输出
 
-````
+```
 console.log((function f(n){return ((n > 1) ? n * f(n-1) : n)})(10));
+```
 
-````
-
-结果是10的阶乘。这是一个递归调用，为了简化，我初始化 n=5，则调用链和返回链如下：
+结果是 10 的阶乘。这是一个递归调用，为了简化，我初始化 n=5，则调用链和返回链如下：
 
 ![](http://files.jb51.net/file_images/article/201512/2015122992756570.png?201511299284)
-
 
 #### 23、解释下面代码的输出
 
@@ -570,10 +571,9 @@ console.log((function f(n){return ((n > 1) ? n * f(n-1) : n)})(10));
 })(1);
 ```
 
-输出1，闭包能够访问外部作用域的变量或参数。
+输出 1，闭包能够访问外部作用域的变量或参数。
 
 #### 24、解释下面代码的输出，并修复存在的问题
-
 
 ```
 var hero = {
@@ -582,9 +582,9 @@ var hero = {
  return this._name;
  }
 };
- 
+
 var stoleSecretIdentity = hero.getSecretIdentity;
- 
+
 console.log(stoleSecretIdentity());
 console.log(hero.getSecretIdentity());
 ```
@@ -598,20 +598,20 @@ var stoleSecretIdentity = function (){
 stoleSecretIdentity
 ```
 
-的上下文是全局环境，所以第一个输出 undefined。若要输出 John Doe，则要通过 call 、apply 和 bind 等方式改变 stoleSecretIdentity 的this 指向(hero)。
+的上下文是全局环境，所以第一个输出 undefined。若要输出 John Doe，则要通过 call 、apply 和 bind 等方式改变 stoleSecretIdentity 的 this 指向(hero)。
 
 ```
 var stoleSecretIdentity = hero.getSecretIdentity.call(hero)
 ```
-第二个是调用对象的方法，输出 John Doe。
 
+第二个是调用对象的方法，输出 John Doe。
 
 #### 25、给你一个 DOM 元素，创建一个能访问该元素所有子元素的函数，并且要将每个子元素传递给指定的回调函数。
 
 函数接受两个参数：
 
-- DOM
-- 指定的回调函数
+* DOM
+* 指定的回调函数
 
 原文利用 深度优先搜索(Depth-First-Search) 给了一个实现：
 
@@ -625,9 +625,6 @@ function Traverse(p_element, p_callback) {
 }
 ```
 
-以上就是为大家分享的25个JavaScript面试题，希望对大家参加面试有所帮助。
+以上就是为大家分享的 25 个 JavaScript 面试题，希望对大家参加面试有所帮助。
 
 （完）
-
-
-

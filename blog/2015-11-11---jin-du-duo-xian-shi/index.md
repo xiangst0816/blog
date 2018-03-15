@@ -10,21 +10,24 @@ tags:
   - 插件
 ---
 
-1.spanjs插件使用(菊花)
----
+## 1.spanjs 插件使用(菊花)
+
 ###显示效果（无限菊花）：
 ![菊花状](http://pic002.cnblogs.com/images/2012/263737/2012110210275693.png)
 
 ###快速开始：
--. HTML页面插入代码  
+-. HTML 页面插入代码
 
-	/*spin为承载进度条的块*/
-	<div id="spin"></div>
-	<script src="spin.js"></script>
+```
+    /*spin为承载进度条的块*/
+    <div id="spin"></div>
+    <script src="spin.js"></script>
+```
 
 -. 设置**菊花**的参数
 
-	var opts = {
+```
+    var opts = {
       	lines: 12             // The number of lines to draw
     	, length: 7             // The length of each line
     	, width: 5              // The line thickness
@@ -46,46 +49,47 @@ tags:
     	, hwaccel: false        // Whether to use hardware acceleration (might be buggy)
     	, position: 'absolute'  // Element positioning
     }
-	
+```
+
 -. 调用函数
 
-	 var target = document.getElementById('spin');
-	 //定义opts参数下的样式
+     var target = document.getElementById('spin');
+     //定义opts参数下的样式
      var spinner = new Spinner(opts);
      //启动target
      spinner.spin(target);
-     
+
 -. 停止
 
-	spinner.stop(target);
-	
+    spinner.stop(target);
+
 -. 再开始
 
-	spinner.spin(target);
-	
-2.CProgressjs插件(菊花+进度值)
----
+    spinner.spin(target);
+
+## 2.CProgressjs 插件(菊花+进度值)
+
 ###显示效果:  
 ![菊花+进度值](http://pic002.cnblogs.com/images/2012/36987/2012102316464528.jpg)
 
->**可固定值,也可修改limit value(终点值).**
+> **可固定值,也可修改 limit value(终点值).**
 
 ###快速开始
 
--. HTML页面插入代码  
+-. HTML 页面插入代码
 
-	/*承载进度条的块*/
-	<div id="p1"></div>
-	/*在上面目录下自动创建的内容,105是图片的大小*/
-	<div class="jCProgress" style="opacity: 1;">
-		<div class="percent">50</div>
-		<canvas width="105" height="105"></canvas>
-	</div>
+    /*承载进度条的块*/
+    <div id="p1"></div>
+    /*在上面目录下自动创建的内容,105是图片的大小*/
+    <div class="jCProgress" style="opacity: 1;">
+    	<div class="percent">50</div>
+    	<canvas width="105" height="105"></canvas>
+    </div>
 
 -. 设置**菊花**的参数并启动
 
-	$(document).ready(function() {
-			//变量承载
+    $(document).ready(function() {
+    		//变量承载
             var myplugin;
             //设置延迟,因为图片加载慢的问题
             setTimeout(function() {
@@ -116,7 +120,7 @@ tags:
                     opt.limit = 40;
                     //在p1内添加元素,传入参数opt
                     myplugin = $('#p1').cprogress(opt);
-                    
+
                     //更改值后自动动画,可用于组件加载时调用
                     //设置myplugin中的属性
                     myplugin.options({
@@ -128,72 +132,71 @@ tags:
             }, 1000);
         });
 
--. myplugin的其余方法
+-. myplugin 的其余方法
 
-	// 创建参数
-	options = {
+    // 创建参数
+    options = {
      	img1: 'v1.png',
      	img2: 'v2.png',
      	speed: 50,
      	limit: 70,
-	};
-	//创建cprogress
-	myplugin = $('#p1').cprogress(options);
+    };
+    //创建cprogress
+    myplugin = $('#p1').cprogress(options);
 
-	//通过事件创建cprogress
-	$('#create').click(function(){
-	    if(!myplugin){
-	  	myplugin = $('#p1').cprogress(options);
+    //通过事件创建cprogress
+    $('#create').click(function(){
+        if(!myplugin){
+      	myplugin = $('#p1').cprogress(options);
      	}
-	});
+    });
 
-	// 销毁
-	$('#destroy').click(function(){
+    // 销毁
+    $('#destroy').click(function(){
      	if(myplugin){
-	  	myplugin=myplugin.destroy();
+      	myplugin=myplugin.destroy();
      	}
-	});
+    });
 
-	// 开始
-	$('#play').click(function(){
+    // 开始
+    $('#play').click(function(){
      	if(myplugin){
-	  	myplugin.start();
+      	myplugin.start();
      	}
-	});
+    });
 
-	// 停止
-	$('#pause').click(function(){
+    // 停止
+    $('#pause').click(function(){
      	if(myplugin){
-	  	myplugin.stop();
+      	myplugin.stop();
      	}
-	});
+    });
 
-	// 重置,从头开始再走一遍
-	$('#reset').click(function(){
+    // 重置,从头开始再走一遍
+    $('#reset').click(function(){
      	if(myplugin){
-	  	myplugin.reset();
+      	myplugin.reset();
      	}
-	});
+    });
 
-	// 更改配置 (可以更改所有的配置)
-	$('#speed10').click(function(){
+    // 更改配置 (可以更改所有的配置)
+    $('#speed10').click(function(){
      	if(myplugin){
      	//这里更改的是速度
-	  	myplugin.options({speed: 10});
+      	myplugin.options({speed: 10});
      	}
-	});
-			      
--. CSS配置
-	
-	/*显示圆形进度的外层div,自动创建的div*/
-	.jCProgress {
-     	position: absolute;
-     	z-index: 9999999;
-     	/*  margin-top:-15px; /* offset from the center */
-	}
-	/*内部百分比进度数字div*/
+    });
 
-	.jCProgress > div.percent {
+-. CSS 配置
+/_显示圆形进度的外层 div,自动创建的 div_/
+.jCProgress {
+position: absolute;
+z-index: 9999999;
+/_ margin-top:-15px; /_ offset from the center */
+}
+/*内部百分比进度数字 div\*/
+
+    .jCProgress > div.percent {
      	font: 18px/27px 'BebasRegular', Arial, sans-serif;
      	color:#ebebeb;
      	text-shadow: 1px 1px 1px #1f1f1f;
@@ -203,9 +206,4 @@ tags:
      	margin-left:22px;
      	text-align: center;
      	width:60px;
-	}
-
-
-
-
-
+    }

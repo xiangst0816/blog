@@ -14,12 +14,10 @@ tags:
 
 ## 能力检测
 
-H5能力检测: https://modernizr.com/
+H5 能力检测: https://modernizr.com/
 
-## 怪癖检测(Bug检测)
+## 怪癖检测(Bug 检测)
 
+### userAgent 检测
 
-### userAgent检测
-
-一般通过正则匹配userAgent进行平台鉴别.
-
+一般通过正则匹配 userAgent 进行平台鉴别.

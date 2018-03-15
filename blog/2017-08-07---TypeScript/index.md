@@ -63,18 +63,16 @@ let strLength: number = (someValue as string).length;
 
 // 解构模式标记类型
 let {a, b}: {a: string, b: number} = o;
-
-
 ```
 
 ## 变量声明
 
-- 尽量使用`let`, 'const'替换`var`
-- 解构和es6相同, 注意: `默认值 + 类型 + 解构` 的组合写法
+* 尽量使用`let`, 'const'替换`var`
+* 解构和 es6 相同, 注意: `默认值 + 类型 + 解构` 的组合写法
 
 ## 接口
 
-> TypeScript的核心原则之一是对值所具有的结构进行类型检查。
+> TypeScript 的核心原则之一是对值所具有的结构进行类型检查。
 
 ```js
 // 可选属性
@@ -126,7 +124,6 @@ interface Foo extends Square, Shape {
     FooLength: number;
 }
 // 接口集成类(未写)
-
 ```
 
 ## 类
@@ -218,7 +215,6 @@ console.log(grid2.calculateDistanceFromOrigin({x: 10, y: 10}));
 // 抽象类
 // 构造函数
 // 把类当做接口使用
-
 ```
 
 ## 函数
@@ -259,7 +255,6 @@ function pickCard(x): any {
         return { suit: suits[pickedSuit], card: x % 13 };
     }
 }
-
 ```
 
 ## 泛型
@@ -267,7 +262,6 @@ function pickCard(x): any {
 ```js
 // 定义类型变量T
 function identity<T>(arg: T): T {
-    return arg;
+  return arg;
 }
 ```
-
