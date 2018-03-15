@@ -31,22 +31,18 @@ export default class Header extends React.Component {
             this.setState({
                 coverImage: coverUrl
             });
-            this.initScroll();
+            this.coverScroll();
         };
         coverImage.src = coverUrl;
     }
 
-    initScroll = () => {
+    coverScroll = () => {
         if (!this.coverElement) {
             return;
         }
 
-        // if (window.navigator.userAgent.toLowerCase().indexOf('mobile') > -1) {
-        //     return;
-        // }
-
         let coverHeight = this.coverElement.offsetHeight;
-        const scrollHandler = throttle(() => {
+        const coverScrollHandler = throttle(() => {
             let windowPosition = window.scrollY;
             if (windowPosition > 0) {
                 this.setState({
@@ -79,14 +75,43 @@ export default class Header extends React.Component {
             }
         }, 16);
 
-        scrollHandler();
-        registerListener(window, 'scroll', scrollHandler, { passive: true }, this.unRegisterListenersCollection);
-        registerListener(window, 'resize', scrollHandler, { passive: true }, this.unRegisterListenersCollection);
-        registerListener(window, 'orientationchange', scrollHandler, { passive: true }, this.unRegisterListenersCollection);
+        coverScrollHandler();
+        registerListener(window, 'scroll', coverScrollHandler, { passive: true }, this.unRegisterListenersCollection);
+        registerListener(window, 'resize', coverScrollHandler, { passive: true }, this.unRegisterListenersCollection);
+        registerListener(window, 'orientationchange', coverScrollHandler, { passive: true }, this.unRegisterListenersCollection);
+    };
+
+    navScroll = () => {
+        const navScrollHandler = throttle(() => {
+            let windowPosition = window.scrollY;
+            // check direction
+            if (Math.abs(windowPosition - recordPosition) > 20) {
+                if (windowPosition > recordPosition) {
+                    if (!this.state.direction) {
+                        this.setState({ direction: true }, () => {
+                            console.log('up', this.state.direction);
+                        });
+                    }
+                } else {
+                    if (this.state.direction) {
+                        this.setState({ direction: false }, () => {
+                            console.log('down', this.state.direction);
+                        });
+                    }
+                }
+                recordPosition = windowPosition;
+            }
+        }, 16);
+
+        navScrollHandler();
+        registerListener(window, 'scroll', navScrollHandler, { passive: true }, this.unRegisterListenersCollection);
+        registerListener(window, 'resize', navScrollHandler, { passive: true }, this.unRegisterListenersCollection);
+        registerListener(window, 'orientationchange', navScrollHandler, { passive: true }, this.unRegisterListenersCollection);
     };
 
     componentDidMount() {
         this.loadCoverImage();
+        this.navScroll();
     }
 
     componentWillUnmount() {
