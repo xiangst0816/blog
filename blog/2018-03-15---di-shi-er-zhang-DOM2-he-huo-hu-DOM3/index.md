@@ -1,3 +1,15 @@
+---
+title: 第十二章 DOM2和DOM3
+author: 烈风裘
+date: 2018-03-15T01:32:35.256Z
+draft: false
+comments: false
+star: false
+cover: ''
+tags: 
+  - 未归档
+---
+
 
 ### 1. 为什么`ele.style`属性获取到的样式信息不全?
 

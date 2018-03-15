@@ -1,3 +1,15 @@
+---
+title: 第十三章 事件
+author: 烈风裘
+date: 2018-03-15T01:32:35.258Z
+draft: false
+comments: false
+star: false
+cover: ''
+tags: 
+  - 未归档
+---
+
 
 > 这里所说的事件是指: JavaScript和HTML之间交互的事件. 也就是说, 浏览器文档在交互的过程中会以事件的方式通知绑定的**监听器**. 这里使用了传统软件工程的**观察者模式**的设计模型, 实现**JavaScript**与**文档(HTML/CSS)**之间的解耦.
 
