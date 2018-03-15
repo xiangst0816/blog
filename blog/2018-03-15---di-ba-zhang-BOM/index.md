@@ -1,7 +1,7 @@
 ---
 title: 第八章 BOM
-author:
-date: 2018-03-05T01:08:54.000Z
+author: 烈风裘
+date: 2018-03-15T01:23:29.251Z
 draft: false
 comments: false
 star: false
@@ -10,7 +10,6 @@ tags:
   - 未归档
 ---
 
-# 第八章 BOM
 
 ### 1. `window`/`top `/`self`/`parent`/`Global`这些对象的含义和区别?
 

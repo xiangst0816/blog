@@ -1,6 +1,6 @@
 ---
 title: 第九章 客户端检测
-author:
+author: 烈风裘
 date: 2018-03-05T01:08:59.000Z
 draft: false
 comments: false

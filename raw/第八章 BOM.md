@@ -1,4 +1,3 @@
-# 第八章 BOM
 
 ### 1. `window`/`top `/`self`/`parent`/`Global`这些对象的含义和区别?
 

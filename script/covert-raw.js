@@ -5,11 +5,13 @@ const pinyin = require('pinyin');
 const rimraf = require('rimraf');
 const RawPath = resolve('../raw/');
 const BlogPath = resolve('../blog/');
+const author = require('../author/author.json');
+const master = author.filter(item => item.master)[0];
 
 fs.readdir(RawPath, function (err, data) {
     if (err) return;
     if (!data || data.length == 0) return;
-    console.log(`已完成的原始文档: \n`)
+    console.log(`已完成的原始文档: \n`);
     data.forEach((path) => {
         if (path.split('.')[1] !== 'md') return;
         let title = path.split('.')[0];
@@ -25,7 +27,7 @@ fs.readdir(RawPath, function (err, data) {
         let inputData =
             `---` + '\n' +
             `title: ${title}` + '\n' +
-            `author:` + '\n' +
+            `author: ${master.id}` + '\n' +
             `date: ${(new Date(stat.birthtime)).toISOString()}` + '\n' +
             `draft: false` + '\n' +
             `comments: false` + '\n' +
@@ -39,7 +41,7 @@ fs.readdir(RawPath, function (err, data) {
 
         fs.writeFileSync(`${BlogPath}${dirName}/index.md`, inputData + readFileData);
 
-        console.log(`${RawPath}${path}`)
+        console.log(`${RawPath}${path}`);
 
         // rimraf(`${RawPath}${path}`, function (err) {
         //     if (err) return;

@@ -8,6 +8,8 @@ import Share from '../components/Share';
 import PostContent from '../components/PostContent';
 import Header from '../components/Header';
 
+const GithubPrefix = 'https://github.com/xiangsongtao/blog/blob/master/blog/';
+
 export default class BlogPost extends React.Component {
     render() {
         const { currentPost, prevPost, nextPost, site, master } = this.props.data;
@@ -17,6 +19,8 @@ export default class BlogPost extends React.Component {
         const { logo, cover: siteCover, navigation } = siteMetadata;
         const author = post.author || master;
         const cover = post.cover ? post.cover : (siteCover ? siteCover : false);
+        const relativePath = currentPost.fields.relativePath;
+        const postInGithub = `${GithubPrefix}${relativePath}`;
         return (
             <div>
                 <Helmet title={post.title} />
@@ -32,7 +36,9 @@ export default class BlogPost extends React.Component {
                         <div className="post-meta-inner">
                             <Link
                                 to={`/author/${kebabCase(author.id)}/`}>{author.id}</Link> | <time>{post.date} | {currentPost.timeToRead} min
-                            read</time>
+                            read</time> | <a target="_target"
+                                             href={postInGithub}><i
+                            className="icon icon-github"></i> Edit this page</a>
                         </div>
                     </div>
                 </Header>
@@ -51,7 +57,8 @@ export default class BlogPost extends React.Component {
                                 </aside>
                                 <div className="clear"></div>
                                 <aside className="post-author">
-                                    <Avatar className="post-author-avatar avatar" avatar={author.avatar} name={author.id} />
+                                    <Avatar className="post-author-avatar avatar" avatar={author.avatar}
+                                            name={author.id} />
                                     <div className="post-author-bio">
                                         <h4 className="post-author-name">
                                             <Link to={`/author/${kebabCase(author.id)}/`}>{author.id}</Link>
@@ -117,6 +124,10 @@ export const pageQuery = graphql`
       paragraphs
       sentences
       words
+    }
+    fields {
+      slug
+      relativePath
     }
     excerpt(pruneLength: 110)
     frontmatter {

@@ -92,6 +92,7 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
         const absolutePath = slash(node.absolutePath);
         const parsedFilePath = path.parse(absolutePath);
         const slug = `/${parsedFilePath.dir.split('---')[1]}/`;
+        const dir = parsedFilePath.dir.split('/').slice(-1)[0];
         createNodeField({ node, name: `slug`, value: slug });
     } else if (
         node.internal.type === `MarkdownRemark` &&
@@ -103,6 +104,7 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
             name: `slug`,
             value: fileNode.fields.slug,
         });
+        createNodeField({ node, name: `relativePath`, value: fileNode.relativePath });
     }
 };
 
