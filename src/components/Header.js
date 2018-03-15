@@ -84,19 +84,19 @@ export default class Header extends React.Component {
     navScroll = () => {
         const navScrollHandler = throttle(() => {
             let windowPosition = window.scrollY;
+            if (windowPosition < 0) {
+                this.setState({ direction: false });
+                return;
+            }
             // check direction
             if (Math.abs(windowPosition - recordPosition) > 20) {
                 if (windowPosition > recordPosition) {
                     if (!this.state.direction) {
-                        this.setState({ direction: true }, () => {
-                            console.log('up', this.state.direction);
-                        });
+                        this.setState({ direction: true });
                     }
                 } else {
                     if (this.state.direction) {
-                        this.setState({ direction: false }, () => {
-                            console.log('down', this.state.direction);
-                        });
+                        this.setState({ direction: false });
                     }
                 }
                 recordPosition = windowPosition;
