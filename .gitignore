@@ -10,6 +10,8 @@ public/
 .cache/
 .DS_Store
 .idea
+raw/
+backup/
 
 # Runtime data
 pids
