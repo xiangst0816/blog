@@ -1,13 +1,8 @@
 import React from 'react';
 
 export default class Share extends React.Component {
-    componentDidMount() {
-        this.url = location && location.href;
-    }
-
     render() {
-        const title = this.props.title;
-        const url = this.url;
+        const { title, url } = this.props;
         return (
             <div className="post-share">
                 <a className="twitter"

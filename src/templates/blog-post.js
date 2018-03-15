@@ -16,11 +16,13 @@ export default class BlogPost extends React.Component {
         const { next, prev } = this.props.pathContext; // 上一篇和下一篇文章的slug
         const post = currentPost.frontmatter;
         const { siteMetadata } = site;
-        const { logo, cover: siteCover, navigation } = siteMetadata;
+        const { logo, cover: siteCover, navigation, siteUrl } = siteMetadata;
         const author = post.author || master;
         const cover = post.cover ? post.cover : (siteCover ? siteCover : false);
         const relativePath = currentPost.fields.relativePath;
         const postInGithub = `${GithubPrefix}${relativePath}`;
+        const shareUrl = `${siteUrl}${currentPost.fields.slug}`
+
         return (
             <div>
                 <Helmet title={post.title} />
@@ -48,7 +50,7 @@ export default class BlogPost extends React.Component {
                             <PostContent html={currentPost.html} />
 
                             <section className="post-info">
-                                <Share title={post.title} />
+                                <Share title={post.title} url={shareUrl} />
                                 <aside className="post-tags">
                                     {
                                         post.tags && post.tags.map(tag => (
