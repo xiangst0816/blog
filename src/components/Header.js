@@ -4,6 +4,8 @@ import registerListener from 'tp-register-listener';
 import throttle from 'lodash.throttle';
 import Link, { withPrefix } from 'gatsby-link';
 
+let recordPosition = 0;
+
 export default class Header extends React.Component {
     constructor(props) {
         super(props);
@@ -13,7 +15,9 @@ export default class Header extends React.Component {
             coverPosition: 0,
             coverActive: !!props.cover,
             coverImage: false,
+            direction: false, // false-up; true-down
         };
+
     }
 
     // maybe to big
@@ -37,9 +41,9 @@ export default class Header extends React.Component {
             return;
         }
 
-        if (window.navigator.userAgent.toLowerCase().indexOf('mobile') > -1) {
-            return;
-        }
+        // if (window.navigator.userAgent.toLowerCase().indexOf('mobile') > -1) {
+        //     return;
+        // }
 
         let coverHeight = this.coverElement.offsetHeight;
         const scrollHandler = throttle(() => {
@@ -54,6 +58,24 @@ export default class Header extends React.Component {
                     coverPosition: 0,
                     coverActive: windowPosition < coverHeight,
                 });
+            }
+
+            // check direction
+            if (Math.abs(windowPosition - recordPosition) > 20) {
+                if (windowPosition > recordPosition) {
+                    if (!this.state.direction) {
+                        this.setState({ direction: true }, () => {
+                            console.log('up', this.state.direction);
+                        });
+                    }
+                } else {
+                    if (this.state.direction) {
+                        this.setState({ direction: false }, () => {
+                            console.log('down', this.state.direction);
+                        });
+                    }
+                }
+                recordPosition = windowPosition;
             }
         }, 16);
 
@@ -78,42 +100,39 @@ export default class Header extends React.Component {
     render() {
         const { cover, hideNavBack, navigation, isPost, logo } = this.props;
         const coverClassName = isPost ? 'post-cover' : 'blog-cover';
-        const { coverPosition, coverActive, coverImage } = this.state;
-
+        const { coverPosition, direction, coverActive, coverImage } = this.state;
         const logoUrl = logo && logo.indexOf('http') > -1 ? logo : withPrefix(logo);
-
-        const BackButton = () => {
-            if (logo) {
-                return (
-                    <div className="blog-logo">
-                        <Link to="/"><img src={logoUrl} alt="Blog Logo" /></Link>
-                    </div>
-                );
-            } else {
-                return (
-                    <div id="home-button" className="nav-button">
-                        <Link className="home-button" to="/" title="Home">
-                            <i className="icon icon-arrow-left"></i> Home
-                        </Link>
-                    </div>
-                );
-            }
-        };
 
         const id = isPost ? 'post-header' : 'blog-header';
 
         return (
-            <header id={id} className={classNames({ 'has-cover': cover, 'cover-active': coverActive })}>
+            <header id={id} className={classNames({
+                'has-cover': cover,
+                'cover-active': coverActive,
+                'scroll-down': direction
+            })}>
                 <div className="inner">
                     <nav id="navigation">
                         {
-                            !hideNavBack && <BackButton />
+                            !hideNavBack && (
+                                logo ? (
+                                    <div className="blog-logo">
+                                        <Link to="/"><img src={logoUrl} alt="Blog Logo" /></Link>
+                                    </div>
+                                ) : (
+                                    <div id="home-button" className="nav-button">
+                                        <Link className="home-button" to="/" title="Home">
+                                            <i className="icon icon-arrow-left"></i> Home
+                                        </Link>
+                                    </div>
+                                )
+                            )
                         }
                         {
                             navigation && (
-                                <span id="menu-button" onClick={this.toggle} className="nav-button">
-				            <a className="menu-button"><i className="icon icon-menu"></i> Menu</a>
-			            </span>
+                                <div id="menu-button" onClick={this.toggle} className="nav-button">
+                                    <a className="menu-button"><i className="icon icon-menu"></i> Menu</a>
+                                </div>
                             )
                         }
                     </nav>

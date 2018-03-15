@@ -582,6 +582,11 @@ img {
 #navigation {
 }
 
+.blog-logo,
+.nav-button {
+  transition: all ease-out 0.3s;
+}
+
 .nav-button {
   position: fixed;
   top: 0;
@@ -1631,7 +1636,7 @@ img {
   text-align: center;
   text-decoration: none;
   color: $color-blue-60;
-  transition: all ease 0.3s;
+  transition: all ease-out 0.3s;
   will-change: color, border-color;
   border-radius: 2em;
 }
@@ -1717,10 +1722,14 @@ img {
     padding-right: 0;
     transform: translate3d(-16em, 0, 0);
   }
-  .blog-logo,
-  .nav-button {
-    position: absolute;
+
+  .scroll-down {
+    .blog-logo,
+    .nav-button {
+      transform: translateY(-160%);
+    }
   }
+
   #blog-author {
     margin: auto;
   }
