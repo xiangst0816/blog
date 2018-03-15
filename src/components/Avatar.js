@@ -13,7 +13,7 @@ export default class Avatar extends React.Component {
         this.setState({
             opacity: 1
         }, () => {
-            console.log('loaded');
+            console.log('loaded', this.props.avatar);
         });
     };
 
