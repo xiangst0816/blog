@@ -58,7 +58,6 @@ export default class Template extends React.Component {
 
 Template.propTypes = {
   data: PropTypes.object.isRequired,
-  pathContext: PropTypes.object.isRequired,
   children: PropTypes.func.isRequired,
 };
 

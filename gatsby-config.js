@@ -63,6 +63,7 @@ const config = {
                 precision: 8,
             },
         },
+        'gatsby-plugin-catch-links',
         'gatsby-transformer-sharp',
         {
             resolve: 'gatsby-transformer-remark',

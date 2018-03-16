@@ -1545,11 +1545,18 @@ img {
 
 .pagination {
   position: relative;
-  //height: 2em;
+  height: 6em;
   margin: 0;
-  padding: 2em 0;
   font-family: 'Fira Sans', sans-serif;
   user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .inner {
+    padding: 2em;
+    width: $content-wide;
+    height: 100%;
+  }
 }
 
 .pagination:after {
@@ -1640,26 +1647,26 @@ img {
   display: block;
 }
 
-
 /* ==========================================================================
    Media Queries - Bigger than 1200px
    ========================================================================== */
 
 @media (min-width: 1200px) {
   html {
-    font-size: 62.5%;
+    //font-size: 62.5%;
+    font-size: 58%;
   }
 }
 
-/* ==========================================================================
-   Media Queries - Bigger than 1600px
-   ========================================================================== */
-
-@media (min-width: 1600px) {
-  html {
-    font-size: 70%;
-  }
-}
+///* ==========================================================================
+//   Media Queries - Bigger than 1920
+//   ========================================================================== */
+//
+//@media (min-width: 1920px) {
+//  html {
+//    //font-size: 68%;
+//  }
+//}
 
 /* ==========================================================================
    Media Queries - Smaller than 960px

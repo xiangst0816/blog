@@ -93,5 +93,5 @@ export default class ExcerptLoop extends React.Component {
 }
 
 ExcerptLoop.propTypes = {
-  edges: PropTypes.object.isRequired,
+  edges: PropTypes.array.isRequired,
 };
