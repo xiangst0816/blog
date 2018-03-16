@@ -70,7 +70,7 @@
   },
   "scripts": {
     "start": "npm run develop",
-    "build": "gatsby build",
+    "build": "rimraf public && gatsby build",
     "deploy": "rimraf public && gatsby build --prefix-paths && node script/deploy.js",
     "serve": "gatsby serve",
     "covert-raw": "node ./script/covert-raw",
