@@ -9,7 +9,7 @@ const trackingId = 'UA-114740261-4';
 const config = {
     siteMetadata: {
         title: `Attila`,
-        cover: '',
+        cover: '/background/6.jpg',
         description: `Thoughts, stories and ideas.`, // 网站描述
         keywords: `Thoughts, stories and ideas.`, // 网站描述
         tagCover: '/background/5.jpg',

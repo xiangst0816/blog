@@ -427,18 +427,18 @@ img {
 }
 
 #blog-header:after {
-  //position: absolute;
-  //width: $content-wide;
-  //height: 1px;
-  //left: 50%;
-  //bottom: 0;
-  //margin-left: (-$content-wide / 2);
-  //content: '';
-  //background: $color-gray-90;
+  position: absolute;
+  width: $content-wide - 4;
+  height: 1px;
+  left: 50%;
+  bottom: 0;
+  margin-left: ((4-$content-wide) / 2);
+  content: '';
+  background: $color-gray-90;
 }
 
 #blog-header.has-cover {
-  padding: 9em 0 10em !important;
+  padding: 9em 0 10em;
   background: $color-black;
   overflow: hidden;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -892,11 +892,11 @@ img {
 
 #blog-author:after {
   position: absolute;
-  width: $content-wide;
+  width: $content-wide - 4;
   height: 1px;
   left: 50%;
   bottom: 0;
-  margin-left: (-$content-wide / 2);
+  margin-left: ((4-$content-wide) / 2);
   content: '';
   background: $color-gray-90;
 }
@@ -945,11 +945,11 @@ img {
 
 .container .post:after {
   position: absolute;
-  width: $content-wide;
+  width: $content-wide - 4;
   height: 1px;
   left: 50%;
   bottom: 0;
-  margin-left: (-$content-wide / 2);
+  margin-left: ((4 - $content-wide) / 2);
   content: '';
   background: $color-gray-90;
 }
@@ -1006,30 +1006,11 @@ img {
 
 .container .content-tags:after {
   position: absolute;
-  width: $content-wide;
+  width: $content-wide - 4;
   height: 1px;
   left: 50%;
   bottom: 0;
-  margin-left: (-$content-wide / 2);
-  content: '';
-  background: $color-gray-90;
-}
-
-/* ==========================================================================
-   Post
-   ========================================================================== */
-
-.post.page-template {
-  padding-bottom: 4em;
-}
-
-.page-template #footer:after {
-  position: absolute;
-  width: $content-wide;
-  height: 1px;
-  left: 50%;
-  top: 0;
-  margin-left: (-$content-wide / 2);
+  margin-left: ((4 - $content-wide) / 2);
   content: '';
   background: $color-gray-90;
 }
@@ -1561,11 +1542,11 @@ img {
 
 .pagination:after {
   position: absolute;
-  width: $content-wide;
+  width: $content-wide - 4;
   height: 1px;
   left: 50%;
   bottom: 0;
-  margin-left: (-$content-wide / 2);
+  margin-left: ((4 - $content-wide) / 2);
   content: '';
   background: $color-gray-90;
 }
@@ -1733,9 +1714,6 @@ img {
 @media only screen and (max-width: 480px) {
   .inner {
     padding: 0 16px;
-  }
-  .post-template #main-header {
-    padding: 16px 0;
   }
   #main-nav a {
     margin: 16px;

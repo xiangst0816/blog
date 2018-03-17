@@ -20,7 +20,7 @@ export default class TagRoute extends React.Component {
     const kebabCaseName = kebabCase(tag);
 
     return (
-      <div>
+      <div className="tag-template">
         <Helmet title={`${title}-Tag`} />
         <Header
           cover={coverImage}

@@ -8,64 +8,64 @@ import Pagination from '../components/Pagination';
 import Header from '../components/Header';
 
 export default class Index extends React.Component {
-  render() {
-    const { edges, totalCount } = this.props.data.allMarkdownRemark;
-    const { skip = 0, limit = 10 } = this.props.pathContext;
-    const {
-      cover,
-      navigation,
-      description,
-      title,
-      logo,
-    } = this.props.data.site.siteMetadata;
+    render() {
+        const { edges, totalCount } = this.props.data.allMarkdownRemark;
+        const { skip = 0, limit = 10 } = this.props.pathContext;
+        const {
+            cover,
+            navigation,
+            description,
+            title,
+            logo,
+        } = this.props.data.site.siteMetadata;
 
-    return (
-      <div className="home-template">
-        <Helmet title={title} />
-        <Header
-          logo={logo}
-          cover={cover}
-          hideNavBack
-          navigation={navigation}
-          isPost={false}
-        >
-          <h1 className="blog-name">
-            <Link to="/">{title}</Link>
-          </h1>
-          {description && (
-            <span className="blog-description">{description}</span>
-          )}
-        </Header>
-        <div id="index" className="container">
-          <main
-            className={classNames('content', { paged: skip > 0 })}
-            role="main"
-          >
-            <div className="extra-pagination">
-              <Pagination
-                skip={skip}
-                limit={limit}
-                total={totalCount}
-                pathPrefix="/page/"
-              />
+        return (
+            <div className={classNames('home-template', { paged: skip > 0 })}>
+                <Helmet title={title} />
+                <Header
+                    logo={logo}
+                    cover={cover}
+                    hideNavBack
+                    navigation={navigation}
+                    isPost={false}
+                >
+                    <h1 className="blog-name">
+                        <Link to="/">{title}</Link>
+                    </h1>
+                    {description && (
+                        <span className="blog-description">{description}</span>
+                    )}
+                </Header>
+                <div id="index" className="container">
+                    <main
+                        className={classNames('content', { paged: skip > 0 })}
+                        role="main"
+                    >
+                        <div className="extra-pagination">
+                            <Pagination
+                                skip={skip}
+                                limit={limit}
+                                total={totalCount}
+                                pathPrefix="/page/"
+                            />
+                        </div>
+                        <ExcerptLoop edges={edges} />
+                        <Pagination
+                            skip={skip}
+                            limit={limit}
+                            total={totalCount}
+                            pathPrefix="/page/"
+                        />
+                    </main>
+                </div>
             </div>
-            <ExcerptLoop edges={edges} />
-            <Pagination
-              skip={skip}
-              limit={limit}
-              total={totalCount}
-              pathPrefix="/page/"
-            />
-          </main>
-        </div>
-      </div>
-    );
-  }
+        );
+    }
 }
 
 Index.propTypes = {
-  data: PropTypes.object.isRequired,
-  pathContext: PropTypes.object.isRequired,
+    data: PropTypes.object.isRequired,
+    pathContext: PropTypes.object.isRequired,
 };
 
 /* eslint-disable */

@@ -41,7 +41,6 @@ export default class Template extends React.Component {
                     <div
                         id="body-class"
                         style={{ display: 'none' }}
-                        className="tag-template"
                     />
                     <Footer />
                 </section>

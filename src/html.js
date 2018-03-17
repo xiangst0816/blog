@@ -41,7 +41,7 @@ export default class HTML extends React.Component {
                 {this.props.headComponents}
                 {css}
             </head>
-            <body className="tag-template">
+            <body>
             <div
                 id="___gatsby"
                 dangerouslySetInnerHTML={{ __html: this.props.body }}

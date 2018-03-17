@@ -60,7 +60,7 @@ export default class AuthorRoute extends React.Component {
       );
     };
     return (
-      <div>
+      <div className="author-template">
         <Helmet title={`${title}-${author.id}`} />
         <Header
           cover={coverImage}
