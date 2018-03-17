@@ -1,5 +1,5 @@
 const autoprefixer = require('autoprefixer');
-const pathPrefix = process.env.CI ? `/blog` : ``;
+const pathPrefix = process.env.CI ? (process.env.DEPLOY === 'github' ? `/blog` : '') : '';
 const origin = 'https://xiangsongtao.github.io';
 const siteUrl = origin + pathPrefix;
 

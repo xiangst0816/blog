@@ -17,4 +17,5 @@ notifications:
 node_js:
   - '8'
 script:
-  - npm run deploy
+  - npm run deploy:github
+  - npm run deploy:website
