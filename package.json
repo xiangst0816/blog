@@ -78,6 +78,7 @@
     "serve": "gatsby serve",
     "deploy:github": "cross-env DEPLOY=github npm run build && node script/deploy-github.js",
     "deploy:website": "cross-env DEPLOY=website npm run build && gulp --gulpfile script/deploy-website.js deploy",
+    "upload:website": "gulp --gulpfile script/deploy-website.js deploy",
     "covert-raw": "node ./script/covert-raw",
     "format": "prettier --trailing-comma es5 --single-quote --write \"src/**/*.js\"",
     "lint-docs:fix": "prettylint blog/**/*.md --fix"

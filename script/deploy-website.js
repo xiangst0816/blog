@@ -30,7 +30,7 @@ gulp.task('exec', function () {
 
 gulp.task('dest', function () {
     return gulp
-        .src([`${publicPath}/**/*.*`])
+        .src([`${publicPath}/**/*.*`, `!${publicPath}/**/*.*.map`])
         .pipe(gulpSSH.dest(process.env.WEBSITE_DST));
 });
 
