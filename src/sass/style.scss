@@ -1089,7 +1089,6 @@ img {
   font-size: 0.75em;
   font-weight: 400;
   line-height: 1.334em;
-  //opacity: 0.5;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -1098,6 +1097,9 @@ img {
 .post-meta-inner {
   opacity: 0.5;
   display: inline-block;
+  .icon {
+    color: inherit;
+  }
 }
 
 .has-cover .post-meta-inner {
