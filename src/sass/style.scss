@@ -1180,12 +1180,12 @@ img {
   color: $primary-color;
 }
 
-.post-content img,
-.post-content .fluid-width-video-wrapper {
-  max-width: none;
-  width: 110%;
-  margin-left: -5%;
-}
+//.post-content img,
+//.post-content .fluid-width-video-wrapper {
+//  //max-width: none;
+//  //width: 110%;
+//  //margin-left: -5%;
+//}
 
 /* ==========================================================================
    Post Info
@@ -1658,15 +1658,15 @@ img {
   }
 }
 
-///* ==========================================================================
-//   Media Queries - Bigger than 1920
-//   ========================================================================== */
-//
-//@media (min-width: 1920px) {
-//  html {
-//    //font-size: 68%;
-//  }
-//}
+/* ==========================================================================
+   Media Queries - Bigger than 1920
+   ========================================================================== */
+
+@media (min-width: 1925px) {
+  html {
+    font-size: 66%;
+  }
+}
 
 /* ==========================================================================
    Media Queries - Smaller than 960px

@@ -6,13 +6,11 @@ const siteUrl = origin + pathPrefix;
 const config = {
     siteMetadata: {
         title: `Attila`,
-        // cover: 'https://casper.ghost.org/v1.0.0/images/design.jpg',
-        // cover: '/background/4.jpg',
         cover: '',
         description: `Thoughts, stories and ideas.`, // 网站描述
         keywords: `Thoughts, stories and ideas.`, // 网站描述
         tagCover: '/background/5.jpg',
-        siteUrl: origin + pathPrefix, // 页面路径
+        siteUrl: siteUrl, // 页面路径
         logo: '',
         language: 'zh-CN',
         navigation: true, // 是否开启右侧导航
@@ -25,9 +23,7 @@ const config = {
         {
             resolve: `gatsby-plugin-nprogress`,
             options: {
-                // Setting a color is optional.
                 color: `#f26a3d`,
-                // Disable the loading spinner.
                 showSpinner: false,
             },
         },
@@ -69,6 +65,13 @@ const config = {
             resolve: 'gatsby-transformer-remark',
             options: {
                 plugins: [
+                    'gatsby-remark-numbered-footnotes',
+                    // {
+                    //     resolve: 'gatsby-remark-sequence-2',
+                    //     options: {
+                    //         'theme': 'simple', // simple, hand
+                    //     }
+                    // },
                     {
                         resolve: 'gatsby-remark-images',
                         options: {
@@ -79,13 +82,6 @@ const config = {
                     {
                         resolve: `gatsby-remark-prismjs`,
                         options: {
-                            // Class prefix for <pre> tags containing syntax highlighting;
-                            // defaults to 'language-' (eg <pre class="language-js">).
-                            // If your site loads Prism into the browser at runtime,
-                            // (eg for use with libraries like react-live),
-                            // you may use this to prevent Prism from re-processing syntax.
-                            // This is an uncommon use-case though;
-                            // If you're unsure, it's best to use the default value.
                             classPrefix: 'language-',
                         },
                     },
@@ -211,44 +207,17 @@ const config = {
                 name: 'Attila',
                 short_name: 'Attila',
                 description: 'Thoughts, stories and ideas.',
-                start_url: siteUrl,
+                start_url: pathPrefix,
                 background_color: '#333F44',
                 theme_color: '#333F44',
                 orientation: 'portrait',
                 display: 'standalone', // fullscreen, standalone, minimal-ui, browser
                 icons: [
-                    // Everything in /static will be copied to an equivalent
-                    // directory in /public during development and build, so
-                    // assuming your favicons are in /static/favicons,
-                    // you can reference them here
                     {
-                        'src': `${pathPrefix}/favicon/ghost-128.png`,
-                        'sizes': '128x128',
-                        'type': 'image/png'
-                    },
-                    {
-                        'src': `${pathPrefix}/favicon/ghost-192.png`,
-                        'sizes': '192x192',
-                        'type': 'image/png'
-                    },
-                    {
-                        'src': `${pathPrefix}/favicon/ghost-256.png`,
-                        'sizes': '256x256',
-                        'type': 'image/png'
-                    },
-                    {
-                        'src': `${pathPrefix}/favicon/ghost-512.png`,
-                        'sizes': '512x512',
-                        'type': 'image/png'
-                    },
-                    {
-                        'src': `${pathPrefix}/favicon/favicon.ico`,
-                        'sizes': '64x64'
-                    },
-                    {
-                        'src': `${pathPrefix}/favicon/ghost-icon.svg`,
-                        'sizes': '1024x1024'
-                    },
+                        'src': `${pathPrefix}/favicons/favicon.png`,
+                        sizes: '1024x1024',
+                        type: 'image/png',
+                    }
                 ]
             },
         },

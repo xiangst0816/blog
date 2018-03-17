@@ -410,3 +410,17 @@
     background: #f6f8fa;
     border-top: 0;
 }
+
+.markdown-body .footnotes li {
+    margin: 2em 0;
+}
+
+.markdown-body .footnotes li p {
+    display: inline;
+}
+
+.markdown-body .task-list-item input {
+    vertical-align: text-top;
+    top: 1px;
+    position: relative;
+}
