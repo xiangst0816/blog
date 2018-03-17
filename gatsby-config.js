@@ -4,7 +4,9 @@ const origin1 = 'https://xiangsongtao.github.io';
 const origin2 = 'http://xiangsongtao.com';
 const origin = process.env.CI ? (process.env.DEPLOY === 'github' ? origin1 : origin2) : origin2;
 const siteUrl = origin + pathPrefix;
-const trackingId = 'UA-114740261-4';
+const trackingId1 = 'UA-114740261-4';
+const trackingId2 = 'UA-114740261-3';
+const trackingId = process.env.CI ? (process.env.DEPLOY === 'github' ? trackingId1 : trackingId2) : trackingId2;
 
 const config = {
     siteMetadata: {
