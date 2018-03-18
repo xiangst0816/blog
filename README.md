@@ -4,4 +4,9 @@
 
 Thoughts, stories and ideas.
 
-> 仅限我自己使用.
+> Used to automatically post my blog post. Based on React/Gatsby/GraphQL/...
+
+## Link
+
+- [Github Page: https://xiangsongtao.github.io/blog/](https://xiangsongtao.github.io/blog/)
+- [In China: http://xiangsongtao.com/](http://xiangsongtao.com/)
