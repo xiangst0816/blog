@@ -202,7 +202,7 @@ function 函数中返回，则 this 指向 window，`this->window`
 
 ### 1. 忽略 this
 
-把`null`或`undefined`作为`this`的绑定对象传入`call`、`apply`、`bind`，调用时会被忽略，实际应用的是默认绑定规则`this->window`！
+把`null`或`undefined`作为`this`的绑定对象传入`call`、`apply`、`bind`，调用时会被忽略，实际应用的是默认绑定规则`this->window`！如果是严格模式, 这个值为`undefined`.
 
 ```js
 function foo() {
