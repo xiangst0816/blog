@@ -2,10 +2,14 @@ const autoprefixer = require('autoprefixer');
 const pathPrefix = '/blog';
 let siteUrl = 'http://xiangsongtao.com/';
 let trackingId = 'UA-114740261-3';
+let faviconUrl = '/favicons/favicon.png';
+let start_url = '/';
 
 if (process.env.CI && process.env.DEPLOY === 'github') {
     trackingId = 'UA-114740261-4';
     siteUrl = 'https://xiangsongtao.github.io' + pathPrefix;
+    faviconUrl = pathPrefix + faviconUrl;
+    start_url = pathPrefix + start_url;
 }
 
 module.exports = {
@@ -216,14 +220,14 @@ module.exports = {
                 name: 'Attila',
                 short_name: 'Attila',
                 description: 'Thoughts, stories and ideas.',
-                start_url: pathPrefix ? pathPrefix : '/',
+                start_url: start_url,
                 background_color: '#333F44',
                 theme_color: '#333F44',
                 orientation: 'portrait',
                 display: 'standalone', // fullscreen, standalone, minimal-ui, browser
                 icons: [
                     {
-                        'src': `${pathPrefix}/favicons/favicon.png`,
+                        'src': faviconUrl,
                         sizes: '1024x1024',
                         type: 'image/png',
                     }
