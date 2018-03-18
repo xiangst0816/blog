@@ -107,7 +107,7 @@ console.log(Base.prototype.isPrototypeOf(obj)); // true
 
 默认情况下, 所有原型对象都会**自动获得一个`constructor`(构造函数)属性**, 这个属性指向`prototype`属性所在的函数(也就是构造函数本源). 如图:
 
-![](图片)
+![原型链](yuanxinglian.png)
 
 ### 8. 结合原型链谈谈对象中属性查找方式及优化点?
 
