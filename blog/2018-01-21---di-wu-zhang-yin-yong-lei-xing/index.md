@@ -120,9 +120,9 @@ storeAdd(200); // 400 第一个add函数被覆盖, 参考: 作用域链/函数�
 
 **函数方法**:
 
-* `apply()和call()`: 设置函数内部的 this 对象的值. 用于在**特定环境对象**中调用函数, 扩充作用域, 解耦. 传参说明: 
-	* `apply([thisObj [,argArray] ]);`
-	* `call([thisObject[,arg1 [,arg2 [,...,argn]]]]);`
+* `apply()和call()`: 设置函数内部的 this 对象的值. 用于在**特定环境对象**中调用函数, 扩充作用域, 解耦. 传参说明:
+  * `apply([thisObj [,argArray] ]);`
+  * `call([thisObject[,arg1 [,arg2 [,...,argn]]]]);`
 * `bing()`: IE9+, 创建一个**指定环境对象**的函数实例.
 * `toLocalString():` 返回函数代码(str)
 * `toString()`: 返回函数代码(str)

@@ -22,8 +22,6 @@ H5 能力检测, 比如这个库: [modernizr](https://modernizr.com/)
 
 ## userAgent 检测
 
-一般通过正则匹配 userAgent 进行平台鉴别. 例如: 
+一般通过正则匹配 userAgent 进行平台鉴别. 例如:
 
-- [UAParser.js](https://faisalman.github.io/ua-parser-js/) Lightweight JavaScript-based User-Agent String Parser
-
-
+* [UAParser.js](https://faisalman.github.io/ua-parser-js/) Lightweight JavaScript-based User-Agent String Parser

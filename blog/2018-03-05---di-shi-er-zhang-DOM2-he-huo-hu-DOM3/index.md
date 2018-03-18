@@ -66,11 +66,10 @@ function getBoundingClientRect(element) {
 
 实际使用比较少, 可能会在 VDOM 中使用. IE9+
 
-
 ### 4. 如何获取页面滚动高度?
 
 ```js
-let scrollTop = window.scrollY
+let scrollTop = window.scrollY;
 ```
 
 `document.documentElement.scrollTop`的兼容性不太好.
