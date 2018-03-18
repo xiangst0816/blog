@@ -147,7 +147,7 @@ compareNames = null;
 
 ![执行闭包](http://upload-images.jianshu.io/upload_images/2036128-fdd6a7e0274f0778.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-9.  因此, 即使`createComparisonFunction`函数执行完毕, 但是它的活动对象仍然会留在内存中, 直到匿名函数主动销毁, `createComparisonFunction()`的活动对象才会被销毁. 这里需要补充**JS 垃圾回收及引入计数机制**.
+9.  因此, 即使`createComparisonFunction`函数执行完毕, 但是它的活动对象仍然会留在内存中, 直到匿名函数主动销毁, `createComparisonFunction()`的活动对象才会被销毁. 这里需要补充**JS 垃圾回收及标记清除机制**.
 
 注意:
 
