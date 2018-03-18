@@ -1,14 +1,17 @@
 const autoprefixer = require('autoprefixer');
-const pathPrefix = process.env.CI ? (process.env.DEPLOY === 'github' ? `/blog` : '') : '';
-const origin1 = 'https://xiangsongtao.github.io';
-const origin2 = 'http://xiangsongtao.com';
-const origin = process.env.CI ? (process.env.DEPLOY === 'github' ? origin1 : origin2) : origin2;
-const siteUrl = origin + pathPrefix;
-const trackingId1 = 'UA-114740261-4';
-const trackingId2 = 'UA-114740261-3';
-const trackingId = process.env.CI ? (process.env.DEPLOY === 'github' ? trackingId1 : trackingId2) : trackingId2;
+const pathPrefix = '/blog';
+let siteUrl = 'http://xiangsongtao.com/';
+let trackingId = 'UA-114740261-3';
 
-const config = {
+if (process.env.CI && process.env.DEPLOY === 'github') {
+    trackingId = 'UA-114740261-4';
+    siteUrl = 'https://xiangsongtao.github.io' + pathPrefix;
+}
+
+module.exports = {
+    // gatsby build --prefix-paths
+    // When running the command without the --prefix-paths flag, Gatsby ignores your pathPrefix.
+    pathPrefix: pathPrefix,
     siteMetadata: {
         title: `Attila`,
         cover: '/background/6.jpg',
@@ -119,6 +122,7 @@ const config = {
                         }
                     },
                     'gatsby-remark-autolink-headers',
+                    // 文件放在和文章同文件夹, 引入是别带"/", "./"等参数, 直接写名字
                     'gatsby-remark-copy-linked-files',
                     'gatsby-remark-katex',
                     'gatsby-remark-responsive-iframe',
@@ -212,7 +216,7 @@ const config = {
                 name: 'Attila',
                 short_name: 'Attila',
                 description: 'Thoughts, stories and ideas.',
-                start_url: pathPrefix,
+                start_url: pathPrefix ? pathPrefix : '/',
                 background_color: '#333F44',
                 theme_color: '#333F44',
                 orientation: 'portrait',
@@ -230,9 +234,3 @@ const config = {
         'gatsby-plugin-react-helmet',
     ],
 };
-
-if (pathPrefix) {
-    config.pathPrefix = pathPrefix;
-}
-
-module.exports = config;
