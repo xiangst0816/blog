@@ -147,7 +147,7 @@ function docReady(cb) {
 
 * 混杂模式(BackCompat, 向后兼容模式)的 doctype 可以是:
 
-```
+```html
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 ```
 
@@ -173,7 +173,7 @@ var head = document.head || document.getElementsByTagName("head")[0];
 ### 6. HTML5 中自定义数据属性的应用? 如何兼容不支持浏览器?
 
 * 用于元素渲染外的信息, 需要添加"data-"头, 但是获取时不需要"data".
-* 用于跟踪连接/混搭引用/插件参数/埋点数据等应用
+* 用于**跟踪连接/混搭引用/插件参数/埋点数据**等应用
 * Firefox 6+和 Chrome
 
 ```html

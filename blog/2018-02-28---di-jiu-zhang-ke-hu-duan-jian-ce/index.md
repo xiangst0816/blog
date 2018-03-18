@@ -14,10 +14,16 @@ tags:
 
 ## 能力检测
 
-H5 能力检测: https://modernizr.com/
+H5 能力检测, 比如这个库: [modernizr](https://modernizr.com/)
 
 ## 怪癖检测(Bug 检测)
 
-### userAgent 检测
+一般情况下不推荐使用.
 
-一般通过正则匹配 userAgent 进行平台鉴别.
+## userAgent 检测
+
+一般通过正则匹配 userAgent 进行平台鉴别. 例如: 
+
+- [UAParser.js](https://faisalman.github.io/ua-parser-js/) Lightweight JavaScript-based User-Agent String Parser
+
+

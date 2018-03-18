@@ -14,6 +14,8 @@ tags:
 
 这个 style 对象 是 CSSStyleDeclaration 的实例，包含着**通过 HTML 的 style 特性指定**的所有样式信息，但**不包含**与**外部**样式表或**嵌入**样式表经层叠而来的样式。
 
+> 不同方式定义的样式(`<link>`/`<script>`/在元素上定义)是由差异的!!!
+
 使用`getComputedStyle()`可以获取包含当前元素的所有计算的样式. 方法接收两个参数: 要取得计算样式的元素和一个伪元素字符串（例如":after"）
 
 ```js
@@ -62,4 +64,13 @@ function getBoundingClientRect(element) {
 
 ### 3. DOM 遍历接口
 
-可能会在 VDOM 中使用. IE9+
+实际使用比较少, 可能会在 VDOM 中使用. IE9+
+
+
+### 4. 如何获取页面滚动高度?
+
+```js
+let scrollTop = window.scrollY
+```
+
+`document.documentElement.scrollTop`的兼容性不太好.
