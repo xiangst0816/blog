@@ -263,6 +263,12 @@ element.insertAdjacentHTML("afterend", "<p>Hello world!</p>");
 
 ### 8. scrollIntoView()方法
 
+### 8. 在移动端当键盘遮挡输入框该如何处理?
+
+> 文章来源: [https://github.com/justjavac/the-front-end-knowledge-you-may-dont-know/issues/3](https://github.com/justjavac/the-front-end-knowledge-you-may-dont-know/issues/3)
+
+使用`Element.scrollIntoViewIfNeeded(opt_center)`, 就是在需要的时候将元素滚动到可视区域。
+
 ```js
 //让元素可见, 窗口滚动 之后会让调用元素的顶部与视口顶部尽可能平齐
 document.forms[0].scrollIntoView();

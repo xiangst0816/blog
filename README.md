@@ -10,3 +10,4 @@ Thoughts, stories and ideas.
 
 - [Github Page: https://xiangsongtao.github.io/blog/](https://xiangsongtao.github.io/blog/)
 - [In China: http://xiangsongtao.com/](http://xiangsongtao.com/)
+- [RSS](https://xiangsongtao.github.io/blog/rss.xml)
