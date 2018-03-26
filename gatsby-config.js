@@ -1,18 +1,19 @@
 const autoprefixer = require('autoprefixer');
-const pathPrefix = '/blog';
+let pathPrefix = null;
 let siteUrl = 'http://xiangsongtao.com/';
 let trackingId = 'UA-114740261-3';
 let faviconUrl = '/favicons/favicon.png';
 let start_url = '/';
 
 if (process.env.CI && process.env.DEPLOY === 'github') {
+    pathPrefix = '/blog';
     trackingId = 'UA-114740261-4';
     siteUrl = 'https://xiangsongtao.github.io' + pathPrefix;
     faviconUrl = pathPrefix + faviconUrl;
     start_url = pathPrefix + start_url;
 }
 
-module.exports = {
+const config = {
     // gatsby build --prefix-paths
     // When running the command without the --prefix-paths flag, Gatsby ignores your pathPrefix.
     pathPrefix: pathPrefix,
@@ -238,3 +239,9 @@ module.exports = {
         'gatsby-plugin-react-helmet',
     ],
 };
+
+if (!config.pathPrefix) {
+    delete config.pathPrefix;
+}
+
+module.exports = config;
