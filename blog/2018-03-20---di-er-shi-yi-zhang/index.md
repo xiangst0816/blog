@@ -207,8 +207,7 @@ JSONP 过程:
 
 #### HTTP 建立在 TCP 之上
 
-
-
+TCP协议对应于传输层，而HTTP协议对应于应用层，从本质上来说，二者没有可比性。
 
 #### TCP keepalive
 
