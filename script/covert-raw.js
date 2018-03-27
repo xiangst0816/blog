@@ -38,15 +38,26 @@ fs.readdir(RawPath, (err, data) => {
                 string: readFileData.toString(),
             });
         } else {
-            // resources
-            _resources.push(path);
+            let res = path.match(/.+?\.(png|svg|eot|ttf|woff|jpg|jpeg)/ig);
+            if (res && res.length > 0) {
+                // resources
+                _resources.push(path);
+            }
         }
     });
+
+    if (_posts.length === 0) return;
 
     _posts.forEach(post => {
         var tmp = post.string.match(/(?<=\]\().+?(?=\))/ig);
         if (tmp && Array.isArray(tmp)) {
-            tmp = tmp.filter(item => item.indexOf('http') === -1);
+            tmp = tmp.filter((item) => {
+                var _res = item.match(/.+?\.(png|svg|eot|ttf|woff|jpg|jpeg)/ig);
+                let isSource = _res && _res.length > 0;
+                let isUrl = item.indexOf('http') > -1;
+                return isSource && !isUrl;
+            });
+
             if (tmp.length > 0) {
                 post.resources = tmp;
             }
@@ -92,21 +103,21 @@ fs.readdir(RawPath, (err, data) => {
         );
 
         if (resources && resources.length > 0) {
-            resources.forEach(resource =>{
+            resources.forEach(resource => {
                 fs.copyFileSync(`${RawPath}${resource}`, `${BlogPath}${dirName}/${resource}`);
                 fs.copyFileSync(`${RawPath}${resource}`, `${BackPath}/${resource}`);
                 rimraf(`${RawPath}/${resource}`, err => {
                     if (err) {
                     }
                 });
-            })
+            });
         }
 
         fs.copyFileSync(`${RawPath}${path}`, `${BackPath}${path}`);
 
         rimraf(`${RawPath}${path}`, err => {
-          if (err) {
-          }
+            if (err) {
+            }
         });
     });
 });
