@@ -74,6 +74,7 @@ const config = {
         },
         'gatsby-plugin-catch-links',
         'gatsby-transformer-sharp',
+        'gatsby-plugin-sharp',
         {
             resolve: 'gatsby-transformer-remark',
             options: {
@@ -88,6 +89,7 @@ const config = {
                     {
                         resolve: 'gatsby-remark-images',
                         options: {
+                            showCaptions: true,
                             linkImagesToOriginal: false,
                             maxWidth: 840,
                         }
@@ -127,7 +129,7 @@ const config = {
                         }
                     },
                     'gatsby-remark-autolink-headers',
-                    // 文件放在和文章同文件夹, 引入是别带"/", "./"等参数, 直接写名字
+                    // 文件放在和文章同文件夹, 引入时别带"/", "./"等参数, 直接写名字
                     'gatsby-remark-copy-linked-files',
                     'gatsby-remark-katex',
                     'gatsby-remark-responsive-iframe',
@@ -141,7 +143,6 @@ const config = {
                 ]
             }
         },
-        'gatsby-plugin-sharp',
         {
             resolve: 'gatsby-plugin-feed',
             options: {
