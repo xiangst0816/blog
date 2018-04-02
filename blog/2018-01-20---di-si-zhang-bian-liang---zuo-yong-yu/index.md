@@ -3,7 +3,7 @@ title: 第四章 变量-作用域和内存问题
 author: 烈风裘
 date: 2018-01-20T07:48:24.259Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

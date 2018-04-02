@@ -3,7 +3,7 @@ title: 事件模型
 author: 烈风裘
 date: 2016-10-23T11:06:06.000Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

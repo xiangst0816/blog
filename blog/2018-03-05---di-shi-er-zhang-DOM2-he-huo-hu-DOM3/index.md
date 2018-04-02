@@ -3,7 +3,7 @@ title: 第十二章 DOM2和DOM3
 author: 烈风裘
 date: 2018-03-05T03:54:46.668Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

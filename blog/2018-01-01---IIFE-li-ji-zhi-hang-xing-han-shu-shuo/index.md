@@ -3,7 +3,7 @@ title: IIFE立即执行函数
 author: 烈风裘
 date: 2018-01-01T08:40:10.537Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

@@ -1,6 +1,6 @@
 const autoprefixer = require('autoprefixer');
-let pathPrefix = null;
-let siteUrl = 'http://xiangsongtao.com/';
+let pathPrefix = '/';
+let siteUrl = 'http://xiangsongtao.com';
 let trackingId = 'UA-114740261-3';
 let faviconUrl = '/favicons/favicon.png';
 let start_url = '/';
@@ -73,8 +73,8 @@ const config = {
             },
         },
         'gatsby-plugin-catch-links',
-        'gatsby-transformer-sharp',
         'gatsby-plugin-sharp',
+        'gatsby-transformer-sharp',
         {
             resolve: 'gatsby-transformer-remark',
             options: {
@@ -240,9 +240,5 @@ const config = {
         'gatsby-plugin-react-helmet',
     ],
 };
-
-if (!config.pathPrefix) {
-    delete config.pathPrefix;
-}
 
 module.exports = config;

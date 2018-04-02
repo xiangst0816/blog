@@ -3,7 +3,7 @@ title: TypeScript
 author: 烈风裘
 date: 2017-08-07T08:37:05.000Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

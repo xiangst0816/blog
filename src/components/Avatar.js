@@ -2,7 +2,7 @@ import React from 'react';
 import { withPrefix } from 'gatsby-link';
 import PropTypes from 'prop-types';
 
-export default class Avatar extends React.Component {
+export default class Avatar extends React.PureComponent {
   render() {
     const { avatar, name, className } = this.props;
     const avatarUrl = avatar && avatar.indexOf('http') > -1 ? avatar : withPrefix(avatar);

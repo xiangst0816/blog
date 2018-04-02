@@ -3,7 +3,7 @@ title: 如何设计组件的API
 author: 烈风裘
 date: 2017-03-19T02:15:03.000Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'gatsby-link';
 import PropTypes from 'prop-types';
 
-export default class Pagination extends React.Component {
+export default class Pagination extends React.PureComponent {
   render() {
     const { skip = 0, limit = 10, total, pathPrefix = '/page/' } = this.props;
     const page = skip / limit + 1;

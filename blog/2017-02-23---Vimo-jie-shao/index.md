@@ -3,7 +3,7 @@ title: Vimo介绍
 author: 烈风裘
 date: 2017-02-23T02:03:38.000Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

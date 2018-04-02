@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 import kebabCase from 'lodash.kebabcase';
@@ -7,7 +7,7 @@ import ExcerptLoop from '../components/ExcerptLoop';
 import Header from '../components/Header';
 import Pagination from '../components/Pagination';
 
-export default class TagRoute extends React.Component {
+export default class TagRoute extends React.PureComponent {
   render() {
     const { allMarkdownRemark, site } = this.props.data;
     const { edges } = allMarkdownRemark;

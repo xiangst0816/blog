@@ -3,7 +3,7 @@ title: 页面缓存设置
 author: 烈风裘
 date: 2016-10-22T10:08:49.000Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

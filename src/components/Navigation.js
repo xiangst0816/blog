@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import kebabCase from 'lodash.kebabcase';
 import Link, { withPrefix } from 'gatsby-link';
 
-export default class Navigation extends React.Component {
+export default class Navigation extends React.PureComponent {
     toggle = () => {
         document.documentElement.classList.toggle('menu-active');
     };

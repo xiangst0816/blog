@@ -3,7 +3,7 @@ title: 关于组件库的主题定制
 author: 烈风裘
 date: 2017-12-05T01:23:52.648Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

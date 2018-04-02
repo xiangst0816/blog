@@ -3,7 +3,7 @@ title: 闭包
 author: 烈风裘
 date: 2018-01-01T11:11:23.155Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

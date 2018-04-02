@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import Avatar from './Avatar';
 
-export default class ExcerptLoop extends React.Component {
+export default class ExcerptLoop extends React.PureComponent {
   render() {
     const { edges } = this.props;
     return (

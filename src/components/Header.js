@@ -6,7 +6,7 @@ import Link, { withPrefix } from 'gatsby-link';
 
 let recordPosition = 0;
 
-export default class Header extends React.Component {
+export default class Header extends React.PureComponent {
     constructor(props) {
         super(props);
         this.unRegisterListenersCollection = [];

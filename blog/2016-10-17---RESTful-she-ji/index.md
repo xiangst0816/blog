@@ -3,7 +3,7 @@ title: RESTful设计
 author: 烈风裘
 date: 2016-10-17T13:00:26.000Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

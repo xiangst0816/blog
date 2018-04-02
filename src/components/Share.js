@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class Share extends React.Component {
+export default class Share extends React.PureComponent {
   render() {
     const { title, url } = this.props;
     return (

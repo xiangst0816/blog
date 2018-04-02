@@ -11,7 +11,7 @@ if (typeof window !== 'undefined') {
     new AttachFastClick(document.body);
 }
 
-export default class Template extends React.Component {
+export default class Template extends React.PureComponent {
     toggle = () => {
         document.documentElement.classList.toggle('menu-active');
     };

@@ -3,7 +3,7 @@ title: 第二十一章 Ajax与Comet
 author: 烈风裘
 date: 2018-03-20T05:31:33.690Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

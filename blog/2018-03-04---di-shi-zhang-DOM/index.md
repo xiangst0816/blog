@@ -3,7 +3,7 @@ title: 第十章 DOM
 author: 烈风裘
 date: 2018-03-04T07:17:28.783Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

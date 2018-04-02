@@ -3,7 +3,7 @@ title: 高性能JavaScript实践总结
 author: 烈风裘
 date: 2016-05-21T02:34:58.000Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

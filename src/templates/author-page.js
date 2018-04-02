@@ -10,7 +10,7 @@ import Header from '../components/Header';
 import Pagination from '../components/Pagination';
 import Bio from '../components/Bio';
 
-export default class AuthorRoute extends React.Component {
+export default class AuthorRoute extends React.PureComponent {
   getOtherAuthorsInfo() {
     const { otherAuthorsInfo, allAuthor } = this.props.data;
     if (!otherAuthorsInfo) {

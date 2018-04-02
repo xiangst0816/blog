@@ -3,7 +3,7 @@ title: 变量提升
 author: 烈风裘
 date: 2018-01-01T07:01:14.108Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

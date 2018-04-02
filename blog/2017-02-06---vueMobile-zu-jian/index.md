@@ -3,7 +3,7 @@ title: vueMobile组件(组件间通讯)
 author: 烈风裘
 date: 2017-02-06T05:22:14.000Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

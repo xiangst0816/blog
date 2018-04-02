@@ -3,7 +3,7 @@ title: 第六章 面相对象的程序设计
 author: 烈风裘
 date: 2018-01-26T13:04:25.015Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

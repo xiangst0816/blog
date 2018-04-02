@@ -3,7 +3,7 @@ title: JavaScript arguments 对象全面介绍
 author: 烈风裘
 date: 2016-10-22T13:43:07.000Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

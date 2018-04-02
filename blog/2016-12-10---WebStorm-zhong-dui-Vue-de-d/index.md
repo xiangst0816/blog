@@ -3,7 +3,7 @@ title: WebStorm中对Vue的支持
 author: 烈风裘
 date: 2016-12-10T03:05:18.000Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

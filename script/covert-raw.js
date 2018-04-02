@@ -84,7 +84,7 @@ fs.readdir(RawPath, (err, data) => {
             '\n' +
             `draft: false` +
             '\n' +
-            `comments: false` +
+            `comments: true` +
             '\n' +
             `star: false` +
             '\n' +

@@ -3,7 +3,7 @@ title: JS深浅拷贝相关
 author: 烈风裘
 date: 2016-10-20T14:11:22.000Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

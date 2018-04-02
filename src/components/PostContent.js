@@ -3,7 +3,7 @@ import registerListener from 'tp-register-listener';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-export default class PostContent extends React.Component {
+export default class PostContent extends React.PureComponent {
   constructor(props) {
     super(props);
     this.unRegisterListenersCollection = [];

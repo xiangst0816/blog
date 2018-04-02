@@ -7,7 +7,7 @@ import ExcerptLoop from '../components/ExcerptLoop';
 import Pagination from '../components/Pagination';
 import Header from '../components/Header';
 
-export default class Index extends React.Component {
+export default class Index extends React.PureComponent {
     render() {
         const { edges, totalCount } = this.props.data.allMarkdownRemark;
         const { skip = 0, limit = 10 } = this.props.pathContext;

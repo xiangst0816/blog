@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import kebabCase from 'lodash.kebabcase';
 import Header from '../components/Header';
 
-export default class TagsPageRoute extends React.Component {
+export default class TagsPageRoute extends React.PureComponent {
   render() {
     const allTags = this.props.data.allMarkdownRemark.group;
     const { site } = this.props.data;

@@ -3,7 +3,7 @@ title: imgLazyloadJS
 author: 烈风裘
 date: 2015-12-10T15:05:50.000Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

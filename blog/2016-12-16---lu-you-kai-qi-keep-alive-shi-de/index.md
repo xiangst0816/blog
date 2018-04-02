@@ -3,7 +3,7 @@ title: 路由开启keep-alive时的注意点
 author: 烈风裘
 date: 2016-12-16T08:14:38.000Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

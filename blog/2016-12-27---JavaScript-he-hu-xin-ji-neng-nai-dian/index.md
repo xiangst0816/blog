@@ -3,7 +3,7 @@ title: JavaScript 核心技能点
 author: 烈风裘
 date: 2016-12-27T14:03:09.000Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

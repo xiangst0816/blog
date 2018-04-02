@@ -3,7 +3,7 @@ title: Fastclick原理浅析
 author: 烈风裘
 date: 2017-12-08T13:38:12.124Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

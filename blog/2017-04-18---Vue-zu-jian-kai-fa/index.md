@@ -3,7 +3,7 @@ title: Vue组件开发
 author: 烈风裘
 date: 2017-04-18T01:50:54.000Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: http://upload-images.jianshu.io/upload_images/2036128-5338101e95178cce.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
 tags: 

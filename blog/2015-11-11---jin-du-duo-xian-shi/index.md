@@ -3,7 +3,7 @@ title: 进度显示
 author: 烈风裘
 date: 2015-11-11T14:47:25.000Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

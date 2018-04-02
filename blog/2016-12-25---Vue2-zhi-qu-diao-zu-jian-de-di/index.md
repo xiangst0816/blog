@@ -3,7 +3,7 @@ title: Vue2之去掉组件的click事件的native修饰
 author: 烈风裘
 date: 2016-12-25T13:51:20.000Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

@@ -3,7 +3,7 @@ title: Vue Introduce
 author: 烈风裘
 date: 2016-12-11T13:54:46.000Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

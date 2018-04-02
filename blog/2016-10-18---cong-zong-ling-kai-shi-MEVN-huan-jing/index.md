@@ -3,7 +3,7 @@ title: 从零开始MEVN环境部署
 author: 烈风裘
 date: 2016-10-18T13:12:32.000Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

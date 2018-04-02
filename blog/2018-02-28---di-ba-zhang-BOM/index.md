@@ -3,7 +3,7 @@ title: 第八章 BOM
 author: 烈风裘
 date: 2018-02-28T02:15:18.470Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

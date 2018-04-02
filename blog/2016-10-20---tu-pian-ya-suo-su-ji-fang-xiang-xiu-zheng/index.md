@@ -3,7 +3,7 @@ title: 图片压缩及方向修正
 author: 烈风裘
 date: 2016-10-20T14:12:12.000Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

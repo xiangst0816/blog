@@ -3,7 +3,7 @@ title: 登录流程加密的思考
 author: 烈风裘
 date: 2016-10-20T14:07:23.000Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

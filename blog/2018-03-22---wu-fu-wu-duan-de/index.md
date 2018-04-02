@@ -3,7 +3,7 @@ title: 无服务端的自动静态化Web应用
 author: 烈风裘
 date: 2018-03-22T05:38:46.538Z
 draft: true
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

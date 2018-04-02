@@ -3,7 +3,7 @@ title: 关于Babel最新使用方式
 author: 烈风裘
 date: 2017-11-19T08:06:59.327Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

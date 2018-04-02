@@ -3,7 +3,7 @@ title: JS类型判断
 author: 烈风裘
 date: 2016-10-20T14:10:43.000Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

@@ -3,7 +3,7 @@ title: 关于埋点浅谈
 author: 烈风裘
 date: 2017-01-22T02:15:17.000Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 

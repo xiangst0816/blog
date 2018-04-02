@@ -3,7 +3,7 @@ title: 英文测试(内容已改动)
 author: 烈风裘
 date: 2018-03-16T07:34:40.839Z
 draft: false
-comments: false
+comments: true
 star: false
 cover: ''
 tags: 
