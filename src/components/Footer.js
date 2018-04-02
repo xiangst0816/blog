@@ -15,7 +15,7 @@ export default class Footer extends React.PureComponent {
               <a href="http://zutrinken.com" target="_target" rel="nofollow">
                 zutrinken
               </a>{' '}
-              && Made with <span className="love">♥</span> by{' '}
+              , Made with <span className="love">♥</span> by{' '}
               <a target="_target" href="https://www.gatsbyjs.org/">
                 Gatsby
               </a>, Since 2015-{new Date().getFullYear()}. ©All Rights.
