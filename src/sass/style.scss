@@ -465,7 +465,9 @@ img {
   left: 0;
   top: 0;
   z-index: 5;
-  background: no-repeat scroll center center / cover $color-black;
+  background: repeat scroll center center $color-black;
+  //background: no-repeat scroll center center / cover $color-black;
+
   animation: 0.5s ease-in forwards fadein;
   -webkit-overflow-scrolling: touch;
 }
@@ -507,6 +509,7 @@ img {
   font-size: 2em;
   line-height: 1em;
   text-decoration: none;
+  text-shadow: 0 0 90px #000;
 }
 
 .home-template .blog-name {
@@ -531,6 +534,7 @@ img {
   padding: 0;
   font-size: 1em;
   line-height: 1.5em;
+  text-shadow: 0 0 90px #000;
 }
 
 .home-template .blog-description {
@@ -1016,6 +1020,72 @@ img {
 }
 
 /* ==========================================================================
+   Archive
+   ========================================================================== */
+
+.container .content-archive {
+  position: relative;
+  z-index: 10;
+  margin: 0 auto;
+  max-width: $content-wide;
+  padding: 1em 2em;
+  .year {
+    z-index: 10;
+    margin-top: 1.5em;
+    font-size: 2em;
+    line-height: 1em;
+    font-weight: 700;
+    text-indent: -1px;
+    color: #000000;
+  }
+
+  ul {
+    li::before {
+      display: none;
+    }
+  }
+
+  .meta {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 0.75em;
+    font-weight: 400;
+    color: #45484d;
+    opacity: 0.5;
+  }
+
+  .link {
+    margin-bottom: 0.3em;
+  }
+
+  .title {
+    &:hover {
+      color: $color-red-95;
+    }
+  }
+  .author {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+  .author:hover,
+  .author:focus {
+    border-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+.container .content-archive:after {
+  position: absolute;
+  width: $content-wide - 4;
+  height: 1px;
+  left: 50%;
+  bottom: 0;
+  margin-left: ((4 - $content-wide) / 2);
+  content: '';
+  background: $color-gray-90;
+}
+
+
+/* ==========================================================================
    Post
    ========================================================================== */
 
@@ -1038,7 +1108,8 @@ img {
   left: 0;
   top: 0;
   z-index: 5;
-  background: no-repeat scroll center center / cover $color-black;
+  background: repeat scroll center center $color-black;
+  //background: no-repeat scroll center center / cover $color-black;
   animation: 0.5s ease-in forwards fadein;
   -webkit-overflow-scrolling: touch;
 }

@@ -39,6 +39,16 @@ export default class Navigation extends React.PureComponent {
                             </Link>
                         </li>
                         <li
+                            className={classNames('nav-archive', {
+                                active: location.pathname === withPrefix('/archive/'),
+                            })}
+                            role="presentation"
+                        >
+                            <Link to={`/archive/`}>
+                                <i className="icon icon-database" /> Archive
+                            </Link>
+                        </li>
+                        <li
                             className={classNames('nav-author', {
                                 active: location.pathname.indexOf('author') > -1,
                             })}
@@ -48,6 +58,16 @@ export default class Navigation extends React.PureComponent {
                                 <i className="icon icon-user" /> Author
                             </Link>
                         </li>
+                        {/*<li*/}
+                            {/*className={classNames('nav-author', {*/}
+                                {/*active: location.pathname.indexOf('author') > -1,*/}
+                            {/*})}*/}
+                            {/*role="presentation"*/}
+                        {/*>*/}
+                            {/*<Link to={`/author/${author}`}>*/}
+                                {/*<i className="icon icon-profile" /> Hire Me*/}
+                            {/*</Link>*/}
+                        {/*</li>*/}
                         {site.subscribe && (
                             <li className="nav-rss">
                                 <Link to="/rss.xml">

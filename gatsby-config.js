@@ -1,34 +1,13 @@
 const autoprefixer = require('autoprefixer');
-let pathPrefix = '/';
-let siteUrl = 'http://xiangsongtao.com';
-let trackingId = 'UA-114740261-3';
-let faviconUrl = '/favicons/favicon.png';
-let start_url = '/';
+const siteData = require('./site-data');
+const { pathPrefix, trackingId, faviconUrl, start_url } = siteData;
+const { title, description } = siteData.siteMetadata;
 
-if (process.env.CI && process.env.DEPLOY === 'github') {
-    pathPrefix = '/blog';
-    trackingId = 'UA-114740261-4';
-    siteUrl = 'https://xiangsongtao.github.io' + pathPrefix;
-    faviconUrl = pathPrefix + faviconUrl;
-    start_url = pathPrefix + start_url;
-}
-
-const config = {
+module.exports = {
     // gatsby build --prefix-paths
     // When running the command without the --prefix-paths flag, Gatsby ignores your pathPrefix.
-    pathPrefix: pathPrefix,
-    siteMetadata: {
-        title: `Attila`,
-        cover: '/background/6.jpg',
-        description: `Thoughts, stories and ideas.`, // 网站描述
-        keywords: `Thoughts, stories and ideas.`, // 网站描述
-        tagCover: '/background/5.jpg',
-        siteUrl: siteUrl, // 页面路径
-        logo: '',
-        language: 'zh-CN',
-        navigation: true, // 是否开启右侧导航
-        subscribe: true, // 是否显示订阅按钮
-    },
+    pathPrefix,
+    siteMetadata: siteData.siteMetadata,
     mapping: {
         'MarkdownRemark.frontmatter.author': `AuthorJson`,
     },
@@ -219,10 +198,10 @@ const config = {
         {
             resolve: `gatsby-plugin-manifest`,
             options: {
-                name: 'Attila',
-                short_name: 'Attila',
-                description: 'Thoughts, stories and ideas.',
-                start_url: start_url,
+                name: title,
+                short_name: title,
+                description,
+                start_url,
                 background_color: '#333F44',
                 theme_color: '#333F44',
                 orientation: 'portrait',
@@ -240,5 +219,3 @@ const config = {
         'gatsby-plugin-react-helmet',
     ],
 };
-
-module.exports = config;

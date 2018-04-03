@@ -3,7 +3,7 @@
     "id": "烈风裘",
     "master": true,
     "bio": "万物寂静, 万物新生.",
-    "cover": "/background/3.jpg",
+    "cover": "/background/escape-flight.png",
     "avatar": "/avatar/me.jpeg",
     "github": "https://github.com/xiangsongtao",
     "twitter": "",
@@ -12,5 +12,13 @@
     "zhihu": "",
     "location": "HangZhou, China",
     "website": "http://xiangsongtao.com/"
+  },
+  {
+    "id": "WALL-E",
+    "master": false,
+    "cover": "/background/cuadros.png",
+    "avatar": "/avatar/cleaner.jpg",
+    "bio": "还有要清理的吗?",
+    "location": "Earth"
   }
 ]

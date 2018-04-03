@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDisqusComments from 'react-disqus-comments';
 import classnames from 'classnames';
+import siteData from '../../site-data';
 
-const ShortName = 'xiangst';
+const shortName = siteData.shortName;
 
 class Disqus extends React.PureComponent {
     constructor(props) {
@@ -32,19 +33,18 @@ class Disqus extends React.PureComponent {
             this.timer = setTimeout(() => {
                 if (typeof DISQUS === 'undefined') {
                     clearTimeout(this.timer);
-                    console.log(123123123);
                     this.setState({
                         disqusLoadedFailure: true,
                     });
                 }
-            }, 4000);
+            }, 3000);
         });
     };
 
     render() {
         const { slug, title, showComments } = this.props;
         const { showDisqus } = this.state;
-        if (!ShortName || !showComments) {
+        if (!shortName || !showComments) {
             return null;
         }
 
@@ -55,7 +55,7 @@ class Disqus extends React.PureComponent {
             } else {
                 return (
                     <ReactDisqusComments
-                        shortname={ShortName}
+                        shortname={shortName}
                         identifier={slug}
                         title={title}
                         onNewComment={this.notifyAboutComment}
@@ -66,10 +66,11 @@ class Disqus extends React.PureComponent {
 
         return (
             <section className={classnames('post-comments', { 'activated': showDisqus })}>
-                <Content />
                 {
-                    this.state.disqusLoadedFailure && (
+                    this.state.disqusLoadedFailure ? (
                         <p className="post-comments-disqus-error">🚧 Failed to load Disqus!</p>
+                    ) : (
+                        <Content />
                     )
                 }
             </section>

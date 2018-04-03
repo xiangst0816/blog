@@ -94,6 +94,7 @@ export const pageQuery = graphql`
     description
     keywords
     tagCover
+    archiveCover
     siteUrl
     logo
     navigation
