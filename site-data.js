@@ -20,7 +20,7 @@ module.exports = {
         keywords: `烈风裘的博客, X-Blog, Attila, Gatsby, 前端成长记录`, // 网站描述
         cover: '/background/kale-salad.jpg',
         tagCover: '/background/asteroids.jpg',
-        archiveCover: '/background/alchemy.gif',
+        archiveCover: '/background/alchemy.jpg',
         logo: '',
         language: 'zh-CN',
         navigation: true, // 是否开启右侧导航
