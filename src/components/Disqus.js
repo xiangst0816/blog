@@ -37,7 +37,7 @@ class Disqus extends React.PureComponent {
                         disqusLoadedFailure: true,
                     });
                 }
-            }, 3000);
+            }, 5000);
         });
     };
 

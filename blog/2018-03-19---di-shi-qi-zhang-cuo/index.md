@@ -183,3 +183,46 @@ function normalizeError(err) {
   return o;
 }
 ```
+
+### 10. 如何捕获`Promise`抛出的错误？
+
+#### 主动捕获
+
+```js
+Promise.resolve('a:1')
+.then(JSON.parse)
+.then((json)=>{
+  console.log('不会执行到这里',json)
+},(err)=>{
+    //这儿捕获的是上一个JSON.parse时的错误
+    console.log('上面err在这里被处理', err.message)      
+    //Unexpected token a
+})
+.catch((err)=>{
+   console.log('不会触发这个error', err)
+})
+.then(()=>{
+  console.log('任然执行')
+})
+```
+
+#### 被动监听
+
+```js
+// 浏览器
+window.addEventListener("unhandledrejection", (e)=>{})
+// nodejs
+process.on('unhandledRejection', function (reason, promise) {
+  console.log(reason) // [Error: unhandledrejection]
+  console.log(promise) // Promise { <rejected> [Error: unhandledrejection] }
+})
+```
+
+参考这篇文章，[Tracking unhandled rejected Promises](http://2ality.com/2016/04/unhandled-rejections.html)
+
+
+
+
+
+
+
