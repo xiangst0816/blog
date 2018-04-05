@@ -6,7 +6,7 @@ draft: false
 comments: true
 star: false
 cover: ''
-tags: 
+tags:
   - JS高程
 ---
 
@@ -126,9 +126,9 @@ Path=/;Domain=domainvalue;Max-Age=seconds;HTTPOnly");
 this.set(name, "", new Date(0), path, domain, secure);
 ```
 
-### 7. sessionStrage和localStorage使用的差别？
+### 7. sessionStorage和localStorage使用的差别？
 
-- sessionStrage中的数据在**当前会话期**存在，而localStorage则一直存在
-- **localStorage中新增数据可以再其他Tab中同步**，但是sessionStrage不会同步
+- sessionStorage中的数据在**当前会话期**存在，而localStorage则一直存在
+- **localStorage中新增数据可以再其他Tab中同步**，但是sessionStorage不会同步
 
 
