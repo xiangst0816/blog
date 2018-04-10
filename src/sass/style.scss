@@ -548,7 +548,7 @@ img {
 #wrapper {
   position: relative;
   padding-right: 0;
-  transition: all ease-out 0.25s;
+  transition: transform ease-out 0.25s;
 }
 
 #wrapper .hidden-close {
@@ -562,7 +562,8 @@ img {
 }
 
 .menu-active #wrapper {
-  padding-right: 16em;
+  transform: translateX(-16em);
+
 }
 
 .menu-active #wrapper .hidden-close {
@@ -666,14 +667,14 @@ img {
   overflow: hidden;
   font-family: 'Fira Sans', sans-serif;
   box-shadow: inset -2px 0 7px rgba(0, 0, 0, 0.1);
-  transform: translate3d(16em, 0, 0);
-  transition: all ease-out 0.25s;
-  will-change: coltransformor;
+  transform: translateX(16em);
+  transition: transform ease-out 0.25s;
+  will-change: transform;
   user-select: none;
 }
 
 .menu-active #menu {
-  transform: translate3d(0, 0, 0);
+  transform: translateX(0);
 }
 
 #menu .close-button {
@@ -686,9 +687,9 @@ img {
   border: 1px solid $color-blue-80;
   color: transparent;
   cursor: pointer;
-  transition: all ease 0.3s;
+  transition: transform ease 0.3s, border-color ease 0.3s;
   border-radius: 2em;
-  will-change: contents;
+  will-change: transform, border-color;
   box-sizing: border-box;
   z-index: 500;
 }
@@ -709,8 +710,8 @@ img {
   margin-left: -0.5em;
   content: '';
   background: $color-blue-60;
-  transition: all ease 0.3s;
-  will-change: background;
+  transition: transform ease 0.3s, border-color ease 0.3s;
+  will-change: transform, background;
 }
 
 #menu .close-button:hover:after,
@@ -850,7 +851,6 @@ img {
 
 #footer {
   position: relative;
-  z-index: 20;
   font-family: 'Fira Sans', sans-serif;
   line-height: 1em;
   padding-bottom: 6em;
@@ -996,9 +996,12 @@ img {
   padding: 0.2em 0.4em;
   font-weight: 500;
   border: 1px solid #ddd;
-  transition: all ease 0.3s;
+  transition: border-color ease 0.3s;
+  will-change: border-color;
   a {
     white-space: nowrap;
+    transition: color ease 0.3s;
+    will-change: color;
   }
   &:hover {
     border-color: $color-red-95;
@@ -1084,7 +1087,6 @@ img {
   background: $color-gray-90;
 }
 
-
 /* ==========================================================================
    Post
    ========================================================================== */
@@ -1111,6 +1113,7 @@ img {
   background: repeat scroll center center $color-black;
   //background: no-repeat scroll center center / cover $color-black;
   animation: 0.5s ease-in forwards fadein;
+  will-change: transform;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -1268,7 +1271,7 @@ img {
   text-decoration: none;
   color: $color-white;
   border-radius: 2px;
-  transition: all ease 0.3s;
+  transition: background-color ease 0.3s;
   will-change: background-color;
 }
 
@@ -1309,7 +1312,7 @@ img {
   display: inline-block;
   margin: 0 0.334em 0.667em 0;
   padding: 0.575em 1em;
-  background: $color-white;
+  background-color: $color-white;
   border: 1px solid $primary-color;
   font-size: 0.75em;
   font-weight: 500;
@@ -1318,14 +1321,14 @@ img {
   text-decoration: none;
   color: $primary-color;
   border-radius: 2em;
-  transition: all ease 0.3s;
-  will-change: background, color;
+  transition: background-color ease 0.3s, color ease 0.3s;
+  will-change: background-color, color;
   box-sizing: border-box;
 }
 
 .post-tags a:hover,
 .post-tags a:focus {
-  background: $primary-color;
+  background-color: $primary-color;
   color: $color-white;
 }
 
@@ -1337,7 +1340,7 @@ img {
   position: relative;
   margin: 2em 0 0;
   padding: 2em 0;
-  z-index: 10;
+  //z-index: 10;
   border-top: 1px solid $color-gray-90;
   border-bottom: 1px solid $color-gray-90;
   clear: both;
@@ -1487,7 +1490,7 @@ img {
   color: $color-blue-60;
   text-align: center;
   cursor: pointer;
-  transition: all ease 0.3s;
+  transition: border-color ease 0.3s, color ease 0.3s;
   will-change: border-color, color;
   border-radius: 2em;
 }
@@ -1563,7 +1566,7 @@ img {
   font-size: 2em;
   line-height: 2em;
   text-align: center;
-  transition: all ease-out 0.3s;
+  transition: color ease-out 0.3s;
   will-change: color;
   color: $color-gray-90;
 }

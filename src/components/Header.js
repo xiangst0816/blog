@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
 import registerListener from 'tp-register-listener';
-import throttle from 'lodash.throttle';
 import Link, { withPrefix } from 'gatsby-link';
 
 let recordPosition = 0;
@@ -24,22 +23,26 @@ export default class Header extends React.PureComponent {
         }
 
         const coverHeight = this.coverElement.offsetHeight;
-        const coverScrollHandler = throttle(() => {
-            const windowPosition = window.scrollY;
-            if (windowPosition > 0) {
-                this.setState({
-                    coverPosition: Math.floor(windowPosition * 0.25),
-                    coverActive: windowPosition < coverHeight,
-                });
-            } else {
-                this.setState({
-                    coverPosition: 0,
-                    coverActive: windowPosition < coverHeight,
-                });
-            }
-        }, 16);
+
+        const coverScrollHandler = () => {
+            const windowPosition = Math.floor(window.scrollY);
+            requestAnimationFrame(() => {
+                if (windowPosition > 0) {
+                    this.setState({
+                        coverPosition: Math.floor(windowPosition * 0.25),
+                        coverActive: windowPosition < coverHeight,
+                    });
+                } else {
+                    this.setState({
+                        coverPosition: 0,
+                        coverActive: windowPosition < coverHeight,
+                    });
+                }
+            });
+        };
 
         coverScrollHandler();
+
         registerListener(
             window,
             'scroll',
@@ -64,24 +67,27 @@ export default class Header extends React.PureComponent {
     };
 
     navScroll = () => {
-        const navScrollHandler = throttle(() => {
+        const navScrollHandler = () => {
             const windowPosition = window.scrollY;
-            if (windowPosition < 0) {
-                this.setState({ direction: false });
-                return;
-            }
-            // check direction
-            if (Math.abs(windowPosition - recordPosition) > 20) {
-                if (windowPosition > recordPosition) {
-                    if (!this.state.direction) {
-                        this.setState({ direction: true });
-                    }
-                } else if (this.state.direction) {
+
+            requestAnimationFrame(() => {
+                if (windowPosition < 0) {
                     this.setState({ direction: false });
+                } else {
+                    // check direction
+                    if (Math.abs(windowPosition - recordPosition) > 20) {
+                        if (windowPosition > recordPosition) {
+                            if (!this.state.direction) {
+                                this.setState({ direction: true });
+                            }
+                        } else if (this.state.direction) {
+                            this.setState({ direction: false });
+                        }
+                        recordPosition = windowPosition;
+                    }
                 }
-                recordPosition = windowPosition;
-            }
-        }, 16);
+            });
+        };
 
         navScrollHandler();
         registerListener(
