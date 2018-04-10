@@ -51,13 +51,19 @@ module.exports = {
                 precision: 8,
             },
         },
-        'gatsby-plugin-catch-links',
         'gatsby-plugin-sharp',
         'gatsby-transformer-sharp',
         {
             resolve: 'gatsby-transformer-remark',
             options: {
                 plugins: [
+                    // 文件放在和文章同文件夹, 引入时别带"/", "./"等参数, 直接写名字
+                    {
+                        resolve: 'gatsby-remark-copy-linked-files',
+                        options: {
+                            destinationDir: 'post-asset/',
+                        }
+                    },
                     'gatsby-remark-numbered-footnotes',
                     // {
                     //     resolve: 'gatsby-remark-sequence-2',
@@ -108,8 +114,6 @@ module.exports = {
                         }
                     },
                     'gatsby-remark-autolink-headers',
-                    // 文件放在和文章同文件夹, 引入时别带"/", "./"等参数, 直接写名字
-                    'gatsby-remark-copy-linked-files',
                     'gatsby-remark-katex',
                     'gatsby-remark-responsive-iframe',
                     {

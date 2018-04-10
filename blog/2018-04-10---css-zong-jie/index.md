@@ -12,7 +12,7 @@ tags:
 
 # CSS 总结
 
-> PDF 下载地址：[CSSConf.pdf](/CSSConf.pdf)
+> PDF 下载地址：[CSSConf.pdf](CSSConf.pdf)
 
 这个 Slides 是参加 CSS 大会的总结，因为要对小伙伴们分享，因此这个总结会比较“大”。是的，我搜集了**四届**的大会报告做了总结，引用的文章在每个 Slide 的页脚。
 
@@ -20,7 +20,7 @@ tags:
 
 ## BigMap
 
-![](/CSSConf.003.jpeg)
+![](CSSConf.003.jpeg)
 
 根据我搜集的 21 个报告做的如下分类。根据 CSS 展开，包括：组件库中 CSS 的位置、响应式、CSS 编译器、动画及性能、CSS 技巧、工程化相关、新规范和其他。
 
