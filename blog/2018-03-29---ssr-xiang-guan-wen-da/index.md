@@ -1,5 +1,5 @@
 ---
-title: SSR相关问答
+title: SSR相关
 author: 烈风裘
 date: 2018-03-29T15:10:39.842Z
 draft: false
