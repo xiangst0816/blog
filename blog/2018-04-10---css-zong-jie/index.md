@@ -5,7 +5,7 @@ date: 2018-04-10T14:26:25.383Z
 draft: false
 comments: true
 star: false
-cover: 'blog-cover/css-conf.JPG'
+cover: '/blog-cover/css-conf.JPG'
 tags:
   - 总结
 ---

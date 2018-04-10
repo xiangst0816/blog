@@ -12,11 +12,7 @@ import Disqus from '../components/Disqus';
 
 const GithubPrefix = 'https://github.com/xiangsongtao/blog/blob/master/blog/';
 
-
-
 export default class BlogPost extends React.PureComponent {
-
-
     render() {
         const { currentPost, prevPost, nextPost, site, master } = this.props.data;
         const { next, prev } = this.props.pathContext; // 上一篇和下一篇文章的slug
