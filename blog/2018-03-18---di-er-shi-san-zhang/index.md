@@ -126,9 +126,7 @@ Path=/;Domain=domainvalue;Max-Age=seconds;HTTPOnly");
 this.set(name, "", new Date(0), path, domain, secure);
 ```
 
-### 7. sessionStorage和localStorage使用的差别？
+### 7. sessionStorage 和 localStorage 使用的差别？
 
-- sessionStorage中的数据在**当前会话期**存在，而localStorage则一直存在
-- **localStorage中新增数据可以再其他Tab中同步**，但是sessionStorage不会同步
-
-
+* sessionStorage 中的数据在**当前会话期**存在，而 localStorage 则一直存在
+* **localStorage 中新增数据可以再其他 Tab 中同步**，但是 sessionStorage 不会同步

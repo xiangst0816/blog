@@ -38,7 +38,7 @@ fs.readdir(RawPath, (err, data) => {
                 string: readFileData.toString(),
             });
         } else {
-            let res = path.match(/.+?\.(png|svg|eot|ttf|woff|jpg|jpeg)/ig);
+            let res = path.match(/.+?\.(png|svg|eot|ttf|woff|jpg|jpeg|pdf|mp4|mp3)/ig);
             if (res && res.length > 0) {
                 // resources
                 _resources.push(path);
@@ -52,7 +52,7 @@ fs.readdir(RawPath, (err, data) => {
         var tmp = post.string.match(/(?<=\]\().+?(?=\))/ig);
         if (tmp && Array.isArray(tmp)) {
             tmp = tmp.filter((item) => {
-                var _res = item.match(/.+?\.(png|svg|eot|ttf|woff|jpg|jpeg)/ig);
+                var _res = item.match(/.+?\.(png|svg|eot|ttf|woff|jpg|jpeg|pdf|mp4|mp3)/ig);
                 let isSource = _res && _res.length > 0;
                 let isUrl = item.indexOf('http') > -1;
                 return isSource && !isUrl;

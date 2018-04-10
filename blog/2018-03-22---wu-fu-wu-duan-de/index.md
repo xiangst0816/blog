@@ -2,21 +2,40 @@
 title: 无服务端的自动静态化Web应用
 author: 烈风裘
 date: 2018-03-22T05:38:46.538Z
-draft: true
+draft: false
 comments: true
 star: false
 cover: ''
-tags: 
+tags:
   - 静态化
 ---
 
-# 无服务端的自动静态化 Web 应用
+> 这里介绍的不是 SPA 和 PWA。
 
-注意这里不是指 SPA/PWA.
+我觉得这可能是未来**前后端分离的新方式**，因为：
 
-* react: Gatsby
-* vue: nuxt
+### 更快的页面显示
 
-我们进一步考虑下电商应用的场景，利用 nuxt generate，是不是可以将应用静态化后部署在 CDN 服务器，每当一个商品的库存发生变化时，就重新静态化下，更新下商品的库存。但是如果用户访问的时候恰巧更新了呢？我们可以通过调用电商的 API，保证用户访问的是最新的数据。这样相对于传统的电商应用来说，这种静态化的方案可以大大节省服务器的资源。
+项目在构建时就能生成对应路由的静态页面，用户访问网页就能提前触发`DomContentLoaded`事件并渲染页面。这个在后面的一篇文章[《SSR 相关》](/ssr-xiang-guan-wen-da/)有介绍。
 
-译者注：因为 CDN 节点目前只能缓存静态文件，像动态脚本 PHP 是 CDN 节点无法运行。也就是只能存 html,css，js 这样的前端页面到 CDN 节点。所以通过 CDN 缓存静态页面，进行全球 CDN 节点布局。相对传统的动态网站，分散了对服务器的请求，降低了服务器压力。从而降低了运维成本。提升了用户体验。简单而言就是，页面静态文件 CDN，数据通过 API。前后端分离。
+![](SSR-juejin.jpeg)
+
+### 更方便的部署
+
+前端项目骨架都静态化，因此资源可以走 CDN，这个没什么好说的。页面动态部分通过接口获取，可以使用 RESTAPI 也可以是 GraphQL。这样相对于传统的网页项目来说，静态化的方案可以大大节省服务器的资源。
+
+### 解决方案成熟
+
+**1. React -> Gatsby**
+
+![](gatsby.png)
+
+**2. Vue -> Nuxt**
+
+![](ssr-nuxt.png)
+
+## 参考
+
+* [Web Performance 101—also, why is Gatsby so fast?](https://www.gatsbyjs.org/blog/2017-09-13-why-is-gatsby-so-fast/)
+* [Gatsby](https://www.gatsbyjs.org/)
+* [Nuxtjs](https://zh.nuxtjs.org/)

@@ -207,7 +207,7 @@ JSONP 过程:
 
 #### HTTP 建立在 TCP 之上
 
-TCP协议对应于传输层，而HTTP协议对应于应用层，从本质上来说，二者没有可比性。
+TCP 协议对应于传输层，而 HTTP 协议对应于应用层，从本质上来说，二者没有可比性。
 
 #### TCP keepalive
 
@@ -223,9 +223,7 @@ TCP协议对应于传输层，而HTTP协议对应于应用层，从本质上来�
 
 Httpd 守护进程，一般都提供了 keep-alive timeout 时间设置参数. 正常情况下, 一个 HTTP 产生的 TCP 链接在传送完最后一个响应后, 马上主动关闭响应的 TCP 链接, 但是设置了 timeout 后, httpd 守护进程会等待以下, 如果还未有数据交互, 则关闭 HTTP 连接.
 
-
 ![HTTP Keep-Alive模型](keep-alive.png)
-
 
 HTTP1.0 中默认是关闭的，需要在 HTTP 头加入"Connection: Keep-Alive"，才能启用 Keep-Alive；HTTP1.1 中默认启用 Keep-Alive，加入"Connection: close "，才关闭。
 

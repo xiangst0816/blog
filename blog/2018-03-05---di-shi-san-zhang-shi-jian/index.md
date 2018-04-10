@@ -291,15 +291,14 @@ div.dispatchEvent(event);
 
 #### `capture`
 
-默认为false。如果设为true，则表示在capture阶段触发事件。
+默认为 false。如果设为 true，则表示在 capture 阶段触发事件。
 
 #### `once`
 
-默认为false。如果为true，表示事件只触发一次。事件处理函数会在被调用后自动移除。
+默认为 false。如果为 true，表示事件只触发一次。事件处理函数会在被调用后自动移除。
 
 #### `passive`
 
 表示 listener 永远不会调用 `preventDefault()`。如果 listener 仍然调用了这个函数，客户端将会忽略它并抛出一个控制台警告。
 
 这个属性存在的含义主要是为了**优化滚屏性能**，也就是说，当添加了`passive`属性后，**`touchmove`事件不会阻塞页面的滚动**（同样适用于鼠标的滚轮事件）。
-
