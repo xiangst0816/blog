@@ -6,12 +6,9 @@ draft: false
 comments: true
 star: false
 cover: ''
-tags: 
+tags:
   - 未归档
 ---
-
-# SSR相关问答
-
 
 ### 1. 什么是SSR？什么情况下需要使用SSR？
 
@@ -35,7 +32,7 @@ SSR（Server Side Render）**服务端渲染**，这里主要是为了解决SPA�
 - 对于同一个组件，服务端通过执行部分钩子代码完成“可视”部分渲染，不同框架不太一样
 
 	- React：`componentWillMount/render `
-	- Vue：`beforeCreate/create ` 
+	- Vue：`beforeCreate/create `
 
 - 针对SSR，为了保证组件的完整生命周期及事件处理，客户端需要再次渲染（包括和客户端已有界面数据的比对校验）
 
@@ -57,7 +54,7 @@ SSR（Server Side Render）**服务端渲染**，这里主要是为了解决SPA�
 
 ### 5. 两种方式的组件生命周期有何不等?
 
-- 服务端：componentWillMount( node端 ) -> render( node端 ) 
+- 服务端：componentWillMount( node端 ) -> render( node端 )
 - 客户端：SPA的方式
 
 ### 6. 拉取数据后如何处理呢？
@@ -72,7 +69,7 @@ SSR（Server Side Render）**服务端渲染**，这里主要是为了解决SPA�
 
 ### 8. 生成两个入口的webpack配置如何不同？
 
-- 前端：JSX+ES6/7 -> es5  
+- 前端：JSX+ES6/7 -> es5
 - 后端：JSX+ES6/7 -> nodejs
 
 ### 9. 服务端如何知道path对应的页面应该使用哪个接口数据？
@@ -82,7 +79,13 @@ path -> match/RouterContext -> async获取数据 -> render组件 -> send
 
 ### 10. 客户端和服务端渲染不一致该如何排查？
 
-服务端只执行`componentWillMount/render`两个钩子，因此不要在这里执行会在城差异的代码，比如平台判断等。
+服务端只执行`componentWillMount/render`两个钩子，因此不要在这里执行会存在差异的代码，比如平台判断等。
+
+### 11. 掘金主页加载时的SSR示例
+
+骨架Nuxt + 异步数据渲染
+
+![SSR-juejin](SSR-juejin.jpeg)
 
 
 ## 参考
