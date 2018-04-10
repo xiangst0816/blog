@@ -78,7 +78,7 @@
     "build": "rimraf public && gatsby build",
     "serve": "gatsby serve",
     "deploy:github": "rimraf public && cross-env DEPLOY=github gatsby build --prefix-paths && node script/deploy-github.js",
-    "deploy:website": "npm run build && gulp --gulpfile script/deploy-website.js deploy",
+    "deploy:website": "npm run build && npm run upload:website",
     "upload:website": "gulp --gulpfile script/deploy-website.js deploy",
     "covert-raw": "node ./script/covert-raw",
     "format": "prettier --trailing-comma es5 --single-quote --write \"src/**/*.js\"",
