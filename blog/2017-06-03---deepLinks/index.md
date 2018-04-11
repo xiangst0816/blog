@@ -6,13 +6,13 @@ draft: false
 comments: true
 star: false
 cover: ''
-tags: 
+tags:
   - Mobile
 ---
 
 这个词我第一次是在[IONIC Deeplinks](http://ionicframework.com/docs/native/deeplinks/)中看到的，它表示在 H5 中使用一个链接（URL Scheme 或者 Universal Links）就能打开我们指定的 App。这样的需求可以参考下面的流程图：
 
-![交互说明](http://upload-images.jianshu.io/upload_images/2036128-006cf4e3c1fe489f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![交互说明](deeplinks.png)
 
 因此，结合这个需求，我介绍下**DeepLinks 的概念和交互设计**。
 
