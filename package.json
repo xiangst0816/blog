@@ -75,9 +75,10 @@
   },
   "scripts": {
     "start": "gatsby develop --port=8989",
-    "build": "rimraf public && gatsby build",
+    "build": "gatsby build",
     "serve": "gatsby serve",
-    "deploy:github": "rimraf public && cross-env DEPLOY=github gatsby build --prefix-paths && node script/deploy-github.js",
+    "rimraf:public": "rimraf public",
+    "deploy:github": "cross-env DEPLOY=github gatsby build --prefix-paths && node script/deploy-github.js",
     "deploy:website": "npm run build && npm run upload:website",
     "upload:website": "gulp --gulpfile script/deploy-website.js deploy",
     "covert-raw": "node ./script/covert-raw",
