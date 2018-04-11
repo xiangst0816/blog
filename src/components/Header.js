@@ -1,7 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 import registerListener from 'tp-register-listener';
-import Link, { withPrefix } from 'gatsby-link';
+import Link from 'gatsby-link';
+import withPrefix from '../utils/withPrefix';
 
 let recordPosition = 0;
 

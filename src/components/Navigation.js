@@ -1,7 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 import kebabCase from 'lodash.kebabcase';
-import Link, { withPrefix } from 'gatsby-link';
+import Link from 'gatsby-link';
+import withPrefix from '../utils/withPrefix';
 
 export default class Navigation extends React.PureComponent {
     toggle = () => {

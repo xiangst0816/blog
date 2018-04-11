@@ -1,5 +1,5 @@
 import React from 'react';
-import { withPrefix } from 'gatsby-link';
+import withPrefix from '../utils/withPrefix';
 import PropTypes from 'prop-types';
 
 export default class Avatar extends React.PureComponent {

@@ -57,11 +57,11 @@ module.exports = {
             resolve: 'gatsby-transformer-remark',
             options: {
                 plugins: [
-                    // 文件放在和文章同文件夹, 引入时别带"/", "./"等参数, 直接写名字
                     {
-                        resolve: 'gatsby-remark-copy-linked-files',
+                        resolve: 'gatsby-remark-external-links',
                         options: {
-                            destinationDir: 'post-asset/',
+                            target: '_target',
+                            rel: 'nofollow'
                         }
                     },
                     'gatsby-remark-numbered-footnotes',
@@ -116,13 +116,13 @@ module.exports = {
                     'gatsby-remark-autolink-headers',
                     'gatsby-remark-katex',
                     'gatsby-remark-responsive-iframe',
+                    // 文件放在和文章同文件夹, 引入时别带"/", "./"等参数, 直接写名字
                     {
-                        resolve: 'gatsby-remark-external-links',
+                        resolve: 'gatsby-remark-copy-linked-files',
                         options: {
-                            target: '_target',
-                            rel: 'nofollow'
+                            destinationDir: 'post-asset/',
                         }
-                    }
+                    },
                 ]
             }
         },
