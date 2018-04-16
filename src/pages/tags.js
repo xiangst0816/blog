@@ -22,7 +22,7 @@ export default class TagsPageRoute extends React.PureComponent {
           isPost={false}
         >
           <h1 className="blog-name">All Tags</h1>
-          <span className="blog-description">Posts: {allTags.length}</span>
+          <span className="blog-description">Tags: {allTags.length}</span>
         </Header>
         <div className="container">
           <main className="content" role="main">
