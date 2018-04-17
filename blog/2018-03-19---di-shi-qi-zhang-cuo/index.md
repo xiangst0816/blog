@@ -133,8 +133,8 @@ function addQueryStringArg(url, name, value) {
  * 监听全局的js文件错误
  * @param {String}  message   错误信息
  * @param {String}  script    出错的文件
- * @param {String}    line    出错代码的行号
- * @param {String}    column  出错代码的列号
+ * @param {String}  line      出错代码的行号
+ * @param {String}  column    出错代码的列号
  * @param {Object}  errorObj  错误的详细信息，Anything
  */
 window["onerror"] = function(message, script, line, column, errorObj) {

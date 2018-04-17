@@ -6,7 +6,7 @@ draft: false
 comments: true
 star: false
 cover: ''
-tags: 
+tags:
   - JS高程
 ---
 
@@ -19,7 +19,7 @@ tags:
 "DOM2 级事件" 规定的事件流包括三个阶段：事件捕获阶段、处于目标阶段和事件冒泡阶段。
 
 ```
-从Document开始, -- 捕获阶段 --> ( 目标阶段 -- 冒泡阶段 --> Document)
+从Document开始 -- 捕获阶段 --> ( 目标阶段 -- 冒泡阶段 --> Document)
 ```
 
 目标阶段是冒泡阶段的一部分.
@@ -80,7 +80,7 @@ btn.onclick = function() {
 
 ### 9. 事件对象中的`event.stopPropagation()`有什么作用?
 
-立即停止事件在 DOM 层次中的传播，即取消进一步的事件 捕获或冒泡。
+立即停止事件在 DOM 层次中的传播(**Stop Propagation**)，即取消进一步的事件 **捕获或冒泡**。
 
 ### 10. 事件对象中的`eventPhase`含义?
 
@@ -135,9 +135,9 @@ window.addEventListener("scroll", function() {
 });
 ```
 
-* scroll 事件是在 window 对象上发生的，但它实际表示的则是页面中相应元素的变化
+* **scroll 事件是在 window 对象上发生的**，但它实际表示的则是页面中相应元素的变化
 * 所有浏览器都会通过`<html>`元素来反映这一变化, 就是`document.documentElement`
-* 监听函数会频繁执行, 1) 函数节流; 2)有必要尽量保持事件处理程序的代码简单
+* 监听函数会频繁执行, 1) 函数节流; 2)有必要尽量保持事件处理程序的代码简单; 3)使用raf
 * scroll 也可以在元素上监听
 
 ### 14. 焦点事件有哪些, 使用场景是?

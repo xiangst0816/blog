@@ -6,7 +6,7 @@ draft: false
 comments: true
 star: false
 cover: ''
-tags: 
+tags:
   - JS高程
 ---
 
@@ -14,7 +14,7 @@ tags:
 
 无需属性的集合, 其属性可以包含基本值/对象/函数; 或者, **没有特定顺序**的散列表.
 
-> 或者, 使用 js 实现一个散列表?  
+> 或者, 使用 js 实现一个散列表?
 > 答: var a = {};
 
 ### 2. `new`操作符执行的过程?
@@ -68,7 +68,7 @@ console.log(typeof obj === "object"); // true
 
 **解释:**
 
-首先, 每个实例都有一个指向**原型对象**的内部属性, 在规范中, 这个内部属性叫`[[Prototype]]`, 虽然`[[Prototype]]`ES 标准中没有直接访问的属性, 但是在 Firefox/Safari/Chrome 可以通过`__proto__`属性访问, 别的浏览器就无法不支持, 所以如问题描述.
+首先, 每个实例都有一个指向**原型对象**的内部属性, 在规范中, 这个内部属性叫`[[Prototype]]`, 虽然`[[Prototype]]`ES 标准中没有直接访问的属性, 但是在 Firefox/Safari/Chrome 可以通过`__proto__`属性访问, 别的浏览器就无法支持, 所以如问题描述.
 
 **替代方案:**
 

@@ -6,7 +6,7 @@ draft: false
 comments: true
 star: false
 cover: ''
-tags: 
+tags:
   - JS高程
 ---
 
@@ -115,7 +115,7 @@ for (var i = 0, len = div.classList.length; i < len; i++) {
 
 #### document.readyState
 
-通过它来实现一个指示文档已经加载完成的指 示器, 支持情况: IE4+
+通过它来实现一个指示文档已经加载完成的指示器, 支持情况: IE4+
 
 * loading，正在加载文档；
 * complete，已经加载完文档。
