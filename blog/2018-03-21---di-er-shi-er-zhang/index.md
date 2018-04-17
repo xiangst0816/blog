@@ -71,6 +71,24 @@ SubType.prototype.sayAge = function() {
 };
 ```
 
+**补充Object.create的polyfill:**
+
+
+```js
+(function () {
+    if(typeof Object.prototype.create === 'undefined') {
+        Object.prototype.create = function (proto) {
+            function F () {}
+            F.prototype = proto
+            return new F()
+        }
+    }
+})()
+}
+
+```
+
+
 ### 4. 讲一个惰性函数的实例场景, 优缺点?
 
 * 优点: 避免不必要分支执行
@@ -238,6 +256,12 @@ function debounce(fn, delay, context) {
 }
 ```
 
+**需要注意的地方:**
+
+- 计时器timer放在要处理的函数上, 因为是引用关系, 下次进入能携带timer信息
+- 每次执行完毕记得清理timer信息, 防止下次调用产生问题
+- clear主要作用是清理定时器
+
 **throttle**：
 
 节流函数，根据时间节奏触发，保证间隔。比如点击事件保证间隔，scroll 时控制在 16.6ms 内执行一次等。
@@ -245,11 +269,11 @@ function debounce(fn, delay, context) {
 ```js
 function throttle(fn, delay, context) {
   if (fn.timer) return;
-  fn.call(context);
   fn.timer = setTimeout(function() {
     clearTimeout(fn.timer);
     fn.timer = null;
   }, delay);
+  fn.call(context);
   return {
     clear: function() {
       clearTimeout(fn.timer);
@@ -259,6 +283,13 @@ function throttle(fn, delay, context) {
 }
 ```
 
+**需要注意的地方:**
+
+- 计时器timer放在要处理的函数上, 因为是引用关系, 下次进入能携带timer信息
+- 每次执行完毕记得清理timer信息, 防止下次调用产生问题
+- 先设置定时, 再去call函数
+
+
 ### 14. 实现一个自定义事件库需要用到哪个设计模式?
 
 观察者模式
@@ -267,6 +298,7 @@ function throttle(fn, delay, context) {
 
 * 定义一个 hash 对象，key 为事件名，value 为回调函数数组
 * 事件包括的方法有：on、off、once、emit
+* 参考这个库的设计: [events](https://github.com/typescript-practice/events)
 
 ### 16. 简述拖放实现的方式是?
 
