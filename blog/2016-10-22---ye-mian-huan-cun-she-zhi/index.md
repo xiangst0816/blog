@@ -139,6 +139,12 @@ app.use(express.static(path.join(__dirname, 'public'), {
 
 ![流程图](1476065346000.png)
 
+**说明点:**
+
+- 当freshness检查失败，则发送资源请求并携带ETage和Last-Modified信息
+- ETag和Last-Modified都会发送给服务器不分前后
+- Etag用于动态内容会比Last-Modified好
+
 ### 参考文章
 
 * [页面的缓存与不缓存设置](http://www.cnblogs.com/liuling/archive/2013/07/25/2013-7-25-01.html)
