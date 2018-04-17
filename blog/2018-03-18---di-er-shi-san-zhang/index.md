@@ -69,7 +69,7 @@ domain=domain_name; secure;
 
 **获取:**
 
-`document.cookie` 返回当前页面可用的（根据 cookie 的域、路径、失效时间和安全设置）所有 cookie 的字符串，一系列由分号隔开的名值对儿.
+`document.cookie` 返回当前页面**可用的**（根据 cookie 的域、路径、失效时间和安全设置）所有 cookie 的字符串，一系列由分号隔开的名值对儿.
 
 **设置格式:**
 
@@ -129,4 +129,4 @@ this.set(name, "", new Date(0), path, domain, secure);
 ### 7. sessionStorage 和 localStorage 使用的差别？
 
 * sessionStorage 中的数据在**当前会话期**存在，而 localStorage 则一直存在
-* **localStorage 中新增数据可以再其他 Tab 中同步**，但是 sessionStorage 不会同步
+* **localStorage 中新增数据可以在其他 Tab 中同步**，但是 sessionStorage 不会同步

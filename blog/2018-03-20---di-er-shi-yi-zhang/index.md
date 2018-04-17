@@ -6,7 +6,7 @@ draft: false
 comments: true
 star: false
 cover: ''
-tags: 
+tags:
   - JS高程
 ---
 
@@ -54,7 +54,7 @@ xhr.send(null);
 **post()示例:**
 
 ```js
-var xhr = createXHR();
+var xhr = new XMLHttpRequest();
 xhr.onreadystatechange = function() {
   if (xhr.readyState == 4) {
     if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
@@ -75,10 +75,10 @@ xhr.send(serialize(form));
 **注意点:**
 
 * 如果是相对路径, 则 URL 相对于执行代码的当前页面
-* 调用 `open()` 方法并不会真正发送请求， 而只是启动一个请求以备发送
+* 调用** `open()` 方法并不会真正发送请求， 而只是启动一个请求以备发送**
 * 调用 `send()` 之后，请求就会被分派到服务器
 * 通过`xhr.status`来检测返回状态, responseText 返回响应结果
-* 异步需要注册`xhr.onreadystatechange`回调, 通过`xhr.readyState`查看请求状态, 通过`xhr.status`判断结果状态
+* 异步需要注册`xhr.onreadystatechange`回调, 通过`xhr.readyState`查看请求状态(0: 请求未初始化; 1: 请求已建立但未发送; 2: 请求已发送在处理; 3: 请求在处理, 数据没全部接受, 可多次触发; 4: 响应已完成;), 通过`xhr.status`判断结果状态
 * 在接收到响应之前还可以调用 `abort()` 方法来取消异步请求, 执行之后 XHR 不再触发事件.
 * 要成功发送请求头部信息，必须在调用 open()方法之后且调用 send()方法 之前调用 setRequestHeader()
 * 只有部分的浏览器头部信息可以重写, 这个和浏览器有关
@@ -112,12 +112,12 @@ CORS 通过 Preflight Request 机制向服务器验证请求. 这种请求使用
 * Access-Control-Allow-Headers：允许的头部，多个头部以逗号分隔。
 * Access-Control-Max-Age：应该将这个 Preflight 请求缓存多长时间（以秒表示）。
 
-为此付出的代价只是第一次发送这种请求时会多一次 HTTP 请求.
+为此付出的代价**只是第一次发送这种请求时会多一次 HTTP 请求**.
 
 > 注意:
 >
 > 1.  这个机制, **IE 10 及更早版本**都不支持
-> 2.  这个过程一般是不携带 cookie 等信息, 除非设置`xhr.withCredentials=true`
+> 2.  这个过程一般是**不携带 cookie 等信息**, 除非设置`xhr.withCredentials=true`
 > 3.  如果发送的是带凭证的请求但是服务器响应中没包含这个头部, 则浏览器就不会把响应交给 JavaScript. 于是，responseText 中将是空字符串，status 的值为 0，而且会调用 onerror()事件处理程序
 
 ### 5. 使用 axios 在 IE10-跨域发送`option`无法携带 cookie 等验证信息怎么解决?
@@ -148,7 +148,10 @@ CORS 通过 Preflight Request 机制向服务器验证请求. 这种请求使用
 
 ```js
 var img = new Image();
-img.onload = img.onerror = function() {
+img.onerror = function() {
+  alert("Error!");
+};
+img.onload = function() {
   alert("Done!");
 };
 img.src = "http://www.example.com/test?name=Nicholas";
