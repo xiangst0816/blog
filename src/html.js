@@ -35,8 +35,6 @@ export default class HTML extends React.PureComponent {
                     content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
                 />
                 <meta name="format-detection" content="telephone=no email=no" />
-                <meta name="apple-mobile-web-app-capable" content="yes" />
-                <meta name="apple-mobile-web-app-status-bar-style" content="black" />
                 <link rel="icon" type="image/png" sizes="1024x1024" href={logo} />
                 {this.props.headComponents}
                 {css}
