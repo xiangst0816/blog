@@ -80,17 +80,19 @@ ETag 也有他自己的问题，所以经常在使用中会关闭`ETag`。举例
 * 设置 30 天后过期
 
 ```js
-app.use(express.static(path.join(__dirname, 'public'), {
-	etag: false, //资源标记
-	maxAge: 0, //除去下面格式的其余文件不缓存，比如html
-	setHeaders: function (res, path, state) {
-		if(/\.(js|css|png|gif|jpg|jpeg)$/.test(path)){
-			// 未来的一个过期时间
-			res.set('Expires', new Date(Date.now() + 2592000*1000).toGMTString())
-			res.set('Cache-Control', 'public, max-age=2592000')
-		}
-	}
-}));
+app.use(
+  express.static(path.join(__dirname, "public"), {
+    etag: false, //资源标记
+    maxAge: 0, //除去下面格式的其余文件不缓存，比如html
+    setHeaders: function(res, path, state) {
+      if (/\.(js|css|png|gif|jpg|jpeg)$/.test(path)) {
+        // 未来的一个过期时间
+        res.set("Expires", new Date(Date.now() + 2592000 * 1000).toGMTString());
+        res.set("Cache-Control", "public, max-age=2592000");
+      }
+    }
+  })
+);
 ```
 
 * 不缓存
@@ -141,9 +143,9 @@ app.use(express.static(path.join(__dirname, 'public'), {
 
 **说明点:**
 
-- 当freshness检查失败，则发送资源请求并携带ETage和Last-Modified信息
-- ETag和Last-Modified都会发送给服务器不分前后
-- Etag用于动态内容会比Last-Modified好
+* 当 freshness 检查失败，则发送资源请求并携带 ETage 和 Last-Modified 信息
+* ETag 和 Last-Modified 都会发送给服务器不分前后
+* Etag 用于动态内容会比 Last-Modified 好
 
 ### 参考文章
 

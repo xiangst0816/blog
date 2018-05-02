@@ -7,51 +7,48 @@ import '../sass/style.scss';
 import 'katex/dist/katex.min.css';
 
 if (typeof window !== 'undefined') {
-    const AttachFastClick = require('fastclick');
-    new AttachFastClick(document.body);
+  const AttachFastClick = require('fastclick');
+  new AttachFastClick(document.body);
 }
 
 export default class Template extends React.PureComponent {
-    toggle = () => {
-        document.documentElement.classList.toggle('menu-active');
-    };
+  toggle = () => {
+    document.documentElement.classList.toggle('menu-active');
+  };
 
-    render() {
-        const master = this.props.data.master;
-        const site = this.props.data.site.siteMetadata;
+  render() {
+    const master = this.props.data.master;
+    const site = this.props.data.site.siteMetadata;
 
-        return (
-            <article>
-                <Helmet
-                    title={site.title}
-                    meta={[
-                        { name: 'description', content: `${site.title}` },
-                        { name: 'keywords', content: `${site.keywords}` },
-                    ]}
-                />
-                <Navigation master={master} site={site} {...this.props} />
-                <section id="wrapper">
-                    <a
-                        className="hidden-close"
-                        onClick={this.toggle}
-                        rel="close"
-                        title="close"
-                    />
-                    {this.props.children()}
-                    <div
-                        id="body-class"
-                        style={{ display: 'none' }}
-                    />
-                    <Footer />
-                </section>
-            </article>
-        );
-    }
+    return (
+      <article>
+        <Helmet
+          title={site.title}
+          meta={[
+            { name: 'description', content: `${site.title}` },
+            { name: 'keywords', content: `${site.keywords}` },
+          ]}
+        />
+        <Navigation master={master} site={site} {...this.props} />
+        <section id="wrapper">
+          <a
+            className="hidden-close"
+            onClick={this.toggle}
+            rel="close"
+            title="close"
+          />
+          {this.props.children()}
+          <div id="body-class" style={{ display: 'none' }} />
+          <Footer />
+        </section>
+      </article>
+    );
+  }
 }
 
 Template.propTypes = {
-    data: PropTypes.object.isRequired,
-    children: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired,
+  children: PropTypes.func.isRequired,
 };
 
 /* eslint-disable */
