@@ -228,3 +228,9 @@ BFC(Block Formatting Context) 块级格式化上下文，通过特性是属性�
 ## write-mode 改变文档流方向
 
 由之前的水平规则完全变为垂直规则，这能衍生出很多 hack 技巧，这是一个打开思路的属性！！！
+
+## 思维导图
+
+![](margin.png)
+
+![](size.png)
