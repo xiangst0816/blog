@@ -1,5 +1,7 @@
 # Blog
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/xiangsongtao/blog.svg)](https://greenkeeper.io/)
+
 [![](https://img.shields.io/travis/xiangsongtao/blog.svg)](https://travis-ci.org/xiangsongtao/blog)
 
 Thoughts, stories and ideas.
