@@ -1,0 +1,49 @@
+@import "variable";
+
+/* ==========================================================================
+   Tags
+   ========================================================================== */
+.container .content-tags {
+  position: relative;
+  z-index: 10;
+  margin: 0 auto;
+  max-width: $content-wide;
+  padding: 4em 2em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-tags .tags {
+  position: relative;
+  z-index: 10;
+  margin: 0.5em 0.4em;
+  padding: 0.2em 0.4em;
+  font-weight: 500;
+  border: 1px solid #ddd;
+  transition: border-color ease 0.3s;
+  will-change: border-color;
+  a {
+    white-space: nowrap;
+    transition: color ease 0.3s;
+    will-change: color;
+  }
+  &:hover {
+    border-color: $color-red-95;
+    a {
+      color: $color-red-95;
+    }
+  }
+}
+
+.container .content-tags:after {
+  position: absolute;
+  width: $content-wide - 4;
+  height: 1px;
+  left: 50%;
+  bottom: 0;
+  margin-left: ((4 - $content-wide) / 2);
+  content: '';
+  background: $color-gray-90;
+}

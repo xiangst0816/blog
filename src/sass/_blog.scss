@@ -1,0 +1,91 @@
+@import "variable";
+
+/* ==========================================================================
+   Index
+   ========================================================================== */
+
+#blog-author {
+  position: relative;
+  z-index: 40;
+  margin: auto 6em;
+}
+
+#blog-author:after {
+  position: absolute;
+  width: $content-wide - 4;
+  height: 1px;
+  left: 50%;
+  bottom: 0;
+  margin-left: ((4-$content-wide) / 2);
+  content: '';
+  background: $color-gray-90;
+}
+
+#blog-author .post-author {
+  margin-top: -5em;
+  padding-bottom: 3em;
+  border: 0;
+}
+
+#blog-author.has-cover .post-author-avatar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 0.5em;
+}
+
+#blog-author.has-cover .post-author-avatar img {
+  border: 0.125em solid $color-white;
+}
+
+#blog-author .post-author-name {
+  padding: 0.334em 0 0;
+  font-size: 2em;
+  line-height: 1em;
+}
+
+#blog-author.has-cover .post-author-name {
+  padding: 0.667em 0;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  line-height: 1.334em;
+  color: $color-white;
+}
+
+#blog-author.has-cover .post-author-about {
+  margin-top: -0.667em;
+}
+
+.container {
+  position: relative;
+}
+
+.container .post {
+  position: relative;
+  padding: 4em 0;
+}
+
+.container .post:after {
+  position: absolute;
+  width: $content-wide - 4;
+  height: 1px;
+  left: 50%;
+  bottom: 0;
+  margin-left: ((4 - $content-wide) / 2);
+  content: '';
+  background: $color-gray-90;
+}
+
+.container .post.featured .post-title:after {
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  left: -1.75em;
+  top: 0;
+  margin-top: -0.25em;
+  font-family: 'icomoon';
+  font-size: 0.5em;
+  font-style: normal;
+  font-weight: normal;
+  content: '\e9d9';
+  color: $color-yellow-100;
+  text-align: center;
+}

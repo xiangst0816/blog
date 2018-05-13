@@ -1,0 +1,408 @@
+@import "variable";
+
+/* ==========================================================================
+   Basics
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+@supports (flex-wrap: wrap) {
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  #wrapper {
+    flex: 1;
+  }
+}
+
+html {
+  font-size: 50%; // 16px
+  overflow-x: hidden;
+}
+
+html.menu-active,
+.menu-active body {
+  overflow-y: hidden;
+}
+
+body {
+  font: 400 2em / 1.5em 'Cardo', serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, Hiragino Sans GB, PingFang SC, Microsoft Yahei, sans-serif;
+  color: $color-blue-30;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+input,
+button,
+select,
+textarea {
+  font-family: 'Fira Sans', sans-serif;
+  transition: all ease-out 0.2s;
+  will-change: contents;
+}
+
+a {
+  color: $color-blue-15;
+  text-decoration: none;
+  font-weight: 400;
+  transition: all ease-out 0.2s;
+  will-change: color;
+}
+
+a:hover,
+a:focus {
+  color: $color-black;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Fira Sans', sans-serif;
+  text-rendering: optimizeLegibility;
+  color: $color-black;
+}
+
+h1 {
+  font-size: 2em;
+  line-height: 1em;
+  text-indent: -1px;
+  margin: 2em 0 -0.5em;
+}
+
+h2 {
+  font-size: 1.75em;
+  line-height: 1.111em;
+  text-indent: -1px;
+  margin: 2.286em 0 -0.571em;
+}
+
+h3 {
+  font-size: 1.5em;
+  line-height: 1.334em;
+  margin: 2em 0 -0.667em;
+}
+
+h4 {
+  font-size: 1.25em;
+  line-height: 1.2em;
+  margin: 2.4em 0 -0.8em;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  font-weight: inherit;
+}
+
+p {
+  margin: 2em 0;
+}
+
+ul, ol {
+  margin: 2em 0;
+  padding-left: 30px;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  position: relative;
+}
+
+ul > li:before,
+ol > li:before {
+  position: absolute;
+  width: 1.5em;
+  margin-left: -2em;
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 1em;
+  font-weight: 500;
+  line-height: 1.5em;
+  text-align: right;
+  color: $color-black;
+}
+
+ul > li:before {
+  margin-top: 0.25em;
+  content: '*';
+}
+
+ol {
+  list-style-type: none;
+  counter-reset: item;
+}
+
+ol > li:before {
+  content: counter(item) ". " !important;
+  counter-increment: item;
+}
+
+ol ol, ul ul, ul ol, ol ul {
+  padding-left: 30px;
+  margin: 15px 0;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  margin: 2em 0;
+  padding: 0;
+  background: $color-gray-90;
+  border: 0;
+}
+
+blockquote {
+  margin: 2em auto;
+  padding: 1em;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-left: 0.25em solid $color-gray-90;
+  font-style: italic;
+  font-weight: 400;
+  color: $color-blue-30;
+  background: $color-gray-98;
+}
+
+blockquote p {
+  margin: 1em auto;
+}
+
+blockquote p:first-child {
+  margin-top: 0;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+em, i {
+  font-style: italic;
+  color: $color-blue-15;
+}
+
+strong, b {
+  font-weight: 700;
+  color: $color-blue-15;
+}
+
+small {
+  font-size: 0.9em;
+  color: $color-blue-30;
+}
+
+dl {
+  margin: 2em 0;
+  padding-left: 30px;
+}
+
+dl dt {
+  font-family: 'Fira Sans', sans-serif;
+  //font-weight: 500;
+  font-size: 0.75em;
+  line-height: 1.25em;
+  font-weight: 700;
+  color: $color-black;
+  margin-bottom: 0.334em;
+}
+
+dl dt:before {
+  content: '';
+  position: absolute;
+  width: 1em;
+  height: 1px;
+  margin-left: -30px;
+  margin-top: 0.5em;
+  background: $color-blue-80;
+}
+
+dl dd {
+  margin-left: 0;
+  margin-bottom: 1em;
+}
+
+mark {
+  background-color: $color-yellow-100;
+}
+
+code, tt {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inconsolata', monospace, sans-serif;
+  font-size: 0.75em;
+  white-space: pre;
+  background: $color-gray-98;
+  //border: 1px solid $color-gray-90;
+  //top: -2px;
+}
+
+pre {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: 'Inconsolata', monospace, sans-serif;
+  white-space: pre;
+  background: $color-gray-98;
+  border: 1px solid $color-gray-90;
+  box-sizing: border-box;
+}
+
+pre .lines {
+  position: absolute;
+  width: 2.667em;
+  height: 100%;
+  left: 0;
+  top: 0;
+  padding: 1.334em 0;
+  border-right: 1px solid $color-gray-90;
+  font-size: 0.75em;
+  line-height: 2em;
+  text-align: right;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+pre .lines .line {
+  display: block;
+  padding-right: 0.334em;
+  color: $color-blue-30;
+}
+
+pre code, pre tt {
+  position: static;
+  top: auto;
+  margin: 0;
+  padding: 0;
+  overflow: scroll;
+  font-size: 0.7em;
+  line-height: 1.6em;
+  white-space: pre;
+  background: transparent;
+  border: none;
+  vertical-align: inherit;
+  -webkit-overflow-scrolling: touch;
+}
+
+kbd {
+  display: inline-block;
+  margin-bottom: 0.5em;
+  padding: 1px 8px;
+  border: $color-gray-90 1px solid;
+  color: $color-blue-30;
+  text-shadow: $color-white 0 1px 0;
+  font-size: 0.9em;
+  font-weight: bold;
+  background: $color-gray-98;
+  border-radius: 4px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 1px 0 0 $color-white inset;
+}
+
+table {
+  width: 100%;
+  max-width: 100%;
+  margin: 2em 0;
+  font-size: 95%;
+  background-color: transparent;
+  //border: 1px solid $color-gray-90;
+}
+
+table th,
+table td {
+  position: relative;
+  padding: 0.5em;
+  //line-height: 0.95em;
+  //font-size: 0.75em;
+  //text-align: left;
+  //border: 1px solid $color-gray-90;
+}
+
+table th {
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 500;
+  //font-size: 0.75em;
+  //line-height: 1.25em;
+  padding: 0.667em;
+  color: $color-black;
+}
+
+table td:after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: -1px;
+  top: -1px;
+  padding: 1px;
+  z-index: -1;
+  content: '';
+  background: $color-gray-98;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 2.5em auto;
+}
+
+.fluid-width-video-wrapper {
+  margin: 2.5em auto;
+}
+
+.clear {
+  clear: both;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: .2;
+  }
+  100% {
+    opacity: .9;
+  }
+}
+
+.avatar {
+  position: relative;
+  overflow: hidden;
+  background: $color-gray-95;
+  margin: 0;
+  
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    width: 50%;
+    height: 50%;
+    bottom: 35%;
+    left: 25%;
+    border-radius: 100%;
+    background: $color-gray-90;
+  }
+  
+  &:after {
+    width: 100%;
+    bottom: -25%;
+    left: 0;
+  }
+  
+  img {
+    position: relative;
+    z-index: 2;
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    transition: opacity ease 200ms;
+  }
+}

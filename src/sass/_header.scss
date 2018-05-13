@@ -1,0 +1,156 @@
+@import "variable";
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+#blog-header {
+  position: relative;
+  padding: 6em 0;
+  text-align: center;
+}
+
+#blog-header:after {
+  position: absolute;
+  width: $content-wide - 4;
+  height: 1px;
+  left: 50%;
+  bottom: 0;
+  margin-left: ((4-$content-wide) / 2);
+  content: '';
+  background: $color-gray-90;
+}
+
+#blog-header.has-cover {
+  padding: 9em 0 10em;
+  background: $color-black;
+  overflow: hidden;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.author-template #blog-header:after,
+#blog-header.has-cover:after {
+  display: none;
+}
+
+.paged #blog-header.has-cover,
+.tag-template #blog-header {
+  padding: 4em 0;
+}
+
+.author-template #blog-header.has-cover {
+  padding: 6em 0;
+}
+
+.blog-cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 5;
+  background: repeat scroll center center $color-black;
+  //background: no-repeat scroll center center / cover $color-black;
+  
+  animation: 0.5s ease-in forwards fadein;
+  -webkit-overflow-scrolling: touch;
+}
+
+.blog-cover:after {
+  position: absolute;
+  width: 100%;
+  height: 6em;
+  left: 0;
+  bottom: 0;
+  z-index: 8;
+  content: '';
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+.blog-logo {
+  position: fixed;
+  max-width: 2em;
+  left: 0;
+  top: 0;
+  margin: 1em;
+  z-index: 200;
+  user-select: none;
+}
+
+.blog-logo img {
+  display: block;
+  margin: 0 auto;
+}
+
+.blog-name {
+  position: relative;
+  display: block;
+  z-index: 10;
+  margin: 0;
+  padding: 0;
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 700;
+  font-size: 2em;
+  line-height: 1em;
+  text-decoration: none;
+  text-shadow: 0 0 90px #000;
+}
+
+.home-template .blog-name {
+  font-size: 3em;
+}
+
+.has-cover .blog-name {
+  color: $color-white;
+}
+
+.blog-name a {
+  text-decoration: none;
+  font-weight: inherit;
+  color: inherit;
+}
+
+.blog-description {
+  position: relative;
+  display: block;
+  z-index: 10;
+  margin: 0.25em 0;
+  padding: 0;
+  font-size: 1em;
+  line-height: 1.5em;
+  text-shadow: 0 0 90px #000;
+}
+
+.home-template .blog-description {
+  font-size: 1.5em;
+}
+
+.has-cover .blog-description {
+  color: $color-white;
+}
+
+#wrapper {
+  position: relative;
+}
+
+#wrapper .hidden-close {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 350;
+}
+
+.menu-active #wrapper .hidden-close {
+  display: block;
+}
+
+.inner {
+  //max-width: $content-wide;
+  //max-width: 42em;
+  max-width: $content-wide;
+  margin: 0 auto;
+  padding: 0 2em;
+}

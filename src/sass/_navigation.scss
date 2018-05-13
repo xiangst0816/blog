@@ -1,0 +1,74 @@
+@import "variable";
+
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
+
+#navigation {
+}
+
+.blog-logo,
+.nav-button {
+  transition: all ease-out 0.3s;
+}
+
+.nav-button {
+  position: fixed;
+  top: 0;
+  margin: 1em;
+  z-index: 200;
+  user-select: none;
+}
+
+.nav-button#home-button {
+  left: 0;
+}
+
+.nav-button#menu-button {
+  right: 0;
+}
+
+.nav-button a {
+  display: block;
+  padding: 0.2em 1.25em;
+  border: 1px solid $color-blue-80;
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 0.75em;
+  text-shadow: none;
+  color: $color-blue-60;
+  cursor: pointer;
+  background: $color-white;
+  transition: color, border-color ease 0.3s;
+  will-change: color, border-color;
+  border-radius: 2em;
+}
+
+.nav-button a:hover,
+.nav-button a:focus {
+  color: $primary-color;
+  border-color: $primary-color;
+}
+
+.cover-active .nav-button a {
+  color: $color-white;
+  border-color: rgba(255, 255, 255, 0.5);
+  background: transparent;
+}
+
+.cover-active .nav-button a:hover,
+.cover-active .nav-button a:focus {
+  color: $color-white;
+  border-color: $color-white;
+}
+
+.nav-button a i {
+  display: inline-block;
+  color: inherit;
+  font-size: 0.8em;
+}
+
+.nav-button a i:before {
+  position: relative;
+  width: auto;
+  margin: auto;
+}

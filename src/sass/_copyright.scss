@@ -1,0 +1,29 @@
+@import "variable";
+
+/* ==========================================================================
+   Copyright
+   ========================================================================== */
+
+.post-copyright {
+  font-size: 0.9em;
+  color: $color-blue-30;
+  background-color: $color-gray-98;
+  margin: 4em auto 2em;
+  padding: 1em;
+  box-sizing: border-box;
+  border-left: 0.25em solid $color-gray-90;
+  font-weight: 400;;
+  li:before {
+    display: none;
+  }
+  
+  li {
+    a {
+      border-bottom: 1px solid $color-red-95;
+    }
+    a:hover,
+    a:active {
+      color: $color-red-95;
+    }
+  }
+}

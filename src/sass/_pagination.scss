@@ -1,0 +1,109 @@
+@import "variable";
+
+/* ==========================================================================
+   Pagination
+   ========================================================================== */
+
+.pagination {
+  position: relative;
+  height: 6em;
+  margin: 0;
+  font-family: 'Fira Sans', sans-serif;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .inner {
+    padding: 2em;
+    width: $content-wide;
+    height: 100%;
+  }
+}
+
+.pagination:after {
+  position: absolute;
+  width: $content-wide - 4;
+  height: 1px;
+  left: 50%;
+  bottom: 0;
+  margin-left: ((4 - $content-wide) / 2);
+  content: '';
+  background: $color-gray-90;
+}
+
+.pagination a {
+  position: relative;
+  display: block;
+  //height: 1.334em;
+  //margin: -1px 0;
+  padding: 0.25em 1em;
+  z-index: 100;
+  border: 1px solid $color-blue-80;
+  font-size: 0.75em;
+  //line-height: 1.5em;
+  text-align: center;
+  text-decoration: none;
+  color: $color-blue-60;
+  transition: all ease-out 0.3s;
+  will-change: color, border-color;
+  border-radius: 2em;
+}
+
+.pagination .pagination-next {
+  float: right;
+  padding-left: 1.334em;
+}
+
+.pagination .pagination-prev {
+  float: left;
+  padding-right: 1.334em;
+}
+
+.pagination a:hover,
+.pagination a:focus {
+  color: $primary-color;
+  border-color: $primary-color;
+}
+
+.pagination .pagination-label {
+  position: relative;
+  //top: -0.167em;
+  display: inline-block;
+  height: 1.334em;
+  line-height: 1.334em;
+}
+
+.pagination a i {
+  position: relative;
+  width: auto;
+  margin: auto;
+  color: inherit;
+  font-size: 1.334em;
+  line-height: 0.75em;
+  top: 0.167em;
+}
+
+.pagination .pagination-info {
+  position: absolute;
+  width: 100%;
+  height: 2.667em;
+  left: 0;
+  z-index: 50;
+  display: block;
+  font-size: 0.75em;
+  line-height: 2.667em;
+  text-align: center;
+}
+
+.extra-pagination {
+  display: none;
+}
+
+.extra-pagination .pagination:after {
+  top: auto;
+  bottom: 0;
+}
+
+.paged .extra-pagination {
+  display: block;
+}

@@ -1,0 +1,40 @@
+@import "variable";
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+#footer {
+  position: relative;
+  font-family: 'Fira Sans', sans-serif;
+  line-height: 1em;
+  padding-bottom: 6em;
+  user-select: none;
+}
+
+.credits {
+  text-align: center;
+  font-size: 0.625em;
+  line-height: 1em;
+  padding: 1.1em 0;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  color: $color-blue-60;
+}
+
+.credits a {
+  color: inherit;
+}
+
+.credits-theme {
+  text-align: center;
+  .love {
+    color: $color-red-95;
+  }
+  a {
+    text-decoration: underline;
+    &:hover {
+      color: $color-red-95;
+    }
+  }
+}
