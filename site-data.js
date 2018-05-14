@@ -6,7 +6,7 @@ let start_url = '/'
 let shortName = 'xiangst'
 
 if (process.env.CI && process.env.DEPLOY === 'github') {
-  pathPrefix = '/blog/'
+  pathPrefix = '/blog'
   trackingId = 'UA-114740261-4'
   siteUrl = 'https://xiangsongtao.github.io' + pathPrefix
   faviconUrl = pathPrefix + faviconUrl

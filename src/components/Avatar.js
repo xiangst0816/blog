@@ -1,5 +1,5 @@
 import React from 'react';
-import withPrefix from '../utils/withPrefix';
+import withPrefix from '../utils/with-prefix';
 import PropTypes from 'prop-types';
 
 export default class Avatar extends React.PureComponent {

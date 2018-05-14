@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import registerListener from 'tp-register-listener';
 import Link from 'gatsby-link';
-import withPrefix from '../utils/withPrefix';
+import withPrefix from '../utils/with-prefix';
 
 let recordPosition = 0;
 
