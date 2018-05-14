@@ -23,7 +23,7 @@ export default class BlogPost extends React.PureComponent {
     const cover = post.cover ? post.cover : siteCover || false
     const {relativePath, slug} = currentPost.fields
     const postInGithub = `${GithubPrefix}${relativePath}`
-    const shareUrl = `${siteUrl}${slug}`
+    const shareUrl = `${siteUrl}${slug}`.replace(/\/\//ig, '/')
 
     return (
       <div>
