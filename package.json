@@ -61,6 +61,7 @@
     "gulp-ssh": "^0.7.0",
     "prettier": "^1.10.2",
     "prettylint": "^1.0.0",
+    "prismjs": "^1.14.0",
     "rimraf": "^2.6.2",
     "shelljs": "^0.8.1"
   },
