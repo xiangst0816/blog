@@ -6,7 +6,7 @@ draft: false
 comments: true
 star: false
 cover: ''
-tags: 
+tags:
   - 读书
 ---
 
@@ -16,4 +16,4 @@ tags:
 
 下面是我的读书总结，希望能对你有用：
 
-![](刻意联系.svg)
+![](刻意练习.svg)
