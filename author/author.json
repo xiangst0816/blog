@@ -3,7 +3,7 @@
     "id": "烈风裘",
     "master": true,
     "bio": "万物寂静, 万物新生.",
-    "cover": "/background/escape-flight.png",
+    "cover": "",
     "avatar": "/avatar/me.jpeg",
     "github": "https://github.com/xiangsongtao",
     "twitter": "",
@@ -16,7 +16,7 @@
   {
     "id": "WALL-E",
     "master": false,
-    "cover": "/background/cuadros.png",
+    "cover": "",
     "avatar": "/avatar/cleaner.jpg",
     "bio": "还有要清理的吗?",
     "location": "Earth"

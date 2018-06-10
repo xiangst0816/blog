@@ -133,7 +133,7 @@ export default class Header extends React.PureComponent {
     const { coverPosition, direction, coverActive } = this.state;
     const logoUrl = logo && logo.indexOf('http') > -1 ? logo : withPrefix(logo);
     const coverUrl =
-      cover && cover.indexOf('http') > -1 ? cover : withPrefix(cover);
+      cover && (cover.indexOf('http') > -1 ? cover : withPrefix(cover));
     const id = isPost ? 'post-header' : 'blog-header';
     return (
       <header
