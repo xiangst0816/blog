@@ -1,33 +1,39 @@
-import React from 'react'
-import Helmet from 'react-helmet'
-import PropTypes from 'prop-types'
-import Link from 'gatsby-link'
-import kebabCase from 'lodash.kebabcase'
-import Bio from '../components/Bio'
-import Avatar from '../components/Avatar'
-import Share from '../components/Share'
-import PostContent from '../components/PostContent'
-import Header from '../components/Header'
-import Disqus from '../components/Disqus'
+import React from "react";
+import Helmet from "react-helmet";
+import PropTypes from "prop-types";
+import Link from "gatsby-link";
+import kebabCase from "lodash.kebabcase";
+import Bio from "../components/Bio";
+import Avatar from "../components/Avatar";
+import Share from "../components/Share";
+import PostContent from "../components/PostContent";
+import Header from "../components/Header";
+import Disqus from "../components/Disqus";
 
-const GithubPrefix = 'https://github.com/xiangsongtao/blog/blob/master/blog/'
+const GithubPrefix = "https://github.com/xiangsongtao/blog/edit/master/blog/";
 
 export default class BlogPost extends React.PureComponent {
-  render () {
-    const {currentPost, prevPost, nextPost, site, master} = this.props.data
-    const {next, prev} = this.props.pathContext // 上一篇和下一篇文章的slug
-    const post = currentPost.frontmatter
-    const {siteMetadata} = site
-    const {logo, cover: siteCover, navigation, siteUrl} = siteMetadata
-    const author = post.author || master
-    const cover = post.cover ? post.cover : siteCover || false
-    const {relativePath, slug} = currentPost.fields
-    const postInGithub = `${GithubPrefix}${relativePath}`
-    const shareUrl = `${siteUrl}${slug}`
+  render() {
+    const { currentPost, prevPost, nextPost, site, master } = this.props.data;
+    const { next, prev } = this.props.pathContext; // 上一篇和下一篇文章的slug
+    const post = currentPost.frontmatter;
+    const { siteMetadata } = site;
+    const { logo, cover: siteCover, navigation, siteUrl } = siteMetadata;
+    const author = post.author || master;
+    const cover = post.cover ? post.cover : siteCover || false;
+    const { relativePath, slug } = currentPost.fields;
+    const postInGithub = `${GithubPrefix}${relativePath}`;
+    const shareUrl = `${siteUrl}${slug}`;
 
     return (
       <div>
-        <Helmet title={post.title}/>
+        <Helmet
+          title={post.title}
+          meta={[
+            { name: "description", content: currentPost.excerpt },
+            { name: "keywords", content: `${post.title} ${author.id} [${post.tags.join(",")}]` },
+          ]}
+        />
         <Header
           logo={logo}
           cover={cover}
@@ -38,12 +44,12 @@ export default class BlogPost extends React.PureComponent {
           <h1 className="post-title">{post.title}</h1>
           <div className="post-meta">
             <div className="post-meta-inner">
-              <Link to={`/author/${kebabCase(author.id)}/`}>{author.id}</Link> |{' '}
+              <Link to={`/author/${kebabCase(author.id)}/`}>{author.id}</Link> |{" "}
               <time>
                 {post.date} | {currentPost.timeToRead} min read
               </time>
-              {' '}
-                                                                               |{' '}
+              {" "}
+              |{" "}
               <a target="_target" href={postInGithub}>
                 <i className="icon icon-github"/> Edit this page
               </a>
@@ -61,7 +67,8 @@ export default class BlogPost extends React.PureComponent {
                 <li><strong>本文题目：</strong>{post.title}</li>
                 <li><strong>本文链接：</strong><a href={shareUrl} target="_blank">{shareUrl}</a></li>
                 <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用
-                  <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+                  <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA
+                    3.0</a> 许可协议。转载请注明出处！
                 </li>
               </ul>
 
@@ -141,14 +148,14 @@ export default class BlogPost extends React.PureComponent {
           </article>
         </main>
       </div>
-    )
+    );
   }
 }
 
 BlogPost.propTypes = {
   data: PropTypes.object.isRequired,
   pathContext: PropTypes.object.isRequired
-}
+};
 
 /* eslint-disable */
 export const pageQuery = graphql`
@@ -196,4 +203,4 @@ export const pageQuery = graphql`
             ...postFrag
         }
     }
-`
+`;

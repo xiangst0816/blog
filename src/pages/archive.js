@@ -1,10 +1,10 @@
-import React from 'react';
-import Helmet from 'react-helmet';
-import PropTypes from 'prop-types';
-import Header from '../components/Header';
-import groupby from 'lodash.groupby';
-import Link from 'gatsby-link';
-import kebabCase from 'lodash.kebabcase';
+import React from "react";
+import Helmet from "react-helmet";
+import PropTypes from "prop-types";
+import groupby from "lodash.groupby";
+import Link from "gatsby-link";
+import kebabCase from "lodash.kebabcase";
+import Header from "../components/Header";
 
 export default class TagsPageRoute extends React.PureComponent {
   render() {
@@ -16,11 +16,11 @@ export default class TagsPageRoute extends React.PureComponent {
     const allArchive = allRowArchive.map(item => {
       return {
         ...item.node.frontmatter,
-        ...item.node.fields,
+        ...item.node.fields
       };
     });
 
-    const allArchiveWithYear = groupby(allArchive, 'year');
+    const allArchiveWithYear = groupby(allArchive, "year");
 
     const List = [];
 
@@ -56,7 +56,7 @@ export default class TagsPageRoute extends React.PureComponent {
 
     return (
       <div>
-        <Helmet title={`${title}-Archive`} />
+        <Helmet title={`${title}-Archive`}/>
         <Header
           logo={logo}
           cover={coverImage}
@@ -64,8 +64,12 @@ export default class TagsPageRoute extends React.PureComponent {
           navigation={navigation}
           isPost={false}
         >
-          <h1 className="blog-name">All Archive</h1>
-          <span className="blog-description">Posts: {allArchive.length}</span>
+          <h1 className="blog-name">
+            All Archive
+          </h1>
+          <span className="blog-description">
+            Posts: {allArchive.length}
+          </span>
         </Header>
         <div className="container">
           <main className="content" role="main">
@@ -78,7 +82,7 @@ export default class TagsPageRoute extends React.PureComponent {
 }
 
 TagsPageRoute.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired
 };
 
 /* eslint-disable */
