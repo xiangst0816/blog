@@ -49,9 +49,9 @@
   left: 0;
   top: 0;
   z-index: 5;
-  background: repeat scroll center center $color-black;
-  //background: no-repeat scroll center center / cover $color-black;
-  
+  //background: no-repeat scroll center center $color-black;
+  background: no-repeat scroll center center / cover $color-black;
+
   animation: 0.5s ease-in forwards fadein;
   -webkit-overflow-scrolling: touch;
 }

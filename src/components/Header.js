@@ -1,8 +1,9 @@
-import React from 'react';
-import classNames from 'classnames';
-import registerListener from 'tp-register-listener';
-import Link from 'gatsby-link';
-import withPrefix from '../utils/with-prefix';
+import React from "react";
+import classNames from "classnames";
+import registerListener from "tp-register-listener";
+import Link from "gatsby-link";
+import { enquireScreen, unenquireScreen } from "enquire-js";
+import withPrefix from "../utils/with-prefix";
 
 let recordPosition = 0;
 
@@ -12,31 +13,34 @@ export default class Header extends React.PureComponent {
     this.unRegisterListenersCollection = [];
     this.coverElement = null;
     this.state = {
+      isMobile: false,
       coverPosition: 0,
       coverActive: !!props.cover,
-      direction: false, // false-up; true-down
+      direction: false // false-up; true-down
     };
+
+    this.enquireHandler = null;
   }
 
   coverScroll = () => {
-    if (!this.coverElement) {
-      return;
-    }
+    if (!this.coverElement) return;
 
     const coverHeight = this.coverElement.offsetHeight;
 
     const coverScrollHandler = () => {
+      if (this.state.isMobile) return;
+
       const windowPosition = Math.floor(window.scrollY);
       requestAnimationFrame(() => {
         if (windowPosition > 0) {
           this.setState({
             coverPosition: Math.floor(windowPosition * 0.25),
-            coverActive: windowPosition < coverHeight,
+            coverActive: windowPosition < coverHeight
           });
         } else {
           this.setState({
             coverPosition: 0,
-            coverActive: windowPosition < coverHeight,
+            coverActive: windowPosition < coverHeight
           });
         }
       });
@@ -46,21 +50,21 @@ export default class Header extends React.PureComponent {
 
     registerListener(
       window,
-      'scroll',
+      "scroll",
       coverScrollHandler,
       { passive: true },
       this.unRegisterListenersCollection
     );
     registerListener(
       window,
-      'resize',
+      "resize",
       coverScrollHandler,
       { passive: true },
       this.unRegisterListenersCollection
     );
     registerListener(
       window,
-      'orientationchange',
+      "orientationchange",
       coverScrollHandler,
       { passive: true },
       this.unRegisterListenersCollection
@@ -93,21 +97,21 @@ export default class Header extends React.PureComponent {
     navScrollHandler();
     registerListener(
       window,
-      'scroll',
+      "scroll",
       navScrollHandler,
       { passive: true },
       this.unRegisterListenersCollection
     );
     registerListener(
       window,
-      'resize',
+      "resize",
       navScrollHandler,
       { passive: true },
       this.unRegisterListenersCollection
     );
     registerListener(
       window,
-      'orientationchange',
+      "orientationchange",
       navScrollHandler,
       { passive: true },
       this.unRegisterListenersCollection
@@ -115,51 +119,63 @@ export default class Header extends React.PureComponent {
   };
 
   componentDidMount() {
+    this.enquireHandler = enquireScreen(mobile => {
+      console.log("mobile");
+      console.log(mobile);
+      this.setState({
+        isMobile: !!mobile
+      });
+    });
+
     this.navScroll();
     this.coverScroll();
   }
 
   componentWillUnmount() {
+    unenquireScreen(this.enquireHandler);
+
     this.unRegisterListenersCollection.forEach(fn => fn());
   }
 
   toggle = () => {
-    document.documentElement.classList.toggle('menu-active');
+    document.documentElement.classList.toggle("menu-active");
   };
 
   render() {
     const { cover, hideNavBack, navigation, isPost, logo } = this.props;
-    const coverClassName = isPost ? 'post-cover' : 'blog-cover';
+    const coverClassName = isPost ? "post-cover" : "blog-cover";
     const { coverPosition, direction, coverActive } = this.state;
-    const logoUrl = logo && logo.indexOf('http') > -1 ? logo : withPrefix(logo);
+    const logoUrl = logo && logo.indexOf("http") > -1 ? logo : withPrefix(logo);
     const coverUrl =
-      cover && (cover.indexOf('http') > -1 ? cover : withPrefix(cover));
-    const id = isPost ? 'post-header' : 'blog-header';
+      cover && (cover.indexOf("http") > -1 ? cover : withPrefix(cover));
+    const id = isPost ? "post-header" : "blog-header";
     return (
       <header
         id={id}
         className={classNames({
-          'has-cover': !!cover,
-          'cover-active': coverActive,
-          'scroll-down': direction,
+          "has-cover": !!cover,
+          "cover-active": coverActive,
+          "scroll-down": direction
         })}
       >
         <div className="inner">
           <nav id="navigation">
             {!hideNavBack &&
-              (logo ? (
-                <div className="blog-logo">
-                  <Link to="/">
-                    <img src={logoUrl} alt="Blog Logo" />
-                  </Link>
-                </div>
-              ) : (
-                <div id="home-button" className="nav-button">
-                  <Link className="home-button" to="/" title="Home">
-                    <i className="icon icon-arrow-left" /> Home
-                  </Link>
-                </div>
-              ))}
+            (logo ? (
+              <div className="blog-logo">
+                <Link to="/">
+                  <img src={logoUrl} alt="Blog Logo"/>
+                </Link>
+              </div>
+            ) : (
+              <div id="home-button" className="nav-button">
+                <Link className="home-button" to="/" title="Home">
+                  <i className="icon icon-arrow-left"/>
+                  {" "}
+                  Home
+                </Link>
+              </div>
+            ))}
             {navigation && (
               <div
                 id="menu-button"
@@ -167,7 +183,9 @@ export default class Header extends React.PureComponent {
                 className="nav-button"
               >
                 <a className="menu-button">
-                  <i className="icon icon-menu" /> Menu
+                  <i className="icon icon-menu"/>
+                  {" "}
+                  Menu
                 </a>
               </div>
             )}
@@ -178,10 +196,10 @@ export default class Header extends React.PureComponent {
               ref={el => {
                 this.coverElement = el;
               }}
-              className={classNames('cover', coverClassName)}
+              className={classNames("cover", coverClassName)}
               style={{
                 backgroundImage: `url(${coverUrl})`,
-                transform: `translate3d(0, ${coverPosition}px, 0)`,
+                transform: `translate3d(0, ${coverPosition}px, 0)`
               }}
             />
           )}
