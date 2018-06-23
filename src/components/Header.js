@@ -28,13 +28,12 @@ export default class Header extends React.PureComponent {
     const coverHeight = this.coverElement.offsetHeight;
 
     const coverScrollHandler = () => {
-      if (this.state.isMobile) return;
-
       const windowPosition = Math.floor(window.scrollY);
       requestAnimationFrame(() => {
         if (windowPosition > 0) {
           this.setState({
-            coverPosition: Math.floor(windowPosition * 0.25),
+            // mobile是背景不变动
+            coverPosition: this.state.isMobile ? 0 : Math.floor(windowPosition * 0.25),
             coverActive: windowPosition < coverHeight
           });
         } else {

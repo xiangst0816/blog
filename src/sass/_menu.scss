@@ -7,7 +7,7 @@
 #menu {
   position: fixed;
   width: 16em;
-  height: 100%;
+  height: 100vh;
   top: 0;
   right: 0;
   background: $color-gray-95;
@@ -82,8 +82,8 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  //overflow-x: hidden;
+  //overflow-y: scroll;
   box-sizing: border-box;
   -webkit-overflow-scrolling: touch;
 }

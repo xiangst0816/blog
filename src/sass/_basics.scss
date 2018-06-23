@@ -376,7 +376,7 @@ img {
   overflow: hidden;
   background: $color-gray-95;
   margin: 0;
-  
+
   &:before,
   &:after {
     content: '';
@@ -389,13 +389,13 @@ img {
     border-radius: 100%;
     background: $color-gray-90;
   }
-  
+
   &:after {
     width: 100%;
     bottom: -25%;
     left: 0;
   }
-  
+
   img {
     position: relative;
     z-index: 2;
