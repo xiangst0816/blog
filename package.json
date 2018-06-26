@@ -27,7 +27,7 @@
     "babel-eslint": "^8.2.4",
     "chalk": "^2.3.2",
     "cross-env": "^5.1.4",
-    "eslint": "5.0.0",
+    "eslint": "5.0.1",
     "eslint-config-airbnb": "^17.0.0",
     "eslint-config-prettier": "2.9.0",
     "eslint-friendly-formatter": "4.0.1",
