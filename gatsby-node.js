@@ -1,13 +1,13 @@
-const path = require('path');
-const slash = require('slash');
-const authors = require('./author/author.json');
+const path = require("path");
+const slash = require("slash");
+const authors = require("./author/author.json");
 const defaultAuthor = authors.filter(author => author.master === true)[0];
-const kebabCase = require('lodash.kebabcase');
+const kebabCase = require("lodash.kebabcase");
 
 // Add synchronized dynamic html pages
 exports.createPages = ({ graphql, boundActionCreators }) => {
-    const { createPage } = boundActionCreators;
-    const queryInfo = graphql(`
+  const { createPage } = boundActionCreators;
+  const queryInfo = graphql(`
     query queryInfo {
       allMarkdownRemark(
         filter: { frontmatter: { draft: { ne: true } } }
@@ -45,178 +45,178 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
       }
     }
   `);
-    return new Promise(resolve => {
-        queryInfo.then(result => {
-            if (result.errors) {
-                resolve();
-            }
+  return new Promise(resolve => {
+    queryInfo.then(result => {
+      if (result.errors) {
+        resolve();
+      }
 
-            const { postEdges, totalCount } = result.data.allMarkdownRemark;
-            const { group: authors } = result.data.allAuthor;
-            const { group: tags } = result.data.allTags;
-            const tagObj = {};
+      const { postEdges, totalCount } = result.data.allMarkdownRemark;
+      const { group: authors } = result.data.allAuthor;
+      const { group: tags } = result.data.allTags;
+      const tagObj = {};
 
-            tags.forEach(tagInfo => {
-                tagObj[tagInfo.fieldValue] = tagInfo.totalCount;
-            });
+      tags.forEach(tagInfo => {
+        tagObj[tagInfo.fieldValue] = tagInfo.totalCount;
+      });
 
-            const authorObj = {};
-            authors.forEach(authorInfo => {
-                authorObj[authorInfo.fieldValue] = authorInfo.totalCount;
-            });
+      const authorObj = {};
+      authors.forEach(authorInfo => {
+        authorObj[authorInfo.fieldValue] = authorInfo.totalCount;
+      });
 
-            // Create blog posts pages.
-            createBlogPost(postEdges, createPage);
-            // Tag pages.
-            createTagPage(tagObj, createPage);
-            // Author pages
-            createAuthorPage(authorObj, createPage);
+      // Create blog posts pages.
+      createBlogPost(postEdges, createPage);
+      // Tag pages.
+      createTagPage(tagObj, createPage);
+      // Author pages
+      createAuthorPage(authorObj, createPage);
 
-            // Pagination
-            createIndexPagination(totalCount, createPage);
+      // Pagination
+      createIndexPagination(totalCount, createPage);
 
-            resolve();
-        });
+      resolve();
     });
+  });
 };
 
 // Add custom url pathname for blog posts.
 exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
-    const { createNodeField } = boundActionCreators;
+  const { createNodeField } = boundActionCreators;
 
-    if (node.internal.type === `MarkdownRemark`) {
-        setDefaultAuthor(node.frontmatter);
-    }
+  if (node.internal.type === `MarkdownRemark`) {
+    setDefaultAuthor(node.frontmatter);
+  }
 
-    if (node.internal.type === `File`) {
-        const absolutePath = slash(node.absolutePath);
-        const parsedFilePath = path.parse(absolutePath);
-        const slug = `/${parsedFilePath.dir.split('---')[1]}/`;
-        // const dir = parsedFilePath.dir.split("/").slice(-1)[0];
-        createNodeField({ node, name: `slug`, value: slug });
-    } else if (
-        node.internal.type === `MarkdownRemark` &&
-        typeof node.slug === 'undefined'
-    ) {
-        const fileNode = getNode(node.parent);
-        createNodeField({
-            node,
-            name: `slug`,
-            value: fileNode.fields.slug
-        });
-        createNodeField({
-            node,
-            name: `relativePath`,
-            value: fileNode.relativePath
-        });
-    }
+  if (node.internal.type === `File`) {
+    const absolutePath = slash(node.absolutePath);
+    const parsedFilePath = path.parse(absolutePath);
+    const slug = `/${parsedFilePath.dir.split("---")[1]}/`;
+    // const dir = parsedFilePath.dir.split("/").slice(-1)[0];
+    createNodeField({ node, name: `slug`, value: slug });
+  } else if (
+    node.internal.type === `MarkdownRemark` &&
+    typeof node.slug === "undefined"
+  ) {
+    const fileNode = getNode(node.parent);
+    createNodeField({
+      node,
+      name: `slug`,
+      value: fileNode.fields.slug
+    });
+    createNodeField({
+      node,
+      name: `relativePath`,
+      value: fileNode.relativePath
+    });
+  }
 };
 
 // create Index pages with pagination, 添加额外分页页面
 function createIndexPagination(total, createPage) {
-    const limit = 10;
-    const count = Math.ceil(total / limit);
-    const indexPage = path.resolve('src/pages/index.js');
-    for (let i = 1; count + 1 > i; i++) {
-        createPage({
-            path: `/page/${i}`,
-            component: indexPage,
-            context: {
-                skip: (i - 1) * limit,
-                limit: limit
-            }
-        });
-    }
+  const limit = 10;
+  const count = Math.ceil(total / limit);
+  const indexPage = path.resolve("src/pages/index.js");
+  for (let i = 1; count + 1 > i; i++) {
+    createPage({
+      path: `/page/${i}`,
+      component: indexPage,
+      context: {
+        skip: (i - 1) * limit,
+        limit: limit
+      }
+    });
+  }
 }
 
 // Tag pages.
 function createTagPage(tagObj, createPage) {
-    const limit = 10;
-    const tagPages = path.resolve('src/templates/tag-page.js');
-    const tagList = Object.keys(tagObj);
-    tagList.forEach(tag => {
-        const postCount = tagObj[tag];
-        const kebabCaseName = kebabCase(tag);
-        createPage({
-            path: `/tag/${kebabCaseName}/`,
-            component: tagPages,
-            context: {
-                tag
-            }
-        });
-
-        const count = Math.ceil(postCount / limit);
-        for (let i = 1; count + 1 > i; i++) {
-            createPage({
-                path: `/tag/${kebabCaseName}/${i}`,
-                component: tagPages,
-                context: {
-                    skip: (i - 1) * limit,
-                    limit: limit,
-                    tag
-                }
-            });
-        }
+  const limit = 10;
+  const tagPages = path.resolve("src/templates/tag-page.js");
+  const tagList = Object.keys(tagObj);
+  tagList.forEach(tag => {
+    const postCount = tagObj[tag];
+    const kebabCaseName = kebabCase(tag);
+    createPage({
+      path: `/tag/${kebabCaseName}/`,
+      component: tagPages,
+      context: {
+        tag
+      }
     });
+
+    const count = Math.ceil(postCount / limit);
+    for (let i = 1; count + 1 > i; i++) {
+      createPage({
+        path: `/tag/${kebabCaseName}/${i}`,
+        component: tagPages,
+        context: {
+          skip: (i - 1) * limit,
+          limit: limit,
+          tag
+        }
+      });
+    }
+  });
 }
 
 // Create Author pages.
 function createAuthorPage(authorObj, createPage) {
-    const limit = 10;
-    const authorPage = path.resolve('src/templates/author-page.js');
-    const authorList = Object.keys(authorObj);
-    authorList.forEach(author => {
-        const postCount = authorObj[author];
-        const kebabCaseName = kebabCase(author);
-        createPage({
-            path: `/author/${kebabCaseName}/`, // required
-            component: authorPage,
-            context: {
-                author
-            }
-        });
-
-        const count = Math.ceil(postCount / limit);
-        for (let i = 1; count + 1 > i; i++) {
-            createPage({
-                path: `/author/${kebabCaseName}/${i}`,
-                component: authorPage,
-                context: {
-                    skip: (i - 1) * limit,
-                    limit: limit,
-                    author
-                }
-            });
-        }
+  const limit = 10;
+  const authorPage = path.resolve("src/templates/author-page.js");
+  const authorList = Object.keys(authorObj);
+  authorList.forEach(author => {
+    const postCount = authorObj[author];
+    const kebabCaseName = kebabCase(author);
+    createPage({
+      path: `/author/${kebabCaseName}/`, // required
+      component: authorPage,
+      context: {
+        author
+      }
     });
+
+    const count = Math.ceil(postCount / limit);
+    for (let i = 1; count + 1 > i; i++) {
+      createPage({
+        path: `/author/${kebabCaseName}/${i}`,
+        component: authorPage,
+        context: {
+          skip: (i - 1) * limit,
+          limit: limit,
+          author
+        }
+      });
+    }
+  });
 }
 
 // Create blog posts pages.
 function createBlogPost(edges, createPage) {
-    const blogPost = path.resolve('src/templates/blog-post.js');
-    edges.forEach((edge, index) => {
-        const { slug } = edge.node.fields;
-        const prev = index === 0 ? '' : edges[index - 1].node.fields.slug;
-        const next =
-            index === edges.length - 1 ? '' : edges[index + 1].node.fields.slug;
-        createPage({
-            path: slug, // required
-            component: blogPost,
-            context: {
-                curr: slug,
-                prev,
-                next
-            }
-        });
+  const blogPost = path.resolve("src/templates/blog-post.js");
+  edges.forEach((edge, index) => {
+    const { slug } = edge.node.fields;
+    const prev = index === 0 ? "" : edges[index - 1].node.fields.slug;
+    const next =
+      index === edges.length - 1 ? "" : edges[index + 1].node.fields.slug;
+    createPage({
+      path: slug, // required
+      component: blogPost,
+      context: {
+        curr: slug,
+        prev,
+        next
+      }
     });
+  });
 }
 
 // Articles with no name specified as master
 function setDefaultAuthor(frontmatter) {
-    if (!defaultAuthor || JSON.stringify(defaultAuthor) === '{}') {
-        return;
-    }
-    if (!frontmatter.author) {
-        frontmatter.author = defaultAuthor.id;
-    }
+  if (!defaultAuthor || JSON.stringify(defaultAuthor) === "{}") {
+    return;
+  }
+  if (!frontmatter.author) {
+    frontmatter.author = defaultAuthor.id;
+  }
 }
