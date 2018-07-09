@@ -169,7 +169,7 @@ display: inline-x;
 
 ## BFC——块级格式化上下文
 
-BFC(Block Formatting Context) 块级格式化上下文，通过特性是属性创造一个封闭空间，内外不会产生影响。可用于：
+**BFC(Block Formatting Context) 块级格式化上下文，通过特定属性创造一个封闭空间，内外不会产生影响。**可用于：
 
 * 清除浮动
 * 消除 margin 层叠问题
