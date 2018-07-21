@@ -143,4 +143,4 @@ Array.from() 是个非常推荐的方法，其可以将所有类数组对象转�
 
 ## 参考
 
-* [JavaScript arguments 对象全面介绍](https://segmentfault.com/a/1190000007091243)
+- [JavaScript arguments 对象全面介绍](https://segmentfault.com/a/1190000007091243)

@@ -15,9 +15,9 @@ tags:
 
 本文是为了梳理 Babel 配置及使用而整理，因为看过使用 Babel 配置项目和文章，存在项目插件使用混乱、文章各种照搬、插件使用听风是雨、插件升级文章内容不再适用的问题。这里就目前最新使用的配置组合进行整理，涉及的插件包括以下三个：
 
-* @babel/preset-env(^7.0.0-beta.32)
-* @babel/preset-stage-x(7.0.0-beta.32), x-0,1,2,3
-* @babel/polyfill(^7.0.0-beta.32)
+- @babel/preset-env(^7.0.0-beta.32)
+- @babel/preset-stage-x(7.0.0-beta.32), x-0,1,2,3
+- @babel/polyfill(^7.0.0-beta.32)
 
 ## @babel/preset-env
 
@@ -37,8 +37,8 @@ tags:
 
 `@babel/plugin-transform-runtime`插件是为了解决：
 
-* 多个文件重复引用相同 helpers（帮助函数）-> 提取运行时
-* 新 API 方法全局污染 -> 局部引入
+- 多个文件重复引用相同 helpers（帮助函数）-> 提取运行时
+- 新 API 方法全局污染 -> 局部引入
 
 这个插件推荐在编写 library/module 时使用。当然，以上问题可通过设置`useBuiltIns`搞定。
 
@@ -207,11 +207,11 @@ import "core-js/modules/es7.array.includes";
 
 > The TC39 categorizes proposals into the following stages:
 >
-> * Stage 0 - Strawman: just an idea, possible Babel plugin.
-> * Stage 1 - Proposal: this is worth working on.
-> * Stage 2 - Draft: initial spec.
-> * Stage 3 - Candidate: complete spec and initial browser implementations.
-> * Stage 4 - Finished: will be added to the next yearly release.
+> - Stage 0 - Strawman: just an idea, possible Babel plugin.
+> - Stage 1 - Proposal: this is worth working on.
+> - Stage 2 - Draft: initial spec.
+> - Stage 3 - Candidate: complete spec and initial browser implementations.
+> - Stage 4 - Finished: will be added to the next yearly release.
 
 Stage 的包含顺序是：**左边包含右边全部特性，即 stage-0 包含右边 1 / 2 / 3 的所有插件。**
 
@@ -231,17 +231,17 @@ stage-0 > ~1 > ~2 > ~3 > ~4:
 
 其中的两个插件对于写 JSX 很有帮助。
 
-* transform-do-expressions：if/else 三目运算展开
-* transform-function-bind：this 绑定
+- transform-do-expressions：if/else 三目运算展开
+- transform-function-bind：this 绑定
 
 #### 2. 通常使用建议配到`@babel/preset-stage-2`
 
 插件包括：
 
-* syntax-dynamic-import： 动态 import
-* transform-class-properties：用于 class 的属性转化
-* transform-object-rest-spread：用来处理 rest spread
-* transform-async-generator-functions：用来处理 async 和 await
+- syntax-dynamic-import： 动态 import
+- transform-class-properties：用于 class 的属性转化
+- transform-object-rest-spread：用来处理 rest spread
+- transform-async-generator-functions：用来处理 async 和 await
 
 ## @babel/polyfill
 
@@ -282,9 +282,9 @@ require('./modules/es6.promise');
 
 这里需要理解下三个概念：
 
-* 最新 ES 语法：比如，箭头函数
-* 最新 ES API：，比如，Promise
-* 最新 ES 实例方法：比如，String.protorype.includes
+- 最新 ES 语法：比如，箭头函数
+- 最新 ES API：，比如，Promise
+- 最新 ES 实例方法：比如，String.protorype.includes
 
 `@babel/preset-env`默认支持**语法**转化，需要开启`useBuiltIns`配置才能转化**API**和**实例方法**。
 
@@ -292,12 +292,12 @@ require('./modules/es6.promise');
 
 ## 参考
 
-* [@babel/preset-env](https://www.npmjs.com/package/@babel/preset-env)
-* [@babel/preset-stage-0](https://www.npmjs.com/package/@babel/preset-stage-0)
-* [@babel/preset-stage-1](https://www.npmjs.com/package/@babel/preset-stage-1)
-* [@babel/preset-stage-2](https://www.npmjs.com/package/@babel/preset-stage-2)
-* [@babel/preset-stage-3](https://www.npmjs.com/package/@babel/preset-stage-3)
-* [stage 的区别](https://www.cnblogs.com/chris-oil/p/5717544.html)
-* [弄清楚 babel 的 stage](https://zhuanlan.zhihu.com/p/25961891)
-* [再见，babel-preset-2015](https://zhuanlan.zhihu.com/p/29506685)
-* [ECMAScript 6 的模块相比 CommonJS 的 require (...)有什么优点？](https://www.zhihu.com/question/27917401/answer/223309781)
+- [@babel/preset-env](https://www.npmjs.com/package/@babel/preset-env)
+- [@babel/preset-stage-0](https://www.npmjs.com/package/@babel/preset-stage-0)
+- [@babel/preset-stage-1](https://www.npmjs.com/package/@babel/preset-stage-1)
+- [@babel/preset-stage-2](https://www.npmjs.com/package/@babel/preset-stage-2)
+- [@babel/preset-stage-3](https://www.npmjs.com/package/@babel/preset-stage-3)
+- [stage 的区别](https://www.cnblogs.com/chris-oil/p/5717544.html)
+- [弄清楚 babel 的 stage](https://zhuanlan.zhihu.com/p/25961891)
+- [再见，babel-preset-2015](https://zhuanlan.zhihu.com/p/29506685)
+- [ECMAScript 6 的模块相比 CommonJS 的 require (...)有什么优点？](https://www.zhihu.com/question/27917401/answer/223309781)

@@ -19,7 +19,7 @@ Webapp 在上传图片的时候，会出现旋转 90° 的问题，但是在上�
 
 这种问题的修复有两种：
 
-* 第一种方法是**后台修正**，[插件 GraphicsMagick](http://www.graphicsmagick.org/)提供的 API 比较友好，在控制台输入`npm install gm`进行安装，简单实用如下：
+- 第一种方法是**后台修正**，[插件 GraphicsMagick](http://www.graphicsmagick.org/)提供的 API 比较友好，在控制台输入`npm install gm`进行安装，简单实用如下：
 
 ```
 gm('/path/to/img.jpg')
@@ -30,7 +30,7 @@ gm('/path/to/img.jpg')
 })
 ```
 
-* 第二种方法是**前台修正**，可是使用[canvasResize 插件](https://github.com/gokercebeci/canvasResize)，我比较倾向于实用第二种，因为将计算量分布到各个终端，减轻服务器压力。
+- 第二种方法是**前台修正**，可是使用[canvasResize 插件](https://github.com/gokercebeci/canvasResize)，我比较倾向于实用第二种，因为将计算量分布到各个终端，减轻服务器压力。
 
 主要代码如下：
 
@@ -65,8 +65,8 @@ canvasResize(file, {
 
 你现在看到的这个博客的所有图片就是采用前台处理的方式进行图片方向矫正及尺寸压缩。**因为使用的 ES6 语法及 VUE 框架，具体代码书写请参我的博客项目**：
 
-* 文件[api_upload.js](https://github.com/xiangsongtao/X-SONGTAO-VUE/blob/master/src/api/api_upload.js) 处理上传的公共服务，其中 EXIF.js 和 canvasResize.js 我做了些模块化修改，请移步具体文件。
-* [HTML 及\*.vue 中的使用方法](https://github.com/xiangsongtao/X-SONGTAO-VUE/blob/master/src/views/admin.article.vue)，摘抄如下：
+- 文件[api_upload.js](https://github.com/xiangsongtao/X-SONGTAO-VUE/blob/master/src/api/api_upload.js) 处理上传的公共服务，其中 EXIF.js 和 canvasResize.js 我做了些模块化修改，请移步具体文件。
+- [HTML 及\*.vue 中的使用方法](https://github.com/xiangsongtao/X-SONGTAO-VUE/blob/master/src/views/admin.article.vue)，摘抄如下：
 
 ```
 <form action="" class="imgUploadForm" method="post" enctype="multipart/form-data">
@@ -111,8 +111,8 @@ $("#imgUpload").change(function (e) {
 
 #### 从 iphone 拍摄后未处理的图片(手机上看竖着的，pc 上看是横着的)
 
-* 尺寸：3264\*2448
-* 大小 ：1.2MB
+- 尺寸：3264\*2448
+- 大小 ：1.2MB
 
 ![demo](http://xiangsongtao.com/uploads/1471425020000.jpg "未处理")
 
@@ -120,8 +120,8 @@ $("#imgUpload").change(function (e) {
 
 #### 上传前处理后的图片
 
-* 尺寸：710\*946
-* 大小 ：68KB
+- 尺寸：710\*946
+- 大小 ：68KB
 
 ![](http://xiangsongtao.com/uploads/1471528805000.jpeg "已处理")
 
@@ -131,6 +131,6 @@ $("#imgUpload").change(function (e) {
 
 #### 参考
 
-* [移动端 Web 上传图片实践 ](https://github.com/xiangpaopao/blog/issues/7)
-* [GraphicsMagick](http://www.graphicsmagick.org/)
-* [canvasResize](https://github.com/gokercebeci/canvasResize)
+- [移动端 Web 上传图片实践 ](https://github.com/xiangpaopao/blog/issues/7)
+- [GraphicsMagick](http://www.graphicsmagick.org/)
+- [canvasResize](https://github.com/gokercebeci/canvasResize)

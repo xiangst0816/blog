@@ -18,12 +18,12 @@ Flex 布局意为"弹性布局"，用来为盒模型提供更多灵活性。此�
 
 Flex 布局需要注意**下面几个重要的概念**，结合下面这张图也许能更好的理解:
 
-* flex 容器(flex container)
-* flex 项目(flex item)
-* 主轴(main axis)
-* 交叉轴(cross axis)
-* 开始位置(start)
-* 结束位置(end)
+- flex 容器(flex container)
+- flex 项目(flex item)
+- 主轴(main axis)
+- 交叉轴(cross axis)
+- 开始位置(start)
+- 结束位置(end)
 
 ![](http://upload-images.jianshu.io/upload_images/2036128-102577302e07d171.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
@@ -31,12 +31,12 @@ Flex 布局需要注意**下面几个重要的概念**，结合下面这张图�
 
 关于语法的其余部分，请参考阮一峰的教程，希望你能熟记里面的示例图:
 
-* Flex 布局教程: [语法篇](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
-* Flex 布局教程: [实例篇](http://www.ruanyifeng.com/blog/2015/07/flex-examples.html)
+- Flex 布局教程: [语法篇](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
+- Flex 布局教程: [实例篇](http://www.ruanyifeng.com/blog/2015/07/flex-examples.html)
 
 上面部分搞定，趁热打铁做一下下面的练习，做上两次基本上 Flex 就基本没问题了。
 
-* Flex 训练游戏: [地址](http://flexboxfroggy.com/?utm_source=jsgroup#zh-cn)
+- Flex 训练游戏: [地址](http://flexboxfroggy.com/?utm_source=jsgroup#zh-cn)
 
 ## Flex 常规布局
 
@@ -362,5 +362,5 @@ Flex 布局高效简洁且有兼容性处理方案，因此朝这个趋势走不
 
 ## 参考
 
-* [A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
-* [A Visual Guide to CSS3 Flexbox Properties](https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties)
+- [A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+- [A Visual Guide to CSS3 Flexbox Properties](https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties)

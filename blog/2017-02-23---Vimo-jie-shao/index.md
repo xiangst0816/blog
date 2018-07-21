@@ -37,33 +37,33 @@ Vimo 是 VueMobile 的昵称，也是名字的由来，代表他是基于 Vue.js
 
 现在的一种这种方案:
 
-* Vimo 设计思路来源于 IONIC, 为何选用 Vue 重构?
+- Vimo 设计思路来源于 IONIC, 为何选用 Vue 重构?
 
 1.  IONIC 的设计可以借鉴学习, 我对 vue 比较熟, 简单+快
 2.  IONIC Angular2.x + Typescript 陡峭+维护复杂
 3.  react 不熟, 但是从测试角度来看, vue 稍强
 
-* 组件间嵌套规则是怎样的, 公共服务是如何注册到 this 上的? 为何要这样做?
+- 组件间嵌套规则是怎样的, 公共服务是如何注册到 this 上的? 为何要这样做?
 
 App -> Nav -> | Page | -> Header/Content/Footer
 
 覆盖大多数场景的布局结构
 
-* 各个模块的作用介绍, 和简单的实现思路?
+- 各个模块的作用介绍, 和简单的实现思路?
 
 App: 主体
 Nav: 路由切换的 wrap, 动画部分
 Page: 业务页面
 
-* 从我的角度来看你 Vimo 的不足和需要改进的地方
+- 从我的角度来看你 Vimo 的不足和需要改进的地方
 
 1.  计划: IONIC 的皮肤+ vue 的核心, 展示 IOS/md/wp/wechat/ali/cus
 2.  只需要一个主题
 3.  IONIC 实现有些复杂, 有些代码没看懂
 4.  组件主要依据功能清单写的.
 
-* 对 test 支持
-* hybrid 如何进行安装的由 hybrid 自己安装
+- 对 test 支持
+- hybrid 如何进行安装的由 hybrid 自己安装
 
 改进的地方：
 

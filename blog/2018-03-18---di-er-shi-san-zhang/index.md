@@ -33,8 +33,8 @@ EventUtil.addHandler(window, "offline", function() {
 
 看下 Gatsby 的实现. 书上说的和 Gatsby 实现的方式不一样.
 
-* gatsby-plugin-offline
-* gatsby-plugin-manifest
+- gatsby-plugin-offline
+- gatsby-plugin-manifest
 
 ### 3. Cookie 相关
 
@@ -44,10 +44,10 @@ EventUtil.addHandler(window, "offline", function() {
 
 **限制:**
 
-* 一个域下的所有 cookie 长度限制在 4095B(含)以内
-* 每个域名下 cookie 个数不超过 50 个(一般最大)
-* 每次请求会携带 cookie, 不建议存储大信息量
-* cookie 不会区分大小写, 内部"名称", "值"都是经过 URL 编码的
+- 一个域下的所有 cookie 长度限制在 4095B(含)以内
+- 每个域名下 cookie 个数不超过 50 个(一般最大)
+- 每次请求会携带 cookie, 不建议存储大信息量
+- cookie 不会区分大小写, 内部"名称", "值"都是经过 URL 编码的
 
 **组成:**
 
@@ -64,8 +64,8 @@ domain=domain_name; secure;
 
 **注意:**
 
-* 域、路径、失效时间和 secure 标志**都是服务器给浏览器的指示**，以指定何时应该发送 cookie。
-* 这些参数并不会作为发送到服务器的 cookie 信息的一部分，**只有名值对儿才会被发送**。
+- 域、路径、失效时间和 secure 标志**都是服务器给浏览器的指示**，以指定何时应该发送 cookie。
+- 这些参数并不会作为发送到服务器的 cookie 信息的一部分，**只有名值对儿才会被发送**。
 
 **获取:**
 
@@ -90,8 +90,8 @@ Path=/;Domain=domainvalue;Max-Age=seconds;HTTPOnly");
 
 ### 4. sessionStorage, localStorage
 
-* storage 事件, 用于跨 tab 通信
-* 5MB 存储限制
+- storage 事件, 用于跨 tab 通信
+- 5MB 存储限制
 
 ### 5. 如果 cookie 中未设置过期时间会如何?
 
@@ -105,16 +105,16 @@ Path=/;Domain=domainvalue;Max-Age=seconds;HTTPOnly");
 
 > **注意`name`需要`encodeURIComponent`处理, 返回的值需要`decodeURIComponent`**
 
-* 找到`name`的 startIndex
-* 从 index 开始找结尾标志`;`的 endIndex, 如果未找到则到了 cookie 末端, endIndex 为 cookie 字符串长度
-* 根据起止位置用 `substring(startIndex+name.length, endIndex)` 截取字符串返回
+- 找到`name`的 startIndex
+- 从 index 开始找结尾标志`;`的 endIndex, 如果未找到则到了 cookie 末端, endIndex 为 cookie 字符串长度
+- 根据起止位置用 `substring(startIndex+name.length, endIndex)` 截取字符串返回
 
 **`set(name, value, expires, path, domain, secure)`**
 
 > 设置 cookie 可以不用管原先已存储的值, 如果浏览器中 cookie 已存在则覆盖, 不存在则新增, 我们只需要传递修改的字符串即可
 
-* 将`name`和`value`进行`encodeURIComponent`, 根据传入的配置拼接字符串
-* 将值转给`document.cookie`
+- 将`name`和`value`进行`encodeURIComponent`, 根据传入的配置拼接字符串
+- 将值转给`document.cookie`
 
 **`remove(key, options)`**
 
@@ -128,5 +128,5 @@ this.set(name, "", new Date(0), path, domain, secure);
 
 ### 7. sessionStorage 和 localStorage 使用的差别？
 
-* sessionStorage 中的数据在**当前会话期**存在，而 localStorage 则一直存在
-* **localStorage 中新增数据可以在其他 Tab 中同步**，但是 sessionStorage 不会同步
+- sessionStorage 中的数据在**当前会话期**存在，而 localStorage 则一直存在
+- **localStorage 中新增数据可以在其他 Tab 中同步**，但是 sessionStorage 不会同步

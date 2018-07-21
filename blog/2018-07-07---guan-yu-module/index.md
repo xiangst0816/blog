@@ -16,14 +16,14 @@ ES6 关于 Module 的介绍参考阮一峰的 ES6 教程：[ECMAScript 6 入门-
 
 ## ES6 模块使用时的注意点
 
-* 模块转发时，当前模块不能使用转发的变量
+- 模块转发时，当前模块不能使用转发的变量
 
 ```typescript
 export { foo, bar } from "my_module";
 console.log(foo); // error
 ```
 
-* default 本质上就是输出一个叫 default 的变量或方法，然后系统允许你为他任意取名
+- default 本质上就是输出一个叫 default 的变量或方法，然后系统允许你为他任意取名
 
 ```typescript
 export { add as default };
@@ -39,8 +39,8 @@ import foo from "modules";
 
 ## 浏览器加载 ES6 模块时的注意点
 
-* defer 和 async 的区别：`defer`是“渲染完再执行”，保证顺序；`async`是“下载完就执行”，不保证顺序。
-* `type="module"`时，默认为 defer 模式
+- defer 和 async 的区别：`defer`是“渲染完再执行”，保证顺序；`async`是“下载完就执行”，不保证顺序。
+- `type="module"`时，默认为 defer 模式
 
 ```html
 <script type="module" src="./foo.js"></script>
@@ -52,8 +52,8 @@ import foo from "modules";
 
 在整理 JavaScript 中 Module 相关的知识点时，不得不提 CommonJS 与 ES6 的 import/export 之间的关系。最主要的提点如下，其余部分都是从这两点的引申，所以不再重复。
 
-* CommonJS 模块输出的是一个**值的拷贝**，ES6 模块输出的是值的**引用**。
-* CommonJS 模块是**运行时加载**，ES6 模块是**编译时**输出接口。
+- CommonJS 模块输出的是一个**值的拷贝**，ES6 模块输出的是值的**引用**。
+- CommonJS 模块是**运行时加载**，ES6 模块是**编译时**输出接口。
 
 ## CommonJS 中在`module.exports`和`exports`的区别？
 

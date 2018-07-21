@@ -12,23 +12,23 @@ tags:
 
 ### 1. JSON 和 JavaScript 的关系?
 
-* JSON 并不从属于 JavaScript
-* JSON 是一种数据格式, 而不是编程语言
-* JSON 可表示的数据类型有: 对象/数组/字符串/数字/布尔值/null, 其余类型忽略.
+- JSON 并不从属于 JavaScript
+- JSON 是一种数据格式, 而不是编程语言
+- JSON 可表示的数据类型有: 对象/数组/字符串/数字/布尔值/null, 其余类型忽略.
 
 ### 2. 除了使用全局对象`JSON`解析 JSON 还有什么方法? 问题点是?
 
 还有`eval()`方法可以解析, 问题点是:
 
-* `eval()`中可能有恶意代码
-* 性能不高
+- `eval()`中可能有恶意代码
+- 性能不高
 
 > 支持`JSON`的的浏览器, IE8+
 
 ### 3. `JSON.stringify(obj)`时的注意点?
 
-* **不能保存函数**, 如果有函数会忽略
-* 值为**`undefined`**会被忽略
+- **不能保存函数**, 如果有函数会忽略
+- 值为**`undefined`**会被忽略
 
 ### 4. 解释下执行`JSON.stringify`这个函数发生的内部流程?
 
@@ -94,6 +94,6 @@ console.log(
 );
 ```
 
-* `JSON.stringify`时, `Date`本身有自己的`toJSON`方法
-* `JSON.parse`时, 是不会有上面的逆过程, 需要手动操作, 因为, string 类型的值不知道之前发生了什么...
-* `JSON.parse`第二个参数成为: 还原函数, 函数传参和`JSON.stringify`的过滤函数一致(和`array.prototype.filter`过滤函数的机制不一样, 需注意)
+- `JSON.stringify`时, `Date`本身有自己的`toJSON`方法
+- `JSON.parse`时, 是不会有上面的逆过程, 需要手动操作, 因为, string 类型的值不知道之前发生了什么...
+- `JSON.parse`第二个参数成为: 还原函数, 函数传参和`JSON.stringify`的过滤函数一致(和`array.prototype.filter`过滤函数的机制不一样, 需注意)

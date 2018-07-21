@@ -23,8 +23,8 @@ var myDiv = document.getElementById("myDiv");
 var computedStyle = document.defaultView.getComputedStyle(myDiv, null);
 ```
 
-* 注意**综合属性**的返回值, 比如 border
-* 无论在哪个浏览器中，最重要的一条是要记住所有计算的样式都是**只读**的
+- 注意**综合属性**的返回值, 比如 border
+- 无论在哪个浏览器中，最重要的一条是要记住所有计算的样式都是**只读**的
 
 ### 2. getBoundingClientRect()获取元素尺寸
 

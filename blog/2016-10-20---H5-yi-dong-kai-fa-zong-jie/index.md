@@ -95,4 +95,4 @@ var tpl = $.fn.getQueryString(tpl);
 
 ## 参考
 
-* [移动端 h5 开发相关内容总结（四）](https://github.com/zhiqiang21/blog/issues/27)
+- [移动端 h5 开发相关内容总结（四）](https://github.com/zhiqiang21/blog/issues/27)

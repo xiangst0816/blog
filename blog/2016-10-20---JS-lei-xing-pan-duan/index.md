@@ -20,7 +20,7 @@ function type(value){
 }
 
 console.log(type ('str'))
-output  'string'  
+output  'string'
 ```
 
 但是这个方法可返回的类型只有以下几种（注意都是小写）：

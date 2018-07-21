@@ -40,19 +40,19 @@ Before I tell you about all the extra syntaxes and capabilities I have, I'll int
 
 To force a line break, put two spaces and a newline (return) at the end of the line.
 
-* This two-line bullet
+- This two-line bullet
   won't break
 
-* This two-line bullet  
+- This two-line bullet  
   will break
 
 Here is the code:
 
 ```markdown
-* This two-line bullet
+- This two-line bullet
   won't break
 
-* This two-line bullet  
+- This two-line bullet  
   will break
 ```
 
@@ -118,10 +118,10 @@ on it's own line elsewhere:
 
 ### Lists
 
-* Lists must be preceded by a blank line (or block element)
-* Unordered lists start each item with a `*`
+- Lists must be preceded by a blank line (or block element)
+- Unordered lists start each item with a `*`
 
-- `-` works too \* Indent a level to make a nested list 1. Ordered lists are supported. 2. Start each item (number-period-space) like `1.` 42. It doesn't matter what number you use, I will render them sequentially 1. So you might want to start each line with `1.` and let me sort it out
+* `-` works too \* Indent a level to make a nested list 1. Ordered lists are supported. 2. Start each item (number-period-space) like `1.` 42. It doesn't matter what number you use, I will render them sequentially 1. So you might want to start each line with `1.` and let me sort it out
 
 Here is the code:
 
@@ -149,18 +149,18 @@ Here is the code:
 >
 > Most markdown syntaxes work inside block quotes.
 >
-> * Lists
-> * [Links][arbitrary_id]
-> * Etc.
+> - Lists
+> - [Links][arbitrary_id]
+> - Etc.
 
 Here is the code:
 
 ```
-> Angle brackets `>` are used for block quotes.  
+> Angle brackets `>` are used for block quotes.
 Technically not every line needs to start with a `>` as long as
-there are no empty lines between paragraphs.  
+there are no empty lines between paragraphs.
 > Looks kinda ugly though.
-> > Block quotes can be nested.  
+> > Block quotes can be nested.
 > > > Multiple Levels
 >
 > Most markdown syntaxes work inside block quotes.
@@ -289,8 +289,8 @@ $$
 ### Task List Syntax
 
 1.  [x] I can render checkbox list syntax
-    * [x] I support nesting
-    * [x] I support ordered _and_ unordered lists
+    - [x] I support nesting
+    - [x] I support ordered _and_ unordered lists
 2.  [ ] I don't support clicking checkboxes directly in the html window
 
 ### Jekyll front-matter

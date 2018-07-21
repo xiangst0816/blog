@@ -36,10 +36,10 @@ module.exports.routerRedux = require("react-router-redux");
 
 routerRedux 是对`react-router-redux`的导出, 自身的初始化已在 dva 中完成, 一般用在非 RouteComponent 页面(不是函数式组件), 比如:
 
-* PC 组件内
-* 外部库
-* modals
-* 函数式组件
+- PC 组件内
+- 外部库
+- modals
+- 函数式组件
 
 这样使用:
 
@@ -69,9 +69,9 @@ RouteComponent 组件可以直接在`this.props`中拿到.
 
 这里需要注意的是, 传入的 history 是特意化的 history 实例, 比如这三类:
 
-* createBrowserHistory
-* createMemoryHistory
-* createHashHistory
+- createBrowserHistory
+- createMemoryHistory
+- createHashHistory
 
 因此, 在 dva 中不再需要`<BrowserRouter>`, `<HashRouter>`, `<MemoryRouter>`三个组件, 这里不再解释.
 
@@ -108,18 +108,18 @@ Analysis.contextTypes = {
 
 为你的应用提供声明式，无障碍导航。
 
-* to: string
-* replace: bool
+- to: string
+- replace: bool
 
 #### `<NavLink>`
 
 这是 <Link> 的特殊版，顾名思义这就是为页面导航准备的。因为导航需要有 “激活状态”。
 
-* activeClassName: string
-* exact: bool
-* strict: bool
-* isActive: func
+- activeClassName: string
+- exact: bool
+- strict: bool
+- isActive: func
 
 ## 参考文章
 
-* [初探 React Router 4.0](http://blog.csdn.net/sinat_17775997/article/details/69218382)
+- [初探 React Router 4.0](http://blog.csdn.net/sinat_17775997/article/details/69218382)

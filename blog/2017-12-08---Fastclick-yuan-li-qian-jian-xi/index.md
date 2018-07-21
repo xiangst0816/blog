@@ -14,8 +14,8 @@ tags:
 
 在移动端 H5 开发过程中，关于点触可能会遇到如下两个问题：
 
-* 手动点击与真正触发`click`事件会存在 300ms 的延迟
-* 点击穿透问题（点击行为会穿透元素触发非父子关系元素的事件）
+- 手动点击与真正触发`click`事件会存在 300ms 的延迟
+- 点击穿透问题（点击行为会穿透元素触发非父子关系元素的事件）
 
 延迟的存在时因为浏览器想知道你[是否在进行双击操作](https://developers.google.com/mobile/articles/fast_buttons)；而点击穿透是因为 300ms 延迟触发时的副作用。而使用 fastclick 能很好的解决这个问题，增加使用者的体验。
 
@@ -23,10 +23,10 @@ tags:
 
 不必使用的浏览器环境如下：
 
-* Android + Chrome >32
-* Android + Chrome + `meta="user-scalable=no"`
-* 部分黑莓手机环境（可略过）
-* 部分 WindowsPhone 环境（可略过）
+- Android + Chrome >32
+- Android + Chrome + `meta="user-scalable=no"`
+- 部分黑莓手机环境（可略过）
+- 部分 WindowsPhone 环境（可略过）
 
 这部分的判断在下面的方法中有体现，如果当前环境支持快速点击，则 FastClick 会自动跳过初始化。
 
@@ -91,10 +91,10 @@ document.body.addEventListener("touchend", function(event) {
 
 **`touchend`**
 
-* 阻止默认事件（屏蔽之后的 click 事件）
-* 合成 click 事件，并添加可跟踪属性 forwardedTouchEvent
-* 在 targetElement 上触发`click`事件
-* targetElement 上绑定的事件立即执行，完成 FastClick
+- 阻止默认事件（屏蔽之后的 click 事件）
+- 合成 click 事件，并添加可跟踪属性 forwardedTouchEvent
+- 在 targetElement 上触发`click`事件
+- targetElement 上绑定的事件立即执行，完成 FastClick
 
 ##### 3. 执行业务自己的 click 事件
 

@@ -19,8 +19,8 @@ tags:
 
 相关的问题已近在前端界整理的很充分了，大致的问题可总结如下：
 
-* 浏览器的初始化样式不同导致兼容性的问题
-* 局部样式解析不同导致的 bug
+- 浏览器的初始化样式不同导致兼容性的问题
+- 局部样式解析不同导致的 bug
 
 > 有些文章把样式使用技巧也放到兼容性的问题里面，这有失偏颇，关于常用样式使用技巧在[另一边文章](http://www.jianshu.com/p/25eaac282b0d)叙述，这里不重复。
 
@@ -42,8 +42,8 @@ tags:
 
 **解决方式：**
 
-* IE：filter:progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=60)。
-* 非 IE：opacity:0.6。
+- IE：filter:progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=60)。
+- 非 IE：opacity:0.6。
 
 #### 2.2 默认的盒子解析模型
 
@@ -193,7 +193,7 @@ width: calc(100% - 80px);
 
 ## 参考连接
 
-* [Normalize.css 与传统的 CSS Reset 有哪些区别](https://www.zhihu.com/question/20094066)
-* [关于 CSS Reset 那些事（一）之 历史演变与 Normalize.css](https://segmentfault.com/a/1190000003021766)
-* [关于 CSS Reset 那些事（二）之 Normalize.css 源码解读](https://segmentfault.com/a/1190000003025718)
-* [关于 CSS Reset 那些事（三）之 Normalize-zh.css 出炉](https://segmentfault.com/a/1190000003028985)
+- [Normalize.css 与传统的 CSS Reset 有哪些区别](https://www.zhihu.com/question/20094066)
+- [关于 CSS Reset 那些事（一）之 历史演变与 Normalize.css](https://segmentfault.com/a/1190000003021766)
+- [关于 CSS Reset 那些事（二）之 Normalize.css 源码解读](https://segmentfault.com/a/1190000003025718)
+- [关于 CSS Reset 那些事（三）之 Normalize-zh.css 出炉](https://segmentfault.com/a/1190000003028985)

@@ -47,11 +47,11 @@ cache-control 等。
 
 因此，在 HTTP1.1 版本中再追加判断字段：`Cache-Control`。**其中`max-age`参数告知客户端这个文件多长时间不会过期**而不是直接告知过期时间。常用的参数如下：
 
-* no-cache：浏览器和缓存服务器都不应该缓存页面信息；
-* private：只在内存中缓存, 默认；
-* no-store：请求和响应的信息都不应该被存储在对方的磁盘系统中；
-* must-revalidate：对于客户机的每次请求，代理服务器必须向服务器验证缓存是否过时；
-* public, max-age=[number]：在硬盘中缓存, 浏览器和缓存服务器都可以缓存页面信息，并设定具体的过期秒数
+- no-cache：浏览器和缓存服务器都不应该缓存页面信息；
+- private：只在内存中缓存, 默认；
+- no-store：请求和响应的信息都不应该被存储在对方的磁盘系统中；
+- must-revalidate：对于客户机的每次请求，代理服务器必须向服务器验证缓存是否过时；
+- public, max-age=[number]：在硬盘中缓存, 浏览器和缓存服务器都可以缓存页面信息，并设定具体的过期秒数
 
 > 以上两个如果同时存在，则`Cache Control`的`max-age`将覆盖`Expires`.
 
@@ -77,7 +77,7 @@ ETag 也有他自己的问题，所以经常在使用中会关闭`ETag`。举例
 
 #### 静态资源处理
 
-* 设置 30 天后过期
+- 设置 30 天后过期
 
 ```js
 app.use(
@@ -95,7 +95,7 @@ app.use(
 );
 ```
 
-* 不缓存
+- 不缓存
 
 ```js
 app.use(express.static(path.join(__dirname, 'public'), {
@@ -112,22 +112,22 @@ app.use(express.static(path.join(__dirname, 'public'), {
 
 ### 缓存策略根据不同的重新浏览方式分为以下几种情况
 
-* 打开新窗口
+- 打开新窗口
 
   如果指定 cache-control 的值为 private、no-cache、must-revalidate，那么打开新窗口访问时都会重新访问服务器。而如果指定了 max-age 值，那么在此值内的时间里就不会重新访问服务器，例如：
 
   Cache-control: max-age=5
   表示当访问此网页后的 5 秒内再次访问不会去服务器获取资源
 
-* 在地址栏回车
+- 在地址栏回车
 
   如果值为 private 或 must-revalidate（和网上说的不一样），则只有第一次访问时会访问服务器，以后就不再访问。如果值为 no-cache，那么每次都会访问。如果值为 max-age，则在过期之前不会重复访问。
 
-* 按后退按扭
+- 按后退按扭
 
   如果值为 private、must-revalidate、max-age，则不会重新访问，而如果为 no-cache，则每次都重复访问
 
-* 按刷新按扭
+- 按刷新按扭
 
   无论为何值，都会重复访问
 
@@ -143,14 +143,14 @@ app.use(express.static(path.join(__dirname, 'public'), {
 
 **说明点:**
 
-* 当 freshness 检查失败，则发送资源请求并携带 ETage 和 Last-Modified 信息
-* ETag 和 Last-Modified 都会发送给服务器不分前后
-* Etag 用于动态内容会比 Last-Modified 好
+- 当 freshness 检查失败，则发送资源请求并携带 ETage 和 Last-Modified 信息
+- ETag 和 Last-Modified 都会发送给服务器不分前后
+- Etag 用于动态内容会比 Last-Modified 好
 
 ### 参考文章
 
-* [页面的缓存与不缓存设置](http://www.cnblogs.com/liuling/archive/2013/07/25/2013-7-25-01.html)
-* [配置错误产生的差距：200 OK (FROM CACHE) 与 304 NOT MODIFIED](http://div.io/topic/854#4091)
-* ["Cache-control"常见的取值](http://www.cnblogs.com/cuixiping/archive/2008/05/04/1181056.html)
-* [Meta http-equiv 属性详解](http://kinglyhum.iteye.com/blog/827807)
-* [浏览器 HTTP 协议缓存机制详解](https://my.oschina.net/leejun2005/blog/369148)
+- [页面的缓存与不缓存设置](http://www.cnblogs.com/liuling/archive/2013/07/25/2013-7-25-01.html)
+- [配置错误产生的差距：200 OK (FROM CACHE) 与 304 NOT MODIFIED](http://div.io/topic/854#4091)
+- ["Cache-control"常见的取值](http://www.cnblogs.com/cuixiping/archive/2008/05/04/1181056.html)
+- [Meta http-equiv 属性详解](http://kinglyhum.iteye.com/blog/827807)
+- [浏览器 HTTP 协议缓存机制详解](https://my.oschina.net/leejun2005/blog/369148)

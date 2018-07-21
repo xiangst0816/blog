@@ -20,10 +20,10 @@ try {
 }
 ```
 
-* 在**可能发生错误的地方使用 try-catch 语句**
-* catch 中的 error 错误对象必须要写, 不可忽略
-* error.message: 错误消息
-* error.name: 错误名称
+- 在**可能发生错误的地方使用 try-catch 语句**
+- catch 中的 error 错误对象必须要写, 不可忽略
+- error.message: 错误消息
+- error.name: 错误名称
 
 ### 2. 下面包含`finally`语句的代码返回值时?
 
@@ -39,19 +39,19 @@ function testFinally() {
 }
 ```
 
-* finally 子句一经使用，其代码无论如何都会执行
-* 如果 finally 包含 return, 则会忽略上面的所有 return
-* 上例子中返回 0
+- finally 子句一经使用，其代码无论如何都会执行
+- 如果 finally 包含 return, 则会忽略上面的所有 return
+- 上例子中返回 0
 
 ### 3. 报错的 error 类型种类, 如何获取类型?
 
-* Error: 基类错误
-* EvalError: 执行 eval()错误
-* RangeError: 范围错误
-* ReferenceError: 对象中属性未找到
-* SyntaxError: 语法错误, 比如错误的字符串传入 `JSON.parse()` / `eval()`
-* TypeError: 类型错误
-* URIError: 在使用 encodeURI()或 decodeURI(), uri 格式不对报错
+- Error: 基类错误
+- EvalError: 执行 eval()错误
+- RangeError: 范围错误
+- ReferenceError: 对象中属性未找到
+- SyntaxError: 语法错误, 比如错误的字符串传入 `JSON.parse()` / `eval()`
+- TypeError: 类型错误
+- URIError: 在使用 encodeURI()或 decodeURI(), uri 格式不对报错
 
 可以通过 `instanceof`操作符 获取错误类型.
 
@@ -71,8 +71,8 @@ throw new CustomError("This is a message!");
 
 ### 5. 在 try-catch 捕获错误和 throw 抛出错误两个阶段应该注意什么?
 
-* **try-catch 捕获错误**: 应该捕获确切知道如何处理的错误
-* **throw 抛出**: 错误应该提供详细的信息
+- **try-catch 捕获错误**: 应该捕获确切知道如何处理的错误
+- **throw 抛出**: 错误应该提供详细的信息
 
 ### 6. error 事件触发时机?
 
@@ -89,27 +89,27 @@ window.onerror = function(message, url, line) {
 };
 ```
 
-* 通过**返回 false**，这个函数实际上就**充当了整个文档中的 try-catch 语句**，可以捕获所有无代码处理的运行时错误。
-* 理想情况下，只要可能就不应该使用它
-* 只要能够适当地使用 try-catch 语句，就不会有错误交给浏览器，也就不会触发 error 事件。
+- 通过**返回 false**，这个函数实际上就**充当了整个文档中的 try-catch 语句**，可以捕获所有无代码处理的运行时错误。
+- 理想情况下，只要可能就不应该使用它
+- 只要能够适当地使用 try-catch 语句，就不会有错误交给浏览器，也就不会触发 error 事件。
 
 ### 8. 常见错误如何避免?
 
 **类型转化错误**
 
-* 使用**全等`===`**和**非全等`!==`**操作符，可以避免发生因为使用相等和不相等操作符引发的类型 转换错误，因此我们强烈推荐使用
-* 像 `if` 之类的语句在确定下一步操作之前， 会**自动把任何值转换成布尔值**, 避免错误就要做到在条件比较时**切实传入布尔值**。
+- 使用**全等`===`**和**非全等`!==`**操作符，可以避免发生因为使用相等和不相等操作符引发的类型 转换错误，因此我们强烈推荐使用
+- 像 `if` 之类的语句在确定下一步操作之前， 会**自动把任何值转换成布尔值**, 避免错误就要做到在条件比较时**切实传入布尔值**。
 
 **数据类型错误**
 
-* 传参需要手动判断下类型, 避免错误
-* **基本类型**的值应该使用 `typeof` 来检测, string/number/function/boolean
-* **对象**的值则应该使用 `instanceof` 来检测, array/object
-* 基本库**必须**进行入参类型检查!
+- 传参需要手动判断下类型, 避免错误
+- **基本类型**的值应该使用 `typeof` 来检测, string/number/function/boolean
+- **对象**的值则应该使用 `instanceof` 来检测, array/object
+- 基本库**必须**进行入参类型检查!
 
 **通信错误**
 
-* url 编码错误, 比如没正确使用`encodeURIComponent`函数, 解决方式如下:
+- url 编码错误, 比如没正确使用`encodeURIComponent`函数, 解决方式如下:
 
 ```js
 function addQueryStringArg(url, name, value) {
@@ -123,8 +123,8 @@ function addQueryStringArg(url, name, value) {
 }
 ```
 
-* 在服务器响应的数据不正确时，也会发生通信错误
-* 动态加载脚本和动态加载样式
+- 在服务器响应的数据不正确时，也会发生通信错误
+- 动态加载脚本和动态加载样式
 
 ### 9. 归一化 error 对象的方法
 

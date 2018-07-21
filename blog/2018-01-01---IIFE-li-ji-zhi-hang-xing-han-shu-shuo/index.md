@@ -186,10 +186,10 @@ i; // ReferenceError: i is not defined (函数内部的是局部变量)
 
 ## 总结
 
-* 能转化为函数表达式的操作都能构造 IIFE
-* IIFE 和普通函数类似，可以传参，有返回值
-* IIFE 可以制造局部变量，用于模块化
+- 能转化为函数表达式的操作都能构造 IIFE
+- IIFE 和普通函数类似，可以传参，有返回值
+- IIFE 可以制造局部变量，用于模块化
 
 ## 参考
 
-* [详解 javascript 立即执行函数表达式（IIFE）](http://web.jobbole.com/82520/)
+- [详解 javascript 立即执行函数表达式（IIFE）](http://web.jobbole.com/82520/)

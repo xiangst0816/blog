@@ -12,9 +12,9 @@ tags:
 
 ### 1. 类型检测的方式有哪些, 使用场景是?
 
-* 使用 typeof 检测基础类型
-* 使用 instanceof 检测引用类型
-* 使用 Object.prototype.toString.call(value)可以处理大部分情况
+- 使用 typeof 检测基础类型
+- 使用 instanceof 检测引用类型
+- 使用 Object.prototype.toString.call(value)可以处理大部分情况
 
 ### 2. 如果类没有用`new`关键字初始化一般会造成什么后果, 怎么避免?
 
@@ -88,9 +88,9 @@ SubType.prototype.sayAge = function() {
 
 ### 4. 讲一个惰性函数的实例场景, 优缺点?
 
-* 优点: 避免不必要分支执行
-* 缺点: 运行第一次牺牲点性能
-* 适用于初次运行就能确定分支方向的场景, 比如能力判断/平台判断等
+- 优点: 避免不必要分支执行
+- 缺点: 运行第一次牺牲点性能
+- 适用于初次运行就能确定分支方向的场景, 比如能力判断/平台判断等
 
 **两种写法:**
 
@@ -132,9 +132,9 @@ var doSomething = (function() {
 })();
 ```
 
-* `bind()`函数固定了执行环境, 对于异步环境保持`this`指向有很大帮助
-* 类似于: `setTimeout`/`setInterval`/事件绑定等
-* 与普通函数相比会使用更多开销和内存, 使用时注意
+- `bind()`函数固定了执行环境, 对于异步环境保持`this`指向有很大帮助
+- 类似于: `setTimeout`/`setInterval`/事件绑定等
+- 与普通函数相比会使用更多开销和内存, 使用时注意
 
 ### 6. 如何理解函数柯里化?
 
@@ -148,9 +148,9 @@ var doSomething = (function() {
 
 #### 第一级: **不可扩展对象`Object.preventExtensions(obj)`**
 
-* 不可再添加属性和方法
-* 已有属性和方法不受影响
-* 通过`Object.isExtensible(obj)`判断是否可拓展
+- 不可再添加属性和方法
+- 已有属性和方法不受影响
+- 通过`Object.isExtensible(obj)`判断是否可拓展
 
 ```js
 var person = { name: "Nicholas" };
@@ -162,9 +162,9 @@ alert(person.age); //undefined
 
 #### 第二级: **密封对象`Object.seal(obj)`**
 
-* 继承上一级
-* 已有成员不可删除, 但属性值可修改
-* 通过`Object.isSealed(obj)`判断是否被密封
+- 继承上一级
+- 已有成员不可删除, 但属性值可修改
+- 通过`Object.isSealed(obj)`判断是否被密封
 
 ```js
 var person = { name: "Nicholas" };
@@ -179,10 +179,10 @@ alert(person.name); //"Nicholas"
 
 #### 第三级: **冻结对象`Object.freeze(obj)`**
 
-* 继承上两级
-* 以后成员不可修改
-* 如果要修改需要重新定义`[[set]]`函数
-* 通过`Object.isFrozen(obj)`判断是否被冻结
+- 继承上两级
+- 以后成员不可修改
+- 如果要修改需要重新定义`[[set]]`函数
+- 通过`Object.isFrozen(obj)`判断是否被冻结
 
 #### 函数设计的意义
 
@@ -190,14 +190,14 @@ alert(person.name); //"Nicholas"
 
 ### 8. JavaScript 的定时器相关点
 
-* JavaScript 运行在**单线程**环境中, 某个时刻只有一个代码在执行.
-* 异步代码会被推入独立的**异步队列(Tasks)**
-* 在 JavaScript 中**代码不会立刻执行**的，但**一旦进程空闲则尽快执行**
-* 浏览器在这个过程中只负责排序调度, 指派某段代码在某个时间点运行的优先级.
-* 定时器队列是一个特殊的队列, 当定时的时间到了, 就将代码插入异步队列
-* 定时器中设定的时间**表示何时将定时器的代码添加到异步队列**, 而不是何时执行代码
-* 队列中的所有代码都要**等到 JavaScript 进程空闲后才能执行**, 而不管他们是如何添加到队列中
-* 即使执行完一个异步代码(Tasks）, **也会有一个很短的时间间隔**, 用于处理页面上的其他事情(UI 更新), 防止页面锁定
+- JavaScript 运行在**单线程**环境中, 某个时刻只有一个代码在执行.
+- 异步代码会被推入独立的**异步队列(Tasks)**
+- 在 JavaScript 中**代码不会立刻执行**的，但**一旦进程空闲则尽快执行**
+- 浏览器在这个过程中只负责排序调度, 指派某段代码在某个时间点运行的优先级.
+- 定时器队列是一个特殊的队列, 当定时的时间到了, 就将代码插入异步队列
+- 定时器中设定的时间**表示何时将定时器的代码添加到异步队列**, 而不是何时执行代码
+- 队列中的所有代码都要**等到 JavaScript 进程空闲后才能执行**, 而不管他们是如何添加到队列中
+- 即使执行完一个异步代码(Tasks）, **也会有一个很短的时间间隔**, 用于处理页面上的其他事情(UI 更新), 防止页面锁定
 
 ### 9. 每个 Tasks 异步都是紧挨着立即执行吗?
 
@@ -211,8 +211,8 @@ alert(person.name); //"Nicholas"
 
 因此：
 
-* 某些定时器回调会被**跳过**
-* 多个定时器代码**执行之间的间隔**会比预期小
+- 某些定时器回调会被**跳过**
+- 多个定时器代码**执行之间的间隔**会比预期小
 
 可以使用两个`setTimeout`解决：
 
@@ -225,8 +225,8 @@ setTimeout(function() {
 
 ### 11. 如果一个 JS 函数执行时间接近 1s, 如何优化执行不会让 UI 卡顿?
 
-* 不必要的**同步部分**放入 setTimeout 中
-* 使用问题 10 中的方式处理，间隔时间设为 0
+- 不必要的**同步部分**放入 setTimeout 中
+- 使用问题 10 中的方式处理，间隔时间设为 0
 
 ### 12. 函数防抖是如何控制调用执行的次数的?
 
@@ -257,9 +257,9 @@ function debounce(fn, delay, context) {
 
 **需要注意的地方:**
 
-* 计时器 timer 放在要处理的函数上, 因为是引用关系, 下次进入能携带 timer 信息
-* 每次执行完毕记得清理 timer 信息, 防止下次调用产生问题
-* clear 主要作用是清理定时器
+- 计时器 timer 放在要处理的函数上, 因为是引用关系, 下次进入能携带 timer 信息
+- 每次执行完毕记得清理 timer 信息, 防止下次调用产生问题
+- clear 主要作用是清理定时器
 
 **throttle**：
 
@@ -284,9 +284,9 @@ function throttle(fn, delay, context) {
 
 **需要注意的地方:**
 
-* 计时器 timer 放在要处理的函数上, 因为是引用关系, 下次进入能携带 timer 信息
-* 每次执行完毕记得清理 timer 信息, 防止下次调用产生问题
-* 先设置定时, 再去 call 函数
+- 计时器 timer 放在要处理的函数上, 因为是引用关系, 下次进入能携带 timer 信息
+- 每次执行完毕记得清理 timer 信息, 防止下次调用产生问题
+- 先设置定时, 再去 call 函数
 
 ### 14. 实现一个自定义事件库需要用到哪个设计模式?
 
@@ -294,14 +294,14 @@ function throttle(fn, delay, context) {
 
 ### 15. 设计自定义事件库必须具备的功能有哪些?
 
-* 定义一个 hash 对象，key 为事件名，value 为回调函数数组
-* 事件包括的方法有：on、off、once、emit
-* 参考这个库的设计: [events](https://github.com/typescript-practice/events)
+- 定义一个 hash 对象，key 为事件名，value 为回调函数数组
+- 事件包括的方法有：on、off、once、emit
+- 参考这个库的设计: [events](https://github.com/typescript-practice/events)
 
 ### 16. 简述拖放实现的方式是?
 
 监听 mousedown、mouseup、mousemove 事件然后进行相应处理。
 
-* mousedown：记录拖动元素
-* mousemove：对拖动元素修改 style 的 top、left 属性
-* mouseup：清理操作
+- mousedown：记录拖动元素
+- mousemove：对拖动元素修改 style 的 top、left 属性
+- mouseup：清理操作

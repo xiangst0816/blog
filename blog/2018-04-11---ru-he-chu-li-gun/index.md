@@ -28,9 +28,9 @@ tags:
 
 **到这里你需要知道：**
 
-* <mark>**JS 执行线程**和**Render 线程**是在同一个**内核线程**中</mark>
-* <mark>**内核线程**完成布局和绘制记录操作，**Compositor Thread**完成帧渲染</mark>
-* <mark>两个线程并行执行</mark>
+- <mark>**JS 执行线程**和**Render 线程**是在同一个**内核线程**中</mark>
+- <mark>**内核线程**完成布局和绘制记录操作，**Compositor Thread**完成帧渲染</mark>
+- <mark>两个线程并行执行</mark>
 
 ## 基础：Passive Event Listeners
 
@@ -67,9 +67,9 @@ Error: Unable to preventDefault inside passive event listener invocation.
 
 **这个过程你需要知道：**
 
-* 滚屏事件中如果不调用`preventDefault()`则加上`{passive:true}`参数
-* **Passive Event Listeners**特性是为滚动流畅性而设计
-* Chrome51+支持
+- 滚屏事件中如果不调用`preventDefault()`则加上`{passive:true}`参数
+- **Passive Event Listeners**特性是为滚动流畅性而设计
+- Chrome51+支持
 
 ## 基础：CSS 中的`touch-action`属性
 
@@ -87,13 +87,13 @@ Error: Unable to preventDefault inside passive event listener invocation.
 
 以上的基础介绍估计你就知道如何进行滚动性能优化了：
 
-* 事件注册使用 passive 属性
-* 使用 event-pointer 属性禁止触发元素滚动，或者指定滚动方向
+- 事件注册使用 passive 属性
+- 使用 event-pointer 属性禁止触发元素滚动，或者指定滚动方向
 
 此外，还需要通过 JS 手段对滚动进行节流，比如将滚动事件回调放在`requestAnimationFrame`中执行。如果滚动事件中有 DOM 尺寸读取或者修改，遵循这样的方式：
 
-* 先读取想获取的 DOM 尺寸
-* 元素修改在`requestAnimationFrame`中进行
+- 先读取想获取的 DOM 尺寸
+- 元素修改在`requestAnimationFrame`中进行
 
 ```js
 el.addEventListener("touchmove", function() {
@@ -118,6 +118,6 @@ el.addEventListener("touchmove", function() {
 
 ## 参考
 
-* [使输入处理程序去除抖动](https://developers.google.com/web/fundamentals/performance/rendering/debounce-your-input-handlers)
-* [让页面滑动流畅得飞起的新特性：Passive Event Listeners](http://geek.csdn.net/news/detail/109167?locationNum=9&fps=1)
-* [MDN: touch-action](https://developer.mozilla.org/zh-CN/docs/Web/CSS/touch-action)
+- [使输入处理程序去除抖动](https://developers.google.com/web/fundamentals/performance/rendering/debounce-your-input-handlers)
+- [让页面滑动流畅得飞起的新特性：Passive Event Listeners](http://geek.csdn.net/news/detail/109167?locationNum=9&fps=1)
+- [MDN: touch-action](https://developer.mozilla.org/zh-CN/docs/Web/CSS/touch-action)

@@ -36,6 +36,6 @@ tags:
 
 ## 参考
 
-* [Web Performance 101—also, why is Gatsby so fast?](https://www.gatsbyjs.org/blog/2017-09-13-why-is-gatsby-so-fast/)
-* [Gatsby](https://www.gatsbyjs.org/)
-* [Nuxtjs](https://zh.nuxtjs.org/)
+- [Web Performance 101—also, why is Gatsby so fast?](https://www.gatsbyjs.org/blog/2017-09-13-why-is-gatsby-so-fast/)
+- [Gatsby](https://www.gatsbyjs.org/)
+- [Nuxtjs](https://zh.nuxtjs.org/)

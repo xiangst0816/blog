@@ -14,15 +14,15 @@ tags:
 
 根据 **CSS 选择符** 选择与某个模式匹配的 DOM 元素.
 
-* `querySelector()`
+- `querySelector()`
 
 IE8+, 返回第一个匹配的 Node
 
-* `querySelectorAll()`
+- `querySelectorAll()`
 
 IE8+, 返回 NodeList
 
-* `matchesSelector()`
+- `matchesSelector()`
 
 IE9+, 如果调用元素与该选择符匹配，返回 true；否则，返回 false。
 
@@ -50,17 +50,17 @@ if (matchesSelector(document.body, "body.page1")) {
 
 ### 2. ElementNode 类型 Node 查询增强 API
 
-* childElementCount：返回子元素（不包括文本节点和注释）的个数。
-* firstElementChild：指向第一个子元素；firstChild 的元素版。
-* lastElementChild：指向最后一个子元素；lastChild 的元素版。
-* previousElementSibling：指向前一个同辈元素；previousSibling 的元素版。
-* nextElementSibling：指向后一个同辈元素；nextSibling 的元素版。
+- childElementCount：返回子元素（不包括文本节点和注释）的个数。
+- firstElementChild：指向第一个子元素；firstChild 的元素版。
+- lastElementChild：指向最后一个子元素；lastChild 的元素版。
+- previousElementSibling：指向前一个同辈元素；previousSibling 的元素版。
+- nextElementSibling：指向后一个同辈元素；nextSibling 的元素版。
 
 支持情况: IE 9+
 
 ### 3. HTML5 中操作`class`属性的方法和传统方法的对比?
 
-* 传统方法使用`className`属性对字符串的处理来更改 class:
+- 传统方法使用`className`属性对字符串的处理来更改 class:
 
 ```js
 //删除"user"类
@@ -83,7 +83,7 @@ classNames.splice(i, 1);
 div.className = classNames.join(" ");
 ```
 
-* HTML5 使用`classList`属性, Firefox 3.6+和 Chrome
+- HTML5 使用`classList`属性, Firefox 3.6+和 Chrome
 
 ```js
 //删除"disabled"类
@@ -108,8 +108,8 @@ for (var i = 0, len = div.classList.length; i < len; i++) {
 
 ### 4. 焦点管理
 
-* `document.activeElement()`: 始终会引用 DOM 中当前获得了焦点的元素
-* `document.hasFocus()`: 用于确定文档是否获得了焦点
+- `document.activeElement()`: 始终会引用 DOM 中当前获得了焦点的元素
+- `document.hasFocus()`: 用于确定文档是否获得了焦点
 
 ### 5. HTMLDocument 的变化
 
@@ -117,8 +117,8 @@ for (var i = 0, len = div.classList.length; i < len; i++) {
 
 通过它来实现一个指示文档已经加载完成的指示器, 支持情况: IE4+
 
-* loading，正在加载文档；
-* complete，已经加载完文档。
+- loading，正在加载文档；
+- complete，已经加载完文档。
 
 ```js
 function docReady(cb) {
@@ -143,9 +143,9 @@ function docReady(cb) {
 
 #### document.compatMode
 
-* 标准模式(CSS1Compat), 比如 doctype 设置为`<!DOCTYPE html>`时
+- 标准模式(CSS1Compat), 比如 doctype 设置为`<!DOCTYPE html>`时
 
-* 混杂模式(BackCompat, 向后兼容模式)的 doctype 可以是:
+- 混杂模式(BackCompat, 向后兼容模式)的 doctype 可以是:
 
 ```html
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -172,9 +172,9 @@ var head = document.head || document.getElementsByTagName("head")[0];
 
 ### 6. HTML5 中自定义数据属性的应用? 如何兼容不支持浏览器?
 
-* 用于元素渲染外的信息, 需要添加"data-"头, 但是获取时不需要"data".
-* 用于**跟踪连接/混搭引用/插件参数/埋点数据**等应用
-* Firefox 6+和 Chrome
+- 用于元素渲染外的信息, 需要添加"data-"头, 但是获取时不需要"data".
+- 用于**跟踪连接/混搭引用/插件参数/埋点数据**等应用
+- Firefox 6+和 Chrome
 
 ```html
 <div id="myDiv" data-appId="12345" data-myname="Nicholas"></div>
@@ -211,13 +211,13 @@ if (myDiv.dataset) {
 
 #### innerHTML
 
-* 读模式: 获取指定节点的**所有子节点对应的 HTML 标记字符串**.
-* 写模式: 根据指定的值创建新的 DOM 树, 然后在用这个 DOM 数完全**替换调用元素原先的所有子节点**
-* **不要指望所有浏览器返回的值时是一致的**
-* **写和读两次的值也可能不一样**, 原因是返回的字符串是根据原始 HTML 字符串创建的 DOM 数经过序列化后的结果
-* 插入`<script>` 时可能会有些限制, 在大多数浏览器中，通过 innerHTML 插入 `<script>` 元素并不会执行其中的脚本(**IE8 及更早版本是唯一能在这种情况下执行脚本的浏览器**，但必须满足一 些条件。解决办法就是在插入的 script 前再插入一个有作用域的元素, 比如文本/空字符的 div/**隐藏的 input(首选)**等).
-* 插入脚本还是使用别的方式吧
-* 插入`<style>`大多数浏览器都支持, IE8 及更早版本的 Hack 这里不做说明, 代码如下:
+- 读模式: 获取指定节点的**所有子节点对应的 HTML 标记字符串**.
+- 写模式: 根据指定的值创建新的 DOM 树, 然后在用这个 DOM 数完全**替换调用元素原先的所有子节点**
+- **不要指望所有浏览器返回的值时是一致的**
+- **写和读两次的值也可能不一样**, 原因是返回的字符串是根据原始 HTML 字符串创建的 DOM 数经过序列化后的结果
+- 插入`<script>` 时可能会有些限制, 在大多数浏览器中，通过 innerHTML 插入 `<script>` 元素并不会执行其中的脚本(**IE8 及更早版本是唯一能在这种情况下执行脚本的浏览器**，但必须满足一 些条件。解决办法就是在插入的 script 前再插入一个有作用域的元素, 比如文本/空字符的 div/**隐藏的 input(首选)**等).
+- 插入脚本还是使用别的方式吧
+- 插入`<style>`大多数浏览器都支持, IE8 及更早版本的 Hack 这里不做说明, 代码如下:
 
 ```js
 div.innerHTML = '<style type="text/css">body {background-color: red; }</style>';
@@ -257,9 +257,9 @@ element.insertAdjacentHTML("afterend", "<p>Hello world!</p>");
 
 #### 内存与性能问题注意
 
-* 使用上述 API 比单独创建元素要高效的多, 建议使用
-* 删除元素前**别忘记解绑事件监听**, 否则出现内存泄露
-* 这是 innerHTML 或者 outerHTML 会创建 HTML 解析器, 一次频繁创建会影响性能, **建议控制调用上述三个 API 的次数**, 比如缓存字符串中间结果
+- 使用上述 API 比单独创建元素要高效的多, 建议使用
+- 删除元素前**别忘记解绑事件监听**, 否则出现内存泄露
+- 这是 innerHTML 或者 outerHTML 会创建 HTML 解析器, 一次频繁创建会影响性能, **建议控制调用上述三个 API 的次数**, 比如缓存字符串中间结果
 
 ### 8. scrollIntoView()方法
 

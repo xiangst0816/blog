@@ -16,8 +16,8 @@ tags:
 
 引入样式优先级一般是在外部样式、内部样式、内联样式之间应用同一个样式的情况是使用， 优先级如下：
 
-* **外部样式** | **内部样式** < **内联样式**
-* **外部样式**和**内部样式**，最后出现的优先级最高，例如：
+- **外部样式** | **内部样式** < **内联样式**
+- **外部样式**和**内部样式**，最后出现的优先级最高，例如：
 
 ```html
 <!-- 内联样式 -->
@@ -42,9 +42,9 @@ tags:
 
 一般来说满这个规则：
 
-* 继承不如指定
-* !important > 内联 > ID > Class|属性|伪类 > 元素选择器
-* :link、:visited、:hover、:active 按照 LVHA（LoVe HAte）顺序定义
+- 继承不如指定
+- !important > 内联 > ID > Class|属性|伪类 > 元素选择器
+- :link、:visited、:hover、:active 按照 LVHA（LoVe HAte）顺序定义
 
 上面是优先级算法反映出的大致结果，在一般的开发中熟记即可。如果需要进一步研究原理，则了解下优先级算法。
 
@@ -59,25 +59,25 @@ tags:
 
 #### 特点:
 
-* 每个等级的初始值为 0，
-* 每个等级的叠加为选择器出**现的次数相加**
-* 不可进位，比如`0,99,99,99`
-* 依次表示为：0,0,0,0
-* 每个等级计数之间没关联
-* 等级判断从左向右，如果某一位数值相同，则判断下一位数值
-* 如果两个优先级相同，则最后出现的优先级高，`!important`也适用
-* 通配符选择器的特殊性值为：`0,0,0,0`
-* **继承样式优先级最低**，通配符样式优先级高于继承样式
+- 每个等级的初始值为 0，
+- 每个等级的叠加为选择器出**现的次数相加**
+- 不可进位，比如`0,99,99,99`
+- 依次表示为：0,0,0,0
+- 每个等级计数之间没关联
+- 等级判断从左向右，如果某一位数值相同，则判断下一位数值
+- 如果两个优先级相同，则最后出现的优先级高，`!important`也适用
+- 通配符选择器的特殊性值为：`0,0,0,0`
+- **继承样式优先级最低**，通配符样式优先级高于继承样式
 
 #### 计算示例：
 
-* `a{color: yellow;} /*特殊性值：0,0,0,1*/`
-* `div a{color: green;} /*特殊性值：0,0,0,2*/`
-* `.demo a{color: black;} /*特殊性值：0,0,1,1*/`
-* `.demo input[type="text"]{color: blue;} /*特殊性值：0,0,2,1*/`
-* `.demo *[type="text"]{color: grey;} /*特殊性值：0,0,2,0*/`
-* `#demo a{color: orange;} /*特殊性值：0,1,0,1*/`
-* `div#demo a{color: red;} /*特殊性值：0,1,0,2*/`
+- `a{color: yellow;} /*特殊性值：0,0,0,1*/`
+- `div a{color: green;} /*特殊性值：0,0,0,2*/`
+- `.demo a{color: black;} /*特殊性值：0,0,1,1*/`
+- `.demo input[type="text"]{color: blue;} /*特殊性值：0,0,2,1*/`
+- `.demo *[type="text"]{color: grey;} /*特殊性值：0,0,2,0*/`
+- `#demo a{color: orange;} /*特殊性值：0,1,0,1*/`
+- `div#demo a{color: red;} /*特殊性值：0,1,0,2*/`
 
 #### 生效示例：
 
@@ -96,8 +96,8 @@ tags:
 
 a 标签有四种状态：链接访问前、链接访问后、鼠标滑过、激活，分别对应四种伪类:link、:visited、:hover、:active；
 
-* 当鼠标滑过 a 链接时，满足`:link`和`:hover`两个伪类，要改变 a 标签的颜色，就必须将:hover 伪类在:link 伪类后面声明；
-* 当鼠标点击激活 a 链接时，同时满足:link、:hover、:active 三种状态，要显示 a 标签激活时的样式（:active），必须将:active 声明放到:link 和:hover 之后。因此得出 LVHA 这个顺序。
+- 当鼠标滑过 a 链接时，满足`:link`和`:hover`两个伪类，要改变 a 标签的颜色，就必须将:hover 伪类在:link 伪类后面声明；
+- 当鼠标点击激活 a 链接时，同时满足:link、:hover、:active 三种状态，要显示 a 标签激活时的样式（:active），必须将:active 声明放到:link 和:hover 之后。因此得出 LVHA 这个顺序。
 
 这个顺序能不能变？可以，但也只有:link 和:visited 可以交换位置，因为一个链接要么访问过要么没访问过，不可能同时满足，也就不存在覆盖的问题。
 
@@ -132,6 +132,6 @@ a 标签有四种状态：链接访问前、链接访问后、鼠标滑过、激
 
 ## 参考
 
-* [css 优先级计算规则](http://www.cnblogs.com/wangmeijian/p/4207433.html)
-* [关于 CSS 的优先级,CSS 优先级计算,多个 class 引用](http://blog.csdn.net/jie1336950707/article/details/49046371)
-* [样式表定义](http://www.w3school.com.cn/html/html_css.asp)
+- [css 优先级计算规则](http://www.cnblogs.com/wangmeijian/p/4207433.html)
+- [关于 CSS 的优先级,CSS 优先级计算,多个 class 引用](http://blog.csdn.net/jie1336950707/article/details/49046371)
+- [样式表定义](http://www.w3school.com.cn/html/html_css.asp)

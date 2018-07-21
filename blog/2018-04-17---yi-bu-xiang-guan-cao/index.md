@@ -16,23 +16,23 @@ tags:
 
 ### 基础 API 注意点
 
-* 内部状态有：pending（进行中）、fulfilled（完成）、rejected（拒绝），同一时间只有一个状态
-* **rejected 状态在 catch 中处理后会转为 fulfilled**
-* 内部状态**不受外部影响**
-* 内部状态**结果可以随时获取**
-* `new Promise`中的回调函数**立即执行**
+- 内部状态有：pending（进行中）、fulfilled（完成）、rejected（拒绝），同一时间只有一个状态
+- **rejected 状态在 catch 中处理后会转为 fulfilled**
+- 内部状态**不受外部影响**
+- 内部状态**结果可以随时获取**
+- `new Promise`中的回调函数**立即执行**
 
 #### 1. Promise.prototype.then()
 
-* 返回新 Promise 实例，满足链式调用
-* 后面的 then 接受前面的 Promise 返回结果
-* 每个 then 的回调函数都会推到 microtask 中，**而不是立即执行**
+- 返回新 Promise 实例，满足链式调用
+- 后面的 then 接受前面的 Promise 返回结果
+- 每个 then 的回调函数都会推到 microtask 中，**而不是立即执行**
 
 #### 2. Promise.prototype.catch()
 
-* rejected 状态会向下传递，catch 接受传递的 rejected 状态
-* catch 接收之后会**消化**这个错误，将状态变为 fulfilled 状态**（切记）**
-* 如果错误未捕获，则会有事件 `unhandledrejection` 触发
+- rejected 状态会向下传递，catch 接受传递的 rejected 状态
+- catch 接收之后会**消化**这个错误，将状态变为 fulfilled 状态**（切记）**
+- 如果错误未捕获，则会有事件 `unhandledrejection` 触发
 
 ```js
 window.addEventListener("unhandledrejection", e => {
@@ -52,9 +52,9 @@ window.addEventListener("unhandledrejection", e => {
 const p = Promise.all([p1, p2, p3]);
 ```
 
-* 全部转为 fulfilled 后，p 的状态才转为 fulfilled
-* 注意**catch**有能将 rejected 的状态改为 fulfilled 状态的能力
-* p 的 resolve 返回数组
+- 全部转为 fulfilled 后，p 的状态才转为 fulfilled
+- 注意**catch**有能将 rejected 的状态改为 fulfilled 状态的能力
+- p 的 resolve 返回数组
 
 #### 5. Promise.race()
 
@@ -62,7 +62,7 @@ const p = Promise.all([p1, p2, p3]);
 const p = Promise.race([p1, p2, p3]);
 ```
 
-* 竞态
+- 竞态
 
 #### 6. Promise.resolve() / Promise.reject()
 
@@ -100,10 +100,10 @@ const asyncReadFile = async function() {
 
 不同的地方：
 
-* `async`自带执行器，不像 `Generator` 函数，需要调用 `next` 方法
-* 更好的语义
-* `await`之后不一定是`Promise`类型
-* 返回`Promise`对象
+- `async`自带执行器，不像 `Generator` 函数，需要调用 `next` 方法
+- 更好的语义
+- `await`之后不一定是`Promise`类型
+- 返回`Promise`对象
 
 #### 1. 原理：
 
@@ -111,8 +111,8 @@ async 函数的实现原理，就是将 Generator 函数和自动执行器，包
 
 #### 2. await 命令
 
-* await 命令后面是一个 Promise 对象。如果不是，会被转成一个立即 resolve 的 Promise 对象
-* 只要一个 await 语句后面的 Promise 变为 reject，那么整个 async 函数都会中断执行
+- await 命令后面是一个 Promise 对象。如果不是，会被转成一个立即 resolve 的 Promise 对象
+- 只要一个 await 语句后面的 Promise 变为 reject，那么整个 async 函数都会中断执行
 
 ```js
 async function f() {
@@ -123,8 +123,8 @@ async function f() {
 
 **解决办法：**
 
-* catch 捕获转化为 resolved 状态
-* try/catch 包裹
+- catch 捕获转化为 resolved 状态
+- try/catch 包裹
 
 #### 3. 技巧
 

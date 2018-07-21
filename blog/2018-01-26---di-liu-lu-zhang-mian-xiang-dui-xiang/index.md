@@ -59,10 +59,10 @@ console.log(typeof obj === "object"); // true
 
 ### 4. 谈谈你对 prototype 的理解?
 
-* 每个函数都有一个`[[Prototype]]`(原型)属性, 这个属性是一个指针, 指向 prototype 原型对象
-* prototype 原型对象的用途是包含可以由特定类型的**所有实例共享的**属性和方法
-* prototype 原型对象会自动获得 constructor(构造函数)属性
-* **_实例的`[[Prototype]]`_**就是上面提到的*prototype 原型对象*, 在个别浏览器中则为可访问的`__proto__`属性
+- 每个函数都有一个`[[Prototype]]`(原型)属性, 这个属性是一个指针, 指向 prototype 原型对象
+- prototype 原型对象的用途是包含可以由特定类型的**所有实例共享的**属性和方法
+- prototype 原型对象会自动获得 constructor(构造函数)属性
+- **_实例的`[[Prototype]]`_**就是上面提到的*prototype 原型对象*, 在个别浏览器中则为可访问的`__proto__`属性
 
 ### 5. 解释为什么不建议在代码中使用`__proto__`属性?
 
@@ -72,7 +72,7 @@ console.log(typeof obj === "object"); // true
 
 **替代方案:**
 
-* 通过`Object.getPrototypeOf()`返回`[[Prototype]]`的值.
+- 通过`Object.getPrototypeOf()`返回`[[Prototype]]`的值.
 
 ```js
 function Base() {
@@ -86,7 +86,7 @@ var obj = new Base();
 console.log(Object.getPrototypeOf(obj) === Base.prototype); // true
 ```
 
-* 通过`isPrototypeOf()`判断原型是否和实例的`[[Prototype]]`相等.
+- 通过`isPrototypeOf()`判断原型是否和实例的`[[Prototype]]`相等.
 
 ```js
 console.log(Base.prototype.isPrototypeOf(obj)); // true
@@ -96,8 +96,8 @@ console.log(Base.prototype.isPrototypeOf(obj)); // true
 
 只设置其一会导致另一个功能不可用, 比如:
 
-* 只设置 get 函数, 则无法设置值
-* 只设置 set 函数, 则获取值的值为 `undefined`
+- 只设置 get 函数, 则无法设置值
+- 只设置 set 函数, 则获取值的值为 `undefined`
 
 ### 7. 理解 ECMAScript 中原型对象的性质
 
@@ -111,15 +111,15 @@ console.log(Base.prototype.isPrototypeOf(obj)); // true
 
 ### 8. 结合原型链谈谈对象中属性查找方式及优化点?
 
-* **对象实例**上的属性增删改**不会影响原型上的同名属性**, 最终操作都是在实例上进行的,
-* 在对象搜索属性名时, **先从实例对象本身开始**, 如果没有**再到原型对象上找**, 以此向下直到 Object 对象上, 未找到返回`undefined`
-* 根据以上两点, 可以实现**自定义属性屏蔽原型上属性**
-* **优化建议**: 如果访问的属性在深层原型链上, 可以考虑局部缓存
+- **对象实例**上的属性增删改**不会影响原型上的同名属性**, 最终操作都是在实例上进行的,
+- 在对象搜索属性名时, **先从实例对象本身开始**, 如果没有**再到原型对象上找**, 以此向下直到 Object 对象上, 未找到返回`undefined`
+- 根据以上两点, 可以实现**自定义属性屏蔽原型上属性**
+- **优化建议**: 如果访问的属性在深层原型链上, 可以考虑局部缓存
 
 ### 9. 如何检测一个属性是在实例对象中还是在原型对象中?
 
-* `obj.hasOwnProperty(name)`: **只有当给定属性存在实例对象中时才返回 true**, 这里不考虑原型对象
-* `in`操作符: 在对象上能访问到给定属性时返回`true`, **包括实例对象和原型对象**
+- `obj.hasOwnProperty(name)`: **只有当给定属性存在实例对象中时才返回 true**, 这里不考虑原型对象
+- `in`操作符: 在对象上能访问到给定属性时返回`true`, **包括实例对象和原型对象**
 
 示例:
 
@@ -141,13 +141,13 @@ console.log("sayName" in obj); // true
 
 总结:
 
-* 给定属性名**只在实例对象**中时
+- 给定属性名**只在实例对象**中时
 
 ```js
 obj.hasOwnProperty(name);
 ```
 
-* 给定属性名**只在原型对象**中时
+- 给定属性名**只在原型对象**中时
 
 ```js
 function hasPrototypeProperty(obj, name) {
@@ -206,7 +206,7 @@ console.log(friend.constructor === Object); // true
 
 问题:
 
-* constructor 属性不再指向 `Person` 了, 而是 `Object` 对象
+- constructor 属性不再指向 `Person` 了, 而是 `Object` 对象
 
 解决方案:
 
@@ -235,11 +235,11 @@ var friend = new Person();
 
 可以也不可以, 需要区分: 如何修改原型; 何时初始化的实例.
 
-* **原型对象上添加**: 实例调用时可以查找到添加的原型属性
+- **原型对象上添加**: 实例调用时可以查找到添加的原型属性
 
 _可以_, 实例与原型之间的松散连接关系. 因为实例与原型之间的连接只不过是一个指针, 而非一个副本.
 
-* **覆盖原型对象**: 实例中的原型`[[prototype]]`还是指向原来的原型对象
+- **覆盖原型对象**: 实例中的原型`[[prototype]]`还是指向原来的原型对象
 
 _不可以_. 重写原型对象切断了现有原型与任何之前已经存在的对象实例之间的联系；它们引用的仍然是最初的原型。
 
@@ -262,8 +262,8 @@ _不可以_. 重写原型对象切断了现有原型与任何之前已经存在�
 
 ### 14. 组合使用构造函数模式和原型模式的好处?
 
-* 构造函数模式: 用于定义实例属性
-* 原型模式: 用于定义方法和共享属性
+- 构造函数模式: 用于定义实例属性
+- 原型模式: 用于定义方法和共享属性
 
 比如:
 
@@ -296,11 +296,11 @@ var person2 = new Person("Greg", 27, "Doctor");
 
 ### 16. 如何确定原型和实例的关系?
 
-* `object instanceof constructor`
+- `object instanceof constructor`
 
 只要构造函数`constructor`在实例`object`的原型链上出现过, 则返回 true
 
-* `constructor.prototype.isPrototypeOf(object)`
+- `constructor.prototype.isPrototypeOf(object)`
 
 同上!
 

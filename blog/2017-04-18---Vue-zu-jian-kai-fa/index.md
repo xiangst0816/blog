@@ -37,9 +37,9 @@ tags:
 
 Vue 在设计组件的时候这方面就考虑的很周全. 目前(Vue2.x), **Vue 组件对外只有三个 API:**
 
-* **Prps:** 外部传递组件数据
-* **Events:** 组件向外发送事件(可传递数据)
-* **Slots:** 外部逻辑整合到组件中(插槽)
+- **Prps:** 外部传递组件数据
+- **Events:** 组件向外发送事件(可传递数据)
+- **Slots:** 外部逻辑整合到组件中(插槽)
 
 引入这张**组件通讯**图还是很必要的: ![组件通讯](http://cn.vuejs.org/images/props-events.png)
 
@@ -55,15 +55,15 @@ Vue 在设计组件的时候这方面就考虑的很周全. 目前(Vue2.x), **Vu
 
 两个属性的功能类似, 简单的说就是将组件初始化的对象进行合并:
 
-* **对于属性(包括 data/props/watch/methods/computed 等):** 数据会进行合并替换, 原始组件的优先级最高;
+- **对于属性(包括 data/props/watch/methods/computed 等):** 数据会进行合并替换, 原始组件的优先级最高;
 
-* **对于钩子函数(created/mounted):** Mixins/Extends 中定义的钩子不影响原始组件的钩子, 但是会优先执行 Mixins/Extends 中的定义.
+- **对于钩子函数(created/mounted):** Mixins/Extends 中定义的钩子不影响原始组件的钩子, 但是会优先执行 Mixins/Extends 中的定义.
 
 ##### 区别
 
-* 传参: - Mixins 需要传入数组 - Extends 传入对象即可
+- 传参: - Mixins 需要传入数组 - Extends 传入对象即可
 
-* 两者混用优先级: - 对于钩子函数: Extends > Mixins > Source - 对于属性: Source > Mixins > Extends
+- 两者混用优先级: - 对于钩子函数: Extends > Mixins > Source - 对于属性: Source > Mixins > Extends
 
 > 这部分也是单一原则的实现方式
 
@@ -71,8 +71,8 @@ Vue 在设计组件的时候这方面就考虑的很周全. 目前(Vue2.x), **Vu
 
 正常情况下, 不会涉及到使用组件内部的方法, **组件对外全靠事件进行**. 但是, 也有些情况在事件触发时传递组件的 this, 让业务能够执行组件内部方法改变组件状态, 比如[Refresher 组件](https://github.com/DTFE/Vimo/tree/master/raw/components/refresher): 对外可调用内部两个方法:
 
-* **complete():** 异步数据请求成功后, 调用这个方法; refresher 将会关闭, 状态由`refreshing` -> `completing`.
-* **cancel():** 取消 refresher, 其状态由`refreshing` -> `cancelling`
+- **complete():** 异步数据请求成功后, 调用这个方法; refresher 将会关闭, 状态由`refreshing` -> `completing`.
+- **cancel():** 取消 refresher, 其状态由`refreshing` -> `cancelling`
 
 因此, 保证这部分不会在组件更迭发生变化也是很重要的!
 
@@ -235,7 +235,7 @@ _afterEnter (el) {
 
 剩余的组件都比较好写了, 定好 props 和 event 就好, 比如:
 
-* 需要 Slot 部分
+- 需要 Slot 部分
 
 ```HTML
 <Header>
@@ -245,7 +245,7 @@ _afterEnter (el) {
 </Header>
 ```
 
-* 不需要 Slot 部分
+- 不需要 Slot 部分
 
 ```HTML
 <Toggle color="dark" v-model="displayData.dark" @onChange="onChangeHandler"></Toggle>

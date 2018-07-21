@@ -35,9 +35,9 @@ tags:
 
 > 使用手机模式在**外部浏览器**中打开，且安装了`知乎`或者`网易新闻`，否则点击会报错或者没反应。
 
-* 知乎: 《JS 判断 APP 是否安装?》 - [在「知乎」中打开](zhihu://questions/34831949?utm_campaign=ge19&utm_content=m_banner)
+- 知乎: 《JS 判断 APP 是否安装?》 - [在「知乎」中打开](zhihu://questions/34831949?utm_campaign=ge19&utm_content=m_banner)
 
-* 网易新闻: 《刘强东力挺顺丰：我相信王卫为人，质疑菜鸟违法》 - [在「网易新闻」中打开](newsapp://doc/CLU0M6DS00097U7R?s=sps_ulink&ss=sps_article)
+- 网易新闻: 《刘强东力挺顺丰：我相信王卫为人，质疑菜鸟违法》 - [在「网易新闻」中打开](newsapp://doc/CLU0M6DS00097U7R?s=sps_ulink&ss=sps_article)
 
 #### 1. 给 IOS 的建议
 
@@ -57,10 +57,10 @@ tags:
 
 #### 4. URL Scheme 命名规则
 
-* 不要使用已存在的 scheme，比如：zhihu、twitter、newsapp、fb 等
-* 使用小写字母
-* 不要使用`-`，因为安卓下会转化为`_`
-* 使用一个单词且不加空格
+- 不要使用已存在的 scheme，比如：zhihu、twitter、newsapp、fb 等
+- 使用小写字母
+- 不要使用`-`，因为安卓下会转化为`_`
+- 使用一个单词且不加空格
 
 #### 5. 建议
 
@@ -70,23 +70,23 @@ tags:
 
 这个方法是专属 IOS9.0+的，简单来说就是一种能够方便的通过传统的 HTTP/HTTPS 链接来启动 App，使用相同的网址打开网站和 App。如果英语可以的话建议阅读下面的链接：
 
-* [Universal Links on iOS](https://developer.apple.com/library/content/documentation/General/Conceptual/AppSearch/UniversalLinks.html)
+- [Universal Links on iOS](https://developer.apple.com/library/content/documentation/General/Conceptual/AppSearch/UniversalLinks.html)
 
 当用户点击链接时，如果安装了 App 则跳转到 App；如果没安装则打开链接指向的网址。相比于**URL Scheme**方案具有以下优点：
 
-* **Unique**：因为是使用的标准 HTTP or HTTPS 链接到自己的网站，因此别的应用无法伪造
-* **Secure**：IOS 系统会检查放在自己服务器上的`apple-app-site-association`文件，这个文件用于关联网站和 app 之间的联动关系
-* **Flexible**：如果没安装应用，则点击`Universal Links`会跳转到关联的网址，可以是主页也可以是下载引导页
-* **Simple**：一个 URL 连接可以给 App 服务，也可是一个简单的网站
-* **Private**：别的应用无法拦截这个过程，也无法知道后续是开启 App 还是跳转到 Safari
+- **Unique**：因为是使用的标准 HTTP or HTTPS 链接到自己的网站，因此别的应用无法伪造
+- **Secure**：IOS 系统会检查放在自己服务器上的`apple-app-site-association`文件，这个文件用于关联网站和 app 之间的联动关系
+- **Flexible**：如果没安装应用，则点击`Universal Links`会跳转到关联的网址，可以是主页也可以是下载引导页
+- **Simple**：一个 URL 连接可以给 App 服务，也可是一个简单的网站
+- **Private**：别的应用无法拦截这个过程，也无法知道后续是开启 App 还是跳转到 Safari
 
 #### 1. 这里给两个示例：
 
 > 使用 IOS 手机在任何 webview 中打开，且安装了`知乎`或者`网易新闻`，否则点击就会进入链接指向的网站。
 
-* 知乎: 《JS 判断 APP 是否安装?》 - [在「知乎」中打开](https://oia.zhihu.com/questions/34831949?utm_campaign=ge19)
+- 知乎: 《JS 判断 APP 是否安装?》 - [在「知乎」中打开](https://oia.zhihu.com/questions/34831949?utm_campaign=ge19)
 
-* 网易新闻: 《刘强东力挺顺丰：我相信王卫为人，质疑菜鸟违法》 - [在「网易新闻」中打开](http://m.163.com/newsapp/applinks.html?path=%2Fdoc%2FCLU0M6DS00097U7R&s=sps_ulink&ss=sps_article)
+- 网易新闻: 《刘强东力挺顺丰：我相信王卫为人，质疑菜鸟违法》 - [在「网易新闻」中打开](http://m.163.com/newsapp/applinks.html?path=%2Fdoc%2FCLU0M6DS00097U7R&s=sps_ulink&ss=sps_article)
 
 #### 2. 如何获得 IOS 版本
 
@@ -100,9 +100,9 @@ var version = arr[1] + "." + arr[2];
 
 这里有三种方式：
 
-* iframe
-* a 标签 href 属性
-* window.location.href
+- iframe
+- a 标签 href 属性
+- window.location.href
 
 现在网上给的方案都是大概 1 年左右，都倾向于使用 iframe，但是像「网易新闻」和「知乎」都是使用的`window.location.href`（翻看了源码），好吧，用这个方案吧。
 
@@ -120,8 +120,8 @@ var version = arr[1] + "." + arr[2];
 
 ## 最后
 
-* 向 IOS 和 Android 的开发同时搞到 URL Scheme 链接
-* 向 IOS 同事询问 Universal Links 的链接
-* 准备 OIA 页面（下载指引页）
+- 向 IOS 和 Android 的开发同时搞到 URL Scheme 链接
+- 向 IOS 同事询问 Universal Links 的链接
+- 准备 OIA 页面（下载指引页）
 
 希望以上对你有用。

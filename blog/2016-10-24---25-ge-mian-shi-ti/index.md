@@ -323,9 +323,9 @@ for (var i = 0; i < 5; i++) {
 ```
 
 1.  点击 Button 4，会在控制台输出什么？
-    * 点击 5 个按钮中的任意一个，都是输出 5
+    - 点击 5 个按钮中的任意一个，都是输出 5
 2.  给出一种符合预期的实现方式
-    * 参考 IIFE。
+    - 参考 IIFE。
 
 ```
 for (var i = 0; i < 5; i++) {
@@ -353,7 +353,7 @@ console.log("array 2: length=" + arr2.length + " last=" + arr2.slice(-1));
 
 **这里总结下哪些方法会对数组本身修改，哪些会返回新数组：**
 
-* 原来 arr 上处理(会改变原来的数组，而不会创建新的数组)：
+- 原来 arr 上处理(会改变原来的数组，而不会创建新的数组)：
 
 ```
 forEach：循环每个元素、
@@ -374,7 +374,7 @@ arr.forEach(function(val){})
 arr.reduce(function(sum,ele){})
 ```
 
-* 返回新数组：
+- 返回新数组：
 
 ```
 map：遍历后返回新数组（和forEach对立）、
@@ -610,8 +610,8 @@ var stoleSecretIdentity = hero.getSecretIdentity.call(hero)
 
 函数接受两个参数：
 
-* DOM
-* 指定的回调函数
+- DOM
+- 指定的回调函数
 
 原文利用 深度优先搜索(Depth-First-Search) 给了一个实现：
 

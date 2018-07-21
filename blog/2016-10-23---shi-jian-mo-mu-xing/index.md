@@ -212,4 +212,4 @@ document.body.onclick = function(){
 
 ## 参考
 
-* [事件模型及事件代理/委托](http://www.w3cmark.com/2016/439.html)
+- [事件模型及事件代理/委托](http://www.w3cmark.com/2016/439.html)

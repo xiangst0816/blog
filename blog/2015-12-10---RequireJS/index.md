@@ -196,9 +196,9 @@ RequireJS 等待所有的依赖加载完毕，计算出模块定义函数正确�
 
 ## requirejs.config 的配置
 
-* **baseUrl** ：所有模块的查找根路径。
-* **paths** ：path 映射那些不直接放置于 baseUrl 下的模块名。设置 path 时起始位置是相对于 baseUrl 的，除非该 path 设置以"/"开头或含有 URL 协议（如 http:）。
-* **shim**: 将 shim 定义模块设置为全局可用(类似于 path 的作用),设定该模块的依赖项,但不加载该依赖, 只是到用到 shim 定义模块时才加载依赖项, 类似于插件而存在
+- **baseUrl** ：所有模块的查找根路径。
+- **paths** ：path 映射那些不直接放置于 baseUrl 下的模块名。设置 path 时起始位置是相对于 baseUrl 的，除非该 path 设置以"/"开头或含有 URL 协议（如 http:）。
+- **shim**: 将 shim 定义模块设置为全局可用(类似于 path 的作用),设定该模块的依赖项,但不加载该依赖, 只是到用到 shim 定义模块时才加载依赖项, 类似于插件而存在
 
       		requirejs.config({
       			path: {
@@ -228,10 +228,10 @@ RequireJS 等待所有的依赖加载完毕，计算出模块定义函数正确�
   });
   **Backbone 强制依赖于 Underscore.js,非强制依赖于 jQuery/Zepto.故 **
 
-* shim 配置**仅设置了代码的依赖关系**，想要实际加载 shim 指定的或涉及的模块，仍然需要一个常规的 require/define 调用。设置 shim 本身不会触发代码的加载。
-* 成为 shim 脚本依赖的三个可选条件: - 使用其他"shim"模块作为 shim 脚本的依赖， - 在调用 define()之前定义了全局变量(如 jQuery 或 lodash)的 AMD 库, 这样调用不会出错(例如将 jquery 先在 path 中声明)。 - CMD 库
+- shim 配置**仅设置了代码的依赖关系**，想要实际加载 shim 指定的或涉及的模块，仍然需要一个常规的 require/define 调用。设置 shim 本身不会触发代码的加载。
+- 成为 shim 脚本依赖的三个可选条件: - 使用其他"shim"模块作为 shim 脚本的依赖， - 在调用 define()之前定义了全局变量(如 jQuery 或 lodash)的 AMD 库, 这样调用不会出错(例如将 jquery 先在 path 中声明)。 - CMD 库
 
-* **map**:对于给定的模块前缀，使用一个不同的模块 ID 来加载该模块。  
+- **map**:对于给定的模块前缀，使用一个不同的模块 ID 来加载该模块。  
   该手段对于某些大型项目很重要：如有两类模块需要使用不同版本的"foo"，但它们之间仍需要一定的协同。 在那些基于上下文的多版本实现中很难做到这一点。而且，paths 配置仅用于为模块 ID 设置 root paths，而不是为了将一个模块 ID 映射到另一个。
 
       	requirejs.config({
@@ -248,7 +248,7 @@ RequireJS 等待所有的依赖加载完毕，计算出模块定义函数正确�
 当“some/newmodule”调用了“require('foo')”，它将获取到 foo1.2.js 文件；  
 而当“some/oldmodule”调用“`require('foo')”时它将获取到 foo1.0.js。
 
-* **config**:**将配置信息向下传给一个模块**。这些配置往往是 application 级别的信息，需要一个手段将它们向下传递给模块。在 RequireJS 中，基于 requirejs.config()的 config 配置项来实现。要获取这些信息的模块可以**加载特殊的依赖“module”**，并调用**module.config()**。
+- **config**:**将配置信息向下传给一个模块**。这些配置往往是 application 级别的信息，需要一个手段将它们向下传递给模块。在 RequireJS 中，基于 requirejs.config()的 config 配置项来实现。要获取这些信息的模块可以**加载特殊的依赖“module”**，并调用**module.config()**。
 
       	requirejs.config({
 
@@ -370,31 +370,31 @@ define 和 require 在依赖处理和回调执行上都是一样的，不一样�
 
 所以,**define 定义 require 加载使用，这个理解是对的。**
 
-    define([require,path/myMod1,path/moMod2], function(require){  
+    define([require,path/myMod1,path/moMod2], function(require){
     	var mod1 = require('path/myMod1'), mod2 = require('path/myMod2');
     })
 
     其实逻辑上类似于
 
-    define([require], function(require){  
+    define([require], function(require){
     	var mod1 = require('path/myMod1'), mod2 = require('path/myMod2');
     })
 
     你只是把参数丢了而已，所以这样也行
 
-    define([require,path/myMod1,path/moMod2], function(require){  
+    define([require,path/myMod1,path/moMod2], function(require){
     	var mod1 = arguments[1], mod2 = arguments[2];
     })
 
     所以，可以这么用
 
-    define([require,path/myMod1,path/moMod2], function(require,mod1,mod2){  
+    define([require,path/myMod1,path/moMod2], function(require,mod1,mod2){
     	// 这里 mod1 和 mod2 都准备好了，还可以用require继续加载别的
     })
 
     或者，改成你看到的那些例子
 
-    define([path/myMod1,path/moMod2], function(mod1,mod2){  
+    define([path/myMod1,path/moMod2], function(mod1,mod2){
     })
 
 

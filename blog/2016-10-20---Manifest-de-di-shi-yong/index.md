@@ -119,8 +119,8 @@ manifest 的名字叫 Application Cache 就已经很好的定性了，它是用�
 
 ### 参考资源
 
-* [Gulp-manifest](https://www.npmjs.com/package/gulp-manifest)
-* [原文参考 1](https://segmentfault.com/a/1190000000732617)
-* [原文参考 2](http://bin-playground.top)
-* [Using_the_application_cache](https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache)
-* [LET’S TAKE THIS OFFLINE](http://diveintohtml5.info/offline.html)
+- [Gulp-manifest](https://www.npmjs.com/package/gulp-manifest)
+- [原文参考 1](https://segmentfault.com/a/1190000000732617)
+- [原文参考 2](http://bin-playground.top)
+- [Using_the_application_cache](https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache)
+- [LET’S TAKE THIS OFFLINE](http://diveintohtml5.info/offline.html)

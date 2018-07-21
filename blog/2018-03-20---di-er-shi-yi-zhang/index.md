@@ -74,20 +74,20 @@ xhr.send(serialize(form));
 
 **注意点:**
 
-* 如果是相对路径, 则 URL 相对于执行代码的当前页面
-* 调用** `open()` 方法并不会真正发送请求， 而只是启动一个请求以备发送**
-* 调用 `send()` 之后，请求就会被分派到服务器
-* 通过`xhr.status`来检测返回状态, responseText 返回响应结果
-* 异步需要注册`xhr.onreadystatechange`回调, 通过`xhr.readyState`查看请求状态(0: 请求未初始化; 1: 请求已建立但未发送; 2: 请求已发送在处理; 3: 请求在处理, 数据没全部接受, 可多次触发; 4: 响应已完成;), 通过`xhr.status`判断结果状态
-* 在接收到响应之前还可以调用 `abort()` 方法来取消异步请求, 执行之后 XHR 不再触发事件.
-* 要成功发送请求头部信息，必须在调用 open()方法之后且调用 send()方法 之前调用 setRequestHeader()
-* 只有部分的浏览器头部信息可以重写, 这个和浏览器有关
-* 如果设置了超时, 则超时后会触发`xhr.readyState == 4`的状态, 但是 xhr 对象不可再访问, 建议在 try-catch 包裹
+- 如果是相对路径, 则 URL 相对于执行代码的当前页面
+- 调用** `open()` 方法并不会真正发送请求， 而只是启动一个请求以备发送**
+- 调用 `send()` 之后，请求就会被分派到服务器
+- 通过`xhr.status`来检测返回状态, responseText 返回响应结果
+- 异步需要注册`xhr.onreadystatechange`回调, 通过`xhr.readyState`查看请求状态(0: 请求未初始化; 1: 请求已建立但未发送; 2: 请求已发送在处理; 3: 请求在处理, 数据没全部接受, 可多次触发; 4: 响应已完成;), 通过`xhr.status`判断结果状态
+- 在接收到响应之前还可以调用 `abort()` 方法来取消异步请求, 执行之后 XHR 不再触发事件.
+- 要成功发送请求头部信息，必须在调用 open()方法之后且调用 send()方法 之前调用 setRequestHeader()
+- 只有部分的浏览器头部信息可以重写, 这个和浏览器有关
+- 如果设置了超时, 则超时后会触发`xhr.readyState == 4`的状态, 但是 xhr 对象不可再访问, 建议在 try-catch 包裹
 
 ### 2. 上传文件的思路是什么, 如何给出进度信息?
 
-* onloadstart 事件开始
-* onprogress 事件在接收期间不断响应
+- onloadstart 事件开始
+- onprogress 事件在接收期间不断响应
 
 ### 3. 解释下跨域?
 
@@ -101,16 +101,16 @@ xhr.send(serialize(form));
 
 CORS 通过 Preflight Request 机制向服务器验证请求. 这种请求使用`OPTIONS`方法发送, 包含:
 
-* Origin：与简单的请求相同。
-* Access-Control-Request-Method：请求自身使用的方法。
-* Access-Control-Request-Headers：（可选）自定义的头部信息，多个头部以逗号分隔。
+- Origin：与简单的请求相同。
+- Access-Control-Request-Method：请求自身使用的方法。
+- Access-Control-Request-Headers：（可选）自定义的头部信息，多个头部以逗号分隔。
 
 服务器根据发来的请求判断是否回应, 如果回应则发送下列信息:
 
-* Access-Control-Allow-Origin：与简单的请求相同。
-* Access-Control-Allow-Methods：允许的方法，多个方法以逗号分隔。
-* Access-Control-Allow-Headers：允许的头部，多个头部以逗号分隔。
-* Access-Control-Max-Age：应该将这个 Preflight 请求缓存多长时间（以秒表示）。
+- Access-Control-Allow-Origin：与简单的请求相同。
+- Access-Control-Allow-Methods：允许的方法，多个方法以逗号分隔。
+- Access-Control-Allow-Headers：允许的头部，多个头部以逗号分隔。
+- Access-Control-Max-Age：应该将这个 Preflight 请求缓存多长时间（以秒表示）。
 
 为此付出的代价**只是第一次发送这种请求时会多一次 HTTP 请求**.
 
@@ -124,10 +124,10 @@ CORS 通过 Preflight Request 机制向服务器验证请求. 这种请求使用
 
 在 IE10-中, 当 axios 在检测到发送的是跨域请求时(非同源), 使用的是微软特殊的 XDomainRequest 而不是一般的 XMLHttpRequest 实现的, XDomainRequest 在请求时为了安全会做出以下限制:
 
-* cookie 不会随之发送
-* 只能设置请求头部信息中的 Content-Type 字段
-* 不能访问响应头部信息
-* 只支持 GET 和 POST 请求
+- cookie 不会随之发送
+- 只能设置请求头部信息中的 Content-Type 字段
+- 不能访问响应头部信息
+- 只支持 GET 和 POST 请求
 
 因此, 在 IE10-情况下, 跨域验证只能想别的办法. 如果是其余浏览器, 需要将`withCredentials`手动设置为 true, 可以指定某个请求应该发送凭据.
 
@@ -163,8 +163,8 @@ img.src = "http://www.example.com/test?name=Nicholas";
 
 ### 9. JSONP 的实现方式及存在的问题?
 
-* callback 函数需要放到 window 上(全局)
-* 外部源如果不安全会出现漏洞, XSS/CSRF 等
+- callback 函数需要放到 window 上(全局)
+- 外部源如果不安全会出现漏洞, XSS/CSRF 等
 
 ### 10. JSONP 和 Ajax 的关系?
 
@@ -172,10 +172,10 @@ img.src = "http://www.example.com/test?name=Nicholas";
 
 JSONP 过程:
 
-* 创建 JS 脚本
-* 向服务端请求数据并在 url 参数中携带 callback 函数,
-* 服务器获得请求将 callback 对应的函数名与数据结合发送给客户端
-* 脚本加载完成, 客户端执行 callback 函数并处理包含的数据
+- 创建 JS 脚本
+- 向服务端请求数据并在 url 参数中携带 callback 函数,
+- 服务器获得请求将 callback 对应的函数名与数据结合发送给客户端
+- 脚本加载完成, 客户端执行 callback 函数并处理包含的数据
 
 ### 11. Comet, 长轮询和短轮询的过程及问题点?
 
@@ -195,16 +195,16 @@ JSONP 过程:
 
 ### 12. SSE 和 WebSockets 的区别
 
-* SSE API(服务器发送事件), IE 不支持, 使用 XHR 也可以实现
-* Web Sockets, 使用自定义协议, 双向通信, 需要专门服务器, 使用 SSE 和 XHR 可能实现
+- SSE API(服务器发送事件), IE 不支持, 使用 XHR 也可以实现
+- Web Sockets, 使用自定义协议, 双向通信, 需要专门服务器, 使用 SSE 和 XHR 可能实现
 
 ### 13. 如何保证接口安全, 可用的措施是?
 
 为确保通过 XHR 访问的 URL 安全，通行的做法就是验证发送请求者是否有权限访问相应的资源。 有下列几种方式可供选择
 
-* 要求以 SSL 连接来访问可以通过 XHR 请求的资源。
-* 要求每一次请求都要附带经过相应算法计算得到的验证码。
-* 都走 post 请求, 请求 body 加密(网易云音乐接口)
+- 要求以 SSL 连接来访问可以通过 XHR 请求的资源。
+- 要求每一次请求都要附带经过相应算法计算得到的验证码。
+- 都走 post 请求, 请求 body 加密(网易云音乐接口)
 
 ### 14. HTTP keep-alive 和 TCP keepalive 的区别?
 
@@ -236,5 +236,5 @@ http keep-alive 与 tcp keep-alive，不是同一回事，意图不一样。http
 
 #### 参考
 
-* [HTTP Keep-Alive 模式](https://www.cnblogs.com/laowenBlog/p/6096239.html)
-* [Http keep-alive 分析](https://www.jianshu.com/p/e99e0e505c79)
+- [HTTP Keep-Alive 模式](https://www.cnblogs.com/laowenBlog/p/6096239.html)
+- [Http keep-alive 分析](https://www.jianshu.com/p/e99e0e505c79)

@@ -18,17 +18,17 @@ tags:
 
 这里说下设计模式的特点：
 
-* 可复用的、解决软件设计中的常见问题
-* 已被验证、大量使用的解决方案
-* 使用模式规范代码，防止产生不必要的小问题（代码一致性的问题，有时候人是靠不住的）
-* 设计模式是开发人员的必备技能，通用语言
-* 做到代码精简，思路清晰
+- 可复用的、解决软件设计中的常见问题
+- 已被验证、大量使用的解决方案
+- 使用模式规范代码，防止产生不必要的小问题（代码一致性的问题，有时候人是靠不住的）
+- 设计模式是开发人员的必备技能，通用语言
+- 做到代码精简，思路清晰
 
 模式的分类：
 
-* 创建型设计模式（生成对象）
-* 结构型设计模式（描述对象间关系）
-* 行为设计模式（描述对象间通信方法）
+- 创建型设计模式（生成对象）
+- 结构型设计模式（描述对象间关系）
+- 行为设计模式（描述对象间通信方法）
 
 ## 创建型设计模式（生成对象）
 
@@ -54,9 +54,9 @@ ES6 中的 Module，这个已在实践中大量使用，内容参考这里：[Mo
 
 工场模式和使用 class 生成示例很像，但是两者在使用场景上是有区别的：
 
-* Factory 模式一般用于构建十分复的杂对象
-* 如果生成的实例对象和环境有关，使用 Factory 模式将会更灵活一些
-* class 适合于“骨架”对象的定义，可以通过继承来达到**有限的**灵活性
+- Factory 模式一般用于构建十分复的杂对象
+- 如果生成的实例对象和环境有关，使用 Factory 模式将会更灵活一些
+- class 适合于“骨架”对象的定义，可以通过继承来达到**有限的**灵活性
 
 **工厂函数**
 
@@ -113,8 +113,8 @@ o.insert(document.body);
 $(".app").click(() => {});
 ```
 
-* 对外提供统一接口，隐藏内部实现
-* 这种抽象会对性能产生影响，设计时需要评估性能成本
+- 对外提供统一接口，隐藏内部实现
+- 这种抽象会对性能产生影响，设计时需要评估性能成本
 
 ### Decorator 装饰者模式
 
@@ -122,8 +122,8 @@ $(".app").click(() => {});
 
 比如使用类的继承可以实现这样的关系：车=车身+发动机+轮子+车窗，这些是共性，具有结构性，可以通过继承完美解决。但是全景天窗+19 寸轮子+车内挂饰等，这些都是个性，使用类继承将需要写很多个性化代码，不利于维护。
 
-* 对象装饰：Object.assign，或者直接`a.newMethod`。
-* 类方法的装饰：例如：`@debounce(100)`
+- 对象装饰：Object.assign，或者直接`a.newMethod`。
+- 类方法的装饰：例如：`@debounce(100)`
 
 ```js
 import Debounce from "lodash-decorators/debounce";
@@ -142,9 +142,9 @@ export default class Com extends React {
 
 这种模式主要是为了避免创建大量相同的东西，比如类、数据、事件绑定函数等。比如实例只有几个参数不同其余完全一致，就可以将那些参数移动到类实例的外面，在方法调用的时候将他们传递进来，就可以通过共享大幅度第减少单个实例的数目。
 
-* 数据层：公共信息提取，单独维护，公共数据的状态通过继承、组合的方式进行拓展。在形式上类似于分型，顶部为公共数据。
-* DOM 层：用于 DOM 中则为事件代理模式，即当绑定的事件的子元素很多时，会造成性能问题，且事件处理函数本身基本相同，因此使用父元素代理能解决性能问题。
-* 缓存系统
+- 数据层：公共信息提取，单独维护，公共数据的状态通过继承、组合的方式进行拓展。在形式上类似于分型，顶部为公共数据。
+- DOM 层：用于 DOM 中则为事件代理模式，即当绑定的事件的子元素很多时，会造成性能问题，且事件处理函数本身基本相同，因此使用父元素代理能解决性能问题。
+- 缓存系统
 
 ## 行为设计模式（描述对象间通信方式）
 
@@ -158,11 +158,11 @@ export default class Com extends React {
 
 关于事件订阅发布模型可以参考 Nodejs 的[EventsAPI](https://nodejs.org/api/events.html)，我曾经根据这个 API 写了一个能在浏览器端工作的事件订阅发布库[events](https://github.com/typescript-practice/events)，关键 API 如下：
 
-* emitter.addListener(eventName, listener)
-* emitter.emit(eventName[, ...args])
-* emitter.on(eventName, listener)
-* emitter.once(eventName, listener)
-* emitter.off(eventName, listener)
+- emitter.addListener(eventName, listener)
+- emitter.emit(eventName[, ...args])
+- emitter.on(eventName, listener)
+- emitter.once(eventName, listener)
+- emitter.off(eventName, listener)
 
 ### Observer 观察者模式
 

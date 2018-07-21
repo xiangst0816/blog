@@ -593,8 +593,7 @@ new Vue({
 
 ```javascript
 Vue.component("currency-input", {
-  template:
-    '\
+  template: '\
     <span>\
       $\
       <input\
