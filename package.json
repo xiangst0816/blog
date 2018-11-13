@@ -67,7 +67,7 @@
     "prettylint": "^1.0.0",
     "prismjs": "^1.14.0",
     "rimraf": "^2.6.2",
-    "shelljs": "^0.8.1"
+    "shelljs": "0.8.2"
   },
   "keywords": [
     "gatsby",
