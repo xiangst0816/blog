@@ -42,7 +42,7 @@ gulp.task('dest', function () {
 
 gulp.task('deploy', ['dest'], function () {
     return gulpSSH
-        .shell(['pm2 restart attila'], { filePath: 'shell.log' })
+        .shell(['nginx -s reload'], { filePath: 'shell.log' })
         .pipe(gulp.dest('logs'));
 });
 
