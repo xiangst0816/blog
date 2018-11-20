@@ -20,7 +20,7 @@ module.exports = {
     title: `Attila`,
     description: `Thoughts, stories and ideas.`, // 网站描述
     keywords: `烈风裘的博客, X-Blog, Attila, Gatsby, 前端成长记录`, // 网站描述
-    cover: '/background/6.jpg',
+    cover: '/background/36972881175_5514d1dfc9_k.jpg',
     tagCover: '',
     archiveCover: '',
     logo: '',
