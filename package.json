@@ -61,7 +61,7 @@
     "gatsby-transformer-json": "^1.0.16",
     "gatsby-transformer-remark": "^1.7.37",
     "gatsby-transformer-yaml": "^1.5.16",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.0",
     "gulp-ssh": "^0.7.0",
     "prettier": "^1.10.2",
     "prettylint": "^1.0.0",
