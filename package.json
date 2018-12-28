@@ -33,7 +33,7 @@
     "eslint-friendly-formatter": "4.0.1",
     "eslint-plugin-import": "2.13.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-prettier": "2.6.2",
+    "eslint-plugin-prettier": "3.0.1",
     "eslint-plugin-react": "7.11.0",
     "gatsby-plugin-catch-links": "^1.0.19",
     "gatsby-plugin-favicon": "^3.0.0",
