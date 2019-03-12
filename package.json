@@ -40,7 +40,7 @@
     "gatsby-plugin-feed": "^2.0.15",
     "gatsby-plugin-google-analytics": "^2.0.17",
     "gatsby-plugin-google-fonts": "^0.0.4",
-    "gatsby-plugin-manifest": "^1.0.15",
+    "gatsby-plugin-manifest": "^2.0.23",
     "gatsby-plugin-nprogress": "^1.0.14",
     "gatsby-plugin-offline": "^1.0.15",
     "gatsby-plugin-postcss-sass": "^1.0.18",
