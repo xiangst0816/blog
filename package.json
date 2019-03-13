@@ -7,7 +7,7 @@
     "enquire-js": "^0.2.1",
     "fastclick": "^1.0.6",
     "gatsby": "~1.9.45",
-    "gatsby-image": "^1.0.42",
+    "gatsby-image": "^2.0.33",
     "gatsby-link": "~1.6.17",
     "gatsby-transformer-sharp": "^1.6.22",
     "lodash": "^4.17.5",
