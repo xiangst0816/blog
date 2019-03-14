@@ -56,7 +56,7 @@
     "gatsby-remark-katex": "^3.0.4",
     "gatsby-remark-numbered-footnotes": "^1.0.0",
     "gatsby-remark-prismjs": "^3.2.5",
-    "gatsby-remark-responsive-iframe": "^1.4.18",
+    "gatsby-remark-responsive-iframe": "^2.1.0",
     "gatsby-source-filesystem": "~1.5.1",
     "gatsby-transformer-json": "^1.0.16",
     "gatsby-transformer-remark": "^1.7.37",
