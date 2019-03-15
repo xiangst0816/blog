@@ -49,7 +49,7 @@
     "gatsby-plugin-sharp": "~1.6.8",
     "gatsby-remark-autolink-headers": "^1.4.13",
     "gatsby-remark-copy-linked-files": "^1.5.31",
-    "gatsby-remark-embed-video": "^1.0.2",
+    "gatsby-remark-embed-video": "^1.7.1",
     "gatsby-remark-emojis": "^0.2.3",
     "gatsby-remark-external-links": "^0.0.4",
     "gatsby-remark-images": "~1.5.13",
