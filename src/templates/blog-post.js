@@ -1,38 +1,47 @@
-import React from "react";
-import Helmet from "react-helmet";
-import PropTypes from "prop-types";
-import Link from "gatsby-link";
-import kebabCase from "lodash.kebabcase";
-import Bio from "../components/Bio";
-import Avatar from "../components/Avatar";
-import Share from "../components/Share";
-import PostContent from "../components/PostContent";
-import Header from "../components/Header";
-import Disqus from "../components/Disqus";
+import React from "react"
+import PropTypes from "prop-types"
+import { Link } from "gatsby"
+import { graphql } from "gatsby"
 
-const GithubPrefix = "https://github.com/xiangsongtao/blog/edit/master/blog/";
+import kebabCase from "lodash.kebabcase"
+import Bio from "../components/Bio"
+import SEO from "../components/SEO"
+import Avatar from "../components/Avatar"
+import Share from "../components/Share"
+import PostContent from "../components/PostContent"
+import Header from "../components/Header"
+import Disqus from "../components/Disqus"
+import Layout from "../components/Layout"
+
+const GithubPrefix = "https://github.com/xiangsongtao/blog/edit/master/blog/"
 
 export default class BlogPost extends React.PureComponent {
   render() {
-    const { currentPost, prevPost, nextPost, site, master } = this.props.data;
-    const { next, prev } = this.props.pathContext; // 上一篇和下一篇文章的slug
-    const post = currentPost.frontmatter;
-    const { siteMetadata } = site;
-    const { logo, cover: siteCover, navigation, siteUrl } = siteMetadata;
-    const author = post.author || master;
-    const cover = post.cover ? post.cover : siteCover || false;
-    const { relativePath, slug } = currentPost.fields;
-    const postInGithub = `${GithubPrefix}${relativePath}`;
-    const shareUrl = `${siteUrl}${slug}`;
+    const { currentPost, prevPost, nextPost, site, master } = this.props.data
+    const { next, prev } = this.props.pageContext // 上一篇和下一篇文章的slug
+    const post = currentPost.frontmatter
+    const { siteMetadata } = site
+    const { logo, cover: siteCover, navigation, siteUrl } = siteMetadata
+    const authorId = post.author || master
+    const cover = post.cover ? post.cover : siteCover || false
+    const { relativePath, slug } = currentPost.fields
+    const postInGithub = `${GithubPrefix}${relativePath}`
+    const shareUrl = `${siteUrl}${slug}`
+
+    const authorList = this.props.data.allAuthorJson.edges.map(item => {
+      return {
+        ...item.node,
+      }
+    })
+
+    const author = authorList.find(item => item.id === authorId)
 
     return (
-      <div>
-        <Helmet
+      <Layout location={this.props.location}>
+        <SEO
           title={post.title}
-          meta={[
-            { name: "description", content: currentPost.excerpt },
-            { name: "keywords", content: `${post.title} ${author.id} [${post.tags.join(",")}]` },
-          ]}
+          description={currentPost.excerpt}
+          keywords={[post.title, author.id, ...post.tags]}
         />
         <Header
           logo={logo}
@@ -47,11 +56,10 @@ export default class BlogPost extends React.PureComponent {
               <Link to={`/author/${kebabCase(author.id)}/`}>{author.id}</Link> |{" "}
               <time>
                 {post.date} | {currentPost.timeToRead} min read
-              </time>
-              {" "}
+              </time>{" "}
               |{" "}
-              <a target="_target" href={postInGithub}>
-                <i className="icon icon-github"/> Edit this page
+              <a target="_target" href={postInGithub} rel="noopener noreferrer">
+                <i className="icon icon-github" /> Edit this page
               </a>
             </div>
           </div>
@@ -59,30 +67,48 @@ export default class BlogPost extends React.PureComponent {
         <main className="content" role="main">
           <article className="post">
             <div className="inner">
-              <PostContent html={currentPost.html}/>
+              <PostContent html={currentPost.html} />
 
               {/*<hr/>*/}
               <ul className="post-copyright">
-                <li><strong>本文作者：</strong>{author.id}</li>
-                <li><strong>本文题目：</strong>{post.title}</li>
-                <li><strong>本文链接：</strong><a href={shareUrl} target="_blank">{shareUrl}</a></li>
-                <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用
-                  <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA
-                    3.0</a> 许可协议。转载请注明出处！
+                <li>
+                  <strong>本文作者：</strong>
+                  {author.id}
+                </li>
+                <li>
+                  <strong>本文题目：</strong>
+                  {post.title}
+                </li>
+                <li>
+                  <strong>本文链接：</strong>
+                  <a href={shareUrl} target="_blank" rel="noopener noreferrer">
+                    {shareUrl}
+                  </a>
+                </li>
+                <li>
+                  <strong>版权声明：</strong>本博客所有文章除特别声明外，均采用
+                  <a
+                    href="https://creativecommons.org/licenses/by-nc-sa/3.0/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    CC BY-NC-SA 3.0
+                  </a>{" "}
+                  许可协议。转载请注明出处！
                 </li>
               </ul>
 
               <section className="post-info">
-                <Share title={post.title} url={shareUrl}/>
+                <Share title={post.title} url={shareUrl} />
                 <aside className="post-tags">
                   {post.tags &&
-                  post.tags.map(tag => (
-                    <Link key={tag} to={`/tag/${kebabCase(tag)}/`}>
-                      {tag}
-                    </Link>
-                  ))}
+                    post.tags.map(tag => (
+                      <Link key={tag} to={`/tag/${kebabCase(tag)}/`}>
+                        {tag}
+                      </Link>
+                    ))}
                 </aside>
-                <div className="clear"/>
+                <div className="clear" />
                 <aside className="post-author">
                   <Avatar
                     className="post-author-avatar avatar"
@@ -105,7 +131,7 @@ export default class BlogPost extends React.PureComponent {
                       weibo={author.weibo}
                     />
                   </div>
-                  <div className="clear"/>
+                  <div className="clear" />
                 </aside>
               </section>
               {post.comments && (
@@ -119,7 +145,7 @@ export default class BlogPost extends React.PureComponent {
                 {prev && (
                   <Link className="post-nav-prev" to={prev}>
                     <section className="post-nav-teaser">
-                      <i className="icon icon-arrow-left"/>
+                      <i className="icon icon-arrow-left" />
                       <h2 className="post-nav-title">
                         {prevPost.frontmatter.title}
                       </h2>
@@ -132,7 +158,7 @@ export default class BlogPost extends React.PureComponent {
                 {next && (
                   <Link className="post-nav-next" to={next}>
                     <section className="post-nav-teaser">
-                      <i className="icon icon-arrow-right"/>
+                      <i className="icon icon-arrow-right" />
                       <h2 className="post-nav-title">
                         {nextPost.frontmatter.title}
                       </h2>
@@ -142,65 +168,96 @@ export default class BlogPost extends React.PureComponent {
                     </section>
                   </Link>
                 )}
-                <div className="clear"/>
+                <div className="clear" />
               </aside>
             </div>
           </article>
         </main>
-      </div>
-    );
+      </Layout>
+    )
   }
 }
 
 BlogPost.propTypes = {
   data: PropTypes.object.isRequired,
-  pathContext: PropTypes.object.isRequired
-};
+  pageContext: PropTypes.object.isRequired,
+}
 
 /* eslint-disable */
 export const pageQuery = graphql`
-    fragment postFrag on MarkdownRemark {
-        html
-        timeToRead
-        wordCount {
-            paragraphs
-            sentences
-            words
-        }
-        fields {
-            slug
-            relativePath
-        }
-        excerpt(pruneLength: 110)
-        frontmatter {
-            title
-            date(formatString: "DD MMM YYYY")
-            tags
-            cover
-            comments
-            author {
-                ...authorFrag
-            }
-        }
+  fragment postFrag on MarkdownRemark {
+    html
+    timeToRead
+    wordCount {
+      paragraphs
+      sentences
+      words
     }
+    fields {
+      slug
+      relativePath
+    }
+    excerpt(pruneLength: 110)
+    frontmatter {
+      title
+      date(formatString: "DD MMM YYYY")
+      tags
+      cover
+      comments
+      author
+    }
+  }
 
-    query BlogPostBySlug($curr: String!, $prev: String!, $next: String!) {
-        site {
-            siteMetadata {
-                ...siteFrag
-            }
-        }
-        master: authorJson(master: { eq: true }) {
-            ...authorFrag
-        }
-        currentPost: markdownRemark(fields: { slug: { eq: $curr } }) {
-            ...postFrag
-        }
-        nextPost: markdownRemark(fields: { slug: { eq: $next } }) {
-            ...postFrag
-        }
-        prevPost: markdownRemark(fields: { slug: { eq: $prev } }) {
-            ...postFrag
-        }
+  fragment siteFrag on SiteSiteMetadata {
+    title
+    cover
+    description
+    keywords
+    tagCover
+    archiveCover
+    siteUrl
+    logo
+    navigation
+    subscribe
+  }
+  fragment authorFrag on AuthorJson {
+    id
+    bio
+    avatar
+    cover
+    github
+    twitter
+    zhihu
+    weibo
+    facebook
+    website
+    location
+  }
+  query BlogPostBySlug($curr: String!, $prev: String!, $next: String!) {
+    site {
+      siteMetadata {
+        ...siteFrag
+      }
     }
-`;
+    allAuthorJson {
+      totalCount
+      edges {
+        node {
+          ...authorFrag
+        }
+      }
+    }
+    master: authorJson(master: { eq: true }) {
+      ...authorFrag
+    }
+    currentPost: markdownRemark(fields: { slug: { eq: $curr } }) {
+      ...postFrag
+    }
+    nextPost: markdownRemark(fields: { slug: { eq: $next } }) {
+      ...postFrag
+    }
+    prevPost: markdownRemark(fields: { slug: { eq: $prev } }) {
+      ...postFrag
+    }
+  }
+`

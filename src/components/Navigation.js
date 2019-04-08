@@ -1,27 +1,29 @@
-import React from 'react';
-import classNames from 'classnames';
-import kebabCase from 'lodash.kebabcase';
-import Link from 'gatsby-link';
-import withPrefix from '../utils/with-prefix';
+import React from "react"
+import classNames from "classnames"
+import kebabCase from "lodash.kebabcase"
+import { Link } from "gatsby"
+import withPrefix from "../utils/with-prefix"
 
 export default class Navigation extends React.PureComponent {
   toggle = () => {
-    document.documentElement.classList.toggle('menu-active');
-  };
+    document.documentElement.classList.toggle("menu-active")
+  }
 
   render() {
-    const { location } = this.props;
-    const { master, site } = this.props;
-    const author = kebabCase(master.id);
+    const { location } = this.props
+    const { master, site } = this.props
+    const author = kebabCase(master.id)
+    const { subscribe } = site.siteMetadata
+
     return (
       <nav id="menu" onClick={this.toggle}>
-        <a className="close-button">Close</a>
+        <div className="close-button">Close</div>
         <div className="nav-wrapper">
           <p className="nav-label">Menu</p>
           <ul>
             <li
-              className={classNames('nav-home', {
-                active: location.pathname === withPrefix('/'),
+              className={classNames("nav-home", {
+                active: location.pathname === withPrefix("/"),
               })}
               role="presentation"
             >
@@ -30,8 +32,8 @@ export default class Navigation extends React.PureComponent {
               </Link>
             </li>
             <li
-              className={classNames('nav-tags', {
-                active: location.pathname === withPrefix('/tags/'),
+              className={classNames("nav-tags", {
+                active: location.pathname === withPrefix("/tags/"),
               })}
               role="presentation"
             >
@@ -40,8 +42,8 @@ export default class Navigation extends React.PureComponent {
               </Link>
             </li>
             <li
-              className={classNames('nav-archive', {
-                active: location.pathname === withPrefix('/archive/'),
+              className={classNames("nav-archive", {
+                active: location.pathname === withPrefix("/archive/"),
               })}
               role="presentation"
             >
@@ -50,8 +52,8 @@ export default class Navigation extends React.PureComponent {
               </Link>
             </li>
             <li
-              className={classNames('nav-author', {
-                active: location.pathname.indexOf('author') > -1,
+              className={classNames("nav-author", {
+                active: location.pathname.indexOf("author") > -1,
               })}
               role="presentation"
             >
@@ -69,7 +71,7 @@ export default class Navigation extends React.PureComponent {
             {/*<i className="icon icon-profile" /> Hire Me*/}
             {/*</Link>*/}
             {/*</li>*/}
-            {site.subscribe && (
+            {subscribe && (
               <li className="nav-rss">
                 <Link to="/rss.xml">
                   <i className="icon icon-rss" /> Subscribe
@@ -79,6 +81,6 @@ export default class Navigation extends React.PureComponent {
           </ul>
         </div>
       </nav>
-    );
+    )
   }
 }

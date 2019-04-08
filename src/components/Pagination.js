@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'gatsby-link';
+import { Link } from "gatsby";
 import PropTypes from 'prop-types';
 
 export default class Pagination extends React.PureComponent {
@@ -9,8 +9,9 @@ export default class Pagination extends React.PureComponent {
     const pages = Math.ceil(total / limit);
     const prev = page - 1 > 0 ? `${pathPrefix}${page - 1}` : null;
     const next = pages > page ? `${pathPrefix}${page + 1}` : null;
+
     return (
-      <nav className="pagination" role="pagination">
+      <nav className="pagination">
         <div className="inner">
           {prev && (
             <Link className="pagination-prev" to={prev}>

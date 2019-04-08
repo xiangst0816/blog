@@ -1,6 +1,6 @@
 'use strict';
-require('dotenv').config({ path: '../.env' });
 var path = require('path');
+require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 var gulp = require('gulp');
 // https://github.com/teambition/gulp-ssh
 var GulpSSH = require('gulp-ssh');

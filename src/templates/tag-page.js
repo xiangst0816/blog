@@ -1,27 +1,35 @@
-import React from 'react';
-import Helmet from 'react-helmet';
-import PropTypes from 'prop-types';
-import kebabCase from 'lodash.kebabcase';
-import classNames from 'classnames';
-import ExcerptLoop from '../components/ExcerptLoop';
-import Header from '../components/Header';
-import Pagination from '../components/Pagination';
-
+import React from "react"
+import PropTypes from "prop-types"
+import kebabCase from "lodash.kebabcase"
+import classNames from "classnames"
+import ExcerptLoop from "../components/ExcerptLoop"
+import Header from "../components/Header"
+import Pagination from "../components/Pagination"
+import { graphql } from "gatsby"
+import Layout from "../components/Layout"
+import SEO from "../components/SEO"
 export default class TagRoute extends React.PureComponent {
   render() {
-    const { allMarkdownRemark, site } = this.props.data;
-    const { edges } = allMarkdownRemark;
-    const { title, cover, tagCover, navigation, logo } = site.siteMetadata;
-    const { totalCount } = this.props.data.allMarkdownRemark;
-    const { tag } = this.props.pathContext;
-    const coverImage = tagCover || (cover || false);
+    const { currentMarkdownRemark, allMarkdownRemark, site } =
+      this.props.data || {}
+    const { edges } = currentMarkdownRemark
+    const { title, cover, tagCover, navigation, logo } = site.siteMetadata
+    const { totalCount } = allMarkdownRemark || {}
+    const { tag } = this.props.pageContext
+    const coverImage = tagCover || (cover || false)
 
-    const { skip = 0, limit = 10 } = this.props.pathContext;
-    const kebabCaseName = kebabCase(tag);
+    const { skip = 0, limit = 10 } = this.props.pageContext
+    const kebabCaseName = kebabCase(tag)
 
+    const authorList = this.props.data.allAuthorJson.edges.map(item => {
+      return {
+        id: item.node.id,
+        avatar: item.node.avatar,
+      }
+    })
     return (
-      <div className="tag-template">
-        <Helmet title={`${title}-Tag`} />
+      <Layout className="tag-template" location={this.props.location}>
+        <SEO title={`${title}-Tag`} />
         <Header
           cover={coverImage}
           logo={logo}
@@ -34,7 +42,7 @@ export default class TagRoute extends React.PureComponent {
         </Header>
         <div className="container">
           <main
-            className={classNames('content', { paged: skip > 0 })}
+            className={classNames("content", { paged: skip > 0 })}
             role="main"
           >
             <div className="extra-pagination">
@@ -45,7 +53,7 @@ export default class TagRoute extends React.PureComponent {
                 pathPrefix={`/tag/${kebabCaseName}/`}
               />
             </div>
-            <ExcerptLoop edges={edges} />
+            <ExcerptLoop edges={edges} authorList={authorList} />
             <Pagination
               skip={skip}
               limit={limit}
@@ -54,37 +62,73 @@ export default class TagRoute extends React.PureComponent {
             />
           </main>
         </div>
-      </div>
-    );
+      </Layout>
+    )
   }
 }
 
 TagRoute.propTypes = {
   data: PropTypes.object.isRequired,
-  pathContext: PropTypes.object.isRequired,
-};
+  pageContext: PropTypes.object.isRequired,
+}
 
 /* eslint-disable */
 export const pageQuery = graphql`
   query TagPage($tag: String, $skip: Int = 0, $limit: Int = 10) {
     site {
       siteMetadata {
-        ...siteFrag
+        title
+        cover
+        author
+        description
+        keywords
+        tagCover
+        archiveCover
+        siteUrl
+        logo
+        navigation
+        subscribe
       }
     }
     master: authorJson(master: { eq: true }) {
-      ...authorFrag
+      id
+    }
+    allAuthorJson {
+      totalCount
+      edges {
+        node {
+          id
+          avatar
+        }
+      }
     }
     allMarkdownRemark(
+      filter: { frontmatter: { tags: { in: [$tag] }, draft: { ne: true } } }
+      sort: { order: DESC, fields: [frontmatter___date] }
+    ) {
+      totalCount
+    }
+    currentMarkdownRemark: allMarkdownRemark(
       skip: $skip
       limit: $limit
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { tags: { in: [$tag] }, draft: { ne: true } } }
     ) {
-      totalCount
       edges {
-        ...markdownRemarkEdgeFrag
+        node {
+          excerpt(pruneLength: 250)
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            tags
+            star
+            date(formatString: "DD MMM YYYY")
+            author
+          }
+        }
       }
     }
   }
-`;
+`

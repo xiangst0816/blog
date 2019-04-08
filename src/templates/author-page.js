@@ -1,45 +1,63 @@
-import React from 'react';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import kebabCase from 'lodash.kebabcase';
-import Helmet from 'react-helmet';
-import Link, { navigateTo } from 'gatsby-link';
-import ExcerptLoop from '../components/ExcerptLoop';
-import Avatar from '../components/Avatar';
-import Header from '../components/Header';
-import Pagination from '../components/Pagination';
-import Bio from '../components/Bio';
+import React from "react"
+import classNames from "classnames"
+import PropTypes from "prop-types"
+import kebabCase from "lodash.kebabcase"
+import { Link } from "gatsby"
+import { navigate } from "gatsby"
+import { graphql } from "gatsby"
+import ExcerptLoop from "../components/ExcerptLoop"
+import Avatar from "../components/Avatar"
+import Header from "../components/Header"
+import Pagination from "../components/Pagination"
+import Bio from "../components/Bio"
+import Layout from "../components/Layout"
+import SEO from "../components/SEO"
 
 export default class AuthorRoute extends React.PureComponent {
   getOtherAuthorsInfo() {
-    const { otherAuthorsInfo, allAuthor } = this.props.data;
+    const { otherAuthorsInfo, allAuthorJson } = this.props.data
     if (!otherAuthorsInfo) {
-      return [];
+      return []
     }
-    const tmpAuthorList = allAuthor.group.map(item => item.fieldValue);
+
+    const tmpAuthorList = allAuthorJson.edges.map(item => item.node.id)
     const tmpAuthorInfoList = otherAuthorsInfo.edges.map(item => {
-      return { name: item.node.id, avatar: item.node.avatar };
-    });
+      return { name: item.node.id, avatar: item.node.avatar }
+    })
     return tmpAuthorList.reduce((all, item) => {
-      const res = tmpAuthorInfoList.filter(a => a.name === item)[0];
-      res && all.push(res);
-      return all;
-    }, []);
+      const res = tmpAuthorInfoList.filter(a => a.name === item)[0]
+      res && all.push(res)
+      return all
+    }, [])
   }
 
   render() {
-    const { allMarkdownRemark, site, authorJson: author } = this.props.data;
-    const { authorJson } = this.props.data;
+    const {
+      currentMarkdownRemark,
+      allMarkdownRemark,
+      site,
+      authorJson: author,
+    } = this.props.data || {}
+    const { authorJson } = this.props.data
     if (!authorJson) {
-      navigateTo('/404');
-      return null;
+      navigate("/404")
+      return null
     }
-    const { totalCount = 0, edges } = allMarkdownRemark || {};
-    const { cover, navigation, logo, title } = site.siteMetadata;
-    const coverImage = author.cover ? author.cover : cover || false;
-    const { skip = 0, limit = 10 } = this.props.pathContext;
-    const kebabCaseName = kebabCase(author.id);
-    const othersAuthers = this.getOtherAuthorsInfo();
+    const { edges } = currentMarkdownRemark || {}
+    const { totalCount = 0 } = allMarkdownRemark || {}
+    const { cover, navigation, logo, title } = site.siteMetadata
+    const coverImage = author.cover ? author.cover : cover || false
+    const { skip = 0, limit = 10 } = this.props.pageContext
+    const kebabCaseName = kebabCase(author.id)
+    const othersAuthers = this.getOtherAuthorsInfo()
+
+    const authorList = this.props.data.allAuthorJson.edges.map(item => {
+      return {
+        id: item.node.id,
+        avatar: item.node.avatar,
+      }
+    })
+
     const OtherAuthors = () => {
       return (
         <div className="post-author-others">
@@ -57,11 +75,12 @@ export default class AuthorRoute extends React.PureComponent {
             </Link>
           ))}
         </div>
-      );
-    };
+      )
+    }
+
     return (
-      <div className="author-template">
-        <Helmet title={`${title}-${author.id}`} />
+      <Layout className="tag-template" location={this.props.location}>
+        <SEO title={`${title}-${author.id}`} />
         <Header
           cover={coverImage}
           logo={logo}
@@ -71,7 +90,7 @@ export default class AuthorRoute extends React.PureComponent {
         />
         <section
           id="blog-author"
-          className={classNames({ 'has-cover': coverImage })}
+          className={classNames({ "has-cover": coverImage })}
         >
           <div className="inner">
             <aside className="post-author">
@@ -100,7 +119,7 @@ export default class AuthorRoute extends React.PureComponent {
         </section>
         <div id="index" className="container">
           <main
-            className={classNames('content', { paged: skip > 0 })}
+            className={classNames("content", { paged: skip > 0 })}
             role="main"
           >
             <div className="extra-pagination">
@@ -111,7 +130,7 @@ export default class AuthorRoute extends React.PureComponent {
                 pathPrefix={`/author/${kebabCaseName}/`}
               />
             </div>
-            <ExcerptLoop edges={edges} />
+            <ExcerptLoop edges={edges} authorList={authorList} />
             <Pagination
               skip={skip}
               limit={limit}
@@ -120,25 +139,54 @@ export default class AuthorRoute extends React.PureComponent {
             />
           </main>
         </div>
-      </div>
-    );
+      </Layout>
+    )
   }
 }
 
 AuthorRoute.propTypes = {
   data: PropTypes.object.isRequired,
-  pathContext: PropTypes.object.isRequired,
-};
+  pageContext: PropTypes.object.isRequired,
+}
 
 /* eslint-disable */
 export const pageQuery = graphql`
   query AuthorBlogs($author: String!, $skip: Int = 0, $limit: Int = 10) {
     authorJson(id: { eq: $author }) {
-      ...authorFrag
+      id
+      bio
+      avatar
+      cover
+      github
+      twitter
+      zhihu
+      weibo
+      facebook
+      website
+      location
+    }
+    allAuthorJson {
+      totalCount
+      edges {
+        node {
+          id
+          avatar
+        }
+      }
     }
     site {
       siteMetadata {
-        ...siteFrag
+        title
+        cover
+        author
+        description
+        keywords
+        tagCover
+        archiveCover
+        siteUrl
+        logo
+        navigation
+        subscribe
       }
     }
     otherAuthorsInfo: allAuthorJson(filter: { id: { ne: $author } }) {
@@ -150,17 +198,13 @@ export const pageQuery = graphql`
         }
       }
     }
-    allAuthor: allMarkdownRemark(
-      filter: { frontmatter: { draft: { ne: true } } }
+    allMarkdownRemark(
+      filter: { frontmatter: { draft: { ne: true }, author: { eq: $author } } }
       sort: { order: DESC, fields: [frontmatter___date] }
     ) {
       totalCount
-      group(field: frontmatter___author) {
-        fieldValue
-        totalCount
-      }
     }
-    allMarkdownRemark(
+    currentMarkdownRemark: allMarkdownRemark(
       skip: $skip
       limit: $limit
       filter: { frontmatter: { draft: { ne: true }, author: { eq: $author } } }
@@ -168,8 +212,20 @@ export const pageQuery = graphql`
     ) {
       totalCount
       edges {
-        ...markdownRemarkEdgeFrag
+        node {
+          excerpt(pruneLength: 250)
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            tags
+            star
+            date(formatString: "DD MMM YYYY")
+            author
+          }
+        }
       }
     }
   }
-`;
+`

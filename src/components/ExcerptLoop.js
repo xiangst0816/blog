@@ -1,24 +1,27 @@
-import React from 'react';
-import Link from 'gatsby-link';
-import kebabCase from 'lodash.kebabcase';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import Avatar from './Avatar';
+import React from "react"
+import { Link } from "gatsby"
+import kebabCase from "lodash.kebabcase"
+import classNames from "classnames"
+import PropTypes from "prop-types"
+import Avatar from "./Avatar"
 
 export default class ExcerptLoop extends React.PureComponent {
   render() {
-    const { edges } = this.props;
+    const { edges, authorList } = this.props
+
     return (
       <section>
         {edges &&
           edges.map(edge => {
-            const { slug } = edge.node.fields;
-            const post = edge.node.frontmatter;
-            const excerpt = edge.node.excerpt;
-            const author = post.author;
+            const { slug } = edge.node.fields
+            const post = edge.node.frontmatter
+            const excerpt = edge.node.excerpt
+            const authorId = post.author
+
+            const author = authorList.find(item => item.id === authorId)
 
             if (!author) {
-              return null;
+              return null
             }
 
             const Tags = () => {
@@ -28,14 +31,14 @@ export default class ExcerptLoop extends React.PureComponent {
                       <span key={tag}>
                         <Link to={`/tag/${kebabCase(tag)}/`}>{tag}</Link>&ensp;
                       </span>
-                    );
+                    )
                   })
-                : null;
-            };
+                : null
+            }
 
             const On = () => {
-              return post.tags && author.id && 'on ';
-            };
+              return post.tags && author.id && "on "
+            }
 
             const Author = () => {
               return (
@@ -43,16 +46,17 @@ export default class ExcerptLoop extends React.PureComponent {
                   <span>
                     <Link to={`/author/${kebabCase(author.id)}/`}>
                       {author.id}
-                    </Link>&ensp;
+                    </Link>
+                    &ensp;
                     <On />
                   </span>
                 )
-              );
-            };
+              )
+            }
 
             return (
               <article
-                className={classNames('post', { featured: post.star })}
+                className={classNames("post", { featured: post.star })}
                 key={`${post.title}-${post.date}`}
               >
                 <div className="inner">
@@ -85,13 +89,13 @@ export default class ExcerptLoop extends React.PureComponent {
                   </section>
                 </div>
               </article>
-            );
+            )
           })}
       </section>
-    );
+    )
   }
 }
 
 ExcerptLoop.propTypes = {
   edges: PropTypes.array.isRequired,
-};
+}
