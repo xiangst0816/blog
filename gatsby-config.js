@@ -150,24 +150,24 @@ module.exports = {
         ],
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-favicon`,
-    //   options: {
-    //     logo: "./static/favicons/favicon.png",
-    //     injectHTML: true,
-    //     icons: {
-    //       android: true,
-    //       appleIcon: true,
-    //       appleStartup: false,
-    //       coast: false,
-    //       favicons: true,
-    //       firefox: false,
-    //       twitter: false,
-    //       yandex: false,
-    //       windows: true,
-    //     },
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-favicon`,
+      options: {
+        logo: "./static/favicons/favicon.png",
+        injectHTML: true,
+        icons: {
+          android: true,
+          appleIcon: true,
+          appleStartup: false,
+          coast: false,
+          favicons: true,
+          firefox: false,
+          twitter: false,
+          yandex: false,
+          windows: true,
+        },
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     `gatsby-plugin-offline`,
