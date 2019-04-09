@@ -11,7 +11,7 @@ if (process.env.CI && process.env.DEPLOY === "github") {
   pathPrefix = "/blog"
   trackingId = "UA-114740261-4"
   siteUrl = "https://xiangsongtao.github.io" + pathPrefix
-  faviconUrl = pathPrefix + faviconUrl
+  faviconUrl = faviconUrl
   start_url = (pathPrefix + start_url).replace(/\/\//gi, "/")
 }
 
