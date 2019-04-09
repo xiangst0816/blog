@@ -8,6 +8,7 @@ import Header from "../components/Header"
 import Layout from "../components/Layout"
 import { graphql } from "gatsby"
 import SEO from "../components/SEO"
+
 export default class TagsPageRoute extends React.PureComponent {
   render() {
     const allRowArchive = _.get(this.props, "data.allMarkdownRemark.edges", {})
