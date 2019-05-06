@@ -50,7 +50,7 @@
     "gatsby-transformer-remark": "^2.3.8",
     "gatsby-transformer-sharp": "^2.1.17",
     "gatsby-transformer-yaml": "^2.1.11",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-ssh": "^0.7.0",
     "katex": "^0.10.1",
     "lodash-webpack-plugin": "^0.11.4",
