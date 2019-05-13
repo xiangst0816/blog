@@ -52,7 +52,7 @@
     "gatsby-transformer-yaml": "^2.1.11",
     "gulp": "^3.9.1",
     "gulp-ssh": "^0.7.0",
-    "katex": "^0.10.1",
+    "katex": "^0.10.2",
     "lodash-webpack-plugin": "^0.11.4",
     "node-sass": "^4.11.0",
     "pinyin": "^2.8.3",
