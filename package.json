@@ -8,7 +8,7 @@
     "enquire-js": "^0.2.1",
     "fastclick": "^1.0.6",
     "gatsby": "^2.3.14",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.12",
     "lodash.groupby": "^4.6.0",
     "lodash.kebabcase": "^4.1.1",
     "prop-types": "^15.7.2",
