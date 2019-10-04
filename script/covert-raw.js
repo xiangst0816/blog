@@ -1,12 +1,13 @@
 const fs = require('fs');
 const _ = require('lodash');
-const path1 = require('path');
+const pathFn = require('path');
 const pinyin = require('pinyin');
 const rimraf = require('rimraf');
-const RawPath = resolve('../raw/');
-const BlogPath = resolve('../blog/');
-const BackPath = resolve('../backup/');
+const RawPath = pathFn.join(__dirname, '../', 'raw');
+const BlogPath = pathFn.join(__dirname, '../', 'blog');
+const BackPath = pathFn.join(__dirname, '../', 'backup');
 const author = require('../author/author.json');
+const translateChinese = require('./translate-chinese');
 const master = author.filter(item => item.master)[0];
 
 checkDirExist(RawPath);
@@ -25,11 +26,13 @@ fs.readdir(RawPath, (err, data) => {
   const _resources = [];
 
   data.forEach(path => {
+    // 排除隐藏文件
     if (path.match(/^\./)) return;
 
-    if (path.split('.')[1] === 'md') {
-      // post
-      const readFileData = fs.readFileSync(`${RawPath}${path}`);
+    const extname = pathFn.extname(path);
+    if (extname.includes('.md')) {
+      // post md文件处理
+      const readFileData = fs.readFileSync(pathFn.resolve(RawPath, path));
       _posts.push({
         path: path,
         title: path.split('.')[0],
@@ -38,10 +41,8 @@ fs.readdir(RawPath, (err, data) => {
         string: readFileData.toString(),
       });
     } else {
-      let res = path.match(
-        /.+?\.(png|svg|eot|ttf|woff|jpg|jpeg|pdf|mp4|mp3)/ig);
-      if (res && res.length > 0) {
-        // resources
+      // resources 其余资源文件处理
+      if (/\.(png|svg|eot|ttf|woff|jpg|jpeg|pdf|mp4|mp3)$/i.test(extname)) {
         _resources.push(path);
       }
     }
@@ -66,15 +67,20 @@ fs.readdir(RawPath, (err, data) => {
     }
   });
 
-  _posts.forEach(post => {
+  _posts.forEach(async post => {
     const {title, path, resources} = post;
-    const stat = fs.statSync(`${RawPath}${path}`);
+
+    const RawPathWithCurrentPath = pathFn.resolve(RawPath, path);
+
+    const stat = fs.statSync(RawPathWithCurrentPath);
     const date = new Date(stat.birthtime);
-    const _pathName =
-      title.indexOf(' ') > -1 ? title.split(' ').join('') : title;
-    const pathName = _pathName.replace(/\(|\)|\[|\]|\{|\}|，|！|。/g, '');
-    const dirName = getDirName(date, pathName);
-    checkDirExist(`${BlogPath}${dirName}`);
+
+    const postTitle = (title || '').trim().
+      match(/\w+|[\u4e00-\u9fa5]/ig).
+      join('');
+
+    const dirName = await getDirName(date, postTitle);
+    checkDirExist(pathFn.resolve(BlogPath, dirName));
     const inputData =
       `---` +
       '\n' +
@@ -98,19 +104,37 @@ fs.readdir(RawPath, (err, data) => {
       '\n' +
       `---` +
       '\n\n';
-    const readFileData = fs.readFileSync(`${RawPath}${path}`);
+    const readFileData = fs.readFileSync(RawPathWithCurrentPath);
+
+    // post transform
     fs.writeFileSync(
-      `${BlogPath}${dirName}/index.md`,
+      pathFn.resolve(BlogPath, dirName, 'index.md'),
       inputData + readFileData,
     );
+    fs.copyFileSync(RawPathWithCurrentPath,
+      pathFn.resolve(BackPath, path));
 
+    rimraf(RawPathWithCurrentPath, err => {
+      if (err) {
+      }
+    });
+
+    // post resource transform
     if (resources && resources.length > 0) {
       resources.forEach(resource => {
-        if (!path1.isAbsolute(resource)) {
-          fs.copyFileSync(`${RawPath}${resource}`,
-            `${BlogPath}${dirName}/${resource}`);
-          fs.copyFileSync(`${RawPath}${resource}`, `${BackPath}/${resource}`);
-          rimraf(`${RawPath}/${resource}`, err => {
+        if (!pathFn.isAbsolute(resource)) {
+          const RawPathWithCurrentResourcePath = pathFn.resolve(RawPath,
+            resource);
+          const BackPathCurrentResourcePath = pathFn.resolve(BackPath,
+            resource);
+          const BlogPathCurrentResourcePath = pathFn.resolve(BlogPath, dirName,
+            resource);
+
+          fs.copyFileSync(RawPathWithCurrentResourcePath,
+            BlogPathCurrentResourcePath);
+          fs.copyFileSync(RawPathWithCurrentResourcePath,
+            BackPathCurrentResourcePath);
+          rimraf(RawPathWithCurrentResourcePath, err => {
             if (err) {
             }
           });
@@ -121,13 +145,6 @@ fs.readdir(RawPath, (err, data) => {
         }
       });
     }
-
-    fs.copyFileSync(`${RawPath}${path}`, `${BackPath}${path}`);
-
-    rimraf(`${RawPath}${path}`, err => {
-      if (err) {
-      }
-    });
   });
 });
 
@@ -138,20 +155,33 @@ function checkDirExist (path) {
   }
 }
 
-function getDirName (date, pathName) {
+async function getDirName (date, postTitle) {
   function withZero (num) {
-    if (num < 9) {
-      return `0${num}`;
-    }
-    return `${num}`;
+    return num < 9 ? `0${num}` : `${num}`;
   }
 
-  const _time = `${date.getFullYear()}-${withZero(
+  const fullYear = date.getFullYear().toString();
+
+  const _time = `${fullYear}-${withZero(
     date.getMonth() + 1,
   )}-${withZero(date.getDate())}`;
-  const _tmp = _.flattenDeep(getPinyin(pathName));
-  const _name = _.take(_tmp, 5).join('-').toLowerCase();
-  return `${_time}---${_name}`;
+
+  let _tmp = [];
+
+  try {
+    _tmp = await translateChinese(postTitle);
+  } catch (e) {
+  }
+
+  if (!_tmp || !Array.isArray(_tmp) || _tmp.length === 0) {
+    _tmp = _.flattenDeep(getPinyin(postTitle));
+  }
+
+  const _name = _tmp.join('-').toLowerCase();
+
+  checkDirExist(pathFn.resolve(BlogPath, fullYear));
+
+  return `${fullYear}/${_time}---${_name}`;
 }
 
 function getPinyin (str) {
@@ -159,8 +189,4 @@ function getPinyin (str) {
     style: pinyin.STYLE_NORMAL, // 设置拼音风格
     heteronym: false,
   });
-}
-
-function resolve (dir) {
-  return path1.join(__dirname, dir);
 }

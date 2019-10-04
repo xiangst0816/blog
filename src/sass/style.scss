@@ -19,6 +19,7 @@
 @import "archive";
 @import "post";
 @import "pagination";
+@import "third-part";
 
 /* ==========================================================================
    Media Queries - Bigger than 1200px
@@ -51,7 +52,7 @@
       transform: translateY(-160%);
     }
   }
-  
+
   #blog-author {
     margin: auto;
   }
@@ -167,7 +168,7 @@
 .page-404 {
   text-align: center;
   color: $color-blue-30;
-  
+
   .page-404-back {
     display: flex;
     justify-content: center;

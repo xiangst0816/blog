@@ -1,0 +1,10 @@
+figcaption.gatsby-resp-image-figcaption {
+  text-align: center;
+  margin-top: 8px;
+  font-size: 80%;
+  font-weight: bold;
+  &::before {
+    content: "图*";
+    margin-right: 4px;
+  }
+}
