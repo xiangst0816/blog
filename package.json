@@ -19,7 +19,7 @@
     "tp-register-listener": "^1.0.5"
   },
   "devDependencies": {
-    "autoprefixer": "^9.5.0",
+    "autoprefixer": "^9.7.1",
     "cross-env": "^5.1.4",
     "dotenv": "^7.0.0",
     "gatsby-image": "^2.0.37",
