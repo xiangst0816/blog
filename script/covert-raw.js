@@ -113,7 +113,7 @@ fs.readdir(RawPath, (err, data) => {
     // post resource transform
     if (resources && resources.length > 0) {
       resources.forEach(resource => {
-        if (!pathFn.isAbsolute(resource)) {
+        if (!pathFn.isAbsolute(resource) && !/^http/.test(resource)) {
           const RawPathWithCurrentResourcePath = pathFn.resolve(
             RawPath,
             resource
@@ -133,7 +133,7 @@ fs.readdir(RawPath, (err, data) => {
             RawPathWithCurrentResourcePath,
             BackPathCurrentResourcePath
           )
-        } else {
+        } else if (pathFn.isAbsolute(resource)) {
           const RawPathWithCurrentResourcePath = resource
           const ImagePath = pathFn.resolve(BlogPath, dirName, "images")
           const BackPathCurrentResourcePath = pathFn.resolve(BackPath, resource)
@@ -171,7 +171,7 @@ fs.readdir(RawPath, (err, data) => {
     rimraf(RawPathWithCurrentPath, err => {
       if (err) {
       }
-    });
+    })
   })
 })
 
