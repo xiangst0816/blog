@@ -133,10 +133,6 @@ fs.readdir(RawPath, (err, data) => {
             RawPathWithCurrentResourcePath,
             BackPathCurrentResourcePath
           )
-          // rimraf(RawPathWithCurrentResourcePath, err => {
-          //   if (err) {
-          //   }
-          // });
         } else {
           const RawPathWithCurrentResourcePath = resource
           const ImagePath = pathFn.resolve(BlogPath, dirName, "images")
@@ -172,10 +168,10 @@ fs.readdir(RawPath, (err, data) => {
     )
     fs.copyFileSync(RawPathWithCurrentPath, pathFn.resolve(BackPath, path))
 
-    // rimraf(RawPathWithCurrentPath, err => {
-    //   if (err) {
-    //   }
-    // });
+    rimraf(RawPathWithCurrentPath, err => {
+      if (err) {
+      }
+    });
   })
 })
 
