@@ -17,14 +17,19 @@ tags:
 ```javascript
 fs.open = function (path, flags, mode, callback) {
 	// ...
-  binding.open(pathModule._makeLong(path), stringToFlags(flags), mode, callback);
+  binding.open(
+    pathModule._makeLong(path), 
+    stringToFlags(flags), 
+    mode, 
+    callback
+  );
   // ...
 }
 ```
 
 整个异步I/O的流程如下：
 
-![image-20200816210914233](images/image-20200816210914233.png)
+![异步I/O的流程](images/image-20200816210914233.png)
 
 **请求对象、I/O线程池、观察者、 事件循环** 这四个共同构成了Node异步I/O模型的基本要素。大致流程：
 
@@ -46,7 +51,7 @@ JavaScript执行是单线程，但是Node本身是多线程的，比如I/O相关
 
 这里涉及的到异步API包括：**setTimeout()、setInterval()、setImmediate()、process.nextTick()** 这四个；整个过程以setTimeout()为例：
 
-![image-20200816213701565](images/image-20200816213701565.png)
+![非I/O的异步流程](images/image-20200816213701565.png)
 
 1. 创建setTimeout时，将定时器插入到定时观察者内部的**红黑树**中
 2. 每次Tick执行是，会从改红黑树中取出定时器对象判定
