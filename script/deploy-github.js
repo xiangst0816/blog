@@ -21,7 +21,7 @@ if (typeof pkg.repository === 'object') {
   repoUrl = pkg.repository;
 }
 
-const ghToken = process.env.GH_TOKEN;
+const ghToken = process.env.GT;
 
 if (!ghToken) {
   throw new Error('Deplay Error: ghToken needed!');
