@@ -64,4 +64,4 @@ typings/
 # dotenv environment variables file
 .env
 .env.github
-
+.env.deploy

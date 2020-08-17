@@ -1,5 +1,5 @@
 const path = require('path');
-require('dotenv').config({path: path.resolve(__dirname, '../.env.github')});
+require('dotenv').config({path: path.resolve(__dirname, '../.env.deploy')});
 
 const {cd, exec, touch} = require('shelljs');
 const {readFileSync} = require('fs');
