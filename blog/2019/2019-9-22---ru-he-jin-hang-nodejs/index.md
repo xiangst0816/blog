@@ -32,6 +32,8 @@ $ git clone https://github.com/jasongin/nvs --depth=1 "$NVS_HOME"
 $ . "$NVS_HOME/nvs.sh" install
 ```
 
+> 注意，安装程序会在`~/.bashrc`, `~/.profile`, 或者 `~/.zshrc` 中写入命令，先保证这些文件是存在的！
+
 ### Windows 环境
 
 由于 Windows 环境配置比较复杂，所以 Windows 环境下还是推荐使用 `msi` 文件完成初始化工作。
@@ -79,7 +81,7 @@ $ nvs use 8
 
 更多指令参见 `nvs --help` 。
 
-## 共用 npm 全局模块
+## 共用 npm 全局模块（必须）
 
 使用 `nvs` 时，默认的 `prefix` 是当前激活的 Node.js 版本的安装路径。
 
@@ -93,6 +95,8 @@ $ npm config set prefix ~/.npm-global
 ```
 
 还需配置环境变量到 `~/.bashrc` 或 `~/.zshrc` 文件里面：
+
+> 缺少了这步，全局安装的命令都不会生效！
 
 ```
 $ echo "export PATH=~/.npm-global/bin:$PATH" >> ~/.zshrc
