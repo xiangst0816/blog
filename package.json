@@ -3,6 +3,18 @@
   "description": "Thoughts, stories and ideas.",
   "version": "1.0.0",
   "author": "Xiang Songtao <xiangst0816@gmail.com>",
+  "scripts": {
+    "start": "gatsby develop --port=8989",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "rimraf:public": "rimraf public",
+    "deploy:github": "cross-env DEPLOY=github CI=true gatsby build --prefix-paths && node script/deploy-github.js",
+    "deploy:website": "npm run build && npm run upload:website",
+    "upload:website": "gulp --gulpfile script/deploy-website.js deploy",
+    "covert-raw": "node ./script/covert-raw",
+    "format": "prettier --write src/**/*.{js,jsx}",
+    "lint-docs:fix": "prettylint blog/**/*.md --fix"
+  },
   "dependencies": {
     "classnames": "^2.2.6",
     "enquire-js": "^0.2.1",
@@ -69,18 +81,6 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:xiangsongtao/blog.git"
-  },
-  "scripts": {
-    "start": "gatsby develop --port=8989",
-    "build": "gatsby build",
-    "serve": "gatsby serve",
-    "rimraf:public": "rimraf public",
-    "deploy:github": "cross-env DEPLOY=github CI=true gatsby build --prefix-paths && node script/deploy-github.js",
-    "deploy:website": "npm run build && npm run upload:website",
-    "upload:website": "gulp --gulpfile script/deploy-website.js deploy",
-    "covert-raw": "node ./script/covert-raw",
-    "format": "prettier --write src/**/*.{js,jsx}",
-    "lint-docs:fix": "prettylint blog/**/*.md --fix"
   },
   "browserslist": [
     "> 1%",
