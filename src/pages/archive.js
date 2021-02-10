@@ -14,7 +14,7 @@ export default class TagsPageRoute extends React.PureComponent {
     const allRowArchive = _.get(this.props, "data.allMarkdownRemark.edges", {})
     const { site } = this.props.data
     const { title, cover, archiveCover, logo, navigation } = site.siteMetadata
-    const coverImage = archiveCover || (cover || false)
+    const coverImage = archiveCover || cover || false
     const allArchive = allRowArchive.map(item => {
       return {
         ...item.node.frontmatter,

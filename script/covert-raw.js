@@ -55,7 +55,7 @@ fs.readdir(RawPath, (err, data) => {
     if (tmp && Array.isArray(tmp)) {
       tmp = tmp.filter(item => {
         var _res = item.match(
-          /.+?\.(png|svg|eot|ttf|woff|jpg|jpeg|pdf|mp4|mp3)/gi
+          /.+?\.(png|svg|eot|ttf|woff|jpg|jpeg|pdf|mp4|mp3)/gi,
         )
         let isSource = _res && _res.length > 0
         let isUrl = item.indexOf("http") > -1
@@ -76,10 +76,9 @@ fs.readdir(RawPath, (err, data) => {
     const stat = fs.statSync(RawPathWithCurrentPath)
     const date = new Date(stat.birthtime)
 
-    const postTitle = (title || "")
-      .trim()
-      .match(/\w+|[\u4e00-\u9fa5]/gi)
-      .join("")
+    const postTitle = (title || "").trim().
+      match(/\w+|[\u4e00-\u9fa5]/gi).
+      join("")
 
     const dirName = await getDirName(date, postTitle)
     checkDirExist(pathFn.resolve(BlogPath, dirName))
@@ -116,22 +115,22 @@ fs.readdir(RawPath, (err, data) => {
         if (!pathFn.isAbsolute(resource) && !/^http/.test(resource)) {
           const RawPathWithCurrentResourcePath = pathFn.resolve(
             RawPath,
-            resource
+            resource,
           )
           const BackPathCurrentResourcePath = pathFn.resolve(BackPath, resource)
           const BlogPathCurrentResourcePath = pathFn.resolve(
             BlogPath,
             dirName,
-            resource
+            resource,
           )
 
           fs.copyFileSync(
             RawPathWithCurrentResourcePath,
-            BlogPathCurrentResourcePath
+            BlogPathCurrentResourcePath,
           )
           fs.copyFileSync(
             RawPathWithCurrentResourcePath,
-            BackPathCurrentResourcePath
+            BackPathCurrentResourcePath,
           )
         } else if (pathFn.isAbsolute(resource)) {
           const RawPathWithCurrentResourcePath = resource
@@ -145,17 +144,17 @@ fs.readdir(RawPath, (err, data) => {
           const basename = pathFn.basename(resource)
           const BlogPathCurrentResourcePath = pathFn.resolve(
             ImagePath,
-            basename
+            basename,
           )
 
           fs.copyFileSync(
             RawPathWithCurrentResourcePath,
-            BlogPathCurrentResourcePath
+            BlogPathCurrentResourcePath,
           )
 
           readFileData = (readFileData || "").replace(
             new RegExp(`(${RawPathWithCurrentResourcePath})`),
-            `images/${basename}`
+            `images/${basename}`,
           )
         }
       })
@@ -164,7 +163,7 @@ fs.readdir(RawPath, (err, data) => {
     // post transform
     fs.writeFileSync(
       pathFn.resolve(BlogPath, dirName, "index.md"),
-      inputData + readFileData
+      inputData + readFileData,
     )
     fs.copyFileSync(RawPathWithCurrentPath, pathFn.resolve(BackPath, path))
 
@@ -175,22 +174,22 @@ fs.readdir(RawPath, (err, data) => {
   })
 })
 
-function checkDirExist(path) {
+function checkDirExist (path) {
   const isDirExist = fs.existsSync(path)
   if (!isDirExist) {
     fs.mkdirSync(path)
   }
 }
 
-async function getDirName(date, postTitle) {
-  function withZero(num) {
+async function getDirName (date, postTitle) {
+  function withZero (num) {
     return num < 9 ? `0${num}` : `${num}`
   }
 
   const fullYear = date.getFullYear().toString()
 
   const _time = `${fullYear}-${withZero(date.getMonth() + 1)}-${withZero(
-    date.getDate()
+    date.getDate(),
   )}`
 
   let _tmp = []
@@ -210,7 +209,7 @@ async function getDirName(date, postTitle) {
   return `${fullYear}/${_time}---${_name}`
 }
 
-function getPinyin(str) {
+function getPinyin (str) {
   return pinyin(str, {
     style: pinyin.STYLE_NORMAL, // 设置拼音风格
     heteronym: false,

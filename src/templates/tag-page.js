@@ -16,7 +16,7 @@ export default class TagRoute extends React.PureComponent {
     const { title, cover, tagCover, navigation, logo } = site.siteMetadata
     const { totalCount } = allMarkdownRemark || {}
     const { tag } = this.props.pageContext
-    const coverImage = tagCover || (cover || false)
+    const coverImage = tagCover || cover || false
 
     const { skip = 0, limit = 10 } = this.props.pageContext
     const kebabCaseName = kebabCase(tag)

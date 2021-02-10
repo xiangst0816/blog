@@ -1,14 +1,14 @@
-import React from 'react';
-import { Link } from "gatsby";
-import PropTypes from 'prop-types';
+import React from "react"
+import { Link } from "gatsby"
+import PropTypes from "prop-types"
 
 export default class Pagination extends React.PureComponent {
   render() {
-    const { skip = 0, limit = 10, total, pathPrefix = '/page/' } = this.props;
-    const page = skip / limit + 1;
-    const pages = Math.ceil(total / limit);
-    const prev = page - 1 > 0 ? `${pathPrefix}${page - 1}` : null;
-    const next = pages > page ? `${pathPrefix}${page + 1}` : null;
+    const { skip = 0, limit = 10, total, pathPrefix = "/page/" } = this.props
+    const page = skip / limit + 1
+    const pages = Math.ceil(total / limit)
+    const prev = page - 1 > 0 ? `${pathPrefix}${page - 1}` : null
+    const next = pages > page ? `${pathPrefix}${page + 1}` : null
 
     return (
       <nav className="pagination">
@@ -33,7 +33,7 @@ export default class Pagination extends React.PureComponent {
           <div className="clear" />
         </div>
       </nav>
-    );
+    )
   }
 }
 
@@ -42,4 +42,4 @@ Pagination.propTypes = {
   skip: PropTypes.number,
   limit: PropTypes.number,
   total: PropTypes.number,
-};
+}

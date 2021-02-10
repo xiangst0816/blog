@@ -16,8 +16,8 @@ tags:
 
 在 ES6 还没出来之前，前端在编写 class 时，相比去其他设计成熟的语言会显得很诡异，比如使用 JS 原生的方式实现一个类继承，这个我在之前的文章中有说明。
 
-- [第六章 面相对象的程序设计(简单实现一个最理想的继承范式?)](https://xiangsongtao.github.io/blog/di-liu-lu-zhang-mian-xiang-dui-xiang/#16-%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%9C%80%E7%90%86%E6%83%B3%E7%9A%84%E7%BB%A7%E6%89%BF%E8%8C%83%E5%BC%8F)
-- [第六章 面相对象的程序设计(new 操作符执行的过程?)](https://xiangsongtao.github.io/blog/di-liu-lu-zhang-mian-xiang-dui-xiang/#2-code-classlanguage-textnewcode%E6%93%8D%E4%BD%9C%E7%AC%A6%E6%89%A7%E8%A1%8C%E7%9A%84%E8%BF%87%E7%A8%8B)
+- [第六章 面相对象的程序设计(简单实现一个最理想的继承范式?)](https://xiangst0816.github.io/blog/di-liu-lu-zhang-mian-xiang-dui-xiang/#16-%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%9C%80%E7%90%86%E6%83%B3%E7%9A%84%E7%BB%A7%E6%89%BF%E8%8C%83%E5%BC%8F)
+- [第六章 面相对象的程序设计(new 操作符执行的过程?)](https://xiangst0816.github.io/blog/di-liu-lu-zhang-mian-xiang-dui-xiang/#2-code-classlanguage-textnewcode%E6%93%8D%E4%BD%9C%E7%AC%A6%E6%89%A7%E8%A1%8C%E7%9A%84%E8%BF%87%E7%A8%8B)
 
 下面是 UML 说明：
 

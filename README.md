@@ -1,7 +1,7 @@
 # Blog
 
-[![](https://img.shields.io/travis/xiangsongtao/blog.svg)](https://travis-ci.org/xiangsongtao/blog)
-[![Greenkeeper badge](https://badges.greenkeeper.io/xiangsongtao/blog.svg)](https://greenkeeper.io/)
+[![](https://img.shields.io/travis/xiangst0816/blog.svg)](https://travis-ci.org/xiangst0816/blog)
+[![Greenkeeper badge](https://badges.greenkeeper.io/xiangst0816/blog.svg)](https://greenkeeper.io/)
 
 Thoughts, stories and ideas.
 
@@ -9,6 +9,6 @@ Thoughts, stories and ideas.
 
 ## Link
 
-- [Github Page: https://xiangsongtao.github.io/blog/](https://xiangsongtao.github.io/blog/)
-- [RSS](https://xiangsongtao.github.io/blog/rss.xml)
+- [Github Page: https://xiangst0816.github.io/blog/](https://xiangst0816.github.io/blog/)
+- [RSS](https://xiangst0816.github.io/blog/rss.xml)
 

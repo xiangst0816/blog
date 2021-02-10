@@ -12,7 +12,7 @@ export default class TagsPageRoute extends React.PureComponent {
     const allTags = _.get(this.props, "data.allMarkdownRemark.group", [])
     const { site } = this.props.data
     const { title, cover, tagCover, logo, navigation } = site.siteMetadata
-    const coverImage = tagCover || (cover || false)
+    const coverImage = tagCover || cover || false
     return (
       <Layout location={this.props.location}>
         <SEO title={`${title}-Tags`} />

@@ -13,7 +13,7 @@ import Header from "../components/Header"
 import Disqus from "../components/Disqus"
 import Layout from "../components/Layout"
 
-const GithubPrefix = "https://github.com/xiangsongtao/blog/edit/master/blog/"
+const GithubPrefix = "https://github.com/xiangst0816/blog/edit/master/blog/"
 
 export default class BlogPost extends React.PureComponent {
   render() {

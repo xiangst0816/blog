@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from "gatsby";
-import PropTypes from 'prop-types';
+import React from "react"
+import { Link } from "gatsby"
+import PropTypes from "prop-types"
 
 export default function Tags({ list = [] }) {
   return (
@@ -11,8 +11,8 @@ export default function Tags({ list = [] }) {
         </li>
       ))}
     </ul>
-  );
+  )
 }
 Tags.propTypes = {
   list: PropTypes.array.isRequired,
-};
+}
