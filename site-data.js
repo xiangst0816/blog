@@ -10,7 +10,7 @@ let shortName = "xiangst"
 if (process.env.CI && process.env.DEPLOY === "github") {
   pathPrefix = "/blog"
   trackingId = "UA-114740261-4"
-  siteUrl = "https://xiangsongtao.github.io" + pathPrefix
+  siteUrl = "https://xiangst0816.github.io" + pathPrefix
   faviconUrl = faviconUrl
   start_url = (pathPrefix + start_url).replace(/\/\//gi, "/")
 }
@@ -21,7 +21,7 @@ module.exports = {
     description: `Thoughts, stories and ideas.`, // 网站描述
     author: `@烈风裘`,
     keywords: ["烈风裘的博客", "X-Blog", "Attila", "Gatsby", "前端成长记录"], // 网站描述
-    cover: "/background/3.jpg",
+    cover: "/background/1.jpg",
     // authorCover由author自己定义
     tagCover: "/background/5.jpg",
     archiveCover: "/background/escape-flight.png",
