@@ -1,7 +1,7 @@
 {
   "name": "blog",
   "description": "Thoughts, stories and ideas.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Xiang Songtao <xiangst0816@gmail.com>",
   "scripts": {
     "start": "gatsby develop --port=8989",
